@@ -11,9 +11,9 @@
   </parent>
 
   <groupId>se.inera.intyg.schemas</groupId>
-  <artifactId>intygstjanst-schemas</artifactId>
+  <artifactId>schemas-intygstjanst</artifactId>
 
-  <name>Intygstjänsten Schemas</name>
+  <name>Intyg Schemas (Intygstjänsten)</name>
 
   <properties>
     <schema.path>${basedir}/src/main/resources/schemas</schema.path>
