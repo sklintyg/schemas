@@ -1,9 +1,11 @@
 # Intyg Schemas
 Intyg Schemas tillhandahåller scheman till de övriga intygsprojekten under [SKL Intyg](http://github.com/sklintyg).
 
-## Utvecklingssetup
-Intyg Schemas byggs med hjälp av Maven enligt följande:
+## Kom igång
+Här hittar du grundläggande instruktioner för hur man kommer igång med projektet. Mer detaljerade instruktioner för att sätta upp sin utvecklingsmiljö och liknande hittar du på projektets [Wiki för utveckling](https://github.com/sklintyg/common/wiki).
 
+### Bygg projektet
+Intyg Schemas byggs med hjälp av Maven enligt följande:
 ```
 $ git clone https://github.com/sklintyg/schemas.git
 
