@@ -11,7 +11,7 @@
   </parent>
 
   <properties>
-    <schema.dir>${basedir}/src/main/resources/clinicalprocess-healthcond-certificate/core_components</schema.dir>
+    <schema.dir>${basedir}/src/main/resources/clinicalprocess-healthcond-certificate/core-components</schema.dir>
     <bindings.dir>${basedir}/src/main/resources/clinicalprocess-healthcond-certificate/bindings</bindings.dir>
   </properties>
 
@@ -65,30 +65,6 @@
           </dependency>
         </dependencies>
       </plugin>
-      <!-- <plugin> <groupId>org.apache.cxf</groupId> <artifactId>cxf-xjc-plugin</artifactId> 
-        <configuration> <extensions> <extension>org.jvnet.jaxb2_commons:jaxb2-basics:${jaxb.commons.version}</extension> 
-        </extensions> </configuration> <executions> <execution> <id>generate-sources-xsd</id> 
-        <phase>generate-sources</phase> <goals> <goal>xsdtojava</goal> </goals> <configuration> 
-        <sourceRoot>${project.build.directory}/generated</sourceRoot> <xsdOptions> 
-        <xsdOption> <xsd>${schema.dir}/itintegration_registry_1.0.xsd</xsd> <packagename>se.riv.itintegration.registry.v1</packagename> 
-        </xsdOption> <xsdOption> <xsd>${schema.dir}/clinicalprocess_healthcond_certificate_1.0.xsd</xsd> 
-        <packagename>se.inera.certificate.clinicalprocess.healthcond.certificate.v1</packagename> 
-        <catalog>${schema.dir}/catalog.xml</catalog> <bindingFile>${xjc.binding.file}</bindingFile> 
-        <extension>true</extension> <episode>tu</episode> <extensionArgs> <extensionArg>-XhashCode</extensionArg> 
-        <extensionArg>-Xequals</extensionArg> <extensionArg>-XtoString</extensionArg> 
-        <extensionArg>-Xinheritance</extensionArg> <arg>-episode</arg> </extensionArgs> 
-        </xsdOption> <xsdOption> <xsd>${schema.dir}/clinicalprocess_healthcond_certificate_types_1.0.xsd</xsd> 
-        <packagename>se.inera.certificate.clinicalprocess.healthcond.certificate.types.v1</packagename> 
-        <catalog>${schema.dir}/catalog.xml</catalog> <bindingFile>${xjc.binding.file}</bindingFile> 
-        <extension>true</extension> <extensionArgs> <extensionArg>-XhashCode</extensionArg> 
-        <extensionArg>-Xequals</extensionArg> <extensionArg>-XtoString</extensionArg> 
-        <extensionArg>-Xinheritance</extensionArg> </extensionArgs> </xsdOption> 
-        <xsdOption> <xsd>${schema.dir}/iso_dt_subset_1.0.xsd</xsd> <packagename>iso.v21090.dt.v1</packagename> 
-        </xsdOption> </xsdOptions> </configuration> </execution> </executions> <dependencies> 
-        <dependency> <groupId>org.jvnet.jaxb2_commons</groupId> <artifactId>jaxb2-basics</artifactId> 
-        <version>${jaxb.commons.version}</version> </dependency> <dependency> <groupId>se.inera.intyg.schemas</groupId> 
-        <artifactId>schema-common</artifactId> <version>${schema.common.version}</version> 
-        </dependency> </dependencies> </plugin> -->
     </plugins>
   </build>
 

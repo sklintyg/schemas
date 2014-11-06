@@ -55,7 +55,7 @@
                 <bindingFiles>
                   <bindingFile>classpath:/bindings/general-intyg-binding.xjb</bindingFile>
                 </bindingFiles>
-                <catalog>classpath:/clinicalprocess-healthcond-certificate/core_components/catalog.xml</catalog>
+                <catalog>classpath:/clinicalprocess-healthcond-certificate/core-components/catalog.xml</catalog>
                 <extraargs>
                   <!-- Enable JAXB extensions -->
                   <extraarg>-xjc-XhashCode</extraarg>
