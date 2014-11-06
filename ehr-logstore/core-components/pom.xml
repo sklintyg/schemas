@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>ehr-logstore-core</artifactId>
+  <name>EHR LogStore Core</name>
+
+  <parent>
+    <groupId>se.riv.ehr.logstore</groupId>
+    <artifactId>ehr-logstore-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <properties>
+    <schema.dir>${basedir}/src/main/resources/ehr-logstore/core-components</schema.dir>
+    <bindings.dir>${basedir}/src/main/resources/ehr-logstore/bindings</bindings.dir>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jvnet.jaxb2_commons</groupId>
+      <artifactId>jaxb2-basics-runtime</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
+        <version>0.11.0</version>
+        <executions>
+          <execution>
+            <id>generate_from_xsds</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <schemaDirectory>${schema.dir}</schemaDirectory>
+          <schemaIncludes>
+            <schemaInclude>ehr_log_1.0.xsd</schemaInclude>
+            <schemaInclude>ehr_logstore_1.0.xsd</schemaInclude>
+            <schemaInclude>itintegration_registry_1.0.xsd</schemaInclude>
+          </schemaIncludes>
+          <bindingDirectory>${bindings.dir}</bindingDirectory>
+          <bindings>
+            <binding>
+              <dependencyResource>
+                <groupId>se.inera.intyg.schemas</groupId>
+                <artifactId>schema-common</artifactId>
+                <resource>bindings/general-binding.xjb</resource>
+              </dependencyResource>
+            </binding>
+          </bindings>
+          <generateDirectory>${project.build.directory}/generated</generateDirectory>
+          <verbose>true</verbose>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics</artifactId>
+            <version>${jaxb.commons.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
