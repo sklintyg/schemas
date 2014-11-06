@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>se.inera.intyg.schemas.clinicalprocess.healthcond.certificate.v1</groupId>
+  <artifactId>clinicalprocess-healthcond-certificate-parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>Clinicalprocess Healthcond Certificate v1</name>
+  <packaging>pom</packaging>
+  <parent>
+    <groupId>se.inera.intyg.schemas</groupId>
+    <version>1.0-SNAPSHOT</version>
+    <artifactId>schemas</artifactId>
+  </parent>
+  <properties>
+    <schema.common.version>1.0-SNAPSHOT</schema.common.version>
+  </properties>
+  <modules>
+    <module>core-components</module>
+    <module>interactions</module>
+  </modules>
+  <dependencies>
+    <dependency>
+      <groupId>se.inera.intyg.schemas</groupId>
+      <artifactId>schema-common</artifactId>
+      <version>${schema.common.version}</version>
+    </dependency>
+  </dependencies>
+</project>
