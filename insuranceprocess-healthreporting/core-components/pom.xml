@@ -59,6 +59,12 @@
           </bindings>
           <generateDirectory>${project.build.directory}/generated</generateDirectory>
           <verbose>true</verbose>
+          <args>
+            <arg>-XhashCode</arg>
+            <arg>-Xequals</arg>
+            <arg>-XtoString</arg>
+            <arg>-Xinheritance</arg>
+          </args>
         </configuration>
         <dependencies>
           <dependency>
