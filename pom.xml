@@ -22,6 +22,7 @@
     <module>itintegration-monitoring</module>
     <module>clinicalprocess-healthcond-certificate</module>
     <module>insuranceprocess-healthreporting</module>
+    <module>ehr-logstore</module>
   </modules>
 
   <dependencyManagement>
