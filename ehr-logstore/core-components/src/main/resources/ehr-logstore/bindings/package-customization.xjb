@@ -1,9 +1,4 @@
-<bindings xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1">
-  <bindings schemaLocation="../core-components/itintegration_registry_1.0.xsd">
-    <schemaBindings>
-      <package name="se.riv.itintegration.registry.v1" />
-    </schemaBindings>
-  </bindings> 
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1"> 
   <bindings schemaLocation="../core-components/ehr_log_1.0.xsd">
     <schemaBindings>
       <package name="se.riv.ehr.log.v1" />
@@ -14,5 +9,4 @@
       <package name="se.riv.ehr.log.store.v1" />
     </schemaBindings>
   </bindings>
-
 </bindings>

@@ -3,7 +3,7 @@
  "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"
   prefer="public">
-  <system systemId="itintegration_registry_1.0.xsd" uri="itintegration_registry_1.0.xsd"/>
+  <system systemId="itintegration_registry_1.0.xsd" uri="classpath:/itintegration-monitoring/core-components/itintegration_registry_1.0.xsd"/>
   <system systemId="ehr_log_1.0.xsd" uri="ehr_log_1.0.xsd"/>
   <system systemId="ehr_logstore_1.0.xsd" uri="ehr_logstore_1.0.xsd"/>
 </catalog>
