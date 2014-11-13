@@ -3,12 +3,12 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>se.inera.intyg.schemas</groupId>
   <artifactId>schema-common</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <parent>
     <groupId>se.inera.intyg.schemas</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0-SNAPSHOT</version>
     <artifactId>schemas</artifactId>
   </parent>
 
