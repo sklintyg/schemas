@@ -1,4 +1,4 @@
-package se.inera.certificate.integration.util;
+package se.inera.certificate.clinicalprocess.healthcond.certificate.utils;
 
 import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.ErrorIdType;
 import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.ResultCodeType;

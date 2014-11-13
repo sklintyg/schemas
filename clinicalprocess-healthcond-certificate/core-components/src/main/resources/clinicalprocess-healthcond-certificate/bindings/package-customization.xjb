@@ -1,0 +1,22 @@
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1">
+  <bindings schemaLocation="../core-components/iso_dt_subset_1.0.xsd">
+    <schemaBindings>
+      <package name="iso.v21090.dt.v1" />
+    </schemaBindings>
+  </bindings>
+  <bindings schemaLocation="../core-components/clinicalprocess_healthcond_certificate_types_1.0.xsd">
+    <schemaBindings>
+      <package name="se.inera.certificate.clinicalprocess.healthcond.certificate.types.v1" />
+    </schemaBindings>
+  </bindings>
+  <bindings schemaLocation="../core-components/clinicalprocess_healthcond_certificate_1.0.xsd">
+    <schemaBindings>
+      <package name="se.inera.certificate.clinicalprocess.healthcond.certificate.v1" />
+    </schemaBindings>
+  </bindings>
+  <bindings schemaLocation="../core-components/itintegration_registry_1.0.xsd">
+    <schemaBindings>
+      <package name="se.riv.itintegration.registry.v1" />
+    </schemaBindings>
+  </bindings>
+</bindings>

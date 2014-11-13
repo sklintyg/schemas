@@ -1,4 +1,4 @@
-package se.inera.certificate.integration.util;
+package se.inera.certificate.clinicalprocess.healthcond.certificate.utils;
 
 import iso.v21090.dt.v1.II;
 

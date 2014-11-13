@@ -25,8 +25,11 @@
   </properties>
 
   <modules>
-    <module>intygstjanst</module>
-    <module>webcert</module>
+    <module>common</module>
+    <module>itintegration-monitoring</module>
+    <module>clinicalprocess-healthcond-certificate</module>
+    <module>insuranceprocess-healthreporting</module>
+    <module>ehr-logstore</module>
   </modules>
 
   <scm>
@@ -47,8 +50,8 @@
         <artifactId>integration-util</artifactId>
         <version>${integration-util.version}</version>
       </dependency>
-
+	  	  
     </dependencies>
   </dependencyManagement>
-
+  
 </project>

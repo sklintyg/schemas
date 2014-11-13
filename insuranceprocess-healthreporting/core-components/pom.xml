@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>insuranceprocess-healthreporting-core</artifactId>
+  <name>Insurance Process Healthreporting v1 Core</name>
+
+  <parent>
+    <groupId>se.inera.intyg.schemas.insuranceprocess.healthreporting.v1</groupId>
+    <artifactId>insuranceprocess-healthreporting-parent</artifactId>
+    <version>0-SNAPSHOT</version>
+  </parent>
+
+  <properties>
+    <schema.dir>${basedir}/src/main/resources/insuranceprocess-healthreporting/core-components</schema.dir>
+    <bindings.dir>${basedir}/src/main/resources/insuranceprocess-healthreporting/bindings</bindings.dir>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.jvnet.jaxb2_commons</groupId>
+      <artifactId>jaxb2-basics-runtime</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
+        <version>0.11.0</version>
+        <executions>
+          <execution>
+            <id>generate_from_xsds</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <schemaDirectory>${schema.dir}</schemaDirectory>
+          <schemaIncludes>
+            <schemaInclude>iso_dt_subset_1.0.xsd</schemaInclude>
+            <schemaInclude>insuranceprocess_certificate_1.0.xsd</schemaInclude>
+            <schemaInclude>insuranceprocess_healthreporting_2.0.xsd</schemaInclude>
+            <schemaInclude>MedicalCertificateQuestionsAnswers_1.0.xsd</schemaInclude>
+            <schemaInclude>MU7263-RIV_3.1.xsd</schemaInclude>
+            <schemaInclude>itintegration_registry_1.0.xsd</schemaInclude>
+            <schemaInclude>ws-addressing-1.0.xsd</schemaInclude>
+          </schemaIncludes>
+          <bindingDirectory>${bindings.dir}</bindingDirectory>
+          <bindings>
+            <binding>
+              <dependencyResource>
+                <groupId>se.inera.intyg.schemas</groupId>
+                <artifactId>schema-common</artifactId>
+                <resource>bindings/general-binding.xjb</resource>
+              </dependencyResource>
+            </binding>
+          </bindings>
+          <generateDirectory>${project.build.directory}/generated</generateDirectory>
+          <verbose>true</verbose>
+          <args>
+            <arg>-XhashCode</arg>
+            <arg>-Xequals</arg>
+            <arg>-XtoString</arg>
+            <arg>-Xinheritance</arg>
+          </args>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics</artifactId>
+            <version>${jaxb.commons.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

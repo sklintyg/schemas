@@ -1,4 +1,4 @@
-package se.inera.certificate.integration.builder;
+package se.inera.certificate.clinicalprocess.healthcond.certificate.meta;
 
 import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
