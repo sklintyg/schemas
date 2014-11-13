@@ -23,7 +23,7 @@
   </modules>
 
   <properties>
-    <common.version>2.0.0-b7</common.version>
+    <common.version>(,2.0.0)</common.version>
   </properties>
 
   <scm>
@@ -44,7 +44,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-  
+
   <repositories>
     <repository>
       <id>callista-release</id>
