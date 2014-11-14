@@ -10,7 +10,6 @@
     <version>0-SNAPSHOT</version>
   </parent>
 
-  <groupId>se.inera.intyg.schemas</groupId>
   <artifactId>schemas-webcert</artifactId>
 
   <name>Intyg Schemas (Webcert)</name>

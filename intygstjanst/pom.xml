@@ -10,7 +10,6 @@
     <version>0-SNAPSHOT</version>
   </parent>
 
-  <groupId>se.inera.intyg.schemas</groupId>
   <artifactId>schemas-intygstjanst</artifactId>
 
   <name>Intyg Schemas (Intygstjänsten)</name>
