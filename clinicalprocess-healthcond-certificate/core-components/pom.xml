@@ -17,6 +17,11 @@
 
   <dependencies>
     <dependency>
+      <groupId>se.inera.intyg.schemas.insuranceprocess.healthreporting.v1</groupId>
+      <artifactId>insuranceprocess-healthreporting-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.jvnet.jaxb2_commons</groupId>
       <artifactId>jaxb2-basics-runtime</artifactId>
     </dependency>
@@ -68,6 +73,11 @@
             <groupId>org.jvnet.jaxb2_commons</groupId>
             <artifactId>jaxb2-basics</artifactId>
             <version>${jaxb.commons.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>se.inera.intyg.schemas.insuranceprocess.healthreporting.v1</groupId>
+            <artifactId>insuranceprocess-healthreporting-core</artifactId>
+            <version>${project.version}</version>
           </dependency>
         </dependencies>
       </plugin>
