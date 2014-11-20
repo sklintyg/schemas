@@ -81,6 +81,17 @@
               <wsdlOptions>
                 <wsdlOption>
                   <wsdl>
+                    ${wsdl.directory}/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <wsdlLocation>classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl</wsdlLocation>
+                  <packagenames>
+                    <packagename>urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:1=se.inera.certificate.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v1</packagename>
+                    <packagename>urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCare:1:rivtabp21=se.inera.certificate.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v1</packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
                     ${wsdl.directory}/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <wsdlLocation>classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl</wsdlLocation>
