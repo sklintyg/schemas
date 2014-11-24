@@ -39,6 +39,11 @@
       <artifactId>joda-time</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+    </dependency>
+    
+    <dependency>
       <groupId>org.jvnet.jaxb2_commons</groupId>
       <artifactId>jaxb2-basics-runtime</artifactId>
     </dependency>
@@ -58,6 +63,11 @@
       <groupId>org.skyscreamer</groupId>
       <artifactId>jsonassert</artifactId>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
     </dependency>
 
     <dependency>
@@ -274,7 +284,7 @@
               </defaultOptions>
               <wsdlOptions>
 
-                <!-- <wsdlOption>
+                <wsdlOption>
                   <wsdl>
                     ${schema.path}/clinicalprocess_healthcond_certificate/interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
@@ -289,9 +299,9 @@
                       classpath:schemas/clinicalprocess_healthcond_certificate/interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                     </extraarg>
                   </extraargs>
-                </wsdlOption> -->
+                </wsdlOption>
 
-                <!-- <wsdlOption>
+                <wsdlOption>
                   <wsdl>
                     ${schema.path}/clinicalprocess_healthcond_certificate/interactions/GetCertificateForCareInteraction/GetCertificateForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
@@ -306,9 +316,9 @@
                       classpath:schemas/clinicalprocess_healthcond_certificate/interactions/GetCertificateForCareInteraction/GetCertificateForCareInteraction_1.0_RIVTABP21.wsdl
                     </extraarg>
                   </extraargs>
-                </wsdlOption> -->
+                </wsdlOption>
 
-                <!-- <wsdlOption>
+                <wsdlOption>
                   <wsdl>
                     ${schema.path}/clinicalprocess_healthcond_certificate/interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
@@ -323,9 +333,9 @@
                       classpath:schemas/clinicalprocess_healthcond_certificate/interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
                     </extraarg>
                   </extraargs>
-                </wsdlOption> -->
+                </wsdlOption>
 
-                <!-- <wsdlOption>
+                <wsdlOption>
                   <wsdl>
                     ${schema.path}/clinicalprocess_healthcond_certificate/interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
@@ -340,7 +350,7 @@
                       classpath:schemas/clinicalprocess_healthcond_certificate/interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_1.0_RIVTABP21.wsdl
                     </extraarg>
                   </extraargs>
-                </wsdlOption> -->
+                </wsdlOption>
 
                 <wsdlOption>
                   <wsdl>

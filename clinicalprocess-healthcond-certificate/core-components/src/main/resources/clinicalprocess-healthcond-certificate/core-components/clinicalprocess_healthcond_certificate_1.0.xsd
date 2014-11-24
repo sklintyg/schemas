@@ -313,7 +313,7 @@
       <xs:element name="signDate" type="types:dateTime"/>
       <xs:element name="available" type="types:nonEmptyString"/>
       <xs:element name="status" type="CertificateStatusType" maxOccurs="unbounded" minOccurs="0"/>
-      <xs:element name="complemantaryInfo" type="types:nonEmptyString" minOccurs="0"/>
+      <xs:element name="additionalInfo" type="types:nonEmptyString" minOccurs="0"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
