@@ -177,6 +177,18 @@
                     <packagename>urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificateResponder:1=se.inera.certificate.clinicalprocess.healthcond.certificate.registerCertificate.v1</packagename>
                   </packagenames>
                 </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/SendCertificateByCitizenInteraction/SendCertificateByCitizenInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <wsdlLocation>classpath:interactions/SendCertificateByCitizenInteraction/SendCertificateByCitizenInteraction_1.0_RIVTABP21.wsdl</wsdlLocation>
+                  <packagenames>
+                    <packagename>urn:riv:clinicalprocess:healthcond:certificate:SendCertificateByCitizen:1:rivtabp21=se.inera.certificate.clinicalprocess.healthcond.certificate.sendCertificateByCitizen.v1</packagename>
+                    <packagename>urn:riv:clinicalprocess:healthcond:certificate:SendCertificateByCitizenResponder:1=se.inera.certificate.clinicalprocess.healthcond.certificate.SendCertificateByCitizen.v1</packagename>
+                  </packagenames>
+                </wsdlOption>
+
               </wsdlOptions>
 
             </configuration>
