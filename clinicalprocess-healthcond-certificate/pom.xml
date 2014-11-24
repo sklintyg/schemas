@@ -12,7 +12,7 @@
     <artifactId>schemas</artifactId>
   </parent>
   <properties>
-    <schema.common.version>0-SNAPSHOT</schema.common.version>
+    <schemas.common.version>0-SNAPSHOT</schemas.common.version>
   </properties>
   <modules>
     <module>core-components</module>
@@ -21,8 +21,8 @@
   <dependencies>
     <dependency>
       <groupId>se.inera.intyg.schemas</groupId>
-      <artifactId>schema-common</artifactId>
-      <version>${schema.common.version}</version>
+      <artifactId>schemas-common</artifactId>
+      <version>${schemas.common.version}</version>
     </dependency>
   </dependencies>
 </project>
