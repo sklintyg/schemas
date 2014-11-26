@@ -69,8 +69,8 @@ public class ClinicalProcessCertificateMetaTypeBuilder {
         return this;
     }
 
-    public ClinicalProcessCertificateMetaTypeBuilder complementaryInfo(String complemenatryInfo) {
-        metaType.setComplemantaryInfo(complemenatryInfo);
+    public ClinicalProcessCertificateMetaTypeBuilder additionalInfo(String additionalInfo) {
+        metaType.setAdditionalInfo(additionalInfo);
         return this;
     }
 }

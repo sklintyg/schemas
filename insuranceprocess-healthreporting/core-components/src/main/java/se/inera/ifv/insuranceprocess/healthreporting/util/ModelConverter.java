@@ -23,10 +23,11 @@ import iso.v21090.dt.v1.II;
 import org.apache.commons.lang3.CharUtils;
 import org.joda.time.LocalDate;
 
-import se.inera.certificate.model.common.internal.IntygMetadata;
+import se.inera.certificate.model.common.internal.GrundData;
 import se.inera.certificate.model.common.internal.Utlatande;
 import se.inera.certificate.model.util.Iterables;
 import se.inera.certificate.modules.support.api.CertificateHolder;
+import se.inera.certificate.modules.support.api.dto.CertificateMetaData;
 import se.inera.ifv.insuranceprocess.certificate.v1.CertificateMetaType;
 import se.inera.ifv.insuranceprocess.healthreporting.Constants;
 import se.inera.ifv.insuranceprocess.healthreporting.v2.EnhetType;
@@ -61,7 +62,7 @@ public final class ModelConverter {
         return builder.build();
     }
 
-    public static VardAdresseringsType toVardAdresseringsType(IntygMetadata intygMetaData) {
+    public static VardAdresseringsType toVardAdresseringsType(GrundData intygMetaData) {
         VardAdresseringsType vardAdresseringsType = new VardAdresseringsType();
 
         EnhetType enhet = new EnhetType();
@@ -106,17 +107,17 @@ public final class ModelConverter {
 
         lakarutlatande.setLakarutlatandeId(utlatande.getId());
 
-        lakarutlatande.setSigneringsTidpunkt(utlatande.getIntygMetadata().getSigneringsdatum());
+        lakarutlatande.setSigneringsTidpunkt(utlatande.getGrundData().getSigneringsdatum());
 
         PatientType patient = new PatientType();
 
         II patientIdHolder = new II();
-        String personId = utlatande.getIntygMetadata().getPatient().getPersonId();
+        String personId = utlatande.getGrundData().getPatient().getPersonId();
         patientIdHolder.setRoot(isSamordningsNummer(personId) ? Constants.SAMORDNING_ID_OID : Constants.PERSON_ID_OID);
         patientIdHolder.setExtension(personId);
         patient.setPersonId(patientIdHolder);
 
-        patient.setFullstandigtNamn(utlatande.getIntygMetadata().getPatient().getFullstandigtNamn());
+        patient.setFullstandigtNamn(utlatande.getGrundData().getPatient().getFullstandigtNamn());
         lakarutlatande.setPatient(patient);
 
         return lakarutlatande;
