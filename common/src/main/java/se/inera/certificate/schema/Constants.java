@@ -1,4 +1,4 @@
-package se.inera.ifv.insuranceprocess.healthreporting;
+package se.inera.certificate.schema;
 
 
 public final class Constants {

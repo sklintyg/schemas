@@ -2,7 +2,7 @@ package se.inera.ifv.insuranceprocess.healthreporting.validate;
 
 import java.util.List;
 
-import se.inera.ifv.insuranceprocess.healthreporting.Constants;
+import se.inera.certificate.schema.Constants;
 import se.inera.ifv.insuranceprocess.healthreporting.v2.EnhetType;
 import se.inera.ifv.insuranceprocess.healthreporting.v2.HosPersonalType;
 import se.inera.ifv.insuranceprocess.healthreporting.v2.VardgivareType;
