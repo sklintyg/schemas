@@ -34,54 +34,47 @@ public class PatientValidatorTest {
     @Test
     public void testNullPatient() {
         patient = null;
-        assertFalse(validatePatient());
-        assertTrue(errors.contains("No Patient element found!"));
+        assertTrue(validatePatient().contains("No Patient element found!"));
     }
 
     @Test
     public void testNullPatientId() {
         patient.setPersonId(null);
-        assertFalse(validatePatient());
-        assertTrue(errors.contains("No Patient Id found!"));
+        assertTrue(validatePatient().contains("No Patient Id found!"));
     }
 
     @Test
     public void testEmtpyPatientIdRoot() {
         patientId.setRoot(null);
-        assertTrue(validatePatient());
-        assertTrue(errors.contains("Wrong o.i.d. for Patient Id! Should be 1.2.752.129.2.1.3.1 or 1.2.752.129.2.1.3.3"));
+        assertTrue(validatePatient().contains("Wrong o.i.d. for Patient Id! Should be 1.2.752.129.2.1.3.1 or 1.2.752.129.2.1.3.3"));
     }
 
-    private boolean validatePatient() {
-        return PatientValidator.validateAndCorrect("id", patient, errors);
+    private List<String> validatePatient() {
+        return PatientValidator.validateAndCorrect(patient);
     }
 
     @Test
     public void testIncorrectPatientIdRoot() {
         patientId.setRoot("incorrect");
-        assertTrue(validatePatient());
-        assertTrue(errors.contains("Wrong o.i.d. for Patient Id! Should be 1.2.752.129.2.1.3.1 or 1.2.752.129.2.1.3.3"));
+        assertTrue(validatePatient().contains("Wrong o.i.d. for Patient Id! Should be 1.2.752.129.2.1.3.1 or 1.2.752.129.2.1.3.3"));
     }
 
     @Test
     public void testEmtpyPatientIdExtension() {
         patientId.setExtension(null);
-        assertFalse(validatePatient());
-        assertTrue(errors.contains("No Patient Id found!"));
+        assertTrue(validatePatient().contains("No Patient Id found!"));
     }
 
     @Test
     public void testInvalidPatientIdExtension() {
         patientId.setExtension("19121212-121X");
-        assertTrue(validatePatient());
-        assertTrue(errors.contains("Wrong format for person-id! Valid format is YYYYMMDD-XXXX or YYYYMMDD+XXXX."));
+        assertTrue(validatePatient().contains("Wrong format for person-id! Valid format is YYYYMMDD-XXXX or YYYYMMDD+XXXX."));
     }
 
     @Test
     public void testDashInPatientIdExtensionIsCorrected() {
         patientId.setExtension("191212121212");
-        assertTrue(validatePatient());
-        assertTrue(errors.isEmpty());
+        assertTrue(validatePatient().isEmpty());
         assertEquals("19121212-1212", patientId.getExtension());
     }
 
