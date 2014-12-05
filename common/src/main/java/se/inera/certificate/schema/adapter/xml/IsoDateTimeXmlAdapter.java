@@ -1,22 +1,19 @@
 package se.inera.certificate.schema.adapter.xml;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
-
 import org.joda.time.LocalDateTime;
-
 import se.inera.certificate.schema.adapter.LocalDateAdapter;
+
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 public class IsoDateTimeXmlAdapter extends XmlAdapter<String, LocalDateTime> {
 
-	@Override
-	public LocalDateTime unmarshal(String isoDateTimeString) throws Exception {
+    @Override
+    public LocalDateTime unmarshal(String isoDateTimeString) throws Exception {
+        return LocalDateAdapter.parseIsoDateTime(isoDateTimeString);
+    }
 
-		return LocalDateAdapter.parseIsoDateTime(isoDateTimeString);
-	}
-
-	@Override
-	public String marshal(LocalDateTime dateValue) throws Exception {
-		return LocalDateAdapter.printIsoDateTime(dateValue);
-	}
-
+    @Override
+    public String marshal(LocalDateTime dateValue) throws Exception {
+        return LocalDateAdapter.printIsoDateTime(dateValue);
+    }
 }

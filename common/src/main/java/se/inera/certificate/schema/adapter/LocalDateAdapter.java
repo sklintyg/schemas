@@ -38,7 +38,7 @@ public final class LocalDateAdapter {
     private LocalDateAdapter() {
     }
 
-	/**
+    /**
      * Converts an xs:date to a Joda Time LocalDate.
      */
     public static LocalDate parseDate(String dateString) {
