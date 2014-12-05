@@ -41,7 +41,8 @@ public final class ModelConverter {
                 .issuerName(source.getSigningDoctorName())
                 .facilityName(source.getCareUnitName())
                 .signDate(source.getSignedDate())
-                .available(source.isDeleted() ? "false" : "true");
+                .available(source.isDeleted() ? "false" : "true")
+                .additionalInfo(source.getAdditionalInfo());
 
         CertificateMetaType meta = builder.build();
 
