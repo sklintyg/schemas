@@ -12,7 +12,10 @@ import se.inera.certificate.clinicalprocess.healthcond.certificate.types.v1.Utla
  * <code>null</code>).
  * </ul>
  */
-public class IdUtil {
+public final class IdUtil {
+
+    private IdUtil() {
+    }
 
     private static final String UTLATANDE_ID_IOD = "1.2.752.129.2.1.2.1";
 
