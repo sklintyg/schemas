@@ -46,11 +46,6 @@
       </dependency>
       <dependency>
         <groupId>se.inera.intyg.common</groupId>
-        <artifactId>integration-util</artifactId>
-        <version>${common.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>se.inera.intyg.common</groupId>
         <artifactId>logging-util</artifactId>
         <version>${common.version}</version>
       </dependency>
