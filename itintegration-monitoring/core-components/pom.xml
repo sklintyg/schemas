@@ -1,14 +1,18 @@
+<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>itintegration-monitoring-core</artifactId>
-  <name>IT integration and monitoring Core</name>
 
   <parent>
     <groupId>se.riv.itintegration.monitoring</groupId>
     <artifactId>itintegration-monitoring-parent</artifactId>
     <version>0-SNAPSHOT</version>
   </parent>
+
+  <artifactId>itintegration-monitoring-core</artifactId>
+
+  <name>IT integration and monitoring Core</name>
 
   <properties>
     <schema.dir>${basedir}/src/main/resources/itintegration-monitoring/core-components</schema.dir>
@@ -66,5 +70,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>

@@ -1,14 +1,18 @@
+<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>clinicalprocess-healthcond-certificate-core</artifactId>
-  <name>Clinicalprocess Healthcond Certificate v1 Core</name>
 
   <parent>
     <groupId>se.inera.intyg.schemas.clinicalprocess.healthcond.certificate.v1</groupId>
     <artifactId>clinicalprocess-healthcond-certificate-parent</artifactId>
     <version>0-SNAPSHOT</version>
   </parent>
+
+  <artifactId>clinicalprocess-healthcond-certificate-core</artifactId>
+
+  <name>Clinicalprocess Healthcond Certificate v1 Core</name>
 
   <properties>
     <schema.dir>${basedir}/src/main/resources/clinicalprocess-healthcond-certificate/core-components</schema.dir>
@@ -19,7 +23,6 @@
     <dependency>
       <groupId>se.inera.intyg.schemas.insuranceprocess.healthreporting.v1</groupId>
       <artifactId>insuranceprocess-healthreporting-core</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jvnet.jaxb2_commons</groupId>
@@ -78,5 +81,4 @@
       </plugin>
     </plugins>
   </build>
-
 </project>
