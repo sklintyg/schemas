@@ -58,7 +58,7 @@
         <artifactId>versions-maven-plugin</artifactId>
         <configuration>
           <includeProperties>
-            itintegration-monitoring.version, schemas-common.versin
+            itintegration-monitoring.version, schemas-common.version
           </includeProperties>
           <properties>
             <property>
