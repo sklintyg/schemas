@@ -42,6 +42,7 @@
     <xs:sequence>
       <xs:element name="id" type="xs:string"/>
       <xs:element name="name" type="xs:string"/>
+      <xs:element name="logicalAdress" type="xs:string"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
