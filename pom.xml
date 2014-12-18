@@ -19,10 +19,6 @@
 
   <modules>
     <module>common</module>
-    <module>itintegration-monitoring</module>
-    <module>clinicalprocess-healthcond-certificate</module>
-    <module>insuranceprocess-healthreporting</module>
-    <module>ehr-logstore</module>
   </modules>
 
   <properties>
@@ -104,5 +100,21 @@
       </snapshots>
     </repository>
   </repositories>
+
+  <profiles>
+    <profile>
+      <id>development</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>common</module>
+        <module>itintegration-monitoring</module>
+        <module>ehr-logstore</module>
+        <module>insuranceprocess-healthreporting</module>
+        <module>clinicalprocess-healthcond-certificate</module>
+      </modules>
+    </profile>
+  </profiles>
 
 </project>
