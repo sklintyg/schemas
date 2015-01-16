@@ -28,7 +28,7 @@
  <xs:complexType name="utlatandeType">
     <xs:sequence>
       <xs:element name="utlatande-id" type="cer:utlatandeId"/>
-      <xs:element name="typAvUtlatande" type="cer:typAvUtlatandeTyp"/>
+      <xs:element name="typAvUtlatande" type="cer:typAvUtlatandeType"/>
       <xs:element name="signeringsdatum" type="cer:dateTime" minOccurs="0" />
       <xs:element name="skapadAv" type="tns:hosPersonalType"/>
 	  <xs:element name="diagnos" type="tns:diagnosType" minOccurs="0" />
@@ -99,7 +99,7 @@
 	
 	<xs:complexType name="handelseType">
 		<xs:sequence>
-			<xs:element name="handelsekod" type="cer:handelsekodCodeRestrictionType" />
+			<xs:element name="handelsekod" type="cer:handelsekodType" />
 			<xs:element name="handelsetidpunkt" type="cer:dateTime" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
