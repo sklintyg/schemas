@@ -261,6 +261,23 @@
 
                 <wsdlOption>
                   <wsdl>
+                    ${wsdl.directory}/SetCertificateArchivedInteraction/SetCertificateArchivedInteraction_1.0_rivtabp20.wsdl
+                  </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/SetCertificateArchivedInteraction/SetCertificateArchivedInteraction_1.0_rivtabp20.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:SetCertificateArchived:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.setcertificatearchived.v1.rivtabp20
+                    </packagename>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:SetCertificateArchivedResponder:1=se.inera.ifv.insuranceprocess.healthreporting.setcertificatearchivedresponder.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
                     ${wsdl.directory}/SetConsentInteraction/SetConsentInteraction_1.0_rivtabp20.wsdl
                   </wsdl>
                   <wsdlLocation>classpath:interactions/SetConsentInteraction/SetConsentInteraction_1.0_rivtabp20.wsdl
