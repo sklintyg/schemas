@@ -74,7 +74,7 @@
     <xs:complexContent>
       <xs:restriction base="iso:CV">
         <xs:attribute name="code" type="xs:string" use="required" />
-        <xs:attribute name="codeSystem" type="iso:Uid" use="required" fixed="1.2.752.116.1.1.1.1.1" />
+        <xs:attribute name="codeSystem" type="iso:Uid" use="required" fixed="1.2.752.116.1.1.1.1.3" />
         <xs:attribute name="codeSystemName" type="xs:string" use="required" fixed="ICD-10-SE" />
         <xs:attribute name="displayName" type="xs:string" use="required" />
       </xs:restriction>
