@@ -4,7 +4,7 @@ import org.joda.time.LocalDate;
 import org.joda.time.LocalDateTime;
 
 import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.CertificateMetaType;
-import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.CertificateStatusType;
+import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.UtlatandeStatus;
 import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.StatusType;
 
 public class ClinicalProcessCertificateMetaTypeBuilder {
@@ -56,7 +56,7 @@ public class ClinicalProcessCertificateMetaTypeBuilder {
     }
 
     public ClinicalProcessCertificateMetaTypeBuilder status(StatusType status, String target, LocalDateTime timestamp) {
-        CertificateStatusType certificateStatusType = new CertificateStatusType();
+        UtlatandeStatus certificateStatusType = new UtlatandeStatus();
         certificateStatusType.setTarget(target);
         certificateStatusType.setTimestamp(timestamp);
         certificateStatusType.setType(status);
@@ -64,7 +64,7 @@ public class ClinicalProcessCertificateMetaTypeBuilder {
         return this;
     }
 
-    public ClinicalProcessCertificateMetaTypeBuilder status(CertificateStatusType certificateStatusType) {
+    public ClinicalProcessCertificateMetaTypeBuilder status(UtlatandeStatus certificateStatusType) {
         metaType.getStatus().add(certificateStatusType);
         return this;
     }

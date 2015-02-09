@@ -41,7 +41,7 @@
     <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizen:1:rivtabp21'>
       <xs:import schemaLocation='ListCertificatesForCitizenResponder_1.0.xsd'
                  namespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:1'/>
-      <xs:import schemaLocation='itintegration_registry_1.0.xsd'
+      <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd'
                  namespace='urn:riv:itintegration:registry:1'/>
     </xs:schema>
   </wsdl:types>

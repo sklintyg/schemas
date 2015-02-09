@@ -229,6 +229,23 @@
 
                 <wsdlOption>
                   <wsdl>
+                    ${wsdl.directory}/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQA:1:rivtabp21=se.inera.certificate.clinicalprocess.healthcond.certificate.listcertificatesforcarewithqa.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:1=se.inera.certificate.clinicalprocess.healthcond.certificate.listcertificatesforcarewithqa.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
                     ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <wsdlLocation>

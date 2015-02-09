@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.CertificateMetaType;
-import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.CertificateStatusType;
+import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.UtlatandeStatus;
 import se.inera.certificate.model.CertificateState;
 import se.inera.certificate.model.Status;
 import se.inera.certificate.modules.support.api.dto.CertificateMetaData;
@@ -29,15 +29,15 @@ public final class ClinicalProcessCertificateMetaTypeConverter {
         return metaData;
     }
 
-    private static List<Status> toStatusList(List<CertificateStatusType> certificateStatuses) {
+    private static List<Status> toStatusList(List<UtlatandeStatus> certificateStatuses) {
         List<Status> statuses = new ArrayList<>(certificateStatuses.size());
-        for (CertificateStatusType certificateStatus : certificateStatuses) {
+        for (UtlatandeStatus certificateStatus : certificateStatuses) {
             statuses.add(toStatus(certificateStatus));
         }
         return statuses;
     }
     
-    public static Status toStatus(CertificateStatusType certificateStatus) {
+    public static Status toStatus(UtlatandeStatus certificateStatus) {
         Status status = new Status();
         status.setTarget(certificateStatus.getTarget());
         status.setTimestamp(certificateStatus.getTimestamp());

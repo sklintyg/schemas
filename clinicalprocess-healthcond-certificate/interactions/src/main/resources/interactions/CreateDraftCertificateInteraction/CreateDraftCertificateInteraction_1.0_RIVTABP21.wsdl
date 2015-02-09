@@ -33,7 +33,7 @@
   <wsdl:types>
     <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificate:1:rivtabp21'>
       <xs:import schemaLocation='CreateDraftCertificateResponder_1.0.xsd' namespace='urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificateResponder:1' />
-      <xs:import namespace="urn:riv:itintegration:registry:1" schemaLocation="itintegration_registry_1.0.xsd" />
+      <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd' namespace='urn:riv:itintegration:registry:1' />
     </xs:schema>
   </wsdl:types>
   <wsdl:message name='CreateDraftCertificateRequest'>

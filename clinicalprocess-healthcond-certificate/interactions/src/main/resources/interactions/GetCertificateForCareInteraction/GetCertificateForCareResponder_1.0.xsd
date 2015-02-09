@@ -19,7 +19,7 @@
   <complexType name="GetCertificateForCareResponseType">
     <sequence>
       <element name="meta" type="c:CertificateMetaType" minOccurs="0" maxOccurs="1"/>
-      <element name="certificate" type="c:utlatandeType" minOccurs="0" maxOccurs="1"/>
+      <element name="certificate" type="c:Utlatande" minOccurs="0" maxOccurs="1"/>
       <element name="result" type="c:ResultType"/>
       <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </sequence>

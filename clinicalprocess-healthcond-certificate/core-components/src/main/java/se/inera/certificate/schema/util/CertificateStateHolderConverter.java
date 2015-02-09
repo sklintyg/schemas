@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.CertificateStatusType;
+import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.UtlatandeStatus;
 import se.inera.certificate.clinicalprocess.healthcond.certificate.v1.StatusType;
 import se.inera.certificate.modules.support.api.CertificateStateHolder;
 
@@ -16,20 +16,20 @@ public final class CertificateStateHolderConverter {
     private CertificateStateHolderConverter() {
     }
 
-    public static List<CertificateStatusType> toCertificateStatusType(List<CertificateStateHolder> source) {
+    public static List<UtlatandeStatus> toCertificateStatusType(List<CertificateStateHolder> source) {
         if (source == null || source.isEmpty()) {
             return Collections.emptyList();
         }
 
-        List<CertificateStatusType> states = new ArrayList<>();
+        List<UtlatandeStatus> states = new ArrayList<>();
         for (CertificateStateHolder state : source) {
             states.add(toCertificateStatusType(state));
         }
         return states;
     }
 
-    private static CertificateStatusType toCertificateStatusType(CertificateStateHolder source) {
-        CertificateStatusType status = new CertificateStatusType();
+    private static UtlatandeStatus toCertificateStatusType(CertificateStateHolder source) {
+        UtlatandeStatus status = new UtlatandeStatus();
         status.setTarget(source.getTarget());
         status.setTimestamp(source.getTimestamp());
         status.setType(StatusType.valueOf(source.getState().name()));

@@ -35,11 +35,11 @@
 
   <xs:complexType name="SendCertificateByCitizenType">
     <xs:sequence>  
-      <xs:element name="typAvUtlatande" type="types:utlatandeTyp"/>
+      <xs:element name="typAvUtlatande" type="types:TypAvUtlatande"/>
       <xs:element name="utlatandeId" type="xs:string"/>
-      <xs:element name="signeringsTidpunkt" type="types:dateTime"/>
-      <xs:element name="avsandareId" type="types:personId"/>
-      <xs:element name="avsantTidpunkt" type="types:dateTime"/>
+      <xs:element name="signeringsTidpunkt" type="types:TidStampel"/>
+      <xs:element name="avsandareId" type="types:PersonId"/>
+      <xs:element name="avsantTidpunkt" type="types:TidStampel"/>
       <xs:element name="mottagare" type="types:nonEmptyString"/>      
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>

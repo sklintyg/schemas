@@ -10,7 +10,6 @@
     <artifactId>schemas</artifactId>
   </parent>
 
-  <groupId>se.inera.intyg.schemas</groupId>
   <artifactId>schemas-common</artifactId>
   <packaging>jar</packaging>
 
