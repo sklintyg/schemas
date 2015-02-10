@@ -9,6 +9,7 @@
     <import schemaLocation="MU7263-RIV_3.1.xsd" namespace="urn:riv:insuranceprocess:healthreporting:mu7263:3" />
 
     <element name="GetMedicalCertificateForCitizenRequest" type="tns:GetMedicalCertificateForCitizenRequestType" />
+
     <complexType name="GetMedicalCertificateForCitizenRequestType">
         <sequence>
             <element name="certificateId" type="string" minOccurs="1" maxOccurs="1" />
