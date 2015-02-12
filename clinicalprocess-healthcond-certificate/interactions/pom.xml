@@ -58,6 +58,7 @@
               <defaultOptions>
                 <bindingFiles>
                   <bindingFile>classpath:/bindings/general-intyg-binding.xjb</bindingFile>
+                  <bindingFile>classpath:/clinicalprocess-healthcond-certificate/bindings/bindings.xjb</bindingFile>
                 </bindingFiles>
                 <catalog>classpath:/clinicalprocess-healthcond-certificate/core-components/catalog.xml</catalog>
                 <extraargs>
