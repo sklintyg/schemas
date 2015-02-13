@@ -17,15 +17,15 @@
  specific language governing permissions and limitations
  under the License.
  -->
-<wsdl:definitions name='SendCertificateByCitizenInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+<wsdl:definitions name='SendCertificateForCitizenInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
                   xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema'
-                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateByCitizenResponder:1'
-                  xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateByCitizen:1:rivtabp21'
-                  targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateByCitizen:1:rivtabp21'
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizenResponder:1'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizen:1:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizen:1:rivtabp21'
                   xmlns:itr='urn:riv:itintegration:registry:1'>
   <xs:annotation>
     <xs:documentation>
-      Tjänsteinteraktionens namn: SendCertificateByCitizenInteraction
+      Tjänsteinteraktionens namn: SendCertificateForCitizenInteraction
       Beskrivning:
       Interaction to send a certificate by the citixen to a receiver.
       Revisioner:
@@ -36,35 +36,35 @@
     </xs:documentation>
   </xs:annotation>
   <wsdl:types>
-    <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateByCitizen:1:rivtabp21'>
-      <xs:import schemaLocation='SendCertificateByCitizenResponder_1.0.xsd'
-                 namespace='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateByCitizenResponder:1'/>
+    <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizen:1:rivtabp21'>
+      <xs:import schemaLocation='SendCertificateForCitizenResponder_1.0.xsd'
+                 namespace='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizenResponder:1'/>
       <xs:import schemaLocation='itintegration_registry_1.0.xsd'
                  namespace='urn:riv:itintegration:registry:1'/>
     </xs:schema>
   </wsdl:types>
-  <wsdl:message name='SendCertificateByCitizenRequest'>
+  <wsdl:message name='SendCertificateForCitizenRequest'>
     <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
     </wsdl:part>
-    <wsdl:part name='parameters' element='tjsr:SendCertificateByCitizen'/>
+    <wsdl:part name='parameters' element='tjsr:SendCertificateForCitizen'/>
   </wsdl:message>
-  <wsdl:message name='SendCertificateByCitizenResponse'>
-    <wsdl:part name='parameters' element='tjsr:SendCertificateByCitizenResponse'/>
+  <wsdl:message name='SendCertificateForCitizenResponse'>
+    <wsdl:part name='parameters' element='tjsr:SendCertificateForCitizenResponse'/>
   </wsdl:message>
-  <wsdl:portType name='SendCertificateByCitizenResponderInterface'>
-    <wsdl:operation name='SendCertificateByCitizen'>
-      <wsdl:input message='tns:SendCertificateByCitizenRequest'/>
-      <wsdl:output message='tns:SendCertificateByCitizenResponse'/>
+  <wsdl:portType name='SendCertificateForCitizenResponderInterface'>
+    <wsdl:operation name='SendCertificateForCitizen'>
+      <wsdl:input message='tns:SendCertificateForCitizenRequest'/>
+      <wsdl:output message='tns:SendCertificateForCitizenResponse'/>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name='SendCertificateByCitizenResponderBinding' type='tns:SendCertificateByCitizenResponderInterface'>
+  <wsdl:binding name='SendCertificateForCitizenResponderBinding' type='tns:SendCertificateForCitizenResponderInterface'>
     <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
-    <wsdl:operation name='SendCertificateByCitizen'>
+    <wsdl:operation name='SendCertificateForCitizen'>
       <soap:operation
-              soapAction='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateByCitizenResponder:1:SendCertificateByCitizen'
+              soapAction='urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizenResponder:1:SendCertificateForCitizen'
               style='document'/>
       <wsdl:input>
-        <soap:header use='literal' message='tns:SendCertificateByCitizenRequest' part='LogicalAddress'/>
+        <soap:header use='literal' message='tns:SendCertificateForCitizenRequest' part='LogicalAddress'/>
         <soap:body use='literal' parts='parameters'/>
       </wsdl:input>
       <wsdl:output>
@@ -72,8 +72,8 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name='SendCertificateByCitizenResponderService'>
-    <wsdl:port name='SendCertificateByCitizenResponderPort' binding='tns:SendCertificateByCitizenResponderBinding'>
+  <wsdl:service name='SendCertificateForCitizenResponderService'>
+    <wsdl:port name='SendCertificateForCitizenResponderPort' binding='tns:SendCertificateForCitizenResponderBinding'>
       <soap:address location='http://tempuri.org'/>
     </wsdl:port>
   </wsdl:service>

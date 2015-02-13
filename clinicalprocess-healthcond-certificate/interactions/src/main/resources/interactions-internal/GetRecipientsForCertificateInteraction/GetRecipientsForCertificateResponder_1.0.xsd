@@ -10,33 +10,31 @@
   OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
   the specific language governing permissions and limitations under the License. -->
 <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'
-  xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCitizen:1'
+  xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificate:1'
   xmlns:c='urn:riv:clinicalprocess:healthcond:certificate:1'
-  targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCitizen:1'
+  targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificate:1'
   elementFormDefault='qualified' attributeFormDefault='unqualified'
   version='1.0'>
 
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:1"
              schemaLocation="clinicalprocess_healthcond_certificate_1.0.xsd"/>
 
-  <xs:element name='GetRecipientsForCitizen' type='tns:GetRecipientsForCitizenType' />
-  <xs:element name='GetRecipientsForCitizenResponse'
-    type='tns:GetRecipientsForCitizenResponseType' />
+  <xs:element name='GetRecipientsForCertificate' type='tns:GetRecipientsForCertificateType' />
+  <xs:element name='GetRecipientsForCertificateResponse' type='tns:GetRecipientsForCertificateResponseType' />
 
-  <xs:complexType name='GetRecipientsForCitizenType'>
+  <xs:complexType name='GetRecipientsForCertificateType'>
     <xs:sequence>
       <xs:element name="certificateType" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name='GetRecipientsForCitizenResponseType'>
+  <xs:complexType name='GetRecipientsForCertificateResponseType'>
     <xs:sequence>
       <xs:element name="recipient" type="tns:RecipientType" maxOccurs="unbounded" />
       <xs:element name="result" type="c:ResultType"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
-
 
   <xs:complexType name="RecipientType">
     <xs:sequence>
