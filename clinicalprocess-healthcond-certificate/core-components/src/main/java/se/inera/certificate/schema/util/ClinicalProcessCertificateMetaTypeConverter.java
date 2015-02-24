@@ -11,7 +11,7 @@ import se.inera.certificate.modules.support.api.dto.CertificateMetaData;
 
 public final class ClinicalProcessCertificateMetaTypeConverter {
 
-    private ClinicalProcessCertificateMetaTypeConverter() {}
+    private ClinicalProcessCertificateMetaTypeConverter() { }
 
     public static CertificateMetaData toCertificateMetaData(CertificateMetaType certificateMetaType) {
         CertificateMetaData metaData = new CertificateMetaData();
@@ -29,19 +29,19 @@ public final class ClinicalProcessCertificateMetaTypeConverter {
         return metaData;
     }
 
-    private static List<Status> toStatusList(List<UtlatandeStatus> certificateStatuses) {
+    public static List<Status> toStatusList(List<UtlatandeStatus> certificateStatuses) {
         List<Status> statuses = new ArrayList<>(certificateStatuses.size());
         for (UtlatandeStatus certificateStatus : certificateStatuses) {
             statuses.add(toStatus(certificateStatus));
         }
         return statuses;
     }
-    
+
     public static Status toStatus(UtlatandeStatus certificateStatus) {
-        Status status = new Status();
-        status.setTarget(certificateStatus.getTarget());
-        status.setTimestamp(certificateStatus.getTimestamp());
-        status.setType(CertificateState.valueOf(certificateStatus.getType().value()));
+        Status status = new Status(
+                CertificateState.valueOf(certificateStatus.getType().value()),
+                certificateStatus.getTarget(),
+                certificateStatus.getTimestamp());
         return status;
     }
 }
