@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="urn:local:se:intygstjanster:services:1" 
+  xmlns:types="urn:local:se:intygstjanster:services:types:1" 
+  targetNamespace="urn:local:se:intygstjanster:services:1" elementFormDefault="qualified"
+  attributeFormDefault="unqualified" version="1.0">
+
+  <xs:import namespace="urn:local:se:intygstjanster:services:types:1"  schemaLocation="se_intygstjanster_services_types_1.0.xsd"/>
+
+    <xs:complexType name="TSBasIntyg">
+      <xs:sequence>
+        <xs:element name="intygsId" type="xs:string"/>
+        <xs:element name="intygsTyp" type="xs:string" fixed="TSTRK1007 (U06, V06)"/>
+        <xs:element name="version" type="xs:string"/>
+        <xs:element name="utgava" type="xs:string"/>
+        <xs:element name="intygMetadata" type="IntygMetadata"/>
+        <xs:element name="intygAvser" type="IntygsAvserTypBas"/>
+        <xs:element name="identitetStyrkt" type="IdentitetStyrkt"/>
+        <xs:element name="synfunktion" type="SynfunktionBas"/>
+        <xs:element name="horselBalanssinne" type="HorselBalanssinne"/>
+        <xs:element name="rorelseorganensFunktioner" type="RorelseorganenFunktioner"/>
+        <xs:element name="hjartKarlSjukdomar" type="HjartKarlSjukdomar"/>
+        <xs:element name="diabetes" type="DiabetesTypBas"/>
+        <xs:element name="neurologiskaSjukdomar" type="xs:boolean"/>
+        <xs:element name="medvetandestorning" type="Medvetandestorning"/>
+        <xs:element name="harNjurSjukdom" type="xs:boolean"/>
+        <xs:element name="harKognitivStorning" type="xs:boolean"/>
+        <xs:element name="harSomnVakenhetStorning" type="xs:boolean"/>
+        <xs:element name="alkoholNarkotikaLakemedel" type="AlkoholNarkotikaLakemedel"/>
+        <xs:element name="harPsykiskStorning" type="xs:boolean"/>
+        <xs:element name="utvecklingsstorning" type="Utvecklingsstorning"/>
+        <xs:element name="sjukhusvard" type="Sjukhusvard" minOccurs="0"/>
+        <xs:element name="ovrigMedicinering" type="OvrigMedicinering"/>
+        <xs:element name="ovrigKommentar" type="xs:string" minOccurs="0"/>
+        <xs:element name="bedomning" type="BedomningTypBas"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
+  
+  <xs:complexType name="TSDiabetesIntyg">
+    <xs:sequence>
+      <xs:element name="intygsId" type="xs:string"/>
+      <xs:element name="intygsTyp" type="xs:string" fixed="TSTRK1031 (U06, V06)"/>
+      <xs:element name="version" type="xs:string"/>
+      <xs:element name="utgava" type="xs:string"/>
+      <xs:element name="intygMetadata" type="IntygMetadata"/>
+      <xs:element name="intygAvser" type="IntygsAvserTypDiabetes"/>
+      <xs:element name="identitetStyrkt" type="IdentitetStyrkt"/>
+      <xs:element name="diabetes" type="Diabetes"/>
+      <xs:element name="hypoglykemier" type="Hypoglykemier"/>
+      <xs:element name="separatOgonLakarintygKommerSkickas" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="synfunktiom" type="SynfunktionDiabetes" minOccurs="0"/>
+      <xs:element name="bedomning" type="BedomningTypDiabetes"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IntygMetadata">
+      <xs:sequence>
+        <xs:element name="signeringsTidstampel" type="types:TidStampel"/>
+        <xs:element name="skapadAv" type="SkapadAv"/>
+        <xs:element name="patient" type="Patient"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="SkapadAv">
+      <xs:sequence>
+        <xs:element name="personId" type="types:II"/>
+        <xs:element name="fullstandigtNamn" type="xs:string"/>
+        <xs:element name="specialistKompetens" type="xs:string" minOccurs="0"/>
+        <xs:element name="atLakare" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="stLakare" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="vardenhet" type="Vardenhet"/>
+
+        <xs:element name="specialiteter" type="xs:string"/>
+        <xs:element name="befattningar" type="xs:string"/>
+        
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Vardenhet">
+    <xs:sequence>
+      <xs:element name="enhetsId" type="types:II"/>
+      <xs:element name="enhetsnamn" type="xs:string"/>
+      <xs:element name="postadress" type="xs:string"/>
+      <xs:element name="postnummer" type="xs:string"/>
+      <xs:element name="postort" type="xs:string"/>
+      <xs:element name="telefonnummer" type="xs:string"/>
+      <xs:element name="vardgivare" type="Vardgivare"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Vardgivare">
+      <xs:sequence>
+        <xs:element name="vardgivarid" type="types:II"/>
+        <xs:element name="vardgivarnamn" type="xs:string"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence> 
+  </xs:complexType>
+  
+  <xs:complexType name="Patient">
+      <xs:sequence>
+        <xs:element name="personId" type="types:II"/>
+        <xs:element name="fullstandigtNamn" type="xs:string"/>
+        <xs:element name="fornamn" type="xs:string"/>
+        <xs:element name="efternamn" type="xs:string"/>
+        <xs:element name="postadress" type="xs:string"/>
+        <xs:element name="postnummer" type="xs:string"/>
+        <xs:element name="postort" type="xs:string"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IdentitetStyrkt">
+    <xs:sequence>
+      <xs:element name="idkontroll" type="IdentifieringsVarden" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>    
+  </xs:complexType>
+  
+  <xs:complexType name="IntygsAvserTypBas">
+      <xs:sequence>
+        <xs:element name="korkortstyp" type="KorkortsbehorighetTsBas" maxOccurs="unbounded" />
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IntygsAvserTypDiabetes">
+    <xs:sequence>
+      <xs:element name="korkortstyp" type="KorkortsbehorighetTsDiabetes" maxOccurs="unbounded" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="SynfunktionBas">
+      <xs:sequence>
+        <xs:element name="harSynfaltsdefekt" type="xs:boolean"/>
+        <xs:element name="harNattblindhet" type="xs:boolean"/>
+        <xs:element name="harProgressivOgonsjukdom" type="xs:boolean"/>
+        <xs:element name="harDiplopi" type="xs:boolean"/>
+        <xs:element name="harNystagmus" type="xs:boolean"/>
+        <xs:element name="synskarpaUtanKorrektion" type="SynskarpaUtanKorrektion"/>
+        <xs:element name="synskarpaMedKorrektion" type="SynskarpaMedKorrektion"/>
+        <xs:element name="harGlasStyrkaOver8Dioptrier" type="xs:boolean" minOccurs="0"/>        
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SynfunktionDiabetes">
+    <xs:sequence>
+      <xs:element name="harSynfaltsdefekt" type="xs:boolean"/>
+      <xs:element name="synskarpaUtanKorrektion" type="SynskarpaUtanKorrektion"/>
+      <xs:element name="synskarpaMedKorrektion" type="SynskarpaMedKorrektion"/>
+      <xs:element name="harDiplopi" type="xs:boolean"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="SynskarpaUtanKorrektion">
+      <xs:sequence>
+        <xs:element name="hogerOga" type="xs:decimal"/>
+        <xs:element name="vansterOga" type="xs:decimal"/>
+        <xs:element name="binokulart" type="xs:decimal"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SynskarpaMedKorrektion">
+      <xs:sequence>
+        <xs:element name="hogerOga" type="xs:decimal"/>
+        <xs:element name="harKontaktlinsHogerOga" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="vansterOga" type="xs:decimal"/>
+        <xs:element name="harKontaktlinsVansterOga" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="binokulart" type="xs:decimal"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="HorselBalanssinne">
+      <xs:sequence>
+        <xs:element name="harBalansrubbningYrsel" type="xs:boolean"/>
+        <xs:element name="harSvartUppfattaSamtal4Meter" type="xs:boolean" minOccurs="0"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RorelseorganenFunktioner">
+    <xs:sequence>
+      <xs:element name="harRorelsebegransning" type="xs:boolean"/>
+      <xs:element name="rorelsebegransningBeskrivning" type="xs:string" minOccurs="0"/>
+      <xs:element name="harOtillrackligRorelseformagaPassagerare" type="xs:boolean" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="HjartKarlSjukdomar">
+    <xs:sequence>
+      <xs:element name="harRiskForsamradHjarnFunktion" type="xs:boolean"/>
+      <xs:element name="harHjarnskadaICNS" type="xs:boolean"/>
+      <xs:element name="harRiskfaktorerStroke" type="xs:boolean"/>
+      <xs:element name="riskfaktorerStrokeBeskrivning" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Diabetes">
+      <xs:sequence>
+        <xs:element name="debutArDiabetes" type="types:Datum"/>
+        <xs:element name="diabetesTyp" type="DiabetesTypVarden" maxOccurs="2"/>
+        <xs:element name="harBehandlingKost" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="harBehandlingTabletter" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="harBehandlingInsulin" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="insulinBehandlingSedanAr" type="types:Datum" minOccurs="0"/>
+        <xs:element name="annanBehandlingBeskrivning" type="xs:string" minOccurs="0"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DiabetesTypBas">
+    <xs:sequence>
+      <xs:element name="harDiabetes" type="xs:boolean"/>
+      <xs:element name="diabetesTyp" type="DiabetesTypVarden" minOccurs="0" maxOccurs="2"/>
+      <xs:element name="harBehandlingKost" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="harBehandlingTabletter" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="harBehandlingInsulin" type="xs:boolean" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Hypoglykemier">
+    <xs:sequence>
+      <xs:element name="harKunskapOmAtgarder" type="xs:boolean"/>
+      <xs:element name="harTeckenNedsattHjarnfunktion" type="xs:boolean"/>
+      <xs:element name="saknarFormagaKannaVarningstecken" type="xs:boolean"/>
+      <xs:element name="harAllvarligForekomst" type="xs:boolean"/>
+      <xs:element name="allvarligForekomstBeskrivning" type="xs:string" minOccurs="0"/>
+      <xs:element name="harAllvarligForekomstTrafiken" type="xs:boolean"/>
+      <xs:element name="allvarligForekomstTrafikBeskrivning" type="xs:string" minOccurs="0"/>
+      <xs:element name="genomforEgenkontrollBlodsocker" type="xs:boolean"/>
+      <xs:element name="harAllvarligForekomstVakenTid" type="xs:boolean"/>
+      <xs:element name="allvarligForekomstVakenTidAr" type="types:Datum" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence> 
+  </xs:complexType>
+  
+  <xs:complexType name="Medvetandestorning">
+    <xs:sequence>
+      <xs:element name="harMedvetandestorning" type="xs:boolean"/>
+      <xs:element name="medvetandestorningBeskrivning" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="AlkoholNarkotikaLakemedel">
+      <xs:sequence>
+        <xs:element name="harTeckenMissbruk" type="xs:boolean"/>
+        <xs:element name="harVardinsats" type="xs:boolean"/>
+        <xs:element name="harVardinsatsProvtagningBehov" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="harLakarordineratLakemedelsbruk" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="lakarordineratLakemedelOchDos" type="xs:string" minOccurs="0"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Utvecklingsstorning">
+      <xs:sequence>
+        <xs:element name="harPsykiskUtvecklingsstorning" type="xs:boolean"/>
+        <xs:element name="harAndrayndrom" type="xs:boolean"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Sjukhusvard">
+      <xs:sequence>
+        <xs:element name="harSjukhusvardEllerLakarkontakt" type="xs:boolean"/>
+        <xs:element name="sjukhusvardEllerLakarkontaktDatum" type="types:Datum" minOccurs="0"/>
+        <xs:element name="sjukhusvardEllerLakarkontaktVardinrattning" type="xs:string" minOccurs="0"/>
+        <xs:element name="sjukhusvardEllerLakarkontaktAnledning" type="xs:string" minOccurs="0"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OvrigMedicinering">
+      <xs:sequence>
+        <xs:element name="harStadigvarandeMedicinering" type="xs:boolean"/>
+        <xs:element name="stadigvarandeMedicineringBeskrivning" type="xs:string" minOccurs="0"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="BedomningTypBas">
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="korkortstyp" minOccurs="0" type="KorkortsbehorighetTsBas"/>
+        <xs:element name="kanInteTaStallning" type="xs:boolean" minOccurs="0"/>
+        <xs:element name="behovAvLakareSpecialistKompetens" type="xs:string" minOccurs="0"/>
+        <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+  </xs:complexType>    
+  
+  <xs:complexType name="BedomningTypDiabetes">
+    <xs:sequence>
+      <xs:element name="korkortstyp" type="KorkortsbehorighetTsDiabetes" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="kanInteTaStallning" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="lamplighetInnehaBehorighetSpecial" type="xs:boolean"/>
+      <xs:element name="ovrigKommentar" type="xs:string" minOccurs="0"/>
+      <xs:element name="behovAvLakareSpecialistKompetens" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="IdentifieringsVarden">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="IDK1">
+        <xs:annotation>
+          <xs:documentation>ID-kort</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IDK2">
+        <xs:annotation>
+          <xs:documentation>Företagskort eller tjänstekort</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IDK3">
+        <xs:annotation>
+          <xs:documentation>Svenskt körkort</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IDK4">
+        <xs:annotation>
+          <xs:documentation>Personlig kännedom</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IDK5">
+        <xs:annotation>
+          <xs:documentation>Försäkran enligt 18 kap. 4 §</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IDK6">
+        <xs:annotation>
+          <xs:documentation>Pass</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Korkortsbehorighet">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AM"/>
+      <xs:enumeration value="A1"/>
+      <xs:enumeration value="A2"/>
+      <xs:enumeration value="A"/> 
+      <xs:enumeration value="B"/>      
+      <xs:enumeration value="BE"/>
+      <xs:enumeration value="C1"/>
+      <xs:enumeration value="C1E"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="CE"/> 
+      <xs:enumeration value="D1"/>      
+      <xs:enumeration value="D1E"/>
+      <xs:enumeration value="D"/> 
+      <xs:enumeration value="DE"/>      
+      <xs:enumeration value="TAXI"/>
+      <xs:enumeration value="TRAKTOR"/>
+      <xs:enumeration value="ANNAT"/>
+      <xs:enumeration value="KANINTETEASTALLNING"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="KorkortsbehorighetTsBas">
+    <xs:restriction base="Korkortsbehorighet">
+      <xs:enumeration value="C1"/>
+      <xs:enumeration value="C1E"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="CE"/> 
+      <xs:enumeration value="D1"/>      
+      <xs:enumeration value="D1E"/>
+      <xs:enumeration value="D"/> 
+      <xs:enumeration value="DE"/>      
+      <xs:enumeration value="TAXI"/>
+      <xs:enumeration value="ANNAT"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="KorkortsbehorighetTsDiabetes">
+    <xs:restriction base="Korkortsbehorighet">
+      <xs:enumeration value="AM"/>
+      <xs:enumeration value="A1"/>
+      <xs:enumeration value="A2"/>
+      <xs:enumeration value="A"/> 
+      <xs:enumeration value="B"/>      
+      <xs:enumeration value="BE"/>
+      <xs:enumeration value="C1"/>
+      <xs:enumeration value="C1E"/>
+      <xs:enumeration value="C"/>
+      <xs:enumeration value="CE"/> 
+      <xs:enumeration value="D1"/>      
+      <xs:enumeration value="D1E"/>
+      <xs:enumeration value="D"/> 
+      <xs:enumeration value="DE"/>      
+      <xs:enumeration value="TAXI"/>
+      <xs:enumeration value="TRAKTOR"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="DiabetesTypVarden">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TYP1"/>
+      <xs:enumeration value="TYP2"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="IntygMeta">
+    <xs:sequence>
+      <xs:element name="status" type="IntygStatus" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element name="additionalInfo" type="types:nonEmptyString" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IntygStatus">
+    <xs:sequence>
+      <xs:element name="target" type="types:nonEmptyString"/>
+      <xs:element name="type" type="Status"/>
+      <xs:element name="timestamp" type="types:TidStampel"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="Status">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UNHANDLED"/>
+      <xs:enumeration value="DELETED"/>
+      <xs:enumeration value="RESTORED"/>
+      <xs:enumeration value="CANCELLED"/>
+      <xs:enumeration value="SENT"/>
+      <xs:enumeration value="RECEIVED"/>
+      <xs:enumeration value="IN_PROGRESS"/>
+      <xs:enumeration value="PROCESSED"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name='ResultatKodEnum'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='OK' />
+      <xs:enumeration value='ERROR' />
+      <xs:enumeration value='INFO' />
+    </xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>

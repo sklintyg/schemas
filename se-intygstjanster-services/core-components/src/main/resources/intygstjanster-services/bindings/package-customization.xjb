@@ -1,0 +1,17 @@
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1">
+  <bindings schemaLocation="../core-components/ws-addressing-1.0.xsd">
+    <schemaBindings>
+      <package name="org.w3.wsaddressing10" />
+    </schemaBindings>
+  </bindings>
+  <bindings schemaLocation="../core-components/itintegration_monitoring_1.0.xsd">
+    <schemaBindings>
+      <package name="se.riv.itintegration.monitoring.v1" />
+    </schemaBindings>
+  </bindings>
+  <bindings schemaLocation="../core-components/itintegration_registry_1.0.xsd">
+    <schemaBindings>
+      <package name="se.intygstjanster.services.registry.v1" />
+    </schemaBindings>
+  </bindings>
+</bindings>

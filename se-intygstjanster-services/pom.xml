@@ -1,52 +1,40 @@
-<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
     <groupId>se.inera.intyg.common</groupId>
     <artifactId>common-pom</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.4</version>
   </parent>
 
-  <groupId>se.inera.intyg.schemas</groupId>
-  <artifactId>schemas</artifactId>
+  <groupId>se.intygstjanster.services</groupId>
+  <artifactId>se-intygstjanster-services-parent</artifactId>
   <version>0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>Intyg Schemas</name>
+  <name>Internal contracts TMP</name>
 
   <modules>
-    <module>common</module>
+    <module>core-components</module>
+    <module>interactions</module>
   </modules>
 
   <properties>
 
-    <!-- Common -->
-    <common.version>0-SNAPSHOT</common.version>
-    <common.version.range>(,2.1.0]</common.version.range>
+    <schemas-common.version>0-SNAPSHOT</schemas-common.version>
+    <schemas-common.version.range>(,2.1.0]</schemas-common.version.range>
 
   </properties>
 
-  <scm>
-    <connection>scm:git:git@github.com:sklintyg/schemas.git</connection>
-  </scm>
-
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>se.inera.intyg.common</groupId>
-        <artifactId>common-support</artifactId>
-        <version>${common.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>se.inera.intyg.common</groupId>
-        <artifactId>logging-util</artifactId>
-        <version>${common.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>se.inera.intyg.schemas</groupId>
+      <artifactId>schemas-common</artifactId>
+      <version>${schemas-common.version}</version>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
@@ -55,12 +43,12 @@
         <artifactId>versions-maven-plugin</artifactId>
         <configuration>
           <includeProperties>
-            common.version
+            schemas-common.version
           </includeProperties>
           <properties>
             <property>
-              <name>common.version</name>
-              <version>${common.version.range}</version>
+              <name>schemas-common.version</name>
+              <version>${schemas-common.version.range}</version>
             </property>
           </properties>
         </configuration>
@@ -100,22 +88,5 @@
       </snapshots>
     </repository>
   </repositories>
-
-  <profiles>
-    <profile>
-      <id>development</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <modules>
-        <module>common</module>
-        <module>itintegration-monitoring</module>
-        <module>ehr-logstore</module>
-        <module>insuranceprocess-healthreporting</module>
-        <module>clinicalprocess-healthcond-certificate</module>
-        <module>se-intygstjanster-services</module>
-      </modules>
-    </profile>
-  </profiles>
 
 </project>
