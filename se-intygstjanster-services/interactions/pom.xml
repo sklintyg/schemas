@@ -5,14 +5,14 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>se.intygstjanster.services</groupId>
-    <artifactId>se-intygstjanster-services-parent</artifactId>
+    <groupId>se.intygstjanster.ts.services</groupId>
+    <artifactId>se-intygstjanster-ts-services-parent</artifactId>
     <version>0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>se-intygstjanster-services-interactions</artifactId>
+  <artifactId>se-intygstjanster-ts-services-interactions</artifactId>
 
-  <name>Meh Interactions</name>
+  <name>Transportstyrelsen Interactions</name>
 
   <properties>
     <wsdl.directory>${basedir}/src/main/resources/interactions</wsdl.directory>
@@ -20,8 +20,8 @@
 
   <dependencies>
     <dependency>
-      <groupId>se.intygstjanster.services</groupId>
-      <artifactId>se-intygstjanster-services-core</artifactId>
+      <groupId>se.intygstjanster.ts.services</groupId>
+      <artifactId>se-intygstjanster-ts-services-core</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
@@ -71,6 +71,10 @@
                   <extraarg>http://www.w3.org/2005/08/addressing=org.w3.wsaddressing10</extraarg>
                   <extraarg>-nexclude</extraarg>
                   <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
+                  <extraarg>-nexclude</extraarg>
+                  <extraarg>urn:local:se:intygstjanster:services:1=se.intygstjanster.ts.services.v1</extraarg>
+                  <extraarg>-nexclude</extraarg>
+                  <extraarg>urn:local:se:intygstjanster:services:types:1=se.intygstjanster.ts.services.types.v1</extraarg>
                 </extraargs>
               </defaultOptions>
 
@@ -83,21 +87,65 @@
                     classpath:interactions/GetTSBasInteraction/GetTSBasInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
                   <packagenames>
+                   <packagename>
+                     urn:local:se:intygstjanster:services:GetTSBasResponder:1=se.intygstjanster.ts.services.GetTSBasResponder.v1
+                   </packagename>
+                   <packagename>
+                     urn:local:se:intygstjanster:services:GetTSBas:1:rivtabp21=se.intygstjanster.ts.services.GetTSBasResponder.v1
+                   </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/RegisterTSBasInteraction/RegisterTSBasInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/RegisterTSBasInteraction/RegisterTSBasInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                   <packagename>
+                     urn:local:se:intygstjanster:services:RegisterTSBasResponder:1=se.intygstjanster.ts.services.RegisterTSBasResponder.v1
+                   </packagename>
+                   <packagename>
+                     urn:local:se:intygstjanster:services:RegisterTSBas:1:rivtabp21=se.intygstjanster.ts.services.RegisterTSBasResponder.v1
+                   </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/GetTSDiabetesInteraction/GetTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/GetTSDiabetesInteraction/GetTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
                     <packagename>
-                      urn:local:se:intygstjanster:services:GetTSBasResponder:1=se.intygstjanster.services.GetTSBasResponder.v1
+                      urn:local:se:intygstjanster:services:GetTSDiabetesResponder:1=se.intygstjanster.ts.services.GetTSDiabetesResponder.v1
                     </packagename>
                     <packagename>
-                      urn:local:se:intygstjanster:services:GetTSBas:1:rivtabp21=se.intygstjanster.services.GetTSBasResponder.v1
-                    </packagename>
-                    <packagename>
-                      urn:local:se:intygstjanster:services:1=se.intygstjanster.services.v1
-                    </packagename>
-                    <packagename>
-                      urn:local:se:intygstjanster:services:types:1=se.intygstjanster.services.types.v1
+                      urn:local:se:intygstjanster:services:GetTSDiabetes:1:rivtabp21=se.intygstjanster.ts.services.GetTSDiabetesResponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
 
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/RegisterTSDiabetesInteraction/RegisterTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/RegisterTSDiabetesInteraction/RegisterTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames> 
+                   <packagename>
+                     urn:local:se:intygstjanster:services:RegisterTSDiabetesResponder:1=se.intygstjanster.ts.services.RegisterTSDiabetesResponder.v1
+                   </packagename>
+                   <packagename>
+                     urn:local:se:intygstjanster:services:RegisterTSDiabetes:1:rivtabp21=se.intygstjanster.ts.services.RegisterTSDiabetesResponder.v1
+                   </packagename>
+                  </packagenames>
+                </wsdlOption>
               </wsdlOptions>
             </configuration>
           </execution>

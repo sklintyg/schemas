@@ -13,7 +13,7 @@
         <xs:element name="intygsTyp" type="xs:string" fixed="TSTRK1007 (U06, V06)"/>
         <xs:element name="version" type="xs:string"/>
         <xs:element name="utgava" type="xs:string"/>
-        <xs:element name="intygMetadata" type="IntygMetadata"/>
+        <xs:element name="grundData" type="GrundData"/>
         <xs:element name="intygAvser" type="IntygsAvserTypBas"/>
         <xs:element name="identitetStyrkt" type="IdentitetStyrkt"/>
         <xs:element name="synfunktion" type="SynfunktionBas"/>
@@ -43,19 +43,19 @@
       <xs:element name="intygsTyp" type="xs:string" fixed="TSTRK1031 (U06, V06)"/>
       <xs:element name="version" type="xs:string"/>
       <xs:element name="utgava" type="xs:string"/>
-      <xs:element name="intygMetadata" type="IntygMetadata"/>
+      <xs:element name="grundData" type="GrundData"/>
       <xs:element name="intygAvser" type="IntygsAvserTypDiabetes"/>
       <xs:element name="identitetStyrkt" type="IdentitetStyrkt"/>
       <xs:element name="diabetes" type="Diabetes"/>
       <xs:element name="hypoglykemier" type="Hypoglykemier"/>
       <xs:element name="separatOgonLakarintygKommerSkickas" type="xs:boolean" minOccurs="0"/>
-      <xs:element name="synfunktiom" type="SynfunktionDiabetes" minOccurs="0"/>
+      <xs:element name="synfunktion" type="SynfunktionDiabetes" minOccurs="0"/>
       <xs:element name="bedomning" type="BedomningTypDiabetes"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
   
-  <xs:complexType name="IntygMetadata">
+  <xs:complexType name="GrundData">
       <xs:sequence>
         <xs:element name="signeringsTidstampel" type="types:TidStampel"/>
         <xs:element name="skapadAv" type="SkapadAv"/>

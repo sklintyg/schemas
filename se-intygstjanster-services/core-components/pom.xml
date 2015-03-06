@@ -5,17 +5,18 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>se.intygstjanster.services</groupId>
-    <artifactId>se-intygstjanster-services-parent</artifactId>
+    <groupId>se.intygstjanster.ts.services</groupId>
+    <artifactId>se-intygstjanster-ts-services-parent</artifactId>
     <version>0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>se-intygstjanster-services-core</artifactId>
+  <artifactId>se-intygstjanster-ts-services-core</artifactId>
 
-  <name>Meh Core Components</name>
+  <name>Transportstyrelsen Core-components</name>
 
   <properties>
-    <wsdl.directory>${basedir}/src/main/resources/core-components</wsdl.directory>
+    <schema.dir>${basedir}/src/main/resources/intygstjanster-services/core-components</schema.dir>
+    <bindings.dir>${basedir}/src/main/resources/intygstjanster-services/bindings</bindings.dir>
   </properties>
 
   <dependencies>
@@ -57,19 +58,18 @@
             <schemaInclude>ws-addressing-1.0.xsd</schemaInclude>
             <schemaInclude>itintegration_monitoring_1.0.xsd</schemaInclude>
             <schemaInclude>itintegration_registry_1.0.xsd</schemaInclude>
+            <schemaInclude>se_intygstjanster_services_1.0.xsd</schemaInclude>
+            <schemaInclude>se_intygstjanster_services_types_1.0.xsd</schemaInclude>
           </schemaIncludes>
-          <bindingDirectory>${bindings.dir}</bindingDirectory>
-          <bindings>
-            <binding>
-              <dependencyResource>
-                <groupId>se.inera.intyg.schemas</groupId>
-                <artifactId>schemas-common</artifactId>
-                <resource>bindings/general-binding.xjb</resource>
-              </dependencyResource>
-            </binding>
-          </bindings>
+         <bindingDirectory>${bindings.dir}</bindingDirectory>
           <generateDirectory>${project.build.directory}/generated</generateDirectory>
           <verbose>true</verbose>
+          <args>
+            <arg>-XhashCode</arg>
+            <arg>-Xequals</arg>
+            <arg>-XtoString</arg>
+            <arg>-Xinheritance</arg>
+          </args>
         </configuration>
         <dependencies>
           <dependency>

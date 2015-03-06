@@ -9,12 +9,12 @@
     <version>1.0.4</version>
   </parent>
 
-  <groupId>se.intygstjanster.services</groupId>
-  <artifactId>se-intygstjanster-services-parent</artifactId>
+  <groupId>se.intygstjanster.ts.services</groupId>
+  <artifactId>se-intygstjanster-ts-services-parent</artifactId>
   <version>0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>Internal contracts TMP</name>
+  <name>Transportstyrelsen parent</name>
 
   <modules>
     <module>core-components</module>
