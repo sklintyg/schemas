@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>se.inera.intyg.schemas.intygstjanster.ts.services</groupId>
+    <groupId>se.inera.intyg.schemas.intygstjanster.ts.services.v1</groupId>
     <artifactId>se-intygstjanster-ts-services-parent</artifactId>
     <version>0-SNAPSHOT</version>
   </parent>
@@ -20,7 +20,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>se.inera.intyg.schemas.intygstjanster.ts.services</groupId>
+      <groupId>se.inera.intyg.schemas.intygstjanster.ts.services.v1</groupId>
       <artifactId>se-intygstjanster-ts-services-core</artifactId>
       <version>${project.version}</version>
     </dependency>

@@ -44,7 +44,7 @@
     <xs:sequence>
       <xs:element name="meta" type="core:IntygMeta" minOccurs="0"/>
       <xs:element name="intyg" type="core:TSDiabetesIntyg" minOccurs="0"/>
-      <xs:element name='resultatKod' type='core:ResultatKodEnum' />
+      <xs:element name='resultat' type='core:ResultatTyp' />
       <xs:element name='kommentar' type='xs:string' minOccurs='0' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>

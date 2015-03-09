@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>se.inera.intyg.schemas.intygstjanster.ts.services</groupId>
+    <groupId>se.inera.intyg.schemas.intygstjanster.ts.services.v1</groupId>
     <artifactId>se-intygstjanster-ts-services-parent</artifactId>
     <version>0-SNAPSHOT</version>
   </parent>
@@ -62,6 +62,15 @@
             <schemaInclude>se_intygstjanster_services_types_1.0.xsd</schemaInclude>
           </schemaIncludes>
          <bindingDirectory>${bindings.dir}</bindingDirectory>
+         <bindings>
+           <binding>
+             <dependencyResource>
+               <groupId>se.inera.intyg.schemas</groupId>
+               <artifactId>schemas-common</artifactId>
+               <resource>bindings/general-binding.xjb</resource>
+             </dependencyResource>
+           </binding>
+         </bindings>
           <generateDirectory>${project.build.directory}/generated</generateDirectory>
           <verbose>true</verbose>
           <args>

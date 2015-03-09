@@ -39,7 +39,7 @@
 
   <xs:complexType name='RegisterTSDiabetesResponseType'>
     <xs:sequence>
-      <xs:element name='resultatKod' type='core:ResultatKodEnum' />
+      <xs:element name='resultat' type='core:ResultatTyp' />
       <xs:element name='kommentar' type='xs:string' minOccurs='0' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
