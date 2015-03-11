@@ -231,7 +231,6 @@
                   </packagenames>
                 </wsdlOption>
 
-
                 <wsdlOption>
                   <wsdl>
                     ${wsdl.directory.internal}/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_1.0_RIVTABP21.wsdl
@@ -251,17 +250,17 @@
 
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory.internal}/SendCertificateForCitizenInteraction/SendCertificateForCitizenInteraction_1.0_RIVTABP21.wsdl
+                    ${wsdl.directory.internal}/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <wsdlLocation>
-                    classpath:interactions-internal/SendCertificateForCitizenInteraction/SendCertificateForCitizenInteraction_1.0_RIVTABP21.wsdl
+                    classpath:interactions-internal/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizen:1:rivtabp21=se.inera.certificate.clinicalprocess.healthcond.certificate.sendcertificateforcitizen.v1
+                      urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipient:1:rivtabp21=se.inera.certificate.clinicalprocess.healthcond.certificate.sendcertificatetorecipient.v1
                     </packagename>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizenResponder:1=se.inera.certificate.clinicalprocess.healthcond.certificate.sendcertificateforcitizen.v1
+                      urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipientResponder:1=se.inera.certificate.clinicalprocess.healthcond.certificate.sendcertificatetorecipient.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
