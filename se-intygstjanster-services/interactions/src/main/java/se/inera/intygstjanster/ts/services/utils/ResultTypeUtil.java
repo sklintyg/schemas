@@ -1,8 +1,8 @@
-package se.intygstjanster.ts.services.utils;
+package se.inera.intygstjanster.ts.services.utils;
 
-import se.intygstjanster.ts.services.v1.ErrorIdType;
-import se.intygstjanster.ts.services.v1.ResultCodeType;
-import se.intygstjanster.ts.services.v1.ResultatTyp;
+import se.inera.intygstjanster.ts.services.v1.ErrorIdType;
+import se.inera.intygstjanster.ts.services.v1.ResultCodeType;
+import se.inera.intygstjanster.ts.services.v1.ResultatTyp;
 
 public final class ResultTypeUtil {
 

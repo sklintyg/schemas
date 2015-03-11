@@ -16,12 +16,12 @@
   </bindings>
   <bindings schemaLocation="../core-components/se_intygstjanster_services_1.0.xsd">
     <schemaBindings>
-      <package name="se.intygstjanster.ts.services.v1" />
+      <package name="se.inera.intygstjanster.ts.services.v1" />
     </schemaBindings>
   </bindings>
   <bindings schemaLocation="../core-components/se_intygstjanster_services_types_1.0.xsd">
     <schemaBindings>
-      <package name="se.intygstjanster.ts.services.types.v1" />
+      <package name="se.inera.intygstjanster.ts.services.types.v1" />
     </schemaBindings>
   </bindings>
 </bindings>
