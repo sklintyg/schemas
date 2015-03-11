@@ -7,6 +7,8 @@
 
   <xs:import namespace="urn:local:se:intygstjanster:services:types:1"  schemaLocation="se_intygstjanster_services_types_1.0.xsd"/>
 
+    <xs:element name="basIntyg" type="TSBasIntyg"/>
+
     <xs:complexType name="TSBasIntyg">
       <xs:sequence>
         <xs:element name="intygsId" type="xs:string"/>
@@ -276,7 +278,7 @@
   <xs:complexType name="Sjukhusvard">
       <xs:sequence>
         <xs:element name="harSjukhusvardEllerLakarkontakt" type="xs:boolean"/>
-        <xs:element name="sjukhusvardEllerLakarkontaktDatum" type="types:Datum" minOccurs="0"/>
+        <xs:element name="sjukhusvardEllerLakarkontaktDatum" type="xs:string" minOccurs="0"/>
         <xs:element name="sjukhusvardEllerLakarkontaktVardinrattning" type="xs:string" minOccurs="0"/>
         <xs:element name="sjukhusvardEllerLakarkontaktAnledning" type="xs:string" minOccurs="0"/>
         <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
@@ -532,12 +534,4 @@
     </xs:restriction>
   </xs:simpleType>
 
-<!--   <xs:simpleType name='ResultatKodEnum'> -->
-<!--     <xs:restriction base='xs:string'> -->
-<!--       <xs:enumeration value='OK' /> -->
-<!--       <xs:enumeration value='ERROR' /> -->
-<!--       <xs:enumeration value='INFO' /> -->
-<!--     </xs:restriction> -->
-<!--   </xs:simpleType> -->
-  
 </xs:schema>
