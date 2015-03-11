@@ -21,8 +21,8 @@
         xmlns:xs="http://www.w3.org/2001/XMLSchema"
         xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:1"
         xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:1" 
-        xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizenResponder:1"
-        targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:SendCertificateForCitizenResponder:1"
+        xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipientResponder:1"
+        targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipientResponder:1"
         elementFormDefault="qualified"
         attributeFormDefault="unqualified"
         version="1.0">
@@ -30,10 +30,10 @@
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:1" schemaLocation="clinicalprocess_healthcond_certificate_1.0.xsd"/>
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:1"  schemaLocation="clinicalprocess_healthcond_certificate_types_1.0.xsd"/>
   
-  <xs:element name="SendCertificateForCitizen" type="tns:SendCertificateForCitizenType"/>
-  <xs:element name="SendCertificateForCitizenResponse" type="tns:SendCertificateForCitizenResponseType"/>
+  <xs:element name="SendCertificateToRecipient" type="tns:SendCertificateToRecipientType"/>
+  <xs:element name="SendCertificateToRecipientResponse" type="tns:SendCertificateToRecipientResponseType"/>
 
-  <xs:complexType name="SendCertificateForCitizenType">
+  <xs:complexType name="SendCertificateToRecipientType">
     <xs:sequence>
       <xs:element name="utlatandeId" type="xs:string"/>
       <xs:element name="personId" type="xs:string"/>
@@ -42,7 +42,7 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="SendCertificateForCitizenResponseType">
+  <xs:complexType name="SendCertificateToRecipientResponseType">
     <xs:sequence>
       <xs:element name="result" type="core:ResultType"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
