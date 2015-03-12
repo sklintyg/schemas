@@ -157,6 +157,10 @@
       <xs:element name="synskarpaUtanKorrektion" type="SynskarpaUtanKorrektion"/>
       <xs:element name="synskarpaMedKorrektion" type="SynskarpaMedKorrektion"/>
       <xs:element name="harDiplopi" type="xs:boolean"/>
+      <xs:element name="finnsSynfaltsprovning" type="xs:boolean"/>
+      <xs:element name="synfaltsprovningUtanAnmarkning" type="xs:boolean"/>
+      <xs:element name="finnsProvningOgatsRorlighet" type="xs:boolean"/>
+      <xs:element name="finnsSeparatOgonlakarintyg" type="xs:boolean"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
