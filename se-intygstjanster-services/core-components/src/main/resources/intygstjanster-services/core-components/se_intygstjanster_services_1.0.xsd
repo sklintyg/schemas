@@ -75,8 +75,8 @@
         <xs:element name="stLakare" type="xs:boolean" minOccurs="0"/>
         <xs:element name="vardenhet" type="Vardenhet"/>
 
-        <xs:element name="specialiteter" type="xs:string"/>
-        <xs:element name="befattningar" type="xs:string"/>
+        <xs:element name="specialiteter" type="xs:string" minOccurs="0"/>
+        <xs:element name="befattningar" type="xs:string" minOccurs="0"/>
         
         <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
       </xs:sequence>
@@ -167,20 +167,20 @@
   
   <xs:complexType name="SynskarpaUtanKorrektion">
       <xs:sequence>
-        <xs:element name="hogerOga" type="xs:decimal"/>
-        <xs:element name="vansterOga" type="xs:decimal"/>
-        <xs:element name="binokulart" type="xs:decimal"/>
+        <xs:element name="hogerOga" type="xs:double"/>
+        <xs:element name="vansterOga" type="xs:double"/>
+        <xs:element name="binokulart" type="xs:double"/>
         <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
       </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="SynskarpaMedKorrektion">
       <xs:sequence>
-        <xs:element name="hogerOga" type="xs:decimal"/>
+        <xs:element name="hogerOga" type="xs:double" minOccurs="0"/>
         <xs:element name="harKontaktlinsHogerOga" type="xs:boolean" minOccurs="0"/>
-        <xs:element name="vansterOga" type="xs:decimal"/>
+        <xs:element name="vansterOga" type="xs:double" minOccurs="0"/>
         <xs:element name="harKontaktlinsVansterOga" type="xs:boolean" minOccurs="0"/>
-        <xs:element name="binokulart" type="xs:decimal"/>
+        <xs:element name="binokulart" type="xs:double" minOccurs="0"/>
         <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
       </xs:sequence>
   </xs:complexType>

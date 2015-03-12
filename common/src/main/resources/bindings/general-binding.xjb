@@ -9,9 +9,6 @@
       adapter="se.inera.certificate.schema.adapter.xml.LocalDateXmlAdapter" />
     <xjc:javaType name="org.joda.time.LocalDateTime" xmlType="xs:dateTime"
       adapter="se.inera.certificate.schema.adapter.xml.LocalDateTimeXmlAdapter" />
-    <jaxb:javaType name="java.lang.Double" xmlType="xs:decimal" 
-      parseMethod="javax.xml.bind.DatatypeConverter.parseDouble"
-      printMethod="javax.xml.bind.DatatypeConverter.printDouble" />
   </jaxb:globalBindings>
 
 </jaxb:bindings>
