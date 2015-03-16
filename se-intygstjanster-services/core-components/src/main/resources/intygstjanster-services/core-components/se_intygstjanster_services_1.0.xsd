@@ -118,7 +118,7 @@
   
   <xs:complexType name="IdentitetStyrkt">
     <xs:sequence>
-      <xs:element name="idkontroll" type="IdentifieringsVarden" maxOccurs="unbounded"/>
+      <xs:element name="idkontroll" type="IdentifieringsVarden" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>    
   </xs:complexType>
