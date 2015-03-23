@@ -7,7 +7,7 @@
   <parent>
     <groupId>se.inera.intyg.common</groupId>
     <artifactId>common-pom</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.6</version>
   </parent>
 
   <groupId>se.inera.intyg.schemas.insuranceprocess.healthreporting.v1</groupId>
@@ -26,20 +26,12 @@
 
     <!-- Common -->
     <common.version>0-SNAPSHOT</common.version>
-    <common.version.range>(,2.1.0]</common.version.range>
+    <common.version.range>(,2.2.0]</common.version.range>
 
     <schemas-common.version>0-SNAPSHOT</schemas-common.version>
-    <schemas-common.version.range>(,2.1.0]</schemas-common.version.range>
+    <schemas-common.version.range>(,2.2.0]</schemas-common.version.range>
 
   </properties>
-
-  <dependencies>
-    <dependency>
-      <groupId>se.inera.intyg.schemas</groupId>
-      <artifactId>schemas-common</artifactId>
-      <version>${schemas-common.version}</version>
-    </dependency>
-  </dependencies>
 
   <dependencyManagement>
     <dependencies>
@@ -53,8 +45,20 @@
         <artifactId>logging-util</artifactId>
         <version>${common.version}</version>
       </dependency>
+      <dependency>
+        <groupId>se.inera.intyg.schemas</groupId>
+        <artifactId>schemas-common</artifactId>
+        <version>${schemas-common.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>se.inera.intyg.schemas</groupId>
+      <artifactId>schemas-common</artifactId>
+    </dependency>
+  </dependencies>
 
   <build>
     <plugins>
