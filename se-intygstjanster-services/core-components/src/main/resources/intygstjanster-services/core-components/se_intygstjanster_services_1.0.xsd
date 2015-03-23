@@ -35,6 +35,7 @@
         <xs:element name="ovrigMedicinering" type="OvrigMedicinering"/>
         <xs:element name="ovrigKommentar" type="xs:string" minOccurs="0"/>
         <xs:element name="bedomning" type="BedomningTypBas"/>
+        <xs:element name="statuses" type="IntygStatus" minOccurs="0" maxOccurs="unbounded"/>
         <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
       </xs:sequence>
     </xs:complexType>
@@ -146,7 +147,7 @@
         <xs:element name="harDiplopi" type="xs:boolean"/>
         <xs:element name="harNystagmus" type="xs:boolean"/>
         <xs:element name="synskarpaUtanKorrektion" type="SynskarpaUtanKorrektion"/>
-        <xs:element name="synskarpaMedKorrektion" type="SynskarpaMedKorrektion"/>
+        <xs:element name="synskarpaMedKorrektion" type="SynskarpaMedKorrektion" minOccurs="0"/>
         <xs:element name="harGlasStyrkaOver8Dioptrier" type="xs:boolean" minOccurs="0"/>        
         <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
       </xs:sequence>
