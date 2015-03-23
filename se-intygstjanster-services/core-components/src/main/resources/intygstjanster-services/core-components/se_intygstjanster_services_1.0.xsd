@@ -52,6 +52,7 @@
       <xs:element name="hypoglykemier" type="Hypoglykemier"/>
       <xs:element name="separatOgonLakarintygKommerSkickas" type="xs:boolean" minOccurs="0"/>
       <xs:element name="synfunktion" type="SynfunktionDiabetes" minOccurs="0"/>
+      <xs:element name="ovrigKommentar" type="xs:string" minOccurs="0"/>
       <xs:element name="bedomning" type="BedomningTypDiabetes"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>

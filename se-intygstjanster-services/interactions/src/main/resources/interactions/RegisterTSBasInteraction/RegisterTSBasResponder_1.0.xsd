@@ -17,31 +17,30 @@
  specific language governing permissions and limitations
  under the License.
  -->		
-<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'
-  xmlns:tns='urn:local:se:intygstjanster:services:RegisterTSBasResponder:1'
-  xmlns:core='urn:local:se:intygstjanster:services:1'
-  targetNamespace='urn:local:se:intygstjanster:services:RegisterTSBasResponder:1'
-  elementFormDefault='qualified'
-  attributeFormDefault='unqualified'
-  version='1.0'>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="urn:local:se:intygstjanster:services:RegisterTSBasResponder:1"
+  xmlns:core="urn:local:se:intygstjanster:services:1"
+  targetNamespace="urn:local:se:intygstjanster:services:RegisterTSBasResponder:1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  version="1.0">
   
   <xs:import schemaLocation="../../core_components/se_intygstjanster_services_1.0.xsd" namespace="urn:local:se:intygstjanster:services:1" />
   
-  <xs:element name='RegisterTSBas' type='tns:RegisterTSBasType' />
-  <xs:element name='RegisterTSBasResponse' type='tns:RegisterTSBasResponseType' />
+  <xs:element name="RegisterTSBas" type="tns:RegisterTSBasType" />
+  <xs:element name="RegisterTSBasResponse" type="tns:RegisterTSBasResponseType" />
 
-  <xs:complexType name='RegisterTSBasType'>
+  <xs:complexType name="RegisterTSBasType">
     <xs:sequence>
       <xs:element name="intyg" type="core:TSBasIntyg"/>
-      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
  
-  <xs:complexType name='RegisterTSBasResponseType'>
+  <xs:complexType name="RegisterTSBasResponseType">
     <xs:sequence>
-      <xs:element name='resultat' type='core:ResultatTyp' />
-      <xs:element name='kommentar' type='xs:string' minOccurs='0' />
-      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+      <xs:element name="resultat" type="core:ResultatTyp" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 

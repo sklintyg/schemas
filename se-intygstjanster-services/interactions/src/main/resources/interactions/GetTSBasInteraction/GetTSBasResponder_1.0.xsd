@@ -35,7 +35,7 @@
   <xs:complexType name='GetTSBasType'>
     <xs:sequence>
       <xs:element name="intygsId" type="xs:string" />
-      <xs:element name="personId" type="types:II" />
+      <xs:element name="personId" type="types:II" minOccurs="0"/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
@@ -45,7 +45,6 @@
       <xs:element name="meta" type="core:IntygMeta" minOccurs="0"/>
       <xs:element name="intyg" type="core:TSBasIntyg" minOccurs="0"/>
       <xs:element name='resultat' type='core:ResultatTyp' />
-      <xs:element name='comment' type='xs:string' minOccurs='0' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
