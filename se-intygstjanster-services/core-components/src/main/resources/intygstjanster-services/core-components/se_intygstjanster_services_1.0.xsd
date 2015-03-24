@@ -230,7 +230,7 @@
   <xs:complexType name="DiabetesTypBas">
     <xs:sequence>
       <xs:element name="harDiabetes" type="xs:boolean"/>
-      <xs:element name="diabetesTyp" type="DiabetesTypVarden" minOccurs="0" maxOccurs="2"/>
+      <xs:element name="diabetesTyp" type="DiabetesTypVarden" minOccurs="0" maxOccurs="1"/>
       <xs:element name="harBehandlingKost" type="xs:boolean" minOccurs="0"/>
       <xs:element name="harBehandlingTabletter" type="xs:boolean" minOccurs="0"/>
       <xs:element name="harBehandlingInsulin" type="xs:boolean" minOccurs="0"/>
