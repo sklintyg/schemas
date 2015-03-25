@@ -6,7 +6,7 @@
   <parent>
     <groupId>se.inera.intyg.common</groupId>
     <artifactId>common-pom</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.6</version>
   </parent>
 
   <groupId>se.riv.itintegration.monitoring</groupId>
@@ -24,7 +24,7 @@
   <properties>
 
     <schemas-common.version>0-SNAPSHOT</schemas-common.version>
-    <schemas-common.version.range>(,2.1.0]</schemas-common.version.range>
+    <schemas-common.version.range>(,2.2.0]</schemas-common.version.range>
 
   </properties>
 
