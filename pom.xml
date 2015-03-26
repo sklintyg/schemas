@@ -25,7 +25,7 @@
 
     <!-- Common -->
     <common.version>0-SNAPSHOT</common.version>
-    <common.version.range>(,2.1.0]</common.version.range>
+    <common.version.range>(,2.2.0]</common.version.range>
 
   </properties>
 
@@ -113,6 +113,7 @@
         <module>ehr-logstore</module>
         <module>insuranceprocess-healthreporting</module>
         <module>clinicalprocess-healthcond-certificate</module>
+        <module>se-intygstjanster-services</module>
       </modules>
     </profile>
   </profiles>

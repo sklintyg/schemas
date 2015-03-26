@@ -10,7 +10,6 @@
 	<import 
 		schemaLocation="insuranceprocess_healthreporting_2.0.xsd"
 		namespace="urn:riv:insuranceprocess:healthreporting:2" />
-	
 	<import
 		namespace="urn:riv:insuranceprocess:healthreporting:medcertqa:1" 
 		schemaLocation="MedicalCertificateQuestionsAnswers_1.0.xsd"/>

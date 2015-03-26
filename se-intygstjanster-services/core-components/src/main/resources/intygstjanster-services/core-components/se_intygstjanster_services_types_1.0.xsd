@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="urn:local:se:intygstjanster:services:types:1"
+  targetNamespace="urn:local:se:intygstjanster:services:types:1"
+  elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+ 
+  <xs:complexType name="II">
+    <xs:sequence>
+      <xs:element name="root" type="xs:string"/>
+      <xs:element name="extension" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="Datum">
+    <xs:annotation>
+      <xs:documentation>
+        Daum värdet är en sträng på formatet &#34;ÅÅÅÅ-MM-DD&#34; som matchar begränsad ISO 8601.
+        Tid samt tidszon skall ej anges
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-2][0-9]{3,3}-((0[1-9])|(1[0-2]))-((0[1-9])|([1-2][0-9])|(3[0-1]))"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="DatumPeriod">
+    <xs:annotation>
+      <xs:documentation>
+        Används för att specificera ett datumintervall
+        med hjälp av start- och slutdatum.
+        start: Startdatum på formatet ÅÅÅÅ-MM-DD
+        slut: Slutdatum på formatet ÅÅÅÅ-MM-DD
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="start" type="Datum"/>
+      <xs:element name="slut" type="Datum" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="TidStampel">
+    <xs:annotation>
+      <xs:documentation>
+        DateTime value is a string with the format
+        &#34;YYYY-MM-DDThh:mm:ss&#34;
+        that conforms to the constrained ISO
+        8601.
+        Fraction of seconds and timezone precision is not required.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern
+          value="[1-2][0-9]{3,3}-((0[1-9])|(1[0-2]))-((0[1-9])|([1-2][0-9])|(3[0-1]))T(([0-1][0-9])|(2[0-3])):([0-5][0-9]):([0-5][0-9])" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="nonEmptyString">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>
