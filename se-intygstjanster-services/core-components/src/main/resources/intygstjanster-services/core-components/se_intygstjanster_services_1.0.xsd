@@ -8,6 +8,7 @@
   <xs:import namespace="urn:local:se:intygstjanster:services:types:1"  schemaLocation="se_intygstjanster_services_types_1.0.xsd"/>
 
     <xs:element name="basIntyg" type="TSBasIntyg"/>
+    <xs:element name="diabetesIntyg" type="TSDiabetesIntyg"/>
 
     <xs:complexType name="TSBasIntyg">
       <xs:sequence>

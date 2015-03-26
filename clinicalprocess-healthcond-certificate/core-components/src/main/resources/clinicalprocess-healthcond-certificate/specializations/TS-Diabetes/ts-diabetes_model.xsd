@@ -21,7 +21,7 @@
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:ts-diabetes:1" schemaLocation="ts-diabetes_model_extension.xsd" />
 
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:1"
-    schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_1.0.xsd"/>
+    schemaLocation="../../core-components/clinicalprocess_healthcond_certificate_types_1.0.xsd"/>
 
   <xs:element name="utlatande" type="utlatandeType" />
 

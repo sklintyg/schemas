@@ -27,7 +27,7 @@
            version="1.0">
 
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:1"
-             schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_1.0.xsd"/>
+             schemaLocation="../../core-components/clinicalprocess_healthcond_certificate_types_1.0.xsd"/>
 
   <xs:element name="specialitet" type="specialitetKod"/>
   <xs:complexType name="specialitetKod">
