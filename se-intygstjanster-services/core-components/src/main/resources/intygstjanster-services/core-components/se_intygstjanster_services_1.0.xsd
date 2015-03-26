@@ -216,12 +216,24 @@
   
   <xs:complexType name="Diabetes">
       <xs:sequence>
-        <xs:element name="debutArDiabetes" type="types:Datum"/>
+        <xs:element name="debutArDiabetes">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[1-2][0-9]{3,3}"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
         <xs:element name="diabetesTyp" type="DiabetesTypVarden" maxOccurs="2"/>
         <xs:element name="harBehandlingKost" type="xs:boolean" minOccurs="0"/>
         <xs:element name="harBehandlingTabletter" type="xs:boolean" minOccurs="0"/>
         <xs:element name="harBehandlingInsulin" type="xs:boolean" minOccurs="0"/>
-        <xs:element name="insulinBehandlingSedanAr" type="types:Datum" minOccurs="0"/>
+        <xs:element name="insulinBehandlingSedanAr" minOccurs="0">
+             <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[1-2][0-9]{3,3}"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
         <xs:element name="annanBehandlingBeskrivning" type="xs:string" minOccurs="0"/>
         <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
       </xs:sequence>
