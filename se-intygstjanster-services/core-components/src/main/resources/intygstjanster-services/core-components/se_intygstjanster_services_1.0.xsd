@@ -260,8 +260,8 @@
       <xs:element name="allvarligForekomstBeskrivning" type="xs:string" minOccurs="0"/>
       <xs:element name="harAllvarligForekomstTrafiken" type="xs:boolean"/>
       <xs:element name="allvarligForekomstTrafikBeskrivning" type="xs:string" minOccurs="0"/>
-      <xs:element name="genomforEgenkontrollBlodsocker" type="xs:boolean"/>
-      <xs:element name="harAllvarligForekomstVakenTid" type="xs:boolean"/>
+      <xs:element name="genomforEgenkontrollBlodsocker" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="harAllvarligForekomstVakenTid" type="xs:boolean" minOccurs="0"/>
       <xs:element name="allvarligForekomstVakenTidAr" type="types:Datum" minOccurs="0"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence> 
