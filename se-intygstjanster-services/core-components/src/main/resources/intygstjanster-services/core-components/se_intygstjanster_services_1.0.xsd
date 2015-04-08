@@ -255,10 +255,10 @@
     <xs:sequence>
       <xs:element name="harKunskapOmAtgarder" type="xs:boolean"/>
       <xs:element name="harTeckenNedsattHjarnfunktion" type="xs:boolean"/>
-      <xs:element name="saknarFormagaKannaVarningstecken" type="xs:boolean"/>
-      <xs:element name="harAllvarligForekomst" type="xs:boolean"/>
+      <xs:element name="saknarFormagaKannaVarningstecken" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="harAllvarligForekomst" type="xs:boolean" minOccurs="0"/>
       <xs:element name="allvarligForekomstBeskrivning" type="xs:string" minOccurs="0"/>
-      <xs:element name="harAllvarligForekomstTrafiken" type="xs:boolean"/>
+      <xs:element name="harAllvarligForekomstTrafiken" type="xs:boolean" minOccurs="0"/>
       <xs:element name="allvarligForekomstTrafikBeskrivning" type="xs:string" minOccurs="0"/>
       <xs:element name="genomforEgenkontrollBlodsocker" type="xs:boolean" minOccurs="0"/>
       <xs:element name="harAllvarligForekomstVakenTid" type="xs:boolean" minOccurs="0"/>
@@ -325,7 +325,7 @@
     <xs:sequence>
       <xs:element name="korkortstyp" type="KorkortsbehorighetTsDiabetes" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="kanInteTaStallning" type="xs:boolean" minOccurs="0"/>
-      <xs:element name="lamplighetInnehaBehorighetSpecial" type="xs:boolean"/>
+      <xs:element name="lamplighetInnehaBehorighetSpecial" type="xs:boolean" minOccurs="0"/>
       <xs:element name="ovrigKommentar" type="xs:string" minOccurs="0"/>
       <xs:element name="behovAvLakareSpecialistKompetens" type="xs:string" minOccurs="0"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
