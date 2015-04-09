@@ -45,6 +45,11 @@
         <artifactId>logging-util</artifactId>
         <version>${common.version}</version>
       </dependency>
+      <dependency>
+        <groupId>se.inera.intyg.common</groupId>
+        <artifactId>common-schemas</artifactId>
+        <version>${common.version}</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -112,7 +117,7 @@
         <module>itintegration-monitoring</module>
         <module>ehr-logstore</module>
         <module>insuranceprocess-healthreporting</module>
-        <module>clinicalprocess_healthcond_certificate</module>
+        <module>clinicalprocess-healthcond-certificate</module>
         <module>se-intygstjanster-services</module>
       </modules>
     </profile>

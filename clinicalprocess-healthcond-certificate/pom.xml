@@ -11,7 +11,7 @@
   </parent>
 
   <groupId>se.inera.intyg.schemas.clinicalprocess.healthcond.certificate.v1</groupId>
-  <artifactId>clinicalprocess_healthcond_certificate</artifactId>
+  <artifactId>clinicalprocess-healthcond-certificate</artifactId>
   <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -113,10 +113,10 @@
               <defaultOptions>
                 <bindingFiles>
                   <bindingFile>classpath:/bindings/general-intyg-binding.xjb</bindingFile>
-                  <bindingFile>${basedir}/clinicalprocess_healthcond_certificate/bindings/bindings.xjb</bindingFile>
-                  <bindingFile>${basedir}/clinicalprocess_healthcond_certificate/bindings/package-customization.xjb</bindingFile>
+                  <bindingFile>${basedir}/clinicalprocess-healthcond-certificate/bindings/bindings.xjb</bindingFile>
+                  <bindingFile>${basedir}/clinicalprocess-healthcond-certificate/bindings/package-customization.xjb</bindingFile>
                 </bindingFiles>
-                <catalog>${basedir}/clinicalprocess_healthcond_certificate/catalog/catalog.xml</catalog>
+                <catalog>${basedir}/clinicalprocess-healthcond-certificate/catalog/catalog.xml</catalog>
                 <extraargs>
                   <!-- Enable JAXB extensions -->
                   <!--extraarg>-xjc-XhashCode</extraarg-->
