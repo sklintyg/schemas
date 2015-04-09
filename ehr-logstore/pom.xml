@@ -48,10 +48,10 @@
   </dependencyManagement>
 
   <dependencies>
-    <dependency>
-      <groupId>se.inera.intyg.schemas</groupId>
-      <artifactId>schemas-common</artifactId>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>se.inera.intyg.schemas</groupId>-->
+      <!--<artifactId>schemas-common</artifactId>-->
+    <!--</dependency>-->
   </dependencies>
 
   <build>
