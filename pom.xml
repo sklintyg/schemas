@@ -109,11 +109,11 @@
       </activation>
       <modules>
         <module>common</module>
-        <module>itintegration-monitoring</module>
-        <module>ehr-logstore</module>
-        <module>insuranceprocess-healthreporting</module>
-        <module>clinicalprocess-healthcond-certificate</module>
-        <module>se-intygstjanster-services</module>
+        <module>rivta/itintegration-monitoring</module>
+        <module>rivta/ehr-logstore</module>
+        <module>rivta/insuranceprocess-healthreporting</module>
+        <module>rivta/clinicalprocess-healthcond-certificate</module>
+        <module>intyg/transportstyrelsen</module>
       </modules>
     </profile>
   </profiles>

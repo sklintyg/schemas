@@ -1,0 +1,219 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>se.inera.intyg.common</groupId>
+    <artifactId>common-pom</artifactId>
+    <version>1.0.6</version>
+  </parent>
+
+  <groupId>se.riv.itintegration.monitoring</groupId>
+  <artifactId>itintegration-monitoring</artifactId>
+  <version>0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>IT integration and monitoring interaction</name>
+
+  <properties>
+    <schemas-common.version>0-SNAPSHOT</schemas-common.version>
+    <schemas-common.version.range>(,2.2.0]</schemas-common.version.range>
+
+    <schemas.directory>${basedir}/schemas/core_components</schemas.directory>
+    <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>se.inera.intyg.schemas</groupId>
+        <artifactId>schemas-common</artifactId>
+        <version>${schemas-common.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>se.inera.intyg.schemas</groupId>
+      <artifactId>schemas-common</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-frontend-jaxws</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-transports-http</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.jaxb2_commons</groupId>
+      <artifactId>jaxb2-basics-runtime</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <configuration>
+          <includeProperties>
+            schemas-common.version
+          </includeProperties>
+          <properties>
+            <property>
+              <name>schemas-common.version</name>
+              <version>${schemas-common.version.range}</version>
+            </property>
+          </properties>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jvnet.jaxb2.maven2</groupId>
+        <artifactId>maven-jaxb2-plugin</artifactId>
+        <version>0.11.0</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <args>
+                <!-- Enable JAXB extensions -->
+                <arg>-XhashCode</arg>
+                <arg>-Xequals</arg>
+                <arg>-XtoString</arg>
+                <arg>-Xinheritance</arg>
+              </args>
+              <extension>true</extension>
+              <forceRegenerate>true</forceRegenerate>
+              <bindingDirectory>${basedir}/itintegration-monitoring/bindings</bindingDirectory>
+              <bindingIncludes>
+                <bindingInclude>classpath:/bindings/general-binding.xjb</bindingInclude>
+                <bindingInclude>package-customization.xjb</bindingInclude>
+              </bindingIncludes>
+              <catalog>${basedir}/itintegration-monitoring/catalog/catalog.xml</catalog>
+              <schemas>
+                <schema>
+                  <fileset>
+                    <directory>${schemas.directory}</directory>
+                    <includes>
+                      <include>itintegration_monitoring_1.0.xsd</include>
+                      <include>itintegration_registry_1.0.xsd</include>
+                    </includes>
+                  </fileset>
+                </schema>
+              </schemas>
+              <debug>true</debug>
+              <verbose>true</verbose>
+              <plugins>
+                <dependency>
+                  <groupId>org.jvnet.jaxb2_commons</groupId>
+                  <artifactId>jaxb2-basics</artifactId>
+                  <version>${jaxb.commons.version}</version>
+                </dependency>
+              </plugins>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-codegen-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>wsdl2java-external-interfaces</id>
+            <goals>
+              <goal>wsdl2java</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <defaultOptions>
+                <extraargs>
+                  <extraarg>-nexclude</extraarg>
+                  <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
+                </extraargs>
+              </defaultOptions>
+
+              <wsdlOptions>
+                <wsdlOption>
+                  <wsdl>${wsdl.directory}/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                  <packagenames>
+                    <packagename>urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.rivtabp21.v1</packagename>
+                    <packagename>urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.v1</packagename>
+                  </packagenames>
+                </wsdlOption>
+              </wsdlOptions>
+
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>${buildnumber-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>target/generated-sources/xjc</source>
+                <source>target/generated-sources/cxf</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>callista-release</id>
+      <url>http://repository-callistasoftware.forge.cloudbees.com/release/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>callista-snapshot</id>
+      <url>http://repository-callistasoftware.forge.cloudbees.com/snapshot/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>thirdparty</id>
+      <url>http://repository-callistasoftware.forge.cloudbees.com/3rdparty</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+</project>

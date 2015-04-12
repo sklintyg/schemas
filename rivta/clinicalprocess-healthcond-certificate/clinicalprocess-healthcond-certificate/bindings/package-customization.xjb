@@ -1,0 +1,26 @@
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" version="2.1">
+
+  <bindings schemaLocation="../../schemas/core_components/clinicalprocess_healthcond_certificate_types_1.0.xsd">
+    <schemaBindings>
+      <package name="se.inera.certificate.clinicalprocess.healthcond.certificate.types.v1" />
+    </schemaBindings>
+  </bindings>
+
+  <bindings schemaLocation="../../schemas/core_components/clinicalprocess_healthcond_certificate_1.0.xsd">
+    <schemaBindings>
+      <package name="se.inera.certificate.clinicalprocess.healthcond.certificate.v1" />
+    </schemaBindings>
+  </bindings>
+
+  <bindings schemaLocation="../../schemas/core_components/itintegration_registry_1.0.xsd">
+    <schemaBindings>
+      <package name="se.riv.itintegration.registry.v1" />
+    </schemaBindings>
+  </bindings>
+
+  <!--bindings schemaLocation="../../schemas/insuranceprocess-healthreporting/MU7263-RIV_3.1.xsd">
+    <schemaBindings>
+      <package name="se.inera.ifv.insuranceprocess.healthreporting.mu7263.v3" />
+    </schemaBindings>
+  </bindings -->
+</bindings>
