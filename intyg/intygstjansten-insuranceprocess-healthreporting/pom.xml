@@ -1,6 +1,5 @@
-<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -10,18 +9,18 @@
     <version>1.0.6</version>
   </parent>
 
-  <groupId>se.riv.ehr.logstore</groupId>
-  <artifactId>ehr-logstore-schemas</artifactId>
+  <groupId>se.inera.intyg.insuranceprocess.healthreporting</groupId>
+  <artifactId>insuranceprocess-healthreporting-schemas</artifactId>
   <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>RIVTA Schemas (EHR Log Store)</name>
+  <name>Intyg Schemas (Insuranceprocess Healthreporting)</name>
 
   <properties>
     <schemas-common.version>0-SNAPSHOT</schemas-common.version>
-    <schemas-common.version.range>(,2.2.0]</schemas-common.version.range>
+    <schemas-common.version.range>(,2.1.0]</schemas-common.version.range>
 
-    <schemas.directory>${basedir}/schemas/core_components</schemas.directory>
+    <schema.directory>${basedir}/schemas/core_components</schema.directory>
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
   </properties>
 
@@ -59,13 +58,21 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>schemas</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
         <configuration>
           <includeProperties>
-            schemas-common.version.range
+            schemas-common.version
           </includeProperties>
           <properties>
             <property>
@@ -93,24 +100,75 @@
                 </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:ehr:log:1=se.riv.ehr.log.v1</extraarg>
+                  <extraarg>urn:iso:21090:dt:1=iso.v21090.dt.v1</extraarg>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:ehr:log:store:1=se.riv.ehr.log.store.v1</extraarg>
+                  <extraarg>http://www.w3.org/2005/08/addressing=org.w3.wsaddressing10</extraarg>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
+                  <extraarg>urn:riv:insuranceprocess:certificate:1=se.inera.ifv.insuranceprocess.certificate.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:insuranceprocess:healthreporting:2=se.inera.ifv.insuranceprocess.healthreporting.v2</extraarg>
                 </extraargs>
               </defaultOptions>
 
               <wsdlOptions>
+
                 <wsdlOption>
-                  <wsdl>${wsdl.directory}/StoreLogInteraction/StoreLogInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                  <wsdl>
+                    ${wsdl.directory}/GetCertificateContent/GetCertificateContentInteraction_1.0_rivtabp20.wsdl
+                  </wsdl>
                   <packagenames>
-                    <packagename>urn:riv:ehr:log:store:StoreLog:1:rivtabp21=se.riv.ehr.log.store.storelog.rivtabp21.v1</packagename>
-                    <packagename>urn:riv:ehr:log:store:StoreLogResponder:1=se.riv.ehr.log.store.storelogresponder.v1</packagename>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:GetCertificateContent=se.inera.intyg.insuranceprocess.healthreporting.getcertificatecontent.rivtabp20.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:GetCertificateContentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getcertificatecontentresponder.v1
+                    </packagename>
                   </packagenames>
                 </wsdlOption>
-              </wsdlOptions>
 
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/GetConsentInteraction/GetConsentInteraction_1.0_rivtabp20.wsdl
+                  </wsdl>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:GetConsent:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.getconsent.rivtabp20.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:GetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getconsentresponder.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/SetCertificateArchivedInteraction/SetCertificateArchivedInteraction_1.0_rivtabp20.wsdl
+                  </wsdl>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:SetCertificateArchived:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.setcertificatearchived.rivtabp20.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:SetCertificateArchivedResponder:1=se.inera.intyg.insuranceprocess.healthreporting.setcertificatearchivedresponder.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/SetConsentInteraction/SetConsentInteraction_1.0_rivtabp20.wsdl
+                  </wsdl>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:SetConsent:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.setconsent.rivtabp20.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:insuranceprocess:healthreporting:SetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.setconsentresponder.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+              </wsdlOptions>
             </configuration>
           </execution>
         </executions>

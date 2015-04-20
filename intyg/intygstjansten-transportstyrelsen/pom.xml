@@ -1,6 +1,5 @@
-<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -10,18 +9,18 @@
     <version>1.0.6</version>
   </parent>
 
-  <groupId>se.riv.ehr.logstore</groupId>
-  <artifactId>ehr-logstore-schemas</artifactId>
+  <groupId>se.inera.intyg.transportstyrelsen</groupId>
+  <artifactId>transportstyrelsen-schemas</artifactId>
   <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>RIVTA Schemas (EHR Log Store)</name>
+  <name>Intyg Schemas (Transportstyrelsen)</name>
 
   <properties>
     <schemas-common.version>0-SNAPSHOT</schemas-common.version>
-    <schemas-common.version.range>(,2.2.0]</schemas-common.version.range>
+    <schemas-common.version.range>(,2.1.0]</schemas-common.version.range>
 
-    <schemas.directory>${basedir}/schemas/core_components</schemas.directory>
+    <schema.directory>${basedir}/schemas/core_components</schema.directory>
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
   </properties>
 
@@ -59,13 +58,21 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>schemas</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>versions-maven-plugin</artifactId>
         <configuration>
           <includeProperties>
-            schemas-common.version.range
+            schemas-common.version
           </includeProperties>
           <properties>
             <property>
@@ -93,24 +100,71 @@
                 </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:ehr:log:1=se.riv.ehr.log.v1</extraarg>
-                  <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:ehr:log:store:1=se.riv.ehr.log.store.v1</extraarg>
-                  <extraarg>-p</extraarg>
                   <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:local:se:intygstjanster:services:1=se.inera.intygstjanster.ts.services.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:local:se:intygstjanster:services:types:1=se.inera.intygstjanster.ts.services.types.v1</extraarg>
                 </extraargs>
               </defaultOptions>
 
               <wsdlOptions>
                 <wsdlOption>
-                  <wsdl>${wsdl.directory}/StoreLogInteraction/StoreLogInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                  <wsdl>
+                    ${wsdl.directory}/GetTSBasInteraction/GetTSBasInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
                   <packagenames>
-                    <packagename>urn:riv:ehr:log:store:StoreLog:1:rivtabp21=se.riv.ehr.log.store.storelog.rivtabp21.v1</packagename>
-                    <packagename>urn:riv:ehr:log:store:StoreLogResponder:1=se.riv.ehr.log.store.storelogresponder.v1</packagename>
+                    <packagename>
+                      urn:local:se:intygstjanster:services:GetTSBasResponder:1=se.inera.intygstjanster.ts.services.GetTSBasResponder.v1
+                    </packagename>
+                    <packagename>
+                      urn:local:se:intygstjanster:services:GetTSBas:1:rivtabp21=se.inera.intygstjanster.ts.services.GetTSBasResponder.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/RegisterTSBasInteraction/RegisterTSBasInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <packagenames>
+                    <packagename>
+                      urn:local:se:intygstjanster:services:RegisterTSBasResponder:1=se.inera.intygstjanster.ts.services.RegisterTSBasResponder.v1
+                    </packagename>
+                    <packagename>
+                      urn:local:se:intygstjanster:services:RegisterTSBas:1:rivtabp21=se.inera.intygstjanster.ts.services.RegisterTSBasResponder.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/GetTSDiabetesInteraction/GetTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <packagenames>
+                    <packagename>
+                      urn:local:se:intygstjanster:services:GetTSDiabetesResponder:1=se.inera.intygstjanster.ts.services.GetTSDiabetesResponder.v1
+                    </packagename>
+                    <packagename>
+                      urn:local:se:intygstjanster:services:GetTSDiabetes:1:rivtabp21=se.inera.intygstjanster.ts.services.GetTSDiabetesResponder.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/RegisterTSDiabetesInteraction/RegisterTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <packagenames>
+                    <packagename>
+                      urn:local:se:intygstjanster:services:RegisterTSDiabetesResponder:1=se.inera.intygstjanster.ts.services.RegisterTSDiabetesResponder.v1
+                    </packagename>
+                    <packagename>
+                      urn:local:se:intygstjanster:services:RegisterTSDiabetes:1:rivtabp21=se.inera.intygstjanster.ts.services.RegisterTSDiabetesResponder.v1
+                    </packagename>
                   </packagenames>
                 </wsdlOption>
               </wsdlOptions>
-
             </configuration>
           </execution>
         </executions>
@@ -129,6 +183,7 @@
             </goals>
             <configuration>
               <sources>
+                <source>target/generated-sources/xjc</source>
                 <source>target/generated-sources/cxf</source>
               </sources>
             </configuration>

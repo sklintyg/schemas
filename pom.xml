@@ -113,7 +113,9 @@
         <module>rivta/ehr-logstore</module>
         <module>rivta/insuranceprocess-healthreporting</module>
         <module>rivta/clinicalprocess-healthcond-certificate</module>
-        <module>intyg/transportstyrelsen</module>
+        <module>intyg/intygstjansten-insuranceprocess-healthreporting</module>
+        <module>intyg/intygstjansten-clinicalprocess-healthcond-certificate</module>
+        <module>intyg/intygstjansten-transportstyrelsen</module>
       </modules>
     </profile>
   </profiles>
