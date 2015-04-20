@@ -122,7 +122,7 @@
                   </wsdl>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:GetCertificate:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.getcertificate.rivtab20.v1
+                      urn:riv:insuranceprocess:healthreporting:GetCertificate:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.getcertificate.rivtabp20.v1
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:GetCertificateResponder:1=se.inera.ifv.insuranceprocess.healthreporting.getcertificateresponder.v1
@@ -136,7 +136,7 @@
                   </wsdl>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:ListCertificates:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.listcertificates.rivtab20.v1
+                      urn:riv:insuranceprocess:healthreporting:ListCertificates:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.listcertificates.rivtabp20.v1
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:ListCertificatesResponder:1=se.inera.ifv.insuranceprocess.healthreporting.listcertificatesresponder.v1
@@ -150,7 +150,7 @@
                   </wsdl>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:RegisterMedicalCertificate:3:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.registermedicalcertificate.rivtab20.v3
+                      urn:riv:insuranceprocess:healthreporting:RegisterMedicalCertificate:3:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.registermedicalcertificate.rivtabp20.v3
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:RegisterMedicalCertificateResponder:3=se.inera.ifv.insuranceprocess.healthreporting.registermedicalcertificateresponder.v3
@@ -164,7 +164,7 @@
                   </wsdl>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:RevokeMedicalCertificate:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.revokemedicalcertificate.rivtab20.v1
+                      urn:riv:insuranceprocess:healthreporting:RevokeMedicalCertificate:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.revokemedicalcertificate.rivtabp20.v1
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:RevokeMedicalCertificateResponder:1=se.inera.ifv.insuranceprocess.healthreporting.revokemedicalcertificateresponder.v1
@@ -178,7 +178,7 @@
                   </wsdl>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SendMedicalCertificateAnswer:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.sendmedicalcertificateanswer.rivtab20.v1
+                      urn:riv:insuranceprocess:healthreporting:SendMedicalCertificateAnswer:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.sendmedicalcertificateanswer.rivtabp20.v1
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:SendMedicalCertificateAnswerResponder:1=se.inera.ifv.insuranceprocess.healthreporting.sendmedicalcertificateanswerresponder.v1
@@ -192,7 +192,7 @@
                   </wsdl>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SendMedicalCertificate:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.sendmedicalcertificate.rivtab20.v1
+                      urn:riv:insuranceprocess:healthreporting:SendMedicalCertificate:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.sendmedicalcertificate.rivtabp20.v1
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:SendMedicalCertificateResponder:1=se.inera.ifv.insuranceprocess.healthreporting.sendmedicalcertificateresponder.v1
@@ -206,7 +206,7 @@
                   </wsdl>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SendMedicalCertificateQuestion:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.sendmedicalcertificatequestion.rivtab20.v1
+                      urn:riv:insuranceprocess:healthreporting:SendMedicalCertificateQuestion:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.sendmedicalcertificatequestion.rivtabp20.v1
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:SendMedicalCertificateQuestionResponder:1=se.inera.ifv.insuranceprocess.healthreporting.sendmedicalcertificatequestionresponder.v1
@@ -220,7 +220,7 @@
                   </wsdl>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SetCertificateStatus:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.setcertificatestatus.rivtab20.v1
+                      urn:riv:insuranceprocess:healthreporting:SetCertificateStatus:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.setcertificatestatus.rivtabp20.v1
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:SetCertificateStatusResponder:1=se.inera.ifv.insuranceprocess.healthreporting.setcertificatestatusresponder.v1
@@ -234,7 +234,7 @@
                   </wsdl>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:ReceiveMedicalCertificateAnswer:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.receivemedicalcertificateanswer.rivtab20.v1
+                      urn:riv:insuranceprocess:healthreporting:ReceiveMedicalCertificateAnswer:1:rivtabp20=se.inera.ifv.insuranceprocess.healthreporting.receivemedicalcertificateanswer.rivtabp20.v1
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:ReceiveMedicalCertificateAnswerResponder:1=se.inera.ifv.insuranceprocess.healthreporting.receivemedicalcertificateanswerresponder.v1
