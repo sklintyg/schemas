@@ -18,7 +18,7 @@
 
   <properties>
     <schemas-common.version>0-SNAPSHOT</schemas-common.version>
-    <schemas-common.version.range>(,2.1.0]</schemas-common.version.range>
+    <schemas-common.version.range>(,2.2.0]</schemas-common.version.range>
 
     <schema.directory>${basedir}/schemas/core_components</schema.directory>
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
