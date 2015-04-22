@@ -13,7 +13,7 @@
     <xs:complexType name="TSBasIntyg">
       <xs:sequence>
         <xs:element name="intygsId" type="xs:string"/>
-        <xs:element name="intygsTyp" type="xs:string" fixed="TSTRK1007 (U06, V06)"/>
+        <xs:element name="intygsTyp" type="xs:string" fixed="ts-bas"/>
         <xs:element name="version" type="xs:string"/>
         <xs:element name="utgava" type="xs:string"/>
         <xs:element name="grundData" type="GrundData"/>
@@ -44,7 +44,7 @@
   <xs:complexType name="TSDiabetesIntyg">
     <xs:sequence>
       <xs:element name="intygsId" type="xs:string"/>
-      <xs:element name="intygsTyp" type="xs:string" fixed="TSTRK1031 (U06, V06)"/>
+      <xs:element name="intygsTyp" type="xs:string" fixed="ts-diabetes"/>
       <xs:element name="version" type="xs:string"/>
       <xs:element name="utgava" type="xs:string"/>
       <xs:element name="grundData" type="GrundData"/>
