@@ -11,13 +11,13 @@
 
   <groupId>se.inera.intyg.transportstyrelsen</groupId>
   <artifactId>transportstyrelsen-schemas</artifactId>
-  <version>1.0.0-b4</version>
+  <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Intyg Schemas (Transportstyrelsen)</name>
 
   <properties>
-    <schemas-common.version>2.1.0-RC3</schemas-common.version>
+    <schemas-common.version>0-SNAPSHOT</schemas-common.version>
     <schemas-common.version.range>(,2.1.0]</schemas-common.version.range>
 
     <schema.directory>${basedir}/schemas/core_components</schema.directory>
