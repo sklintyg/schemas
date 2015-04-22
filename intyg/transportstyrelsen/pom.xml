@@ -113,6 +113,9 @@
                   <wsdl>
                     ${wsdl.directory}/GetTSBasInteraction/GetTSBasInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/GetTSBasInteraction/GetTSBasInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
                       urn:local:se:intygstjanster:services:GetTSBasResponder:1=se.inera.intygstjanster.ts.services.GetTSBasResponder.v1
@@ -127,6 +130,9 @@
                   <wsdl>
                     ${wsdl.directory}/RegisterTSBasInteraction/RegisterTSBasInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/RegisterTSBasInteraction/RegisterTSBasInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
                       urn:local:se:intygstjanster:services:RegisterTSBasResponder:1=se.inera.intygstjanster.ts.services.RegisterTSBasResponder.v1
@@ -141,6 +147,9 @@
                   <wsdl>
                     ${wsdl.directory}/GetTSDiabetesInteraction/GetTSDiabetesInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/GetTSDiabetesInteraction/GetTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
                       urn:local:se:intygstjanster:services:GetTSDiabetesResponder:1=se.inera.intygstjanster.ts.services.GetTSDiabetesResponder.v1
@@ -155,6 +164,9 @@
                   <wsdl>
                     ${wsdl.directory}/RegisterTSDiabetesInteraction/RegisterTSDiabetesInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/RegisterTSDiabetesInteraction/RegisterTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
                       urn:local:se:intygstjanster:services:RegisterTSDiabetesResponder:1=se.inera.intygstjanster.ts.services.RegisterTSDiabetesResponder.v1
