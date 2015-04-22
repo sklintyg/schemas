@@ -98,7 +98,6 @@
               <defaultOptions>
                 <bindingFiles>
                   <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
-                  <!--<bindingFile>${basedir}/clinicalprocess-healthcond-certificate/bindings/bindings.xjb</bindingFile>-->
                 </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
