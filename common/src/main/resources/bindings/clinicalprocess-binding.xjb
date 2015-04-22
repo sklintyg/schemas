@@ -1,0 +1,17 @@
+<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+  xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:c="urn:riv:clinicalprocess:healthcond:certificate:types:1"
+  jaxb:extensionBindingPrefixes="xjc"
+  jaxb:version="2.1">
+
+  <jaxb:globalBindings collectionType="java.util.ArrayList" generateValueClass="true">
+    <xjc:javaType name="org.joda.time.LocalDate" xmlType="c:Datum" adapter="se.inera.certificate.schema.adapter.xml.IsoDateXmlAdapter" />
+    <xjc:javaType name="org.joda.time.LocalDateTime" xmlType="c:TidStampel" adapter="se.inera.certificate.schema.adapter.xml.IsoDateTimeXmlAdapter" />
+    <xjc:javaType name="org.joda.time.Partial" xmlType="c:PartielltDatum" adapter="se.inera.certificate.schema.adapter.xml.PartialDateXmlAdapter" />
+    <xjc:javaType name="org.joda.time.LocalDateTime" xmlType="c:TidStampelMedMillisekunder" adapter="se.inera.certificate.schema.adapter.xml.LocalDateTimeWithMillisXmlAdapter" />
+    <xjc:javaType name="org.joda.time.LocalDate" xmlType="xs:date" adapter="se.inera.certificate.schema.adapter.xml.LocalDateXmlAdapter" />
+    <xjc:javaType name="org.joda.time.LocalDateTime" xmlType="xs:dateTime" adapter="se.inera.certificate.schema.adapter.xml.LocalDateTimeXmlAdapter" />
+  </jaxb:globalBindings>
+
+</jaxb:bindings>
