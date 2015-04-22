@@ -6,7 +6,7 @@
 
   <parent>
     <groupId>se.inera.intyg.schemas</groupId>
-    <version>2.2.0-b15</version>
+    <version>0-SNAPSHOT</version>
     <artifactId>schemas</artifactId>
   </parent>
 
