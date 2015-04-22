@@ -11,13 +11,13 @@
 
   <groupId>se.inera.intyg.insuranceprocess.healthreporting</groupId>
   <artifactId>insuranceprocess-healthreporting-schemas</artifactId>
-  <version>0-SNAPSHOT</version>
+  <version>1.1.0-b2</version>
   <packaging>jar</packaging>
 
   <name>Intyg Schemas (Insuranceprocess Healthreporting)</name>
 
   <properties>
-    <schemas-common.version>0-SNAPSHOT</schemas-common.version>
+    <schemas-common.version>2.1.0-RC3</schemas-common.version>
     <schemas-common.version.range>(,2.1.0]</schemas-common.version.range>
 
     <schema.directory>${basedir}/schemas/core_components</schema.directory>
