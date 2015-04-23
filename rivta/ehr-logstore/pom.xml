@@ -104,6 +104,9 @@
               <wsdlOptions>
                 <wsdlOption>
                   <wsdl>${wsdl.directory}/StoreLogInteraction/StoreLogInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/StoreLogInteraction/StoreLogInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>urn:riv:ehr:log:store:StoreLog:1:rivtabp21=se.riv.ehr.log.store.storelog.rivtabp21.v1</packagename>
                     <packagename>urn:riv:ehr:log:store:StoreLogResponder:1=se.riv.ehr.log.store.storelogresponder.v1</packagename>

@@ -22,7 +22,6 @@
     <schemas-common.version.range>(,2.2.0]</schemas-common.version.range>
 
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
-    <wsdl.directory.internal>${basedir}/schemas/interactions-internal</wsdl.directory.internal>
   </properties>
 
   <dependencyManagement>
@@ -98,7 +97,6 @@
               <defaultOptions>
                 <bindingFiles>
                   <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
-                  <!--<bindingFile>${basedir}/clinicalprocess-healthcond-certificate/bindings/bindings.xjb</bindingFile>-->
                 </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
@@ -115,6 +113,9 @@
                   <wsdl>
                     ${wsdl.directory}/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
                       urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:1=se.riv.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v1
@@ -129,6 +130,9 @@
                   <wsdl>
                     ${wsdl.directory}/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
                       urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.createdraftcertificateresponder.v1
@@ -143,6 +147,9 @@
                   <wsdl>
                     ${wsdl.directory}/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
                       urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v1
@@ -157,6 +164,9 @@
                   <wsdl>
                     ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
                       urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificate:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v1

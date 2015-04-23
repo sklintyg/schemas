@@ -9,16 +9,16 @@
     <version>1.0.6</version>
   </parent>
 
-  <groupId>se.inera.intyg.insuranceprocess.healthreporting</groupId>
-  <artifactId>insuranceprocess-healthreporting-schemas</artifactId>
+  <groupId>se.inera.intyg.transportstyrelsen</groupId>
+  <artifactId>transportstyrelsen-schemas</artifactId>
   <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>Intyg Schemas (Insuranceprocess Healthreporting)</name>
+  <name>Intyg Schemas (Transportstyrelsen)</name>
 
   <properties>
     <schemas-common.version>0-SNAPSHOT</schemas-common.version>
-    <schemas-common.version.range>(,2.1.0]</schemas-common.version.range>
+    <schemas-common.version.range>(,2.2.0]</schemas-common.version.range>
 
     <schema.directory>${basedir}/schemas/core_components</schema.directory>
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
@@ -100,74 +100,82 @@
                 </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:iso:21090:dt:1=iso.v21090.dt.v1</extraarg>
+                  <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
                   <extraarg>-p</extraarg>
-                  <extraarg>http://www.w3.org/2005/08/addressing=org.w3.wsaddressing10</extraarg>
+                  <extraarg>urn:local:se:intygstjanster:services:1=se.inera.intygstjanster.ts.services.v1</extraarg>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:insuranceprocess:certificate:1=se.inera.ifv.insuranceprocess.certificate.v1</extraarg>
-                  <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:insuranceprocess:healthreporting:2=se.inera.ifv.insuranceprocess.healthreporting.v2</extraarg>
+                  <extraarg>urn:local:se:intygstjanster:services:types:1=se.inera.intygstjanster.ts.services.types.v1</extraarg>
                 </extraargs>
               </defaultOptions>
 
               <wsdlOptions>
-
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/GetCertificateContent/GetCertificateContentInteraction_1.0_rivtabp20.wsdl
+                    ${wsdl.directory}/GetTSBasInteraction/GetTSBasInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/GetTSBasInteraction/GetTSBasInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:GetCertificateContent=se.inera.intyg.insuranceprocess.healthreporting.getcertificatecontent.rivtabp20.v1
+                      urn:local:se:intygstjanster:services:GetTSBasResponder:1=se.inera.intygstjanster.ts.services.GetTSBasResponder.v1
                     </packagename>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:GetCertificateContentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getcertificatecontentresponder.v1
+                      urn:local:se:intygstjanster:services:GetTSBas:1:rivtabp21=se.inera.intygstjanster.ts.services.GetTSBasResponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
 
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/GetConsentInteraction/GetConsentInteraction_1.0_rivtabp20.wsdl
+                    ${wsdl.directory}/RegisterTSBasInteraction/RegisterTSBasInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/RegisterTSBasInteraction/RegisterTSBasInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:GetConsent:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.getconsent.rivtabp20.v1
+                      urn:local:se:intygstjanster:services:RegisterTSBasResponder:1=se.inera.intygstjanster.ts.services.RegisterTSBasResponder.v1
                     </packagename>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:GetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getconsentresponder.v1
+                      urn:local:se:intygstjanster:services:RegisterTSBas:1:rivtabp21=se.inera.intygstjanster.ts.services.RegisterTSBasResponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
 
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/SetCertificateArchivedInteraction/SetCertificateArchivedInteraction_1.0_rivtabp20.wsdl
+                    ${wsdl.directory}/GetTSDiabetesInteraction/GetTSDiabetesInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/GetTSDiabetesInteraction/GetTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SetCertificateArchived:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.setcertificatearchived.rivtabp20.v1
+                      urn:local:se:intygstjanster:services:GetTSDiabetesResponder:1=se.inera.intygstjanster.ts.services.GetTSDiabetesResponder.v1
                     </packagename>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SetCertificateArchivedResponder:1=se.inera.intyg.insuranceprocess.healthreporting.setcertificatearchivedresponder.v1
+                      urn:local:se:intygstjanster:services:GetTSDiabetes:1:rivtabp21=se.inera.intygstjanster.ts.services.GetTSDiabetesResponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
 
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/SetConsentInteraction/SetConsentInteraction_1.0_rivtabp20.wsdl
+                    ${wsdl.directory}/RegisterTSDiabetesInteraction/RegisterTSDiabetesInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/RegisterTSDiabetesInteraction/RegisterTSDiabetesInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SetConsent:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.setconsent.rivtabp20.v1
+                      urn:local:se:intygstjanster:services:RegisterTSDiabetesResponder:1=se.inera.intygstjanster.ts.services.RegisterTSDiabetesResponder.v1
                     </packagename>
                     <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.setconsentresponder.v1
+                      urn:local:se:intygstjanster:services:RegisterTSDiabetes:1:rivtabp21=se.inera.intygstjanster.ts.services.RegisterTSDiabetesResponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
-
               </wsdlOptions>
             </configuration>
           </execution>
@@ -187,6 +195,7 @@
             </goals>
             <configuration>
               <sources>
+                <source>target/generated-sources/xjc</source>
                 <source>target/generated-sources/cxf</source>
               </sources>
             </configuration>
