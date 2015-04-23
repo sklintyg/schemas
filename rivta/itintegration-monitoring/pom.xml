@@ -6,7 +6,7 @@
   <parent>
     <groupId>se.inera.intyg.common</groupId>
     <artifactId>common-pom</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
   </parent>
 
   <groupId>se.riv.itintegration.monitoring</groupId>
@@ -15,6 +15,10 @@
   <packaging>jar</packaging>
 
   <name>RIVTA Schemas (IT Integration and Monitoring)</name>
+
+  <scm>
+    <connection>scm:git:git@github.com:sklintyg/schemas.git</connection>
+  </scm>
 
   <properties>
     <schemas-common.version>0-SNAPSHOT</schemas-common.version>

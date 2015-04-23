@@ -5,15 +5,21 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>se.inera.intyg.schemas</groupId>
-    <version>0-SNAPSHOT</version>
-    <artifactId>schemas</artifactId>
+    <groupId>se.inera.intyg.common</groupId>
+    <artifactId>common-pom</artifactId>
+    <version>1.0.7</version>
   </parent>
 
+  <groupId>se.inera.intyg.schemas</groupId>
   <artifactId>schemas-common</artifactId>
+  <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>Intyg Schemas (common)</name>
+
+  <scm>
+    <connection>scm:git:git@github.com:sklintyg/schemas.git</connection>
+  </scm>
 
   <dependencies>
     <dependency>
@@ -21,5 +27,38 @@
       <artifactId>joda-time</artifactId>
     </dependency>
   </dependencies>
+
+  <repositories>
+    <repository>
+      <id>callista-release</id>
+      <url>http://repository-callistasoftware.forge.cloudbees.com/release/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>callista-snapshot</id>
+      <url>http://repository-callistasoftware.forge.cloudbees.com/snapshot/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>thirdparty</id>
+      <url>http://repository-callistasoftware.forge.cloudbees.com/3rdparty</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 
 </project>
