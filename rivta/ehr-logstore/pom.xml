@@ -12,7 +12,7 @@
 
   <groupId>se.riv.ehr.logstore</groupId>
   <artifactId>ehr-logstore-schemas</artifactId>
-  <version>0-SNAPSHOT</version>
+  <version>1.2.0</version>
   <packaging>jar</packaging>
 
   <name>RIVTA Schemas (EHR Log Store)</name>
@@ -22,27 +22,16 @@
   </scm>
 
   <properties>
-    <schemas-common.version>0-SNAPSHOT</schemas-common.version>
-    <schemas-common.version.range>(,2.2.0]</schemas-common.version.range>
-
+    <schemas-support.version>1.0.0</schemas-support.version>
     <schemas.directory>${basedir}/schemas/core_components</schemas.directory>
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
   </properties>
 
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>se.inera.intyg.schemas</groupId>
-        <artifactId>schemas-common</artifactId>
-        <version>${schemas-common.version}</version>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>se.inera.intyg.schemas</groupId>
-      <artifactId>schemas-common</artifactId>
+      <artifactId>schemas-support</artifactId>
+      <version>${schemas-support.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.cxf</groupId>
@@ -63,23 +52,15 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>schemas</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
     <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>versions-maven-plugin</artifactId>
-        <configuration>
-          <includeProperties>
-            schemas-common.version.range
-          </includeProperties>
-          <properties>
-            <property>
-              <name>schemas-common.version</name>
-              <version>${schemas-common.version.range}</version>
-            </property>
-          </properties>
-        </configuration>
-      </plugin>
-
       <plugin>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-codegen-plugin</artifactId>
