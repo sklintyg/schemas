@@ -12,11 +12,13 @@
   <name>Intyg Schemas</name>
 
   <modules>
+    <!-- Bygg inte dessa som del av develop-byggen, då de har fixerad version och livscykel
     <module>support</module>
     <module>rivta/itintegration-monitoring</module>
     <module>rivta/ehr-logstore</module>
     <module>rivta/insuranceprocess-healthreporting</module>
     <module>rivta/clinicalprocess-healthcond-certificate</module>
+     -->
     <module>intyg/transportstyrelsen</module>
     <module>intyg/insuranceprocess-healthreporting</module>
     <module>intyg/clinicalprocess-healthcond-certificate</module>
