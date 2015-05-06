@@ -10,11 +10,12 @@
     </parent>
 
     <groupId>se.rivta.tools</groupId>
-    <artifactId>infrastructure-directory-employee</artifactId>
+    <artifactId>infrastructure-directory-employee-schemas</artifactId>
 
     <packaging>jar</packaging>
-    <version>1.0</version>
-    <name>HSA-schemas (infrastructure-directory-employee-schemas)</name>
+    <version>1.0.0</version>
+
+    <name>HSA Schemas (Infrastructure Directory Employee)</name>
 
     <scm>
         <connection>scm:git:git@github.com:sklintyg/schemas.git</connection>
@@ -51,6 +52,14 @@
 
 
     <build>
+	    <resources>
+	      <resource>
+	        <directory>schemas</directory>
+	        <includes>
+	          <include>**/*</include>
+	        </includes>
+	      </resource>
+	    </resources>
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -87,56 +96,55 @@
                 <executions>
                     <execution>
                         <id>generate-sources</id>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
                         <phase>generate-sources</phase>
                         <configuration>
-                            <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+  			              	<defaultOptions>
+  			                	<bindingFiles>
+  			                  	  <bindingFile>classpath:/bindings/general-binding.xjb</bindingFile>
+  			                	</bindingFiles>
+				                <extraargs>
+                                    <extraarg>-p</extraarg>
+                                    <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
+                                    <extraarg>-p</extraarg>
+                                    <extraarg>urn:riv:infrastructure:directory:1=se.riv.infrastructure.directory.v1</extraarg>
+                                    <extraarg>-p</extraarg>
+                                    <extraarg>urn:riv:infrastructure:directory:employee:1=se.riv.infrastructure.directory.employee.v1</extraarg>
+				                </extraargs>
+  			              	</defaultOptions>
                             <wsdlOptions>
                                 <wsdloption>
                                     <wsdl>${wsdl.directory}/GetEmployeeIncludingProtectedPersonInteraction/GetEmployeeIncludingProtectedPersonInteraction_1.0_RIVTABP21.wsdl</wsdl>
+				                    <wsdlLocation>classpath:interactions/GetEmployeeIncludingProtectedPersonInteraction/GetEmployeeIncludingProtectedPersonInteraction_1.0_RIVTABP21.wsdl</wsdlLocation>
                                     <extraargs>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://www.w3.org/2005/08/addressing=org.w3c.addressing.v1</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:riv:infrastructure:directory:employee:GetEmployeeIncludingProtectedPersonResponder:1=se.riv.infrastructure.directory.employee.getemployeeincludingprotectedpersonresponder.v1</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:riv:infrastructure:directory:employee:GetEmployeeIncludingProtectedPersonInitiator:1=se.riv.infrastructure.directory.employee.getemployeeincludingprotectedpersoninitiator.v1</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:riv:infrastructure:directory:employee:GetEmployeeIncludingProtectedPerson:1:rivtabp21=se.riv.infrastructure.directory.employee.getemployeeincludingprotectedperson.v1.rivtabp21</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>urn:riv:infrastructure:directory:1=se.riv.infrastructure.directory.v1</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>urn:riv:infrastructure:directory:employee:1=se.riv.infrastructure.directory.employee.v1</extraarg>
                                     </extraargs>
                                 </wsdloption>
                                 <wsdloption>
                                     <wsdl>${wsdl.directory}/GetEmployeeInteraction/GetEmployeeInteraction_1.0_RIVTABP21.wsdl</wsdl>
+				                    <wsdlLocation>classpath:interactions/GetEmployeeInteraction/GetEmployeeInteraction_1.0_RIVTABP21.wsdl</wsdlLocation>
                                     <extraargs>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>http://www.w3.org/2005/08/addressing=org.w3c.addressing.v1</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:riv:infrastructure:directory:employee:GetEmployeeResponder:1=se.riv.infrastructure.directory.employee.getemployeeresponder.v1</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:riv:infrastructure:directory:employee:GetEmployeeInitiator:1=se.riv.infrastructure.directory.employee.getemployeeinitiator.v1</extraarg>
                                         <extraarg>-p</extraarg>
                                         <extraarg>urn:riv:infrastructure:directory:employee:GetEmployee:1:rivtabp21=se.riv.infrastructure.directory.employee.getemployee.v1.rivtabp21</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>urn:riv:infrastructure:directory:1=se.riv.infrastructure.directory.v1</extraarg>
-                                        <extraarg>-p</extraarg>
-                                        <extraarg>urn:riv:infrastructure:directory:employee:1=se.riv.infrastructure.directory.employee.v1</extraarg>
                                     </extraargs>
                                 </wsdloption>
                             </wsdlOptions>
                         </configuration>
-                        <goals>
-                            <goal>wsdl2java</goal>
-                        </goals>
                     </execution>
                 </executions>
             </plugin>
+
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
@@ -144,8 +152,30 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
+			
+	        <plugin>
+	          <groupId>org.codehaus.mojo</groupId>
+	          <artifactId>build-helper-maven-plugin</artifactId>
+	          <version>${buildnumber-maven-plugin.version}</version>
+	          <executions>
+	            <execution>
+	              <id>add-source</id>
+	              <phase>generate-sources</phase>
+	              <goals>
+	                <goal>add-source</goal>
+	              </goals>
+	              <configuration>
+	                <sources>
+	                  <source>target/generated-sources/cxf</source>
+	                </sources>
+	              </configuration>
+	            </execution>
+	          </executions>
+	        </plugin>
+			
         </plugins>
     </build>
+	
     <repositories>
         <repository>
             <id>callista-release</id>
