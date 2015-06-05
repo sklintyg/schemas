@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCareResponder:1"
+    xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCareResponder:1"
+    xmlns:pref1="urn:riv:clinicalprocess:healthcond:certificate:1"
+    xmlns:mu7263="urn:riv:insuranceprocess:healthreporting:mu7263:3"
+    elementFormDefault="qualified">
+
+    <import schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_1.0.xsd" namespace="urn:riv:clinicalprocess:healthcond:certificate:1" />
+    <import schemaLocation="../../core_components/MU7263-RIV_3.1.xsd" namespace="urn:riv:insuranceprocess:healthreporting:mu7263:3" />
+    
+    <element name="GetMedicalCertificateForCareRequest" type="tns:GetMedicalCertificateForCareRequestType" />
+    <complexType name="GetMedicalCertificateForCareRequestType">
+        <sequence>
+            <element name="certificateId" type="string" minOccurs="1" maxOccurs="1" />
+            <element name="nationalIdentityNumber" type="string" minOccurs="1" maxOccurs="1" />
+            <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+
+    <element name="GetMedicalCertificateForCareResponse" type="tns:GetMedicalCertificateForCareResponseType" />
+    <complexType name="GetMedicalCertificateForCareResponseType">
+        <sequence>
+            <element name="meta" type="pref1:CertificateMetaType" minOccurs="0" maxOccurs="1" />
+            <element name="lakarutlatande" type="mu7263:lakarutlatandeType" minOccurs="0" maxOccurs="1"/>
+            <element name="result" type="pref1:ResultType" minOccurs="0" maxOccurs="1" />
+            <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+</schema>

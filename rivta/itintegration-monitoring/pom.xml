@@ -1,0 +1,164 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>se.inera.intyg.common</groupId>
+    <artifactId>common-pom</artifactId>
+    <version>1.0.7</version>
+  </parent>
+
+  <groupId>se.riv.itintegration.monitoring</groupId>
+  <artifactId>itintegration-monitoring-schemas</artifactId>
+  <version>1.0.0.0</version>
+  <packaging>jar</packaging>
+
+  <name>RIVTA Schemas (IT Integration and Monitoring)</name>
+
+  <scm>
+    <connection>scm:git:git@github.com:sklintyg/schemas.git</connection>
+  </scm>
+
+  <properties>
+    <schemas-support.version>1.0.0</schemas-support.version>
+    <schemas.directory>${basedir}/schemas/core_components</schemas.directory>
+    <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>se.inera.intyg.schemas</groupId>
+      <artifactId>schemas-support</artifactId>
+      <version>${schemas-support.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-frontend-jaxws</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-transports-http</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.jaxb2_commons</groupId>
+      <artifactId>jaxb2-basics-runtime</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>schemas</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-codegen-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>wsdl2java-external-interfaces</id>
+            <goals>
+              <goal>wsdl2java</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <defaultOptions>
+                <bindingFiles>
+                  <bindingFile>classpath:/bindings/general-binding.xjb</bindingFile>
+                </bindingFiles>
+                <extraargs>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:itintegration:monitoring:1=se.riv.itintegration.monitoring.v1</extraarg>
+                </extraargs>
+              </defaultOptions>
+
+              <wsdlOptions>
+                <wsdlOption>
+                  <wsdl>${wsdl.directory}/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.rivtabp21.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+              </wsdlOptions>
+
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>${buildnumber-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>target/generated-sources/cxf</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>callista-release</id>
+      <url>http://repository-callistasoftware.forge.cloudbees.com/release/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>callista-snapshot</id>
+      <url>http://repository-callistasoftware.forge.cloudbees.com/snapshot/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>thirdparty</id>
+      <url>http://repository-callistasoftware.forge.cloudbees.com/3rdparty</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+</project>
