@@ -108,9 +108,9 @@
                 </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
+                  <extraarg>urn:riv:itintegration:monitoring:1=se.riv.itintegration.monitoring.v1</extraarg>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:infrastructure:directory:1=se.riv.infrastructure.directory.v1</extraarg>
+                  <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
                   <extraarg>-p</extraarg>
                   <extraarg>urn:riv:infrastructure:directory:privatepractitioner:1=se.riv.infrastructure.directory.privatepractitioner.v1
                   </extraarg>
@@ -146,6 +146,22 @@
                     <extraarg>-p</extraarg>
                     <extraarg>
                       urn:riv:infrastructure:directory:privatepractitioner:ValidatePrivatePractitioner:1:rivtabp21=se.riv.infrastructure.directory.privatepractitioner.validateprivatepractitioner.v1.rivtabp21
+                    </extraarg>
+                  </extraargs>
+                </wsdloption>
+                <wsdloption>
+                  <wsdl>${wsdl.directory}/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <extraargs>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.pingforconfigurationresponder.v1
+                    </extraarg>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.pingforconfiguration.v1.rivtabp21
                     </extraarg>
                   </extraargs>
                 </wsdloption>
