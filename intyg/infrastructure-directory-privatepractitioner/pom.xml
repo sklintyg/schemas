@@ -112,7 +112,9 @@
                   <extraarg>-p</extraarg>
                   <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:infrastructure:directory:privatepractitioner:1=se.riv.infrastructure.directory.privatepractitioner.v1
+                  <extraarg>urn:riv:infrastructure:directory:privatepractitioner:1=se.riv.infrastructure.directory.privatepractitioner.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:infrastructure:directory:privatepractitioner:types:1=se.riv.infrastructure.directory.privatepractitioner.types.v1
                   </extraarg>
                 </extraargs>
               </defaultOptions>
