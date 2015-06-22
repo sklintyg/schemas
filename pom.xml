@@ -23,6 +23,7 @@
     <module>intyg/infrastructure-directory-privatepractitioner</module>
     <module>intyg/insuranceprocess-healthreporting</module>
     <module>intyg/clinicalprocess-healthcond-certificate</module>
+    <module>intyg/fk</module>
   </modules>
 
 </project>

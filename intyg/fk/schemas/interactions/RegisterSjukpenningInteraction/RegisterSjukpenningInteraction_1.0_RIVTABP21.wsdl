@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions name='RegisterSjukpenningInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tjsr='urn:local:se:intygstjanster:services:fk:RegisterSjukpenningResponder:1' xmlns:tns='urn:local:se:intygstjanster:services:fk:RegisterSjukpenning:1:rivtabp21' targetNamespace='urn:local:se:intygstjanster:services:fk:RegisterSjukpenning:1:rivtabp21' xmlns:itr='urn:riv:itintegration:registry:1'>
+  <xs:annotation>
+    <xs:documentation>
+			 Tjänsteinteraktionens namn: RegisterSjukpenningInteraction
+			 Beskrivning: 
+			   Registrerar ett sjukpenning-intyg
+			 Revisioner: 
+			 Tjänstedomän: se:intygstjanster:services:fk
+			 Tjänsteinteraktionstyp: Fråga-Svar
+			 WS-profil: RIVTABP21
+			 Förvaltas av: Sveriges Kommuner och Landsting
+			 </xs:documentation>
+  </xs:annotation>
+  <wsdl:types>
+    <xs:schema targetNamespace='urn:local:se:intygstjanster:services:fk:RegisterSjukpenning:1:rivtabp21'>
+      <xs:import schemaLocation='./RegisterSjukpenningResponder_1.0.xsd' namespace='urn:local:se:intygstjanster:services:fk:RegisterSjukpenningResponder:1' />
+      <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd' namespace='urn:riv:itintegration:registry:1' />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name='RegisterSjukpenningRequest'>
+    <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
+      <wsdl:documentation>Not used in local contracts</wsdl:documentation>
+    </wsdl:part>
+    <wsdl:part name='parameters' element='tjsr:RegisterSjukpenning' />
+  </wsdl:message>
+  <wsdl:message name='RegisterSjukpenningResponse'>
+    <wsdl:part name='parameters' element='tjsr:RegisterSjukpenningResponse' />
+  </wsdl:message>
+  <wsdl:portType name='RegisterSjukpenningResponderInterface'>
+    <wsdl:operation name='RegisterSjukpenning'>
+      <wsdl:input message='tns:RegisterSjukpenningRequest' />
+      <wsdl:output message='tns:RegisterSjukpenningResponse' />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name='RegisterSjukpenningResponderBinding' type='tns:RegisterSjukpenningResponderInterface'>
+    <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+    <wsdl:operation name='RegisterSjukpenning'>
+      <soap:operation soapAction='urn:local:se:intygstjanster:services:fk:RegisterSjukpenningResponder:1:RegisterSjukpenning' style='document' />
+      <wsdl:input>
+        <soap:header use='literal' message='tns:RegisterSjukpenningRequest' part='LogicalAddress' />
+        <soap:body use='literal' parts='parameters' />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use='literal' />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name='RegisterSjukpenningResponderService'>
+    <wsdl:port name='RegisterSjukpenningResponderPort' binding='tns:RegisterSjukpenningResponderBinding'>
+      <soap:address location='http://tempuri.org' />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

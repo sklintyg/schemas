@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:tns="urn:local:se:intygstjanster:services:fk:RegisterSjukpenningResponder:1"
+  xmlns:core="urn:local:se:intygstjanster:services:fk:1"
+  targetNamespace="urn:local:se:intygstjanster:services:fk:RegisterSjukpenningResponder:1"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  version="1.0">
+  
+  <xs:import schemaLocation="../../core_components/se_intygstjanster_services_fk_1.0.xsd" namespace="urn:local:se:intygstjanster:services:fk:1" />
+  
+  <xs:element name="RegisterSjukpenning" type="tns:RegisterSjukpenningType" />
+  <xs:element name="RegisterSjukpenningResponse" type="tns:RegisterSjukpenningResponseType" />
+
+  <xs:complexType name="RegisterSjukpenningType">
+    <xs:sequence>
+      <xs:element name="intyg" type="core:SjukpenningIntyg"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+ 
+  <xs:complexType name="RegisterSjukpenningResponseType">
+    <xs:sequence>
+      <xs:element name="resultat" type="core:ResultatTyp" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
