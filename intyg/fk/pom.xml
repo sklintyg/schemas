@@ -95,10 +95,10 @@
                   </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:local:se:intygstjanster:services:GetSjukpenningResponder:1=se.inera.intygstjanster.ts.services.GetSjukpenningResponder.v1
+                      urn:local:se:intygstjanster:services:fk:GetSjukpenningResponder:1=se.inera.intygstjanster.fk.services.getsjukpenningresponder.v1
                     </packagename>
                     <packagename>
-                      urn:local:se:intygstjanster:services:GetSjukpenning:1:rivtabp21=se.inera.intygstjanster.ts.services.GetSjukpenningResponder.v1
+                      urn:local:se:intygstjanster:services:fk:GetSjukpenning:1:rivtabp21=se.inera.intygstjanster.fk.services.getsjukpenningresponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
@@ -112,10 +112,10 @@
                   </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:local:se:intygstjanster:services:RegisterSjukpenningResponder:1=se.inera.intygstjanster.ts.services.RegisterSjukpenningResponder.v1
+                      urn:local:se:intygstjanster:services:fk:RegisterSjukpenningResponder:1=se.inera.intygstjanster.fk.services.registersjukpenningresponder.v1
                     </packagename>
                     <packagename>
-                      urn:local:se:intygstjanster:services:RegisterSjukpenning:1:rivtabp21=se.inera.intygstjanster.ts.services.RegisterSjukpenningResponder.v1
+                      urn:local:se:intygstjanster:services:fk:RegisterSjukpenning:1:rivtabp21=se.inera.intygstjanster.fk.services.registersjukpenningresponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
