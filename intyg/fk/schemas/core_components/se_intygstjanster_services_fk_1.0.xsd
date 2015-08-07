@@ -14,13 +14,13 @@
       <xs:element name="vardKontakter" type="VardkontakterTyp"/>
       <xs:element name="sysselsattning" type="SysselsattningTyp"/>
       <xs:element name="sjukdomar" type="SjukdomarTyp"/>
-      <xs:element name="konsekvenser" type="KonsekvensTyp"/>
-      <xs:element name="behandling" type="BehandlingTyp"/>
-      <xs:element name="bedomning" type="BedomningTyp"/>
-      <xs:element name="kanGora" type="xs:string"/>
-      <xs:element name="prognosAterga" type="xs:string"/>
-      <xs:element name="forslagAtgarder" type="AtgarderTyp"/>
-      <xs:element name="ovrigt" type="xs:string"/>
+      <xs:element name="konsekvenser" type="KonsekvensTyp" minOccurs="0"/>
+      <xs:element name="behandling" type="BehandlingTyp" minOccurs="0"/>
+      <xs:element name="bedomning" type="BedomningTyp" minOccurs="0"/>
+      <xs:element name="kanGora" type="xs:string" minOccurs="0"/>
+      <xs:element name="prognosAterga" type="xs:string" minOccurs="0"/>
+      <xs:element name="forslagAtgarder" type="AtgarderTyp" minOccurs="0"/>
+      <xs:element name="ovrigt" type="xs:string" minOccurs="0"/>
       <xs:element name="onskarKontakt" type="KontaktTyp"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
@@ -85,7 +85,7 @@
 
   <xs:complexType name="VardkontakterTyp">
     <xs:sequence>
-      <xs:element name="vardkontakt" type="VardkontaktTyp" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="vardkontakt" type="VardkontaktTyp" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -109,12 +109,13 @@
       <xs:enumeration value="Nuvarande_arbete"/>
       <xs:enumeration value="Arbetsloshet"/>
       <xs:enumeration value="Foraldraledighet"/>
+      <xs:enumeration value="Okand"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:complexType name="SjukdomarTyp">
     <xs:sequence>
-      <xs:element name="diagnos" type="SjukdomTyp" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="diagnos" type="SjukdomTyp" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
