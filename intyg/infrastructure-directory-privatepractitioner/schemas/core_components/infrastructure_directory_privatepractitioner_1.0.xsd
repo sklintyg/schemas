@@ -29,12 +29,12 @@
 
   <xs:complexType name="HoSPersonType">
     <xs:sequence>
-      <xs:element name="personal-id" type="types:II" minOccurs="1" />
-      <xs:element name="personnummer" type="types:PersonId" minOccurs="1" />
+      <xs:element name="hsaId" type="types:HsaId" minOccurs="1" />
+      <xs:element name="personId" type="types:PersonId" minOccurs="1" />
       <xs:element name="fullstandigtNamn" type="xs:string" minOccurs="1" />
-      <xs:element name="befattning" type="types:CV" minOccurs="1" maxOccurs="unbounded" />
-      <xs:element name="specialitet" type="types:CV" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="legitimeradYrkesgrupp" type="types:CV" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="befattning" type="tns:BefattningType" minOccurs="1" maxOccurs="unbounded" />
+      <xs:element name="specialitet" type="tns:SpecialitetType" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="legitimeradYrkesgrupp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="forskrivarkod" type="xs:string" minOccurs="0" />
       <xs:element name="godkandAnvandare" type="xs:boolean" minOccurs="1" default="true" />
       <xs:element name="enhet" type="tns:EnhetType" minOccurs="1" />
@@ -80,8 +80,16 @@
 
   <xs:complexType name="BefattningType">
     <xs:sequence>
-      <xs:element name="kod" type="tns:BefattningEnum" minOccurs="1" maxOccurs="1" />
-      <xs:element name="beskrivning" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="kod" type="types:NonEmptyString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="namn" type="types:NonEmptyString" minOccurs="1" maxOccurs="1" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SpecialitetType">
+    <xs:sequence>
+      <xs:element name="kod" type="types:NonEmptyString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="namn" type="types:NonEmptyString" minOccurs="1" maxOccurs="1" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
@@ -98,18 +106,6 @@
 
 
   <!-- Simple types -->
-
-  <xs:simpleType name="BefattningEnum">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="201010" />
-      <xs:enumeration value="201011" />
-      <xs:enumeration value="201012" />
-      <xs:enumeration value="201013" />
-      <xs:enumeration value="202010" />
-      <xs:enumeration value="203010" />
-      <xs:enumeration value="203090" />
-    </xs:restriction>
-  </xs:simpleType>
 
   <xs:simpleType name="ResultCodeEnum">
     <xs:restriction base="xs:string">
