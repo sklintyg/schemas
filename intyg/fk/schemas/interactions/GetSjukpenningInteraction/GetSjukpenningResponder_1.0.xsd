@@ -22,6 +22,7 @@
   <xs:complexType name='GetSjukpenningResponseType'>
     <xs:sequence>
       <xs:element name="intyg" type="core:SjukpenningIntyg" minOccurs="0"/>
+      <xs:element name="meta" type="core:IntygMeta" minOccurs="0" maxOccurs="1" />
       <xs:element name='resultat' type='core:ResultatTyp' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
