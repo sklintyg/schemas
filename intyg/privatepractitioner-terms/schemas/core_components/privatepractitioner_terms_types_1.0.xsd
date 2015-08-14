@@ -26,32 +26,6 @@
 
   <!-- Basic types used within privatepractitioner:terms  -->
 
-  <!--
-  <xs:complexType name="HsaId">
-    <xs:complexContent>
-      <xs:restriction base="tns:II">
-        <xs:attribute name="root" type="xs:string" use="required" fixed="1.2.752.129.2.1.4.1" />
-        <xs:attribute name="extension" type="tns:NonEmptyString" use="required" />
-      </xs:restriction>
-    </xs:complexContent>
-  </xs:complexType>
-
-
-  <xs:complexType name="CV">
-    <xs:annotation>
-      <xs:documentation>
-        Grundtyp för att utrycka kodvärden från ett kodverk
-        inklusive förklarande text
-      </xs:documentation>
-    </xs:annotation>
-    <xs:attribute name="code" type="xs:string" use="optional" />
-    <xs:attribute name="codeSystem" type="xs:string" use="optional" />
-    <xs:attribute name="codeSystemName" type="xs:string" use="optional" />
-    <xs:attribute name="codeSystemVersion" type="xs:string" use="optional" />
-    <xs:attribute name="displayName" type="xs:string" use="optional" />
-    <xs:attribute name="originalText" type="xs:string" use="optional" />
-  </xs:complexType>
-    -->
   <xs:complexType name="II">
     <xs:annotation>
       <xs:documentation>

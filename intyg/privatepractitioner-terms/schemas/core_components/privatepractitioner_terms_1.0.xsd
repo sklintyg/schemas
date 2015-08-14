@@ -35,14 +35,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="AvtalGodkannandeType">
-    <xs:sequence>
-      <xs:element name="avtalVersion" type="xs:int" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="personId" type="types:PersonId" minOccurs="1" maxOccurs="1" />
-      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
-    </xs:sequence>
-  </xs:complexType>
-
   <!-- END -->
   <!-- Simple types -->
 
