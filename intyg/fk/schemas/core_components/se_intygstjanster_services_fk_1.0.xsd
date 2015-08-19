@@ -13,7 +13,11 @@
       <xs:element name="grundData" type="GrundData"/>
       <xs:element name="avstangningSmitta" type="xs:boolean"/>
       <xs:element name="vardKontakter" type="VardkontakterTyp"/>
-      <xs:element name="sysselsattning" type="SysselsattningTyp"/>
+      <xs:element name="arbete" type="xs:string" minOccurs="0"/>
+      <xs:element name="arbetssokande" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="foraldraledighet" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="studier" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="arbetsmarknadsatgard" type="xs:boolean" minOccurs="0"/>
       <xs:element name="sjukdomar" type="SjukdomarTyp"/>
       <xs:element name="konsekvenser" type="KonsekvensTyp" minOccurs="0"/>
       <xs:element name="behandling" type="BehandlingTyp" minOccurs="0"/>
@@ -102,15 +106,6 @@
       <xs:enumeration value="undersokning_av_patienten"/>
       <xs:enumeration value="telefonkontakt_med_patienten"/>
       <xs:enumeration value="journaluppgifter"/>
-    </xs:restriction>
-  </xs:simpleType>
-
-  <xs:simpleType name="SysselsattningTyp">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Nuvarande_arbete"/>
-      <xs:enumeration value="Arbetsloshet"/>
-      <xs:enumeration value="Foraldraledighet"/>
-      <xs:enumeration value="Okand"/>
     </xs:restriction>
   </xs:simpleType>
 
