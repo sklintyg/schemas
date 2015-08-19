@@ -23,7 +23,7 @@
     <module>intyg/infrastructure-directory-privatepractitioner</module>
     <module>intyg/insuranceprocess-healthreporting</module>
     <module>intyg/clinicalprocess-healthcond-certificate</module>
-    <module>intyg/privatepractitioner-terms</module>
+    <module>intyg/infrastructure-directory-privatepractitioner-terms</module>
   </modules>
 
 </project>

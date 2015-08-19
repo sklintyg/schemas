@@ -33,12 +33,6 @@
 
   <xs:complexType name='GetPrivatePractitionerTermsType'>
     <xs:sequence>
-      <!--
-      <xs:choice>
-        <xs:element name="personHsaId" type="xs:string" />
-        <xs:element name="personalIdentityNumber" type="xs:string" />
-      </xs:choice>
-      -->
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
