@@ -34,7 +34,7 @@
       <xs:element name="fullstandigtNamn" type="xs:string" minOccurs="1" />
       <xs:element name="befattning" type="tns:BefattningType" minOccurs="1" maxOccurs="unbounded" />
       <xs:element name="specialitet" type="tns:SpecialitetType" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="legitimeradYrkesgrupp" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="legitimeradYrkesgrupp" type="tns:LegitimeradYrkesgruppType" minOccurs="0" maxOccurs="unbounded" />
       <xs:element name="forskrivarkod" type="xs:string" minOccurs="0" />
       <xs:element name="godkandAnvandare" type="xs:boolean" minOccurs="1" default="true" />
       <xs:element name="enhet" type="tns:EnhetType" minOccurs="1" />
@@ -94,9 +94,17 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="LegitimeradYrkesgruppType">
+    <xs:sequence>
+      <xs:element name="kod" type="types:NonEmptyString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="namn" type="types:NonEmptyString" minOccurs="1" maxOccurs="1" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
   <xs:complexType name="VardgivareType">
     <xs:sequence>
-      <xs:element name="vardgivare-id" type="types:NonEmptyString" minOccurs="0" />
+      <xs:element name="vardgivare-id" type="types:HsaId" minOccurs="0" />
       <xs:element name="vardgivarenamn" type="types:NonEmptyString" minOccurs="0" />
       <xs:element name="startdatum" type="xs:dateTime" minOccurs="0" />
       <xs:element name="slutdatum" type="xs:dateTime" minOccurs="0" />
