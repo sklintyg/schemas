@@ -24,6 +24,7 @@
     <module>intyg/insuranceprocess-healthreporting</module>
     <module>intyg/clinicalprocess-healthcond-certificate</module>
     <module>intyg/fk</module>
+    <module>intyg/infrastructure-directory-privatepractitioner-terms</module>
   </modules>
 
 </project>
