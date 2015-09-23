@@ -1,5 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -9,12 +11,12 @@
     <version>1.0.10</version>
   </parent>
 
-  <groupId>se.riv.itintegration.monitoring</groupId>
-  <artifactId>itintegration-monitoring-schemas</artifactId>
-  <version>1.0.0.0</version>
+  <groupId>se.inera.intyg.infrastructure.directory.privatepractitioner.terms</groupId>
+  <artifactId>intyg-infrastructure-directory-privatepractitioner-terms-schemas</artifactId>
+  <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>RIVTA Schemas (IT Integration and Monitoring)</name>
+  <name>Intyg Schemas (Infrastructure Directory Private Practitioner Terms)</name>
 
   <scm>
     <connection>scm:git:git@github.com:sklintyg/schemas.git</connection>
@@ -22,7 +24,7 @@
 
   <properties>
     <schemas-support.version>1.0.0</schemas-support.version>
-    <schemas.directory>${basedir}/schemas/core_components</schemas.directory>
+    <schema.directory>${basedir}/schemas/core_components</schema.directory>
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
   </properties>
 
@@ -59,13 +61,42 @@
         </includes>
       </resource>
     </resources>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-codegen-plugin</artifactId>
+                    <versionRange>${cxf.version}</versionRange>
+                    <goals>
+                      <goal>wsdl2java</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute></execute>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-codegen-plugin</artifactId>
+        <version>${cxf.version}</version>
         <executions>
           <execution>
-            <id>wsdl2java-external-interfaces</id>
+            <id>generate-sources</id>
             <goals>
               <goal>wsdl2java</goal>
             </goals>
@@ -77,32 +108,46 @@
                 </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:itintegration:monitoring:1=se.riv.itintegration.monitoring.v1</extraarg>
+                  <extraarg>-p</extraarg>
                   <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:itintegration:monitoring:1=se.riv.itintegration.monitoring.v1</extraarg>
+                  <extraarg>urn:riv:infrastructure:directory:privatepractitioner:terms:1=se.riv.infrastructure.directory.privatepractitioner.terms.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:infrastructure:directory:privatepractitioner:terms:types:1=se.riv.infrastructure.directory.privatepractitioner.terms.types.v1
+                  </extraarg>
                 </extraargs>
               </defaultOptions>
-
               <wsdlOptions>
-                <wsdlOption>
-                  <wsdl>${wsdl.directory}/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                <wsdloption>
+                  <wsdl>${wsdl.directory}/GetPrivatePractitionerTermsInteraction/GetPrivatePractitionerTermsInteraction_1.0_RIVTABP21.wsdl</wsdl>
                   <wsdlLocation>
-                    classpath:interactions/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl
+                    classpath:interactions/GetPrivatePractitionerTermsInteraction/GetPrivatePractitionerTermsInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
-                  <packagenames>
-                    <packagename>
-                      urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.rivtabp21.v1
-                    </packagename>
-                    <packagename>
-                      urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.v1
-                    </packagename>
-                  </packagenames>
-                </wsdlOption>
-              </wsdlOptions>
+                  <extraargs>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:infrastructure:directory:privatepractitioner:GetPrivatePractitionerTermsResponder:1=se.riv.infrastructure.directory.privatepractitioner.getprivatepractitionertermsresponder.v1
+                    </extraarg>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:infrastructure:directory:privatepractitioner:GetPrivatePractitionerTerms:1:rivtabp21=se.riv.infrastructure.directory.privatepractitioner.getprivatepractitionerterms.v1.rivtabp21
+                    </extraarg>
+                  </extraargs>
+                </wsdloption>
 
+              </wsdlOptions>
             </configuration>
           </execution>
         </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
       </plugin>
 
       <plugin>

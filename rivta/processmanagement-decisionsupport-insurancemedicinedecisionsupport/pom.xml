@@ -10,12 +10,12 @@
     <version>1.0.10</version>
   </parent>
 
-  <groupId>se.riv.clinicalprocess.healthcond.certificate</groupId>
-  <artifactId>clinicalprocess-healthcond-certificate-schemas</artifactId>
-  <version>1.0.RC3.0</version>
+  <groupId>se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport</groupId>
+  <artifactId>processmanagement-decisionsupport-insurancemedicinedecisionsupport-schemas</artifactId>
+  <version>1.0.RC1.0</version>
   <packaging>jar</packaging>
 
-  <name>RIVTA Schemas (Clinicalprocess Healthcond Certificate)</name>
+  <name>RIVTA Schemas (Processmanagement Decisionsupport Insurancemedicinedecisionsupport)</name>
 
   <scm>
     <connection>scm:git:git@github.com:sklintyg/schemas.git</connection>
@@ -73,83 +73,66 @@
             <configuration>
               <defaultOptions>
                 <bindingFiles>
-                  <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                  <bindingFile>classpath:/bindings/general-binding.xjb</bindingFile>
                 </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
                   <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1</extraarg>
+                  <extraarg>urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.v1</extraarg>
                   <extraarg>-p</extraarg>
-                  <extraarg>urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1</extraarg>
+                  <extraarg>urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:types:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.types.v1</extraarg>
                 </extraargs>
               </defaultOptions>
 
               <wsdlOptions>
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
+                    ${wsdl.directory}/GetDiagnosInformationInteraction/GetDiagnosInformationInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <wsdlLocation>
-                    classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
+                    classpath:interactions/GetDiagnosInformationInteraction/GetDiagnosInformationInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:1=se.riv.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v1
+                      urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformationResponder:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getdiagnosinformationresponder.v1
                     </packagename>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCare:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v1
+                      urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformation:1:rivtabp21=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getdiagnosinformationresponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
 
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
+                    ${wsdl.directory}/GetFmbInteraction/GetFmbInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <wsdlLocation>
-                    classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
+                    classpath:interactions/GetFmbInteraction/GetFmbInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.createdraftcertificateresponder.v1
+                      urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetFmbResponder:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getfmbresponder.v1
                     </packagename>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificate:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.createdraftcertificateresponder.v1
+                      urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetFmb:1:rivtabp21=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getfmbresponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
 
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
+                    ${wsdl.directory}/GetVersionsInteraction/GetVersionsInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <wsdlLocation>
-                    classpath:interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
+                    classpath:interactions/GetVersionsInteraction/GetVersionsInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v1
+                      urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetVersionsResponder:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getversionsresponder.v1
                     </packagename>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:1=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v1
-                    </packagename>
-                  </packagenames>
-                </wsdlOption>
-
-                <wsdlOption>
-                  <wsdl>
-                    ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
-                  </wsdl>
-                  <wsdlLocation>
-                    classpath:interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
-                  </wsdlLocation>
-                  <packagenames>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificate:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v1
-                    </packagename>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v1
+                      urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetVersions:1:rivtabp21=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getversionsresponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
