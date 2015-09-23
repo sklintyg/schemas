@@ -18,6 +18,7 @@
     <module>rivta/ehr-logstore</module>
     <module>rivta/insuranceprocess-healthreporting</module>
     <module>rivta/clinicalprocess-healthcond-certificate</module>
+    <module>rivta/processmanagement-decisionsupport-insurancemedicinedecisionsupport</module>
      -->
     <module>intyg/transportstyrelsen</module>
     <module>intyg/infrastructure-directory-privatepractitioner</module>
