@@ -31,6 +31,7 @@
     <xs:sequence>
       <xs:element name="avtalVersion" type="xs:int" minOccurs="1" maxOccurs="1"/>
       <xs:element name="avtalText" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="avtalVersionDatum" type="xs:dateTime"  minOccurs="1" maxOccurs="1"/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
