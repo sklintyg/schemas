@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Socialstyrelsen licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->		
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:1' 
+    targetNamespace='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:1' 
+    elementFormDefault='qualified' 
+    attributeFormDefault='unqualified' 
+    version='1.0'>
+ 
+  
+  <xs:complexType name="DiagnosInformationType">
+    <xs:sequence>
+      <xs:element name="informationsId" type="tns:IIType"/>
+      <xs:element name="giltighetstid" type="tns:IVLType"/>
+      <xs:element name="verson" type="xs:int"/>
+      <xs:element name="rubrik" type="xs:string"/>
+      <xs:element name="funktionsnedsattningBeskrivning" type="xs:string" minOccurs="0"/>
+      <xs:element name="aktivitetsbegransningBeskrivning" type="xs:string" minOccurs="0"/>
+      <xs:element name="huvuddiagnos" type="tns:HuvuddiagnosType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="funktionsnedsattning" type="tns:FunktionsnedsattningType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="aktivitetsbegransning" type="tns:AktivitetsbegransningType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="ovrigFmbInformation" type="tns:OvrigFmbInformationType" minOccurs="0"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="FunktionsnedsattningType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:ICFType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="AktivitetsbegransningType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:ICFType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="OvrigFmbInformationType">
+    <xs:sequence>
+      <xs:element name="symtomPrognosBehandling" type="xs:string" minOccurs="0"/>
+      <xs:element name="genrellInformation" type="xs:string" minOccurs="0"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="BeslutsunderlagType">
+    <xs:sequence>
+      <xs:element name="underlagsId" type="tns:IIType"/>
+      <xs:element name="giltighetstid" type="tns:IVLType"/>
+      <xs:element name="version" type="xs:int"/>
+      <xs:element name="textuelltUnderlag" type="xs:string" minOccurs="0"/>
+      <xs:element name="sjukskrivningstidText" type="xs:string"/>
+      <xs:element name="sjukskrivningstid" type="tns:PQType" minOccurs="0"/>
+      <xs:element name="sjukskrivningsgrad" type="tns:Sjukskrivningsgrad"/>
+      <xs:element name="senastAndrad" type="tns:TidpunktType"/>
+      <xs:element name="rehabiliteringsInformation" type="tns:RehabilieringsinformationTyp" minOccurs="0"/>
+      <xs:element name="villkor" type="tns:VillkorType" minOccurs="1"/>  
+      <xs:element name="huvuddiagnos" type="tns:HuvuddiagnosType" minOccurs="1" maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="VillkorType">
+    <xs:sequence>
+      <xs:element name="urvalArbetsbelastning" type="tns:UrvalArbetsbelastningType" minOccurs='0'/>
+      <xs:element name="urvalKomplicerandeFaktor" type="tns:UrvalKomplicerandeFaktorType" minOccurs='0' maxOccurs='unbounded'/>
+      <xs:element name="urvalPlaneradAtgard" type="tns:UrvalPlaneradAtgardType" minOccurs='0' maxOccurs='unbounded'/>
+      <xs:element name="urvalPagaendeAtgard" type="tns:UrvalPagaendeAtgardType" minOccurs='0' maxOccurs='unbounded'/>
+      <xs:element name="urvalSamsjuklighet" type="tns:UrvalSamsjuklighetType" minOccurs='0' maxOccurs='unbounded'/>
+      <xs:element name="urvalSjukdomsforlopp" type="tns:UrvalSjukdomsforloppType" minOccurs='0' />
+      <xs:element name="urvalSvarighetsgrad" type="tns:UrvalSvarighetsgradType" minOccurs='0' />
+      <xs:element name="urvalUtfordAtgard" type="tns:UrvalUtfordAtgardType" minOccurs='0' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="HuvuddiagnosType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:ICD10SEType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="UrvalKomplicerandeFaktorType">
+    <xs:sequence>
+      <xs:element name="komplicerandeFaktor" type="tns:KomplicerandeFaktorType" minOccurs='1' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="KomplicerandeFaktorType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:SnomedCTType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="UrvalSamjuklighetType">
+    <xs:sequence>
+      <xs:element name="samsjuklighet" type="tns:SamjuklighetType" minOccurs='1' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SamjuklighetType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:ICD10SEType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:complexType name="UrvalArbetsbelastningType">
+    <xs:sequence>
+      <xs:element name="arbetsbelastning" type="tns:ArbetsbelastningType" minOccurs='0' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ArbetsbelastningType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:GeneriskCVType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="UrvalPlaneradAtgardType">
+    <xs:sequence>
+      <xs:element name="planeradAtgard" type="tns:PlaneradAtgardType" minOccurs='1' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="PlaneradAtgardType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:GeneriskCVType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="UrvalPagaendeAtgardType">
+    <xs:sequence>
+      <xs:element name="pagaendeAtgard" type="tns:PagaendeAtgardType" minOccurs='1' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+      <xs:complexType name="PagaendeAtgardType">
+        <xs:sequence>
+          <xs:element name="kod" type="tns:GeneriskCVType"/>
+          <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+        </xs:sequence>
+      </xs:complexType>
+
+  <xs:complexType name="UrvalUtfordAtgardType">
+    <xs:sequence>
+      <xs:element name="utfordAtgard" type="tns:UtfordAtgardType" minOccurs='1' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+      <xs:complexType name="UtfordAtgardType">
+        <xs:sequence>
+          <xs:element name="kod" type="tns:GeneriskCVType"/>
+          <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+        </xs:sequence>
+      </xs:complexType>
+      
+  <xs:complexType name="UrvalSjukdomsforloppType">
+    <xs:sequence>
+      <xs:element name="sjukdomsforlopp" type="tns:SjukdomsforloppType" minOccurs='1' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+      
+  <xs:complexType name="SjukdomsforloppType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:SnomedCTType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="UrvalSamsjuklighetType">
+    <xs:sequence>
+      <xs:element name="samsjuklighet" type="tns:SamsjuklighetType" minOccurs='1' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SamsjuklighetType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:ICD10SEType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="UrvalSvarighetsgradType">
+    <xs:sequence>
+      <xs:element name="svarighetsgrad" type="tns:SvarighetsgradType" minOccurs='1' maxOccurs='unbounded'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="SvarighetsgradType">
+    <xs:sequence>
+      <xs:element name="kod" type="tns:SnomedCTType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RehabilieringsinformationTyp">
+    <xs:sequence>
+      <xs:element name="beskrivning" type="xs:string"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="VersionerType">
+    <xs:sequence>
+      <xs:element name="fmbSenasteVersionsuppdatering" type="tns:TidpunktType"/>
+      <xs:element name="fmbSenateAndring" type="tns:TidpunktType"/>
+      <xs:element name="diagnosInformationSenasteVersionsuppdatering" type="tns:TidpunktType"/>
+      <xs:element name="diagnosInformationSenateAndring" type="tns:TidpunktType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+     
+  <xs:complexType name="VersionType">
+    <xs:sequence>
+      <xs:element name="senasteVersionsuppdatering" type="tns:TidpunktType"/>
+      <xs:element name="senateAndring" type="tns:TidpunktType"/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="Sjukskrivningsgrad">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Heltid"/>
+      <xs:enumeration value="Deltid"/>      
+    </xs:restriction>
+  </xs:simpleType>
+
+      
+  <xs:simpleType name="DatumType">
+    <xs:annotation>
+      <xs:documentation>
+        Daum värdet är en sträng på formatet &#34;ÅÅÅÅ-MM-DD&#34; som matchar begränsad ISO 8601.
+        Tid samt tidszon skall ej anges
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-2][0-9]{3,3}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TidpunktType">
+    <xs:annotation>
+      <xs:documentation>
+        Tidpunkt &#34;ÅÅÅÅMMDD&#34; som matchar begränsad ISO 8601.
+        TTidszon skall ej anges
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[1-2][0-9]{3,3}((0[1-9])|(1[0-2]))((0[1-9])|([1-2][0-9])|(3[0-1]))"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="IVLType">
+    <xs:annotation>
+      <xs:documentation>
+        Används för att specificera ett datumintervall
+        med hjälp av start- och slutdatum.
+        start: Startdatum på formatet ÅÅÅÅ-MM-DD
+        slut: Slutdatum på formatet ÅÅÅÅ-MM-DD
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="start" type="tns:DatumType"/>
+      <xs:element name="slut" type="tns:DatumType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IIType">
+    <xs:sequence>
+      <xs:element name="root" type="xs:string"/>
+      <xs:element name="extension" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="PQType">
+    <xs:sequence>
+      <xs:element name="value" type="xs:string"/>
+      <xs:element name="unit" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="CVType">
+    <xs:annotation>
+      <xs:documentation>
+        Grundtyp för att utrycka kodvärden från ett kodverk inklusive förklarande text
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeSystem" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeSystemName" type="xs:string" minOccurs="0"/>
+      <xs:element name="codeSystemVersion" type="xs:string" minOccurs="0"/>
+      <xs:element name="displayName" type="xs:string" minOccurs="0"/>
+      <xs:element name="originalText" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ICFType">
+    <xs:complexContent>
+      <xs:restriction base="tns:CVType">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string" minOccurs="1"/>
+          <xs:element name="codeSystem" type="xs:string" minOccurs="1" fixed="1.2.752.116.1.1.3.3.1" /> 
+          <xs:element name="codeSystemName" type="xs:string" minOccurs="1" fixed="ICF" />
+          <xs:element name="displayName" type="xs:string" minOccurs="1" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+    
+  <xs:complexType name="ICD10SEType">
+    <xs:complexContent>
+      <xs:restriction base="tns:CVType">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string" minOccurs="1"/>
+          <xs:element name="codeSystem" type="xs:string" minOccurs="1" fixed="1.2.752.116.1.1.1.3.2" /> 
+          <xs:element name="codeSystemName" type="xs:string" minOccurs="1" fixed="ICD-10-SE" />
+          <xs:element name="displayName" type="xs:string" minOccurs="1" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="SnomedCTType">
+    <xs:complexContent>
+      <xs:restriction base="tns:CVType">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string" minOccurs="1"/>
+          <xs:element name="codeSystem" type="xs:string" minOccurs="1" fixed="1.2.752.116.2.1.1" /> 
+          <xs:element name="codeSystemName" type="xs:string" minOccurs="1" fixed="Snomed CT-SE" />
+          <xs:element name="displayName" type="xs:string" minOccurs="1" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="GeneriskCVType">
+    <xs:annotation>
+      <xs:documentation>Typ som håller Snomed CT eller KVÅ koder</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="tns:CVType">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string" minOccurs="1"/>
+          <xs:element name="codeSystem" type="xs:string" minOccurs="1"/> 
+          <xs:element name="codeSystemName" type="xs:string" minOccurs="1"/>
+          <xs:element name="displayName" type="xs:string" minOccurs="1" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:complexType name="EnkelCVType">
+    <xs:annotation>
+      <xs:documentation>Typ som code samt display elementen</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:restriction base="tns:CVType">
+        <xs:sequence>
+          <xs:element name="code" type="xs:string" minOccurs="1"/>
+          <xs:element name="displayName" type="xs:string" minOccurs="1" />
+        </xs:sequence>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ResultatType">
+    <xs:annotation>
+      <xs:documentation xml:lang="sv">
+        Datatyp som returneras som ett generellt svar från alla förändrande tjänster, t.ex. skapa, radera, etc.
+        En anropande klient skall alltid kontrollera att resultatkoden inte innehåller fel för att på så sätt veta om
+        anropet lyckades.
+        Alla svarskoder förutom OK och INFO betyder att åtgärden inte genomfördes.
+        Om svarskoden är INFO skall fältet resultText innehålla mer information.
+        Om svarskorden är ERROR skall fältet errorId innehålla en specifik felkod, och fältet
+        resultText innehålla mer information.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="resultatKod" type="tns:ResultatKodType"/>
+      <xs:element name="resultatText" type="xs:string" minOccurs="0"/>
+      <xs:element name="errorId" type="tns:ErrorIdType" minOccurs="0"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="ResultatKodType">
+    <xs:annotation>
+      <xs:documentation xml:lang="sv">
+        Enumerationsvärde som anger de svarskoder som finns.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har utförts enligt uppdraget.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="INFO">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har utförts enligt begäran, men det finns ett meddelande som konsumenten bör visa upp.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ERROR">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har INTE kunnat utföras. Det finns en felkod som klassificerar felet, samt
+            ett meddelande som konsumenten bör visa upp.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="ErrorIdType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VALIDERINGS_FEL">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            En eller flera inparametrar innehåller felaktiga värden. Angiven tjänst utfördes ej, och omsändning av
+            transaktionen är inte tillämpbart.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="APPLIKATIONS_FEL">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har INTE kunnat utföras p.g.a ett logiskt fel. Det finns ett meddelande som konsumenten bör
+            visa upp. Då felet är logisk är omsändning av transaktionen inte tillämpbart.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TEKNISK_FEL">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har INTE kunnat utföras p.g.a ett tekniskt fel. Det finns ett meddelande som konsumenten bör
+            visa upp. Felet kan vara intermittent, varför omsändning av transaktionen är tillämpbart.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>
