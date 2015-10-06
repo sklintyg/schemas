@@ -72,9 +72,6 @@
             <phase>generate-sources</phase>
             <configuration>
               <defaultOptions>
-                <bindingFiles>
-                  <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
-                </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
                   <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
@@ -82,6 +79,10 @@
                   <extraarg>urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1</extraarg>
                   <extraarg>-p</extraarg>
                   <extraarg>urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:clinicalprocess:healthcond:certificate:2=se.riv.clinicalprocess.healthcond.certificate.v2</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:clinicalprocess:healthcond:certificate:types:2=se.riv.clinicalprocess.healthcond.certificate.types.v2</extraarg>
                 </extraargs>
               </defaultOptions>
 
@@ -90,6 +91,9 @@
                   <wsdl>
                     ${wsdl.directory}/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                  </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
@@ -107,6 +111,9 @@
                   <wsdl>
                     ${wsdl.directory}/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                  </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
@@ -124,6 +131,9 @@
                   <wsdl>
                     ${wsdl.directory}/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                  </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
@@ -141,6 +151,9 @@
                   <wsdl>
                     ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                  </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
@@ -150,6 +163,46 @@
                     </packagename>
                     <packagename>
                       urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_2.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_2.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificate:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v2
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificateResponder:2=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v2
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/GetCertificateInteraction/GetCertificateInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/GetCertificateInteraction/GetCertificateInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:GetCertificate:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.getCertificate.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:2=se.riv.clinicalprocess.healthcond.certificate.getCertificate.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
