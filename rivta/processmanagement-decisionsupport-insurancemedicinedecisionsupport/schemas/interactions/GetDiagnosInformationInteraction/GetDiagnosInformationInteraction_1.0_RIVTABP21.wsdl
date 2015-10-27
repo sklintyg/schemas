@@ -18,7 +18,7 @@
  under the License.
  -->		
 <wsdl:definitions name='GetDiagnosInformationInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tjsr='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformationResponder:1' xmlns:tjsi='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformationInitiator:1' xmlns:tns='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformation:1:rivtabp21' targetNamespace='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformation:1:rivtabp21' xmlns:itr='urn:riv:itintegration:registry:1'>
-<!--  <xs:annotation>
+  <xs:annotation>
     <xs:documentation>
 			 Tjänsteinteraktionens namn: GetDiagnosInformationInteraction
 			 Beskrivning: 
@@ -29,7 +29,7 @@
 			 WS-profil: RIVTABP21
 			 Förvaltas av: Socialstyrelsen
 			 </xs:documentation>
-  </xs:annotation>-->
+  </xs:annotation>
   <wsdl:types>
     <xs:schema targetNamespace='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformation:1:rivtabp21'>
       <xs:import schemaLocation='GetDiagnosInformationResponder_1.0.xsd' namespace='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformationResponder:1' />

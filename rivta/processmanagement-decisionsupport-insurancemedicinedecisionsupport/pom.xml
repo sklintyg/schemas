@@ -12,7 +12,7 @@
 
   <groupId>se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport</groupId>
   <artifactId>processmanagement-decisionsupport-insurancemedicinedecisionsupport-schemas</artifactId>
-  <version>1.0.RC1.0</version>
+  <version>1.0.RC4.0</version>
   <packaging>jar</packaging>
 
   <name>RIVTA Schemas (Processmanagement Decisionsupport Insurancemedicinedecisionsupport)</name>

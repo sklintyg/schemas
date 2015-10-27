@@ -23,8 +23,8 @@
   <xs:element name='GetFmbResponse' type='tns:GetFmbResponseType' />
   <xs:complexType name='GetFmbType'>
     <xs:sequence>
-      <xs:element name='underlagsId' type="core:IIType" minOccurs="0" />
-      <xs:element name="diagnosKod" type="core:ICD10SEType" minOccurs="0"/>
+      <xs:element name='underlagsId' type="core:IIType" minOccurs="0" maxOccurs='unbounded'/>
+      <xs:element name="diagnosKod" type="core:ICD10SEType" minOccurs="0" maxOccurs='unbounded'/>
       <xs:element name="avenEjAktiva" type="xs:boolean" minOccurs="0"/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
@@ -33,7 +33,6 @@
     <xs:sequence>
       <xs:element name='beslutsunderlag' type="core:BeslutsunderlagType" minOccurs='0' maxOccurs='unbounded' />
       <xs:element name='version' type='core:VersionType' />
-      <xs:element name='resultat' type='core:ResultatType' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
