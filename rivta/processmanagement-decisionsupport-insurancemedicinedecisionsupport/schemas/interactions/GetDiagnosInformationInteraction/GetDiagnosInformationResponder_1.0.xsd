@@ -33,7 +33,6 @@
     <xs:sequence>
       <xs:element name='diagnosInformation' type="core:DiagnosInformationType" minOccurs='0' maxOccurs="unbounded" />
       <xs:element name='version' type='core:VersionType' />
-      <xs:element name='resultat' type='core:ResultatType' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
