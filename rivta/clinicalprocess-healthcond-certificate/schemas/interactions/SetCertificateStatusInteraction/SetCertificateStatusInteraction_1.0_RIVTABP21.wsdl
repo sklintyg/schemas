@@ -17,15 +17,15 @@
  specific language governing permissions and limitations
  under the License.
  -->
-<wsdl:definitions name='GetCertificateInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+<wsdl:definitions name='SetCertificateStatusInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
                   xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema'
-                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:1'
-                  xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetCertificate:1:rivtabp21'
-                  targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificate:1:rivtabp21'
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatusResponder:1'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatus:1:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatus:1:rivtabp21'
                   xmlns:itr='urn:riv:itintegration:registry:1'>
-  <wsdl:documentation>
-      Tjänsteinteraktionens namn: GetCertificateInteraction
-      Beskrivning: Hämtar ett intyg.   
+ <wsdl:documentation>
+      Tjänsteinteraktionens namn: SetCertificateStatusInteraction
+      Beskrivning: Sätter status på intyget för en angiven part.   
       Revisioner:
       2015-09-30: Version 1.0, johan.zetterstrom@callistaenterprise.se
       Tjänstedomän: clinicalprocess:healthcond:certificate
@@ -33,35 +33,35 @@
       WS-profil: RIVTABP21
   </wsdl:documentation>
   <wsdl:types>
-    <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificate:1:rivtabp21'>
-      <xs:import schemaLocation='GetCertificateResponder_1.0.xsd'
-                 namespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:1'/>
+    <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatus:1:rivtabp21'>
+      <xs:import schemaLocation='SetCertificateStatusResponder_1.0.xsd'
+                 namespace='urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatusResponder:1'/>
       <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd'
                  namespace='urn:riv:itintegration:registry:1'/>
     </xs:schema>
   </wsdl:types>
-  <wsdl:message name='GetCertificateRequest'>
+  <wsdl:message name='SetCertificateStatusRequest'>
     <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
     </wsdl:part>
-    <wsdl:part name='parameters' element='tjsr:GetCertificate'/>
+    <wsdl:part name='parameters' element='tjsr:SetCertificateStatus'/>
   </wsdl:message>
-  <wsdl:message name='GetCertificateResponse'>
-    <wsdl:part name='parameters' element='tjsr:GetCertificateResponse'/>
+  <wsdl:message name='SetCertificateStatusResponse'>
+    <wsdl:part name='parameters' element='tjsr:SetCertificateStatusResponse'/>
   </wsdl:message>
-  <wsdl:portType name='GetCertificateResponderInterface'>
-    <wsdl:operation name='GetCertificate'>
-      <wsdl:input message='tns:GetCertificateRequest'/>
-      <wsdl:output message='tns:GetCertificateResponse'/>
+  <wsdl:portType name='SetCertificateStatusResponderInterface'>
+    <wsdl:operation name='SetCertificateStatus'>
+      <wsdl:input message='tns:SetCertificateStatusRequest'/>
+      <wsdl:output message='tns:SetCertificateStatusResponse'/>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name='GetCertificateResponderBinding' type='tns:GetCertificateResponderInterface'>
+  <wsdl:binding name='SetCertificateStatusResponderBinding' type='tns:SetCertificateStatusResponderInterface'>
     <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
-    <wsdl:operation name='GetCertificate'>
+    <wsdl:operation name='SetCertificateStatus'>
       <soap:operation
-              soapAction='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:1:GetCertificate'
+              soapAction='urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatusResponder:1:SetCertificateStatus'
               style='document'/>
       <wsdl:input>
-        <soap:header use='literal' message='tns:GetCertificateRequest' part='LogicalAddress'/>
+        <soap:header use='literal' message='tns:SetCertificateStatusRequest' part='LogicalAddress'/>
         <soap:body use='literal' parts='parameters'/>
       </wsdl:input>
       <wsdl:output>
@@ -69,8 +69,8 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name='GetCertificateResponderService'>
-    <wsdl:port name='GetCertificateResponderPort' binding='tns:GetCertificateResponderBinding'>
+  <wsdl:service name='SetCertificateStatusResponderService'>
+    <wsdl:port name='SetCertificateStatusResponderPort' binding='tns:SetCertificateStatusResponderBinding'>
       <soap:address location='http://tempuri.org'/>
     </wsdl:port>
   </wsdl:service>

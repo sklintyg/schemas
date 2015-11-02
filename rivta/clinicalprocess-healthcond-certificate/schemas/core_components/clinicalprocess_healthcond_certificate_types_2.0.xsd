@@ -10,8 +10,7 @@
 			<xs:restriction base="IIType">
 				<xs:sequence>
 					<xs:element name="root" type="xs:string" />
-					<xs:element name="extension" type="nonEmptyString"
-						minOccurs="0" />
+					<xs:element name="extension" type="xs:string" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -24,8 +23,6 @@
 					<xs:element name="code" type="xs:string" />
 					<xs:element name="codeSystem" type="xs:string"
 						fixed="f6fb361a-e31d-48b8-8657-99b63912dd9b" />
-					<xs:element name="codeSystemName" type="xs:string"
-						fixed="kv_utlåtandetyp_intyg" />
 					<xs:element name="displayName" type="xs:string"
 						minOccurs="0" />
 				</xs:sequence>
@@ -72,6 +69,32 @@
 		</xs:restriction>
 	</xs:simpleType>
 
+	<xs:complexType name="Befattning">
+		<xs:complexContent>
+			<xs:restriction base="CVType">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string" />
+					<xs:element name="codeSystem" type="xs:string"
+						fixed="1.2.752.129.2.2.1.4" />
+					<xs:element name="displayName" type="xs:string"
+						minOccurs="0" />						
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+	
+		<xs:complexType name="Specialistkompetens">
+		<xs:complexContent>
+			<xs:restriction base="CVType">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string" />
+					<xs:element name="codeSystem" type="xs:string" />
+					<xs:element name="displayName" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:complexType name="Handelsekod">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
@@ -79,8 +102,6 @@
 					<xs:element name="code" type="xs:string" />
 					<xs:element name="codeSystem" type="xs:string"
 						fixed="dfd7bbad-dbe5-4a2f-ba25-f7b9b2cc6b14" />
-					<xs:element name="codeSystemName" type="xs:string"
-						fixed="kv_händelse" />
 					<xs:element name="displayName" type="xs:string"
 						minOccurs="0" />
 				</xs:sequence>
@@ -99,16 +120,32 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="StatusCode">
+
+‹	<xs:complexType name="Statuskod">
 		<xs:complexContent>
-			<xs:restriction base="IIType">
+			<xs:restriction base="CVType">
 				<xs:sequence>
-					<xs:element name="root" type="xs:string" />
-					<xs:element name="extension" type="StatusTypeEnum" />
+					<xs:element name="code" type="xs:string" />
+					<xs:element name="codeSystem" type="xs:string"
+						fixed="9871cd17-8755-4ed9-b894-ff3729e775a4" />
+					<xs:element name="displayName" type="xs:string"
+						minOccurs="0" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
+<!-- 
+	<xs:complexType name="StatusCode">
+		<xs:complexContent>
+			<xs:restriction base="IIType">
+				<xs:sequence>
+					<xs:element name="root" type="xs:string" fixed="kv_Status"/>
+					<xs:element name="extension" type="xs:string" />
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
 
 	<xs:simpleType name="StatusTypeEnum">
 		<xs:restriction base="xs:string">
@@ -121,15 +158,14 @@
 			<xs:enumeration value="IN_PROGRESS" />
 			<xs:enumeration value="PROCESSED" />
 		</xs:restriction>
-	</xs:simpleType>
+	</xs:simpleType> -->
+	
 	<xs:complexType name="Part">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
-					<xs:element name="codeSystem" type="xs:string" fixed="???" />
-					<xs:element name="codeSystemName" type="xs:string"
-						fixed="???" />
+					<xs:element name="codeSystem" type="xs:string" fixed="769bb12b-bd9f-4203-a5cd-fd14f2eb3b80"/>
 					<xs:element name="displayName" type="xs:string"
 						minOccurs="0" />
 				</xs:sequence>
@@ -142,9 +178,7 @@
 			<xs:restriction base="CVType">
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
-					<xs:element name="codeSystem" type="xs:string" fixed="???" />
-					<xs:element name="codeSystemName" type="xs:string"
-						fixed="???" />
+					<xs:element name="codeSystem" type="xs:string" fixed="c2362fcd-eda0-4f9a-bd13-b3bbaf7f2146"/>
 					<xs:element name="displayName" type="xs:string"
 						minOccurs="0" />
 				</xs:sequence>
@@ -214,7 +248,6 @@
 
 
 
-	<xs:element name="PartialDateTypeElement" type="PartialDateType"/>
 	<xs:complexType name="PartialDateType">
 		<xs:sequence>
 			<xs:element name="format" type="PartialDateTypeFormatEnum" />
@@ -307,4 +340,18 @@
 			<xs:element name="end" type="TimeStampType" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
+	
+	<!-- Element tillagda dör att kunna hantera användning av datatyperna i any-tag -->
+	<xs:element name="timePeriod" type="TimePeriodType"/>
+	<xs:element name="datePeriod" type="DatePeriodType"/>
+	<xs:element name="pq" type="PQType"/>
+	<xs:element name="pqInterval" type="PQIntervalType"/>
+	<xs:element name="ii" type="IIType"/>
+	<xs:element name="cv" type="CVType"/>
+	<xs:element name="partialDate" type="PartialDateType"/>
+	<xs:element name="timestamp" type="TimeStampType"/>
+	<xs:element name="date" type="DateType"/>
+	
+	
+	
 </xs:schema>

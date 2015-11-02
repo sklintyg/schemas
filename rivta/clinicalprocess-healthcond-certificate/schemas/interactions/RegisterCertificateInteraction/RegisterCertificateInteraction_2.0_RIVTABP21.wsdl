@@ -23,8 +23,7 @@
                   xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificate:2:rivtabp21'
                   targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificate:2:rivtabp21'
                   xmlns:itr='urn:riv:itintegration:registry:1'>
-  <xs:annotation>
-    <xs:documentation>
+ <wsdl:documentation>
       Tjänsteinteraktionens namn: RegisterCertificateInteraction
       Beskrivning:
       Interaction to register a medical certificate.
@@ -34,8 +33,7 @@
       Tjänstedomän: clinicalprocess:healthcond:certificate
       Tjänsteinteraktionstyp: Fråga-svar
       WS-profil: RIVTABP21
-    </xs:documentation>
-  </xs:annotation>
+  </wsdl:documentation>
   <wsdl:types>
     <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificate:2:rivtabp21'>
       <xs:import schemaLocation='RegisterCertificateResponder_2.0.xsd'

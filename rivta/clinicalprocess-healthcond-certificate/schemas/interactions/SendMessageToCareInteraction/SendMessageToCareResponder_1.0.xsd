@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:SendMessageToCareResponder:1"
+	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:SendMessageToCareResponder:1"
+	xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:2">
+
+	<import
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_2.0.xsd"
+		namespace="urn:riv:clinicalprocess:healthcond:certificate:2" />
+	<import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd" />
+
+	<element name="SendMessageToCare" type="tns:SendMessageToCareType" />
+	<element name="SendMessageToCareResponse" type="tns:SendMessageToCareResponseType" />
+
+	<complexType name="SendMessageToCareType">
+		<sequence>
+			<element name="meddelande-id" type="string" />
+			<element name="referens-id" type="string" minOccurs="0"/>
+			<element name="skickatTidpunkt" type="types:TimeStampType" />
+			<element name="intygs-id" type="types:IntygId" />
+			<element name="patientPerson-id" type="types:PersonId" />
+			<element name="logiskAdressMottagare" type="types:HsaId" />
+			<element name="amne" type="string"/>
+			<element name="rubrik" type="string" minOccurs="0"/>
+			<element name="meddelande" type="string"/>
+			<element name="paminnelseMeddelande-id" type="string" minOccurs="0"/>
+			<element name="svarPa" type="core:MeddelandeReferens" minOccurs="0"/>
+			<element name="skickatAv">
+				<complexType>
+					<sequence>
+						<element name="part" type="types:Part"/>
+						<element name="kontaktInfo" type="string" minOccurs="0" maxOccurs="unbounded" />
+						<any namespace="##other" processContents="lax" minOccurs="0"
+				maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="komplettering" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="frage-id" type="core:FrageIdType"/>
+						<element name="text" type="string"/>
+						<any namespace="##other" processContents="lax" minOccurs="0"
+				maxOccurs="unbounded" />
+					</sequence>
+				</complexType>
+			</element>
+			<element name="sistaDatumForSvar" type="types:DateType" minOccurs="0"/>
+			<any namespace="##other" processContents="lax" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	<complexType name="SendMessageToCareResponseType">
+		<sequence>
+			<element name="result" type="core:ResultType" />
+			<any namespace="##other" processContents="lax" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+
+</schema>

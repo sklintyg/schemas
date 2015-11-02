@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:1"
-	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:1"
+	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatusResponder:1"
+	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatusResponder:1"
 	xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
-	elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0"
-	xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:2">
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0" xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:2">
 
 	<import
 		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_2.0.xsd"
@@ -12,19 +12,21 @@
 	<import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
 		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd" />
 
-	<element name="GetCertificate" type="tns:GetCertificateType" />
-	<element name="GetCertificateResponse" type="tns:GetCertificateResponseType" />
+	<element name="SetCertificateStatus" type="tns:SetCertificateStatusType" />
+	<element name="SetCertificateStatusResponse" type="tns:SetCertificateStatusResponseType" />
 
-	<complexType name="GetCertificateType">
+	<complexType name="SetCertificateStatusType">
 		<sequence>
 			<element name="intygs-id" type="types:IntygId" />
+			<element name="part" type="types:Part" />
+			<element name="status" type="types:Statuskod" />
+			<element name="tidpunkt" type="types:TimeStampType"/>
 			<any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
-	<complexType name="GetCertificateResponseType">
+	<complexType name="SetCertificateStatusResponseType">
 		<sequence>
-			<element name="intyg" type="core:Intyg" />
 			<element name="result" type="core:ResultType" />
 			<any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
