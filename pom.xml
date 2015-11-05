@@ -13,6 +13,15 @@
 
   <modules>
     <module>support</module>
+
+    <!-- Internal project schemas -->
+    <module>intyg/transportstyrelsen</module>
+    <module>intyg/infrastructure-directory-privatepractitioner</module>
+    <module>intyg/infrastructure-directory-privatepractitioner-terms</module>
+    <module>intyg/insuranceprocess-healthreporting</module>
+    <module>intyg/clinicalprocess-healthcond-certificate</module>
+
+    <!-- External project schemas -->
     <module>cgi/funktionstjanster-grp</module>
     <module>hsa/infrastructure-directory-employee</module>
     <module>rivta/itintegration-monitoring</module>
@@ -20,11 +29,6 @@
     <module>rivta/insuranceprocess-healthreporting</module>
     <module>rivta/clinicalprocess-healthcond-certificate</module>
     <module>rivta/processmanagement-decisionsupport-insurancemedicine</module>
-    <module>intyg/transportstyrelsen</module>
-    <module>intyg/infrastructure-directory-privatepractitioner</module>
-    <module>intyg/infrastructure-directory-privatepractitioner-terms</module>
-    <module>intyg/insuranceprocess-healthreporting</module>
-    <module>intyg/clinicalprocess-healthcond-certificate</module>
   </modules>
 
 </project>
