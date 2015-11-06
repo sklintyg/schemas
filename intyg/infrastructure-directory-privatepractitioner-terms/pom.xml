@@ -8,7 +8,7 @@
   <parent>
     <groupId>se.inera.intyg.common</groupId>
     <artifactId>common-pom</artifactId>
-    <version>1.0.10</version>
+    <version>1.0.16</version>
   </parent>
 
   <groupId>se.inera.intyg.infrastructure.directory.privatepractitioner.terms</groupId>

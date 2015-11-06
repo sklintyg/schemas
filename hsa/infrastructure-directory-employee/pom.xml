@@ -6,14 +6,14 @@
   <parent>
     <groupId>se.inera.intyg.common</groupId>
     <artifactId>common-pom</artifactId>
-    <version>1.0.10</version>
+    <version>1.0.16</version>
   </parent>
 
   <groupId>se.rivta.tools</groupId>
   <artifactId>infrastructure-directory-employee-schemas</artifactId>
 
   <packaging>jar</packaging>
-  <version>1.0.RC4.0</version>
+  <version>0-SNAPSHOT</version>
 
   <name>HSA Schemas (Infrastructure Directory Employee)</name>
 

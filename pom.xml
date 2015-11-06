@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -12,19 +12,23 @@
   <name>Intyg Schemas</name>
 
   <modules>
-    <!-- Bygg inte dessa som del av develop-byggen, då de har fixerad version och livscykel
+    <module>support</module>
+
+    <!-- Internal project schemas -->
+    <module>intyg/transportstyrelsen</module>
+    <module>intyg/infrastructure-directory-privatepractitioner</module>
+    <module>intyg/infrastructure-directory-privatepractitioner-terms</module>
+    <module>intyg/insuranceprocess-healthreporting</module>
+    <module>intyg/clinicalprocess-healthcond-certificate</module>
+
+    <!-- External project schemas -->
+    <module>cgi/funktionstjanster-grp</module>
+    <module>hsa/infrastructure-directory-employee</module>
     <module>rivta/itintegration-monitoring</module>
     <module>rivta/ehr-logstore</module>
     <module>rivta/insuranceprocess-healthreporting</module>
-    <module>rivta/processmanagement-decisionsupport-insurancemedicinedecisionsupport</module>
-     -->
-    <module>support</module>
     <module>rivta/clinicalprocess-healthcond-certificate</module>
-    <module>intyg/transportstyrelsen</module>
-    <module>intyg/infrastructure-directory-privatepractitioner</module>
-    <module>intyg/insuranceprocess-healthreporting</module>
-    <module>intyg/clinicalprocess-healthcond-certificate</module>
-    <module>intyg/infrastructure-directory-privatepractitioner-terms</module>
+    <module>rivta/processmanagement-decisionsupport-insurancemedicine</module>
   </modules>
 
 </project>

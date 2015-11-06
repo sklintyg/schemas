@@ -6,12 +6,12 @@
   <parent>
     <groupId>se.inera.intyg.common</groupId>
     <artifactId>common-pom</artifactId>
-    <version>1.0.10</version>
+    <version>1.0.16</version>
   </parent>
 
   <groupId>se.riv.itintegration.monitoring</groupId>
   <artifactId>itintegration-monitoring-schemas</artifactId>
-  <version>1.0.0.0</version>
+  <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>RIVTA Schemas (IT Integration and Monitoring)</name>

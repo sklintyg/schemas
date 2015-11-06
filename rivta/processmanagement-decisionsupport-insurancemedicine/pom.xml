@@ -7,15 +7,15 @@
   <parent>
     <groupId>se.inera.intyg.common</groupId>
     <artifactId>common-pom</artifactId>
-    <version>1.0.10</version>
+    <version>1.0.16</version>
   </parent>
 
   <groupId>se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport</groupId>
   <artifactId>processmanagement-decisionsupport-insurancemedicinedecisionsupport-schemas</artifactId>
-  <version>1.0.RC1.0</version>
+  <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>RIVTA Schemas (Processmanagement Decisionsupport Insurancemedicinedecisionsupport)</name>
+  <name>RIVTA Schemas (Processmanagement Decisionsupport Insurancemedicine)</name>
 
   <scm>
     <connection>scm:git:git@github.com:sklintyg/schemas.git</connection>

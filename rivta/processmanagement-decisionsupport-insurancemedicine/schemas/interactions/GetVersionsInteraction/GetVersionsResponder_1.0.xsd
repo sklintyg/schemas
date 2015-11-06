@@ -17,23 +17,18 @@
  specific language governing permissions and limitations
  under the License.
  -->		
-<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tns='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformationResponder:1' xmlns:core='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:1' targetNamespace='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformationResponder:1' elementFormDefault='qualified' attributeFormDefault='unqualified' version='1.0'>
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tns='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetVersionsResponder:1' xmlns:core='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:1' targetNamespace='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetVersionsResponder:1' elementFormDefault='qualified' attributeFormDefault='unqualified' version='1.0'>
   <xs:import schemaLocation='../../core_components/processmanagement_decisionsupport_insurancemedicinedecisionsupport_1.0.xsd' namespace='urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:1' />
-  <xs:element name='GetDiagnosInformation' type='tns:GetDiagnosInformationType' />
-  <xs:element name='GetDiagnosInformationResponse' type='tns:GetDiagnosInformationResponseType' />
-  <xs:complexType name='GetDiagnosInformationType'>
+  <xs:element name='GetVersions' type='tns:GetVersionsType' />
+  <xs:element name='GetVersionsResponse' type='tns:GetVersionsResponseType' />
+  <xs:complexType name='GetVersionsType'>
     <xs:sequence>
-      <xs:element name='informationsId' type="core:IIType" minOccurs="0" maxOccurs="unbounded" />
-      <xs:element name="diagnosKod" type="core:ICD10SEType" minOccurs="0" maxOccurs="unbounded"/>
-      <xs:element name="avenEjAktiva" type="xs:boolean" minOccurs="0"/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name='GetDiagnosInformationResponseType'>
+  <xs:complexType name='GetVersionsResponseType'>
     <xs:sequence>
-      <xs:element name='diagnosInformation' type="core:DiagnosInformationType" minOccurs='0' maxOccurs="unbounded" />
-      <xs:element name='version' type='core:VersionType' />
-      <xs:element name='resultat' type='core:ResultatType' />
+      <xs:element name='versioner' type='core:VersionerType' minOccurs='0'/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
