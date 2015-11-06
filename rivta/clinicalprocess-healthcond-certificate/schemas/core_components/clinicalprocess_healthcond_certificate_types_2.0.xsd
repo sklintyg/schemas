@@ -121,7 +121,7 @@
 	</xs:complexType>
 
 
-‹	<xs:complexType name="Statuskod">
+	<xs:complexType name="Statuskod">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
 				<xs:sequence>
