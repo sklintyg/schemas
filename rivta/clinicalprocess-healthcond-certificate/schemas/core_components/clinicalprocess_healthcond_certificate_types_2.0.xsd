@@ -40,6 +40,7 @@
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
+	
 	<xs:simpleType name="PersonIdRoot">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="1.2.752.129.2.1.3.1" />
@@ -74,16 +75,15 @@
 			<xs:restriction base="CVType">
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
-					<xs:element name="codeSystem" type="xs:string"
-						fixed="1.2.752.129.2.2.1.4" />
+					<xs:element name="codeSystem" type="xs:string" fixed="1.2.752.129.2.2.1.4" />
 					<xs:element name="displayName" type="xs:string"
-						minOccurs="0" />						
+						minOccurs="0" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
-	
-		<xs:complexType name="Specialistkompetens">
+
+	<xs:complexType name="Specialistkompetens">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
 				<xs:sequence>
@@ -95,6 +95,7 @@
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
+	
 	<xs:complexType name="Handelsekod">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
@@ -120,7 +121,6 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-
 	<xs:complexType name="Statuskod">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
@@ -134,38 +134,14 @@
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
-<!-- 
-	<xs:complexType name="StatusCode">
-		<xs:complexContent>
-			<xs:restriction base="IIType">
-				<xs:sequence>
-					<xs:element name="root" type="xs:string" fixed="kv_Status"/>
-					<xs:element name="extension" type="xs:string" />
-				</xs:sequence>
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
 
-
-	<xs:simpleType name="StatusTypeEnum">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="UNHANDLED" />
-			<xs:enumeration value="DELETED" />
-			<xs:enumeration value="RESTORED" />
-			<xs:enumeration value="CANCELLED" />
-			<xs:enumeration value="SENT" />
-			<xs:enumeration value="RECEIVED" />
-			<xs:enumeration value="IN_PROGRESS" />
-			<xs:enumeration value="PROCESSED" />
-		</xs:restriction>
-	</xs:simpleType> -->
-	
 	<xs:complexType name="Part">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
-					<xs:element name="codeSystem" type="xs:string" fixed="769bb12b-bd9f-4203-a5cd-fd14f2eb3b80"/>
+					<xs:element name="codeSystem" type="xs:string"
+						fixed="769bb12b-bd9f-4203-a5cd-fd14f2eb3b80" />
 					<xs:element name="displayName" type="xs:string"
 						minOccurs="0" />
 				</xs:sequence>
@@ -178,7 +154,8 @@
 			<xs:restriction base="CVType">
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
-					<xs:element name="codeSystem" type="xs:string" fixed="c2362fcd-eda0-4f9a-bd13-b3bbaf7f2146"/>
+					<xs:element name="codeSystem" type="xs:string"
+						fixed="c2362fcd-eda0-4f9a-bd13-b3bbaf7f2146" />
 					<xs:element name="displayName" type="xs:string"
 						minOccurs="0" />
 				</xs:sequence>
@@ -201,28 +178,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 
-
-	<!-- Restriction på händelsekod ska inte längre definieras av en enumeration, 
-		utan kodverket avgör. <xs:simpleType name="HandelsekodKodRestriktion"> <xs:restriction 
-		base="xs:string"> <xs:enumeration value="HAN1"> <xs:annotation> <xs:documentation>Intygsutkast 
-		skapat</xs:documentation> </xs:annotation> </xs:enumeration> <xs:enumeration 
-		value="HAN2"> <xs:annotation> <xs:documentation>Intyg signerat</xs:documentation> 
-		</xs:annotation> </xs:enumeration> <xs:enumeration value="HAN3"> <xs:annotation> 
-		<xs:documentation>Intyg skickat till FK</xs:documentation> </xs:annotation> 
-		</xs:enumeration> <xs:enumeration value="HAN4"> <xs:annotation> <xs:documentation>Intygsutkast 
-		raderat</xs:documentation> </xs:annotation> </xs:enumeration> <xs:enumeration 
-		value="HAN5"> <xs:annotation> <xs:documentation>Intyg makulerat</xs:documentation> 
-		</xs:annotation> </xs:enumeration> <xs:enumeration value="HAN6"> <xs:annotation> 
-		<xs:documentation>Ny fråga från FK</xs:documentation> </xs:annotation> </xs:enumeration> 
-		<xs:enumeration value="HAN7"> <xs:annotation> <xs:documentation>Nytt svar 
-		från FK</xs:documentation> </xs:annotation> </xs:enumeration> <xs:enumeration 
-		value="HAN8"> <xs:annotation> <xs:documentation>Ny fråga till FK</xs:documentation> 
-		</xs:annotation> </xs:enumeration> <xs:enumeration value="HAN9"> <xs:annotation> 
-		<xs:documentation>Hanterad fråga från FK</xs:documentation> </xs:annotation> 
-		</xs:enumeration> <xs:enumeration value="HAN10"> <xs:annotation> <xs:documentation>Hanterat 
-		svar från FK</xs:documentation> </xs:annotation> </xs:enumeration> <xs:enumeration 
-		value="HAN11"> <xs:annotation> <xs:documentation>Intygsutkast ändrat</xs:documentation> 
-		</xs:annotation> </xs:enumeration> </xs:restriction> </xs:simpleType> -->
 	<xs:simpleType name="TimeStampType">
 		<xs:annotation>
 			<xs:documentation>
@@ -246,8 +201,6 @@
 		</xs:restriction>
 	</xs:simpleType>
 
-
-
 	<xs:complexType name="PartialDateType">
 		<xs:sequence>
 			<xs:element name="format" type="PartialDateTypeFormatEnum" />
@@ -268,7 +221,7 @@
 		</xs:restriction>
 	</xs:simpleType>
 
-   <xs:simpleType name="PartialDateTypeValue">
+	<xs:simpleType name="PartialDateTypeValue">
 		<xs:annotation>
 			<xs:documentation>
 				PartialDate value is a string with the format
@@ -324,8 +277,8 @@
 			<xs:element name="unit" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
-	
-		<xs:complexType name="DatePeriodType">
+
+	<xs:complexType name="DatePeriodType">
 
 		<xs:sequence>
 			<xs:element name="start" type="DateType" minOccurs="0" />
@@ -333,25 +286,24 @@
 		</xs:sequence>
 	</xs:complexType>
 
-		<xs:complexType name="TimePeriodType">
+	<xs:complexType name="TimePeriodType">
 
 		<xs:sequence>
 			<xs:element name="start" type="TimeStampType" minOccurs="0" />
 			<xs:element name="end" type="TimeStampType" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
-	
-	<!-- Element tillagda dör att kunna hantera användning av datatyperna i any-tag -->
-	<xs:element name="timePeriod" type="TimePeriodType"/>
-	<xs:element name="datePeriod" type="DatePeriodType"/>
-	<xs:element name="pq" type="PQType"/>
-	<xs:element name="pqInterval" type="PQIntervalType"/>
-	<xs:element name="ii" type="IIType"/>
-	<xs:element name="cv" type="CVType"/>
-	<xs:element name="partialDate" type="PartialDateType"/>
-	<xs:element name="timestamp" type="TimeStampType"/>
-	<xs:element name="date" type="DateType"/>
-	
-	
-	
+
+	<!-- Element tillagda dör att kunna hantera användning av datatyperna i 
+		any-tag -->
+	<xs:element name="timePeriod" type="TimePeriodType" />
+	<xs:element name="datePeriod" type="DatePeriodType" />
+	<xs:element name="pq" type="PQType" />
+	<xs:element name="pqInterval" type="PQIntervalType" />
+	<xs:element name="ii" type="IIType" />
+	<xs:element name="cv" type="CVType" />
+	<xs:element name="partialDate" type="PartialDateType" />
+	<xs:element name="timestamp" type="TimeStampType" />
+	<xs:element name="date" type="DateType" />
+
 </xs:schema>

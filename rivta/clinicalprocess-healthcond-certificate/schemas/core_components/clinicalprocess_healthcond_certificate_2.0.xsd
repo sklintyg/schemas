@@ -265,25 +265,18 @@
 		<xs:annotation>
 			<xs:documentation xml:lang="sv">
 				Datatyp som returneras
-				som ett generellt svar från alla förändrande
-				tjänster, t.ex. skapa,
+				som ett generellt svar från alla förändrande tjänster, t.ex. skapa,
 				radera, etc.
 				En anropande klient skall alltid kontrollera att
-				resultatkoden inte
-				innehåller fel för att på så sätt veta om
-				anropet
+				resultatkoden inte innehåller fel för att på så sätt veta om anropet
 				lyckades.
 				Alla svarskoder förutom OK och INFO betyder att åtgärden
-				inte
-				genomfördes.
+				inte genomfördes.
 				Om svarskoden är INFO skall fältet resultText
-				innehålla mer
-				information.
+				innehålla mer information.
 				Om svarskorden är ERROR skall fältet
-				errorId innehålla en specifik
-				felkod, och fältet
-				resultText innehålla
-				mer information.
+				errorId innehålla en specifik felkod, och fältet resultText
+				innehålla mer information.
 			</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
@@ -421,7 +414,6 @@
 		</xs:sequence>
 	</xs:complexType>
 	<!-- slut typer som används vid integrerad intygsapplikation -->
-
 
 	<xs:complexType name="Relation">
 		<xs:sequence>
