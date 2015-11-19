@@ -21,8 +21,7 @@
 			<xs:restriction base="CVType">
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
-					<xs:element name="codeSystem" type="xs:string"
-						fixed="f6fb361a-e31d-48b8-8657-99b63912dd9b" />
+					<xs:element name="codeSystem" type="xs:string"/>
 					<xs:element name="displayName" type="xs:string"
 						minOccurs="0" />
 				</xs:sequence>
@@ -40,7 +39,7 @@
 			</xs:restriction>
 		</xs:complexContent>
 	</xs:complexType>
-	
+
 	<xs:simpleType name="PersonIdRoot">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="1.2.752.129.2.1.3.1" />
@@ -84,18 +83,12 @@
 	</xs:complexType>
 
 	<xs:complexType name="Specialistkompetens">
-		<xs:complexContent>
-			<xs:restriction base="CVType">
-				<xs:sequence>
-					<xs:element name="code" type="xs:string" />
-					<xs:element name="codeSystem" type="xs:string" />
-					<xs:element name="displayName" type="xs:string"
-						minOccurs="0" />
-				</xs:sequence>
-			</xs:restriction>
-		</xs:complexContent>
+		<xs:sequence>
+			<xs:element name="code" type="xs:string" />
+			<xs:element name="displayName" type="xs:string" minOccurs="0" />
+		</xs:sequence>
 	</xs:complexType>
-	
+
 	<xs:complexType name="Handelsekod">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
