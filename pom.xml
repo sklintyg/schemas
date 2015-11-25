@@ -25,6 +25,7 @@
     <module>cgi/funktionstjanster-grp</module>
     <module>hsa/infrastructure-directory-employee</module>
     <module>rivta/itintegration-monitoring</module>
+    <module>rivta/population-residentmaster</module>
     <module>rivta/ehr-logstore</module>
     <module>rivta/insuranceprocess-healthreporting</module>
     <module>rivta/clinicalprocess-healthcond-certificate</module>
