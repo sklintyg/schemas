@@ -24,6 +24,7 @@
     <complexType name="GetCertificateContentResponseType">
         <sequence>
             <element name="certificate" type="string" minOccurs="0" maxOccurs="1" />
+            <element name="type" type="string" minOccurs="0" />
             <element name="statuses" type="cert:CertificateStatusType" minOccurs="0" maxOccurs="unbounded"/>
             <element name="result" type="pref2:ResultOfCall" minOccurs="0" maxOccurs="1" />
             <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
