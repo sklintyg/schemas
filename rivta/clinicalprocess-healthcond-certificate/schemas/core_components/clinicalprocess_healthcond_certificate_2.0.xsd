@@ -10,7 +10,7 @@
 
 	<xs:complexType name="Intyg">
 		<xs:annotation>
-			<xs:documentation>Ett komplett intyg.</xs:documentation>
+			<xs:documentation>Ett intyg.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="intygs-id" type="types:IntygId" />
@@ -33,6 +33,7 @@
 		</xs:sequence>
 	</xs:complexType>
 
+<!-- 
 	<xs:complexType name="IntygListInfo">
 		<xs:annotation>
 			<xs:documentation>Ett intyg avgränsat till den information som
@@ -100,7 +101,7 @@
 				maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
-
+ -->
 	<xs:complexType name="HosPersonal">
 		<xs:sequence>
 			<xs:element name="personal-id" type="types:HsaId">
@@ -218,6 +219,7 @@
 							minOccurs="0" maxOccurs="unbounded" />
 					</xs:sequence>
 					<xs:attribute name="id" type="DelfrageIdType" use="required" />
+					<xs:attribute name="ledtext" type="xs:string" />
 				</xs:complexType>
 			</xs:element>
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
@@ -226,6 +228,7 @@
 		<xs:attribute name="id" type="FrageIdType" use="required" />
 	</xs:complexType>
 
+<!-- 
 	<xs:complexType name="SvarMedLedtext">
 		<xs:annotation>
 			<xs:documentation>Svar på en fråga, inkl ledtexter (för
@@ -248,7 +251,7 @@
 		</xs:sequence>
 		<xs:attribute name="id" type="FrageIdType" use="required" />
 	</xs:complexType>
-
+ -->
 	<xs:simpleType name="FrageIdType">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="[0-9]+" />

@@ -63,7 +63,7 @@
 
 	<xs:complexType name="ListItem">
 		<xs:sequence>
-			<xs:element name="intyg" type="core:IntygListInfoMedLedtext" />
+			<xs:element name="intyg" type="core:Intyg" />
 			<xs:element name="handelser" type="tns:HandelseList" />
 			<xs:element name="fragorOchSvar" type="core:FragorOchSvar" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"

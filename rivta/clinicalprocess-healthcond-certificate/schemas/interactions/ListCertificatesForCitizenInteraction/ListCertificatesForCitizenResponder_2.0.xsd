@@ -53,7 +53,7 @@
     
     <complexType name="ListaType">
 		<sequence>
-			<element name="intyg" type="core:IntygListInfo" maxOccurs="unbounded"
+			<element name="intyg" type="core:Intyg" maxOccurs="unbounded"
 				minOccurs="0" />
 			<any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
