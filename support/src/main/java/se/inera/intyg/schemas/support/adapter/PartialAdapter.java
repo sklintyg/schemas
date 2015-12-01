@@ -1,4 +1,4 @@
-package se.inera.certificate.schema.adapter;
+package se.inera.intyg.schemas.support.adapter;
 
 import org.joda.time.DateTimeFieldType;
 import org.joda.time.LocalDate;
