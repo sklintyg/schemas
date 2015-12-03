@@ -1,7 +1,7 @@
-package se.inera.certificate.schema.adapter.xml;
+package se.inera.intyg.schemas.support.adapter.xml;
 
 import org.joda.time.LocalDateTime;
-import se.inera.certificate.schema.adapter.LocalDateAdapter;
+import se.inera.intyg.schemas.support.adapter.LocalDateAdapter;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 

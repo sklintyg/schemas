@@ -1,10 +1,10 @@
-package se.inera.certificate.schema.adapter.xml;
+package se.inera.intyg.schemas.support.adapter.xml;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
 import org.joda.time.LocalDateTime;
 
-import se.inera.certificate.schema.adapter.LocalDateTimeWithMillisAdapter;
+import se.inera.intyg.schemas.support.adapter.LocalDateTimeWithMillisAdapter;
 
 public class LocalDateTimeWithMillisXmlAdapter extends XmlAdapter<String, LocalDateTime> {
 

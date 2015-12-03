@@ -1,7 +1,7 @@
-package se.inera.certificate.schema.adapter.xml;
+package se.inera.intyg.schemas.support.adapter.xml;
 
 import org.joda.time.Partial;
-import se.inera.certificate.schema.adapter.PartialAdapter;
+import se.inera.intyg.schemas.support.adapter.PartialAdapter;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
