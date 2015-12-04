@@ -60,6 +60,7 @@
 				<complexType>
 					<sequence>
 						<element name="frage-id" type="core:FrageIdType"/>
+						<element name="instans" type="int" minOccurs="0"/>
 						<element name="text" type="string"/>
 						<any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
