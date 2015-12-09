@@ -152,11 +152,11 @@
                   <extraargs>
                     <extraarg>-p</extraarg>
                     <extraarg>
-                      urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.pingforconfigurationresponder.v1
+                      urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.v1
                     </extraarg>
                     <extraarg>-p</extraarg>
                     <extraarg>
-                      urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.pingforconfiguration.v1.rivtabp21
+                      urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.rivtabp21.v1
                     </extraarg>
                   </extraargs>
                 </wsdloption>
