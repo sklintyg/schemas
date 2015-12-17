@@ -23,9 +23,12 @@
 
     <!-- External project schemas -->
     <module>cgi/funktionstjanster-grp</module>
-    <module>hsa/infrastructure-directory-employee</module>
+    <module>rivta/infrastructure-directory-authorizationmanagement</module>
+    <module>rivta/infrastructure-directory-employee</module>
+    <module>rivta/infrastructure-directory-organization</module>
     <module>rivta/itintegration-monitoring</module>
     <module>rivta/population-residentmaster</module>
+    <!-- <module>rivta/ehr-commission</module>         -->
     <module>rivta/ehr-logstore</module>
     <module>rivta/insuranceprocess-healthreporting</module>
     <module>rivta/clinicalprocess-healthcond-certificate</module>
