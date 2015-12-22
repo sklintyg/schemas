@@ -40,7 +40,7 @@
   </scm>
 
   <properties>
-    <schemas-support.version>1.0.0</schemas-support.version>
+    <schemas-support.version>2.0.0</schemas-support.version>
     <schema.directory>${basedir}/schemas/core_components</schema.directory>
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
   </properties>

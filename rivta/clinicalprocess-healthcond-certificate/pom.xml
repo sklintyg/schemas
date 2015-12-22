@@ -41,7 +41,7 @@
   </scm>
 
   <properties>
-    <schemas-support.version>0-SNAPSHOT</schemas-support.version>
+    <schemas-support.version>2.0.0</schemas-support.version>
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
   </properties>
 
