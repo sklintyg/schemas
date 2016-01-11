@@ -1,4 +1,23 @@
 <?xml version="1.0"?>
+<!--
+  ~ Copyright (C) 2015 Inera AB (http://www.inera.se)
+  ~
+  ~ This file is part of sklintyg (https://github.com/sklintyg).
+  ~
+  ~ sklintyg is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ sklintyg is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
@@ -7,7 +26,7 @@
   <parent>
     <groupId>se.inera.intyg.common</groupId>
     <artifactId>common-pom</artifactId>
-    <version>1.0.15</version>
+    <version>1.0.19</version>
   </parent>
 
   <groupId>se.riv.clinicalprocess.healthcond.certificate</groupId>
@@ -22,7 +41,7 @@
   </scm>
 
   <properties>
-    <schemas-support.version>1.0.0</schemas-support.version>
+    <schemas-support.version>2.0.0</schemas-support.version>
     <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
   </properties>
 
@@ -72,9 +91,6 @@
             <phase>generate-sources</phase>
             <configuration>
               <defaultOptions>
-                <bindingFiles>
-                  <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
-                </bindingFiles>
                 <extraargs>
                   <extraarg>-p</extraarg>
                   <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
@@ -82,6 +98,10 @@
                   <extraarg>urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1</extraarg>
                   <extraarg>-p</extraarg>
                   <extraarg>urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:clinicalprocess:healthcond:certificate:2=se.riv.clinicalprocess.healthcond.certificate.v2</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:clinicalprocess:healthcond:certificate:types:2=se.riv.clinicalprocess.healthcond.certificate.types.v2</extraarg>
                 </extraargs>
               </defaultOptions>
 
@@ -90,6 +110,9 @@
                   <wsdl>
                     ${wsdl.directory}/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                  </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
@@ -107,6 +130,9 @@
                   <wsdl>
                     ${wsdl.directory}/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                  </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
@@ -124,6 +150,9 @@
                   <wsdl>
                     ${wsdl.directory}/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                  </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
@@ -141,6 +170,9 @@
                   <wsdl>
                     ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                  </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
@@ -150,6 +182,46 @@
                     </packagename>
                     <packagename>
                       urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_2.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_2.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificate:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v2
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificateResponder:2=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v2
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/GetCertificateInteraction/GetCertificateInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/GetCertificateInteraction/GetCertificateInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:GetCertificate:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.getCertificate.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.getCertificate.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>

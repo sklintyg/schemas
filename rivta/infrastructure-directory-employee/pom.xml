@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2015 Inera AB (http://www.inera.se)
+  ~
+  ~ This file is part of sklintyg (https://github.com/sklintyg).
+  ~
+  ~ sklintyg is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ sklintyg is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>se.inera.intyg.common</groupId>
+    <artifactId>common-pom</artifactId>
+    <version>1.0.19</version>
+  </parent>
+
+  <groupId>se.rivta.tools</groupId>
+  <artifactId>infrastructure-directory-employee-schemas</artifactId>
+
+  <packaging>jar</packaging>
+  <version>0-SNAPSHOT</version>
+
+  <name>HSA Schemas (Infrastructure Directory Employee)</name>
+
+  <scm>
+    <connection>scm:git:git@github.com:sklintyg/schemas.git</connection>
+  </scm>
+
+  <properties>
+    <schemas-support.version>2.0.0</schemas-support.version>
+    <wsdl.directory>${basedir}/schemas/interactions</wsdl.directory>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>se.inera.intyg.schemas</groupId>
+      <artifactId>schemas-support</artifactId>
+      <version>${schemas-support.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-frontend-jaxws</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.cxf</groupId>
+      <artifactId>cxf-rt-transports-http</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jvnet.jaxb2_commons</groupId>
+      <artifactId>jaxb2-basics-runtime</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>schemas</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+    </resources>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-codegen-plugin</artifactId>
+                    <versionRange>${cxf.version}</versionRange>
+                    <goals>
+                      <goal>wsdl2java</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute></execute>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-codegen-plugin</artifactId>
+        <version>${cxf.version}</version>
+        <executions>
+          <execution>
+            <id>generate-sources</id>
+            <goals>
+              <goal>wsdl2java</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <defaultOptions>
+                <bindingFiles>
+                  <bindingFile>classpath:/bindings/general-binding.xjb</bindingFile>
+                </bindingFiles>
+                <extraargs>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:infrastructure:directory:1=se.riv.infrastructure.directory.v1</extraarg>
+                  <extraarg>-p</extraarg>
+                  <extraarg>urn:riv:infrastructure:directory:employee:1=se.riv.infrastructure.directory.employee.v1
+                  </extraarg>
+                </extraargs>
+              </defaultOptions>
+              <wsdlOptions>
+                <wsdloption>
+                  <wsdl>
+                    ${wsdl.directory}/GetEmployeeIncludingProtectedPersonInteraction/GetEmployeeIncludingProtectedPersonInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/GetEmployeeIncludingProtectedPersonInteraction/GetEmployeeIncludingProtectedPersonInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <extraargs>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:infrastructure:directory:employee:GetEmployeeIncludingProtectedPersonResponder:1=se.riv.infrastructure.directory.employee.getemployeeincludingprotectedpersonresponder.v1
+                    </extraarg>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:infrastructure:directory:employee:GetEmployeeIncludingProtectedPersonInitiator:1=se.riv.infrastructure.directory.employee.getemployeeincludingprotectedpersoninitiator.v1
+                    </extraarg>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:infrastructure:directory:employee:GetEmployeeIncludingProtectedPerson:1:rivtabp21=se.riv.infrastructure.directory.employee.getemployeeincludingprotectedperson.v1.rivtabp21
+                    </extraarg>
+                  </extraargs>
+                </wsdloption>
+                <wsdloption>
+                    <wsdl>${wsdl.directory}/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                    <wsdlLocation>
+                        classpath:interactions/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl
+                    </wsdlLocation>
+                    <extraargs>
+                        <extraarg>-p</extraarg>
+                        <extraarg>
+                            urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.v1
+                        </extraarg>
+                        <extraarg>-p</extraarg>
+                        <extraarg>
+                            urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.rivtabp21.v1
+                        </extraarg>
+                    </extraargs>
+                </wsdloption>
+                <!--wsdloption>
+                  <wsdl>${wsdl.directory}/GetEmployeeInteraction/GetEmployeeInteraction_1.0_RIVTABP21.wsdl</wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/GetEmployeeInteraction/GetEmployeeInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <extraargs>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:infrastructure:directory:employee:GetEmployeeResponder:1=se.riv.infrastructure.directory.employee.getemployeeresponder.v1
+                    </extraarg>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:infrastructure:directory:employee:GetEmployeeInitiator:1=se.riv.infrastructure.directory.employee.getemployeeinitiator.v1
+                    </extraarg>
+                    <extraarg>-p</extraarg>
+                    <extraarg>
+                      urn:riv:infrastructure:directory:employee:GetEmployee:1:rivtabp21=se.riv.infrastructure.directory.employee.getemployee.v1.rivtabp21
+                    </extraarg>
+                  </extraargs>
+                  </wsdloption>
+                  -->
+              </wsdlOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>${buildnumber-maven-plugin.version}</version>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>target/generated-sources/cxf</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>inera-release</id>
+      <url>https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>inera-snapshot</id>
+      <url>https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>thirdparty</id>
+      <url>https://build-inera.nordicmedtest.se/nexus/content/repositories/thirdparty/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+</project>
