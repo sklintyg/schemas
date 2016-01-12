@@ -28,11 +28,10 @@
     <version>1.0.19</version>
   </parent>
 
-  <groupId>se.rivta.tools</groupId>
+  <groupId>se.riv.infrastructure.directory.organization</groupId>
   <artifactId>infrastructure-directory-organization-schemas</artifactId>
-
-  <packaging>jar</packaging>
   <version>0-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
   <name>HSA Schemas (Infrastructure Directory Organization)</name>
 
