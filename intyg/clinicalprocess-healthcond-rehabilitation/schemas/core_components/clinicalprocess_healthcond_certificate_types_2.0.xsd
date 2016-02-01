@@ -272,7 +272,6 @@
 	</xs:complexType>
 
 	<xs:complexType name="DatePeriodType">
-
 		<xs:sequence>
 			<xs:element name="start" type="DateType" minOccurs="0" />
 			<xs:element name="end" type="DateType" minOccurs="0" />
@@ -280,7 +279,6 @@
 	</xs:complexType>
 
 	<xs:complexType name="TimePeriodType">
-
 		<xs:sequence>
 			<xs:element name="start" type="TimeStampType" minOccurs="0" />
 			<xs:element name="end" type="TimeStampType" minOccurs="0" />

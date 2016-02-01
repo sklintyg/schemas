@@ -110,17 +110,17 @@
 
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/GetActiveSickLeavesForCareUnitInteraction/GetActiveSickLeavesForCareUnitInteraction_1.0_RIVTABP21.wsdl
+                    ${wsdl.directory}/ListActiveSickLeavesForCareUnitInteraction/ListActiveSickLeavesForCareUnitInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <wsdlLocation>
-                    classpath:interactions/GetActiveSickLeavesForCareUnitInteraction/GetActiveSickLeavesForCareUnitInteraction_1.0_RIVTABP21.wsdl
+                    classpath:interactions/ListActiveSickLeavesForCareUnitInteraction/ListActiveSickLeavesForCareUnitInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
                   <packagenames>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:rehabilitation:GetActiveSickLeavesForCareUnit:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.getactivesickleavesforcareunit.v1
+                      urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForCareUnit:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforcareunit.v1
                     </packagename>
                     <packagename>
-                      urn:riv:clinicalprocess:healthcond:rehabilitation:GetActiveSickLeavesForCareUnitResponder:1=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.getactivesickleavesforcareunit.v1
+                      urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForCareUnitResponder:1=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforcareunit.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>

@@ -28,20 +28,6 @@
 
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2" schemaLocation="clinicalprocess_healthcond_certificate_types_2.0.xsd" />
 
-  <xs:complexType name="IntygsData">
-    <xs:sequence>
-      <xs:element name="intygs-id" type="types:IntygId" minOccurs="1" maxOccurs="1" />
-      <xs:element name="patient" type="tns:Patient" minOccurs="1" maxOccurs="1" />
-      <xs:element name="skapadAv" type="tns:HosPersonal" minOccurs="1" maxOccurs="1" />
-      <xs:element name="enhet" type="tns:Enhet" minOccurs="1" maxOccurs="1" />
-      <xs:element name="diagnos" type="tns:Diagnos" minOccurs="1" maxOccurs="1" />
-      <xs:element name="sjukskrivningsgrader" type="tns:Sjukskrivningsgrad" minOccurs="1" maxOccurs="unbounded" />
-      <xs:element name="enkeltIntyg" type="xs:boolean" minOccurs="1" maxOccurs="1" />
-      <xs:any namespace="##other" processContents="lax" minOccurs="0"
-          maxOccurs="unbounded" />
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:complexType name="Vardgivare">
     <xs:sequence>
       <xs:element name="vardgivare-id" type="types:HsaId">
@@ -55,6 +41,26 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="IntygsLista">
+    <xs:sequence>
+      <xs:element name="intygsData" type="tns:IntygsData" minOccurs="0" maxOccurs="unbounded" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IntygsData">
+    <xs:sequence>
+      <xs:element name="intygs-id" type="types:IntygId" />
+      <xs:element name="patient" type="tns:Patient" />
+      <xs:element name="skapadAv" type="tns:HosPersonal" />
+      <xs:element name="enhet" type="tns:Enhet" />
+      <xs:element name="diagnos" type="tns:Diagnos" />
+      <xs:element name="arbetsformaga" type="tns:Arbetsformaga" />
+      <xs:element name="enkeltIntyg" type="xs:boolean" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
   <xs:complexType name="Enhet">
     <xs:sequence>
       <xs:element name="enhets-id" type="types:HsaId">
@@ -94,36 +100,53 @@
           </xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="befattning" type="types:Befattning" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="befattningar" type="tns:Befattningar" />
       <xs:element name="enhet" type="tns:Enhet" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0"
           maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="Befattningar">
+    <xs:sequence>
+      <xs:element name="befattning" type="types:Befattning" minOccurs="0" maxOccurs="unbounded" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  
   <xs:complexType name="Diagnos">
     <xs:sequence>
-      <xs:element name="kod" type="xs:string" minOccurs="1" />
+      <xs:element name="kod" type="xs:string" />
       <xs:element name="grupp" type="xs:string" minOccurs="0" />
       <xs:element name="text" type="xs:string" minOccurs="0" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Sjukskrivningsgrad">
+  <xs:complexType name="Arbetsformaga">
     <xs:sequence>
-      <xs:element name="startdatum" type="xs:date" minOccurs="1" />
-      <xs:element name="slutdatum" type="xs:date" minOccurs="1" />
-      <xs:element name="grad" minOccurs="1">
-        <xs:simpleType>
-          <xs:restriction base="xs:integer">
-            <xs:minInclusive value="1"/>
-            <xs:maxInclusive value="100"/>
-          </xs:restriction>
-        </xs:simpleType>
-      </xs:element>
+      <xs:element name="formaga" type="tns:Formaga" maxOccurs="unbounded" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
+
+  <xs:complexType name="Formaga">
+    <xs:sequence>
+      <xs:element name="startdatum" type="xs:date" />
+      <xs:element name="slutdatum" type="xs:date" />
+      <xs:element name="nedsattning" type="tns:Nedsattning" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="Nedsattning">
+    <xs:annotation>
+      <xs:documentation>Heltal mellan 1 och 100 som beskriver den procentuella nedsatta arbetsförmågan.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
 
 </xs:schema>
