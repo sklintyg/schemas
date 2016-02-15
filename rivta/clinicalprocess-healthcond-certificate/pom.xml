@@ -226,6 +226,25 @@
                   </packagenames>
                 </wsdlOption>
 
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/SendMessageToCareInteraction/SendMessageToCareInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/SendMessageToCareInteraction/SendMessageToCareInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:SendMessageToCare:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.sendMessageToCare.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:SendMessageToCareResponder:1=se.riv.clinicalprocess.healthcond.certificate.sendMessageToCare.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
               </wsdlOptions>
 
             </configuration>
