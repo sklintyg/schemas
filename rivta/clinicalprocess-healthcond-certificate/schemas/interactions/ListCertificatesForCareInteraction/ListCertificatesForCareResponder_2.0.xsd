@@ -28,8 +28,10 @@
 	<complexType name="ListCertificatesForCareType">
 		<sequence>
 			<element name="person-id" type="types:PersonId" />
-			<element name="enhets-id" type="types:HsaId" minOccurs="1"
-				maxOccurs="unbounded" />
+			<choice>
+				<element name="vardgivar-id" type="types:HsaId"/>				
+				<element name="enhets-id" type="types:HsaId" maxOccurs="unbounded" />
+			</choice>	
 			<any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</sequence>

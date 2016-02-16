@@ -18,8 +18,8 @@
 				maxOccurs="unbounded" />
 			<xs:element name="typ" type="types:TypAvIntyg" />
 			<xs:element name="version" type="xs:string" />
-			<xs:element name="signeringstidpunkt" type="types:TimeStampType" />
-			<xs:element name="skickatTidpunkt" type="types:TimeStampType" />
+			<xs:element name="signeringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
+			<xs:element name="skickatTidpunkt" type="types:TimeStampType" minOccurs="0"/>
 			<xs:element name="patient" type="Patient" />
 			<xs:element name="skapadAv" type="HosPersonal" />
 			<xs:element name="relation" type="Relation" minOccurs="0"
@@ -41,8 +41,7 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="fullstandigtNamn" type="xs:string"
-				minOccurs="0">
+			<xs:element name="fullstandigtNamn" type="xs:string">
 				<xs:annotation>
 					<xs:documentation>Förnamn + efternamn sammanslaget.
 						Är tomt om
@@ -70,22 +69,17 @@
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
-			<xs:element name="arbetsplatskod" type="types:ArbetsplatsKod"
-				minOccurs="0">
+			<xs:element name="arbetsplatskod" type="types:ArbetsplatsKod">
 				<xs:annotation>
 					<xs:documentation>o.i.d för arbetsplatskod är 1.2.752.29.4.71
 					</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="enhetsnamn" type="xs:string" />
-			<xs:element name="postadress" type="types:nonEmptyString"
-				minOccurs="0" />
-			<xs:element name="postnummer" type="types:nonEmptyString"
-				minOccurs="0" />
-			<xs:element name="postort" type="types:nonEmptyString"
-				minOccurs="0" />
-			<xs:element name="telefonnummer" type="types:nonEmptyString"
-				minOccurs="0" />
+			<xs:element name="postadress" type="types:nonEmptyString" />
+			<xs:element name="postnummer" type="types:nonEmptyString" />
+			<xs:element name="postort" type="types:nonEmptyString" />
+			<xs:element name="telefonnummer" type="types:nonEmptyString" />
 			<xs:element name="epost" type="types:nonEmptyString"
 				minOccurs="0" />
 			<xs:element name="vardgivare" type="Vardgivare" />
@@ -111,15 +105,12 @@
 	<xs:complexType name="Patient">
 		<xs:sequence>
 			<xs:element name="person-id" type="types:PersonId" />
-			<xs:element name="fornamn" type="xs:string" minOccurs="0" />
+			<xs:element name="fornamn" type="xs:string" />
 			<xs:element name="efternamn" type="xs:string" />
 			<xs:element name="mellannamn" type="xs:string" minOccurs="0" />
-			<xs:element name="postadress" type="types:nonEmptyString"
-				minOccurs="0" />
-			<xs:element name="postnummer" type="types:nonEmptyString"
-				minOccurs="0" />
-			<xs:element name="postort" type="types:nonEmptyString"
-				minOccurs="0" />
+			<xs:element name="postadress" type="types:nonEmptyString" />
+			<xs:element name="postnummer" type="types:nonEmptyString" />
+			<xs:element name="postort" type="types:nonEmptyString" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xs:sequence>
@@ -143,6 +134,7 @@
 			<xs:documentation>Svar på en fråga</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
+			<xs:element name="instans" type="xs:int" minOccurs="0"/>
 			<xs:element name="delsvar" maxOccurs="unbounded">
 				<xs:complexType mixed="true">
 					<xs:sequence>

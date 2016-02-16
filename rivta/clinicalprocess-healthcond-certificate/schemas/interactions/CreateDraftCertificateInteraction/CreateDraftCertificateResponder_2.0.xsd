@@ -65,7 +65,7 @@
 	<xs:complexType name="Patient">
 		<xs:sequence>
 			<xs:element name="person-id" type="types:PersonId" />
-			<xs:element name="fornamn" type="xs:string" minOccurs="0" />
+			<xs:element name="fornamn" type="xs:string" />
 			<xs:element name="efternamn" type="xs:string" />
 			<xs:element name="mellannamn" type="xs:string" minOccurs="0" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"

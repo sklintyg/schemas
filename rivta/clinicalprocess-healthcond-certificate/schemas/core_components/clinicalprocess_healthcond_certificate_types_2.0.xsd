@@ -156,6 +156,19 @@
 		</xs:complexContent>
 	</xs:complexType>
 
+	<xs:complexType name="Amneskod">
+		<xs:complexContent>
+			<xs:restriction base="CVType">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string" />
+					<xs:element name="codeSystem" type="xs:string"
+						fixed="ffa59d8f-8d7e-46ae-ac9e-31804e8e8499" />
+					<xs:element name="displayName" type="xs:string"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:simpleType name="TimeStampMedMillisekunder">
 		<xs:annotation>
 			<xs:documentation>
@@ -287,7 +300,8 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<!-- Element tillagda för att kunna hantera användning av datatyperna i	any-tag -->
+	<!-- Element tillagda dör att kunna hantera användning av datatyperna i 
+		any-tag -->
 	<xs:element name="timePeriod" type="TimePeriodType" />
 	<xs:element name="datePeriod" type="DatePeriodType" />
 	<xs:element name="pq" type="PQType" />

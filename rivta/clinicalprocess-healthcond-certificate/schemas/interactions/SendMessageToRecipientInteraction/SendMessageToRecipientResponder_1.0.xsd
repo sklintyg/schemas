@@ -40,8 +40,8 @@
 			<element name="skickatTidpunkt" type="types:TimeStampType" />
 			<element name="intygs-id" type="types:IntygId" />
 			<element name="patientPerson-id" type="types:PersonId" />
-			<element name="logiskAdressMottagare" type="types:HsaId" />
-			<element name="amne" type="string"/>
+			<element name="logiskAdressMottagare" type="string" />
+			<element name="amne" type="types:Amneskod"/>
 			<element name="rubrik" type="string" minOccurs="0"/>
 			<element name="meddelande" type="string"/>
 			<element name="paminnelseMeddelande-id" type="string" minOccurs="0"/>
