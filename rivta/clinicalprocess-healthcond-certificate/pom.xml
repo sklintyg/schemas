@@ -148,6 +148,26 @@
 
                 <wsdlOption>
                   <wsdl>
+                    ${wsdl.directory}/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_2.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_2.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificateResponder:2=se.riv.clinicalprocess.healthcond.certificate.createdraftcertificateresponder.v2
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificate:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.createdraftcertificateresponder.v2
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
                     ${wsdl.directory}/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
