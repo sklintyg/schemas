@@ -128,6 +128,26 @@
 
                 <wsdlOption>
                   <wsdl>
+                    ${wsdl.directory}/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_2.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_2.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:2=se.riv.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v2
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCare:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v2
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
                     ${wsdl.directory}/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
