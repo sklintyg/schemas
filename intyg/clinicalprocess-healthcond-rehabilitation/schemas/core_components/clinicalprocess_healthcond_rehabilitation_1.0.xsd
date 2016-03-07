@@ -78,9 +78,7 @@
   <xs:complexType name="Patient">
     <xs:sequence>
       <xs:element name="personId" type="types:PersonId" />
-      <xs:element name="fornamn" type="xs:string" minOccurs="0" />
-      <xs:element name="mellannamn" type="xs:string" minOccurs="0" />
-      <xs:element name="efternamn" type="xs:string" />
+      <xs:element name="fullstandigtNamn" type="xs:string" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
