@@ -285,6 +285,27 @@
                     </packagename>
                   </packagenames>
                 </wsdlOption>
+
+              <wsdlOption>
+                  <wsdl>
+                      ${wsdl.directory}/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_2.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                      classpath:interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_2.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                      <packagename>
+                          urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizen:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v2
+                      </packagename>
+                      <packagename>
+                          urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:2=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v2
+                      </packagename>
+                  </packagenames>
+              </wsdlOption>
+              
               </wsdlOptions>
 
             </configuration>
