@@ -55,19 +55,8 @@
 	<xs:complexType name="Intyg">
 		<xs:sequence>
 			<xs:element name="typAvIntyg" type="types:TypAvIntyg" />
-			<xs:element name="patient" type="tns:Patient" />
+			<xs:element name="patient" type="core:Patient" />
 			<xs:element name="skapadAv" type="tns:HosPersonal" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="Patient">
-		<xs:sequence>
-			<xs:element name="person-id" type="types:PersonId" />
-			<xs:element name="fornamn" type="xs:string" />
-			<xs:element name="efternamn" type="xs:string" />
-			<xs:element name="mellannamn" type="xs:string" minOccurs="0" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xs:sequence>
