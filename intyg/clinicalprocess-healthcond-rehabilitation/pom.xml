@@ -30,7 +30,7 @@
 
   <groupId>se.inera.intyg.clinicalprocess.healthcond.rehabilitation</groupId>
   <artifactId>intyg-clinicalprocess-healthcond-rehabilitation-schemas</artifactId>
-  <version>0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>Intyg Schemas (Clinicalprocess Healthreporting Rehabilitation)</name>
