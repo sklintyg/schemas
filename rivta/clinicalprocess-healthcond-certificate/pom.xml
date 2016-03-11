@@ -286,6 +286,46 @@
                   </packagenames>
                 </wsdlOption>
 
+                <wsdlOption>
+                  <wsdl>
+                      ${wsdl.directory}/SendMessageToRecipientInteraction/SendMessageToRecipientInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                      classpath:interactions/SendMessageToRecipientInteraction/SendMessageToRecipientInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                      <packagename>
+                          urn:riv:clinicalprocess:healthcond:certificate:SendMessageToRecipient:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.sendMessageToRecipient.v1
+                      </packagename>
+                      <packagename>
+                          urn:riv:clinicalprocess:healthcond:certificate:SendMessageToRecipientResponder:1=se.riv.clinicalprocess.healthcond.certificate.sendMessageToRecipient.v1
+                      </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                      ${wsdl.directory}/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                      classpath:interactions/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                      <packagename>
+                          urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipient:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.sendCertificateToRecipient.v1
+                      </packagename>
+                      <packagename>
+                          urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipientResponder:1=se.riv.clinicalprocess.healthcond.certificate.sendCertificateToRecipient.v1
+                      </packagename>
+                  </packagenames>
+                </wsdlOption>
+
               <wsdlOption>
                   <wsdl>
                       ${wsdl.directory}/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_2.0_RIVTABP21.wsdl
