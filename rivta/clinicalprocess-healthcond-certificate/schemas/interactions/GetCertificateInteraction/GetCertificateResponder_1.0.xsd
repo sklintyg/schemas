@@ -36,7 +36,6 @@
 	<complexType name="GetCertificateResponseType">
 		<sequence>
 			<element name="intyg" type="core:Intyg" />
-			<element name="result" type="core:ResultType" />
 			<any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</sequence>

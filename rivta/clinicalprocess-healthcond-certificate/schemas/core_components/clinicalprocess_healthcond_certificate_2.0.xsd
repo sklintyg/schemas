@@ -18,8 +18,10 @@
 				maxOccurs="unbounded" />
 			<xs:element name="typ" type="types:TypAvIntyg" />
 			<xs:element name="version" type="xs:string" />
-			<xs:element name="signeringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
-			<xs:element name="skickatTidpunkt" type="types:TimeStampType" minOccurs="0"/>
+			<xs:element name="signeringstidpunkt" type="types:TimeStampType"
+				minOccurs="0" />
+			<xs:element name="skickatTidpunkt" type="types:TimeStampType"
+				minOccurs="0" />
 			<xs:element name="patient" type="Patient" />
 			<xs:element name="skapadAv" type="HosPersonal" />
 			<xs:element name="relation" type="Relation" minOccurs="0"
@@ -134,7 +136,7 @@
 			<xs:documentation>Svar på en fråga</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="instans" type="xs:int" minOccurs="0"/>
+			<xs:element name="instans" type="xs:int" minOccurs="0" />
 			<xs:element name="delsvar" maxOccurs="unbounded">
 				<xs:complexType mixed="true">
 					<xs:sequence>
@@ -304,14 +306,12 @@
 
 	<xs:complexType name="FragorOchSvar"> <!-- Frågor och svar -->
 		<xs:sequence>
-			<xs:sequence>
-				<xs:element name="antalFragor" type="xs:int" />
-				<xs:element name="antalHanteradeFragor" type="xs:int" />
-				<xs:element name="antalSvar" type="xs:int" />
-				<xs:element name="antalHanteradeSvar" type="xs:int" />
-				<xs:any namespace="##other" processContents="lax" minOccurs="0"
-					maxOccurs="unbounded" />
-			</xs:sequence>
+			<xs:element name="antalFragor" type="xs:int" />
+			<xs:element name="antalHanteradeFragor" type="xs:int" />
+			<xs:element name="antalSvar" type="xs:int" />
+			<xs:element name="antalHanteradeSvar" type="xs:int" />
+			<xs:any namespace="##other" processContents="lax" minOccurs="0"
+				maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 	<!-- slut typer som används vid integrerad intygsapplikation -->
