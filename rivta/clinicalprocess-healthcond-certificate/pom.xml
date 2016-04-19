@@ -208,6 +208,46 @@
 
                 <wsdlOption>
                   <wsdl>
+                    ${wsdl.directory}/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_2.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_2.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v2
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:2=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v2
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_2.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_2.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQA:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCareWithQA.v2
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:2=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCareWithQA.v2
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
                     ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
