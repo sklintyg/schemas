@@ -19,7 +19,7 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
 
@@ -111,7 +111,7 @@
                     ${wsdl.directory}/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_1.0_RIVTABP21.wsdl
@@ -131,7 +131,7 @@
                     ${wsdl.directory}/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_2.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_2.0_RIVTABP21.wsdl
@@ -151,7 +151,7 @@
                     ${wsdl.directory}/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_1.0_RIVTABP21.wsdl
@@ -171,7 +171,7 @@
                     ${wsdl.directory}/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_2.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_2.0_RIVTABP21.wsdl
@@ -191,7 +191,7 @@
                     ${wsdl.directory}/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_1.0_RIVTABP21.wsdl
@@ -211,7 +211,7 @@
                     ${wsdl.directory}/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_2.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_2.0_RIVTABP21.wsdl
@@ -231,7 +231,7 @@
                     ${wsdl.directory}/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_2.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_2.0_RIVTABP21.wsdl
@@ -251,7 +251,7 @@
                     ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_1.0_RIVTABP21.wsdl
@@ -271,7 +271,7 @@
                     ${wsdl.directory}/RegisterCertificateInteraction/RegisterCertificateInteraction_2.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_2.0_RIVTABP21.wsdl
@@ -291,7 +291,7 @@
                     ${wsdl.directory}/GetCertificateInteraction/GetCertificateInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
                     classpath:interactions/GetCertificateInteraction/GetCertificateInteraction_1.0_RIVTABP21.wsdl
@@ -328,66 +328,104 @@
 
                 <wsdlOption>
                   <wsdl>
-                      ${wsdl.directory}/SendMessageToRecipientInteraction/SendMessageToRecipientInteraction_1.0_RIVTABP21.wsdl
+                    ${wsdl.directory}/SendMessageToRecipientInteraction/SendMessageToRecipientInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
-                      classpath:interactions/SendMessageToRecipientInteraction/SendMessageToRecipientInteraction_1.0_RIVTABP21.wsdl
+                    classpath:interactions/SendMessageToRecipientInteraction/SendMessageToRecipientInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
                   <packagenames>
-                      <packagename>
-                          urn:riv:clinicalprocess:healthcond:certificate:SendMessageToRecipient:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.sendMessageToRecipient.v1
-                      </packagename>
-                      <packagename>
-                          urn:riv:clinicalprocess:healthcond:certificate:SendMessageToRecipientResponder:1=se.riv.clinicalprocess.healthcond.certificate.sendMessageToRecipient.v1
-                      </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:SendMessageToRecipient:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.sendMessageToRecipient.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:SendMessageToRecipientResponder:1=se.riv.clinicalprocess.healthcond.certificate.sendMessageToRecipient.v1
+                    </packagename>
                   </packagenames>
                 </wsdlOption>
 
                 <wsdlOption>
                   <wsdl>
-                      ${wsdl.directory}/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
+                    ${wsdl.directory}/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
-                      classpath:interactions/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
+                    classpath:interactions/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
                   </wsdlLocation>
                   <packagenames>
-                      <packagename>
-                          urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipient:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.sendCertificateToRecipient.v1
-                      </packagename>
-                      <packagename>
-                          urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipientResponder:1=se.riv.clinicalprocess.healthcond.certificate.sendCertificateToRecipient.v1
-                      </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipient:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.sendCertificateToRecipient.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipientResponder:1=se.riv.clinicalprocess.healthcond.certificate.sendCertificateToRecipient.v1
+                    </packagename>
                   </packagenames>
                 </wsdlOption>
 
-              <wsdlOption>
+                <wsdlOption>
                   <wsdl>
-                      ${wsdl.directory}/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_2.0_RIVTABP21.wsdl
+                    ${wsdl.directory}/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_2.0_RIVTABP21.wsdl
                   </wsdl>
                   <bindingFiles>
-                      <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
                   </bindingFiles>
                   <wsdlLocation>
-                      classpath:interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_2.0_RIVTABP21.wsdl
+                    classpath:interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_2.0_RIVTABP21.wsdl
                   </wsdlLocation>
                   <packagenames>
-                      <packagename>
-                          urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizen:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v2
-                      </packagename>
-                      <packagename>
-                          urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:2=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v2
-                      </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizen:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v2
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:2=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v2
+                    </packagename>
                   </packagenames>
-              </wsdlOption>
-              
-              </wsdlOptions>
+                </wsdlOption>
 
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/RevokeCertificateInteraction/RevokeCertificateInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/RevokeCertificateInteraction/RevokeCertificateInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:RevokeCertificate:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.revokeCertificate.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:RevokeCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.revokeCertificate.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/SetCertificateStatusInteraction/SetCertificateStatusInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <bindingFiles>
+                    <bindingFile>classpath:/bindings/clinicalprocess-binding2.xjb</bindingFile>
+                  </bindingFiles>
+                  <wsdlLocation>
+                    classpath:interactions/SetCertificateStatusInteraction/SetCertificateStatusInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatus:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.setCertificateStatus.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatusResponder:1=se.riv.clinicalprocess.healthcond.certificate.setCertificateStatus.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
+              </wsdlOptions>
             </configuration>
           </execution>
         </executions>
