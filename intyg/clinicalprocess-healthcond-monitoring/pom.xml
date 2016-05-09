@@ -30,7 +30,7 @@
 
   <groupId>se.riv.clinicalprocess.healthcond.monitoring</groupId>
   <artifactId>clinicalprocess-healthcond-monitoring-schemas</artifactId>
-  <version>0-SNAPSHOT</version>
+  <version>1.0.0.0</version>
   <packaging>jar</packaging>
 
   <name>Intyg Schemas (Internal Monitoring)</name>
