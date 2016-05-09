@@ -40,6 +40,7 @@
     <module>intyg/insuranceprocess-healthreporting</module>
     <module>intyg/clinicalprocess-healthcond-certificate</module>
     <module>intyg/clinicalprocess-healthcond-rehabilitation</module>
+    <module>intyg/clinicalprocess-healthcond-monitoring</module>
 
     <!-- External project schemas -->
     <module>cgi/funktionstjanster-grp</module>
