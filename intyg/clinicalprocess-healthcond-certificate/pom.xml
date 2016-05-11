@@ -114,40 +114,6 @@
 
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/GetCertificateForCareInteraction/GetCertificateForCareInteraction_1.0_RIVTABP21.wsdl
-                  </wsdl>
-                  <wsdlLocation>
-                    classpath:interactions/GetCertificateForCareInteraction/GetCertificateForCareInteraction_1.0_RIVTABP21.wsdl
-                  </wsdlLocation>
-                  <packagenames>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:GetCertificateForCare:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.certificate.getcertificateforcare.v1
-                    </packagename>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:GetCertificateForCareResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.getcertificateforcare.v1
-                    </packagename>
-                  </packagenames>
-                </wsdlOption>
-
-                <wsdlOption>
-                  <wsdl>
-                    ${wsdl.directory}/GetMedicalCertificateForCareInteraction/GetMedicalCertificateForCareInteraction_1.0_RIVTABP21.wsdl
-                  </wsdl>
-                  <wsdlLocation>
-                    classpath:interactions/GetMedicalCertificateForCareInteraction/GetMedicalCertificateForCareInteraction_1.0_RIVTABP21.wsdl
-                  </wsdlLocation>
-                  <packagenames>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCare:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.certificate.getmedicalcertificateforcare.v1
-                    </packagename>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCareResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.getmedicalcertificateforcare.v1
-                    </packagename>
-                  </packagenames>
-                </wsdlOption>
-
-                <wsdlOption>
-                  <wsdl>
                     ${wsdl.directory}/GetRecipientsForCertificateInteraction/GetRecipientsForCertificateInteraction_1.0.wsdl
                   </wsdl>
                   <wsdlLocation>
@@ -159,40 +125,6 @@
                     </packagename>
                     <packagename>
                       urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificate:1=se.inera.intyg.clinicalprocess.healthcond.certificate.getrecipientsforcertificate.v1
-                    </packagename>
-                  </packagenames>
-                </wsdlOption>
-
-                <wsdlOption>
-                  <wsdl>
-                    ${wsdl.directory}/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_1.0_RIVTABP21.wsdl
-                  </wsdl>
-                  <wsdlLocation>
-                    classpath:interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_1.0_RIVTABP21.wsdl
-                  </wsdlLocation>
-                  <packagenames>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizen:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.certificate.listcertificatesforcitizen.v1
-                    </packagename>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.listcertificatesforcitizen.v1
-                    </packagename>
-                  </packagenames>
-                </wsdlOption>
-
-                <wsdlOption>
-                  <wsdl>
-                    ${wsdl.directory}/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
-                  </wsdl>
-                  <wsdlLocation>
-                    classpath:interactions/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl
-                  </wsdlLocation>
-                  <packagenames>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipient:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.certificate.sendcertificatetorecipient.v1
-                    </packagename>
-                    <packagename>
-                      urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipientResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.sendcertificatetorecipient.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
