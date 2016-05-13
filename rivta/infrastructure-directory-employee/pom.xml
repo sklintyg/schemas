@@ -132,6 +132,7 @@
                   </extraarg>
                 </extraargs>
               </defaultOptions>
+
               <wsdlOptions>
                 <wsdloption>
                   <wsdl>
@@ -155,43 +156,7 @@
                     </extraarg>
                   </extraargs>
                 </wsdloption>
-                <wsdloption>
-                    <wsdl>${wsdl.directory}/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl</wsdl>
-                    <wsdlLocation>
-                        classpath:interactions/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl
-                    </wsdlLocation>
-                    <extraargs>
-                        <extraarg>-p</extraarg>
-                        <extraarg>
-                            urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.v1
-                        </extraarg>
-                        <extraarg>-p</extraarg>
-                        <extraarg>
-                            urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.rivtabp21.v1
-                        </extraarg>
-                    </extraargs>
-                </wsdloption>
-                <!--wsdloption>
-                  <wsdl>${wsdl.directory}/GetEmployeeInteraction/GetEmployeeInteraction_1.0_RIVTABP21.wsdl</wsdl>
-                  <wsdlLocation>
-                    classpath:interactions/GetEmployeeInteraction/GetEmployeeInteraction_1.0_RIVTABP21.wsdl
-                  </wsdlLocation>
-                  <extraargs>
-                    <extraarg>-p</extraarg>
-                    <extraarg>
-                      urn:riv:infrastructure:directory:employee:GetEmployeeResponder:1=se.riv.infrastructure.directory.employee.getemployeeresponder.v1
-                    </extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>
-                      urn:riv:infrastructure:directory:employee:GetEmployeeInitiator:1=se.riv.infrastructure.directory.employee.getemployeeinitiator.v1
-                    </extraarg>
-                    <extraarg>-p</extraarg>
-                    <extraarg>
-                      urn:riv:infrastructure:directory:employee:GetEmployee:1:rivtabp21=se.riv.infrastructure.directory.employee.getemployee.v1.rivtabp21
-                    </extraarg>
-                  </extraargs>
-                  </wsdloption>
-                  -->
+
               </wsdlOptions>
             </configuration>
           </execution>
