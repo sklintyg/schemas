@@ -1,0 +1,22 @@
+description = "population-residentmaster"
+
+wsdl2java {
+  wsdlsToGenerate = [  ["-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-XtoString", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                        "-wsdlLocation",
+                        "classpath:interactions/LookupResidentForFullProfileInteraction/LookupResidentForFullProfileInteraction_1.1_RIVTABP21.wsdl",
+                        "-p",
+                        "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
+                        "-p",
+                        "urn:riv:population:residentmaster:1=se.riv.population.residentmaster.types.v1",
+                        "-p",
+                        "urn:riv:population:residentmaster:1.1=se.riv.population.residentmaster.types.v11",
+                        "-p",
+                        "urn:riv:population:residentmaster:LookupResidentForFullProfileResponder:1=se.riv.population.residentmaster.lookupresidentforfullprofileresponder.v1",
+                        "-p",
+                        "urn:riv:population:residentmaster:LookupResidentForFullProfileResponder=se.riv.population.residentmaster.lookupresidentforfullprofileresponder.v11",
+                        "-p",
+                        "urn:riv:population:residentmaster:LookupResidentForFullProfile:1:rivtabp21=se.riv.population.residentmaster.lookupresidentforfullprofileresponder.v11",
+                        "$projectDir/schemas/interactions/LookupResidentForFullProfileInteraction/LookupResidentForFullProfileInteraction_1.1_RIVTABP21.wsdl"],
+
+                    ]
+}

@@ -1,0 +1,10 @@
+description = "Intyg Schemas (Internal Monitoring)"
+
+wsdl2java {
+  wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                       "-wsdlLocation", "classpath:interactions/InternalPingForConfigurationInteraction/InternalPingForConfigurationInteraction_1.0_RIVTABP21.wsdl",
+                       "-p", "urn:riv:clinicalprocess:healthcond:monitoring:InternalPingForConfiguration:1:rivtabp21=se.riv.clinicalprocess.healthcond.monitoring.rivtabp21.v1",
+                       "-p", "urn:riv:clinicalprocess:healthcond:monitoring:InternalPingForConfigurationResponder:1=se.riv.clinicalprocess.healthcond.monitoring.v1",
+                       "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",                       
+                       "$projectDir/schemas/interactions/InternalPingForConfigurationInteraction/InternalPingForConfigurationInteraction_1.0_RIVTABP21.wsdl"] ]
+}
