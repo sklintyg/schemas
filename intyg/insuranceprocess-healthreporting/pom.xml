@@ -110,23 +110,6 @@
 
                 <wsdlOption>
                   <wsdl>
-                    ${wsdl.directory}/GetCertificateContent/GetCertificateContentInteraction_1.0_rivtabp20.wsdl
-                  </wsdl>
-                  <wsdlLocation>
-                    classpath:interactions/GetCertificateContent/GetCertificateContentInteraction_1.0_rivtabp20.wsdl
-                  </wsdlLocation>
-                  <packagenames>
-                    <packagename>
-                      urn:riv:insuranceprocess:healthreporting:GetCertificateContent=se.inera.intyg.insuranceprocess.healthreporting.getcertificatecontent.rivtabp20.v1
-                    </packagename>
-                    <packagename>
-                      urn:riv:insuranceprocess:healthreporting:GetCertificateContentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getcertificatecontentresponder.v1
-                    </packagename>
-                  </packagenames>
-                </wsdlOption>
-
-                <wsdlOption>
-                  <wsdl>
                     ${wsdl.directory}/GetConsentInteraction/GetConsentInteraction_1.0_rivtabp20.wsdl
                   </wsdl>
                   <wsdlLocation>
@@ -138,23 +121,6 @@
                     </packagename>
                     <packagename>
                       urn:riv:insuranceprocess:healthreporting:GetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getconsentresponder.v1
-                    </packagename>
-                  </packagenames>
-                </wsdlOption>
-
-                <wsdlOption>
-                  <wsdl>
-                    ${wsdl.directory}/SetCertificateArchivedInteraction/SetCertificateArchivedInteraction_1.0_rivtabp20.wsdl
-                  </wsdl>
-                  <wsdlLocation>
-                    classpath:interactions/SetCertificateArchivedInteraction/SetCertificateArchivedInteraction_1.0_rivtabp20.wsdl
-                  </wsdlLocation>
-                  <packagenames>
-                    <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SetCertificateArchived:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.setcertificatearchived.rivtabp20.v1
-                    </packagename>
-                    <packagename>
-                      urn:riv:insuranceprocess:healthreporting:SetCertificateArchivedResponder:1=se.inera.intyg.insuranceprocess.healthreporting.setcertificatearchivedresponder.v1
                     </packagename>
                   </packagenames>
                 </wsdlOption>
