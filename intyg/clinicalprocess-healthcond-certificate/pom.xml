@@ -111,6 +111,22 @@
               </defaultOptions>
 
               <wsdlOptions>
+                <wsdlOption>
+                  <wsdl>
+                    ${wsdl.directory}/GetMedicalCertificateForCareInteraction/GetMedicalCertificateForCareInteraction_1.0_RIVTABP21.wsdl
+                  </wsdl>
+                  <wsdlLocation>
+                    classpath:interactions/GetMedicalCertificateForCareInteraction/GetMedicalCertificateForCareInteraction_1.0_RIVTABP21.wsdl
+                  </wsdlLocation>
+                  <packagenames>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCare:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.certificate.getmedicalcertificateforcare.v1
+                    </packagename>
+                    <packagename>
+                      urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCareResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.getmedicalcertificateforcare.v1
+                    </packagename>
+                  </packagenames>
+                </wsdlOption>
 
                 <wsdlOption>
                   <wsdl>
