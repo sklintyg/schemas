@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2016 Inera AB (http://www.inera.se)
+  ~
+  ~ This file is part of sklintyg (https://github.com/sklintyg).
+  ~
+  ~ sklintyg is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ sklintyg is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCareResponder:1"
+    xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCareResponder:1"
+    xmlns:pref1="urn:riv:clinicalprocess:healthcond:certificate:1"
+    xmlns:mu7263="urn:riv:insuranceprocess:healthreporting:mu7263:3"
+    elementFormDefault="qualified">
+
+    <import schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_1.0.xsd" namespace="urn:riv:clinicalprocess:healthcond:certificate:1" />
+    <import schemaLocation="../../core_components/MU7263-RIV_3.1.xsd" namespace="urn:riv:insuranceprocess:healthreporting:mu7263:3" />
+    
+    <element name="GetMedicalCertificateForCareRequest" type="tns:GetMedicalCertificateForCareRequestType" />
+    <complexType name="GetMedicalCertificateForCareRequestType">
+        <sequence>
+            <element name="certificateId" type="string" minOccurs="1" maxOccurs="1" />
+            <element name="nationalIdentityNumber" type="string" minOccurs="1" maxOccurs="1" />
+            <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+
+    <element name="GetMedicalCertificateForCareResponse" type="tns:GetMedicalCertificateForCareResponseType" />
+    <complexType name="GetMedicalCertificateForCareResponseType">
+        <sequence>
+            <element name="meta" type="pref1:CertificateMetaType" minOccurs="0" maxOccurs="1" />
+            <element name="lakarutlatande" type="mu7263:lakarutlatandeType" minOccurs="0" maxOccurs="1"/>
+            <element name="result" type="pref1:ResultType" minOccurs="0" maxOccurs="1" />
+            <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+</schema>
