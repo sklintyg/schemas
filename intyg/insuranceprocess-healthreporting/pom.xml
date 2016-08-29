@@ -30,7 +30,7 @@
 
   <groupId>se.inera.intyg.insuranceprocess.healthreporting</groupId>
   <artifactId>intyg-insuranceprocess-healthreporting-schemas</artifactId>
-  <version>0-SNAPSHOT</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
 
   <name>Intyg Schemas (Insuranceprocess Healthreporting)</name>
