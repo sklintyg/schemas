@@ -18,11 +18,8 @@
  */
 package se.inera.intyg.schemas.support.adapter;
 
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Adapter for converting XML Schema types to Java dates and vice versa.
@@ -30,10 +27,9 @@ import org.joda.time.format.ISODateTimeFormat;
  * @author andreaskaltenbach
  */
 public final class LocalDateTimeWithMillisAdapter {
-
-    private static final DateTimeZone TIME_ZONE = DateTimeZone.forID("Europe/Stockholm");
-    private static final String ISO_DATE_PATTERN = "YYYY-MM-dd";
-    private static final String ISO_DATETIME_PATTERN = "YYYY-MM-dd'T'HH:mm:ss.SSS";
+    private static final ZoneId TIMEZONE = ZoneId.of("Europe/Stockholm");
+    private static final String ISO_DATE_PATTERN = "yyyy-MM-dd";
+    private static final String ISO_DATETIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS";
     private static final String XSD_DATE_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}([+-].*|Z)";
     private static final String XSD_DATETIME_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.?[0-9]*([+-].*|Z)";
 
@@ -50,9 +46,9 @@ public final class LocalDateTimeWithMillisAdapter {
         // Hence if the date contains an explicit TimeZone, use DatatypeConverter to do the parsing,
         // otherwise use LocalDate's parsing.
         if (dateString.matches(XSD_DATE_TIMEZONE_REGEXP) || dateString.matches(XSD_DATETIME_TIMEZONE_REGEXP)) {
-            return new LocalDate (javax.xml.bind.DatatypeConverter.parseDate(dateString).getTime(), TIME_ZONE);
+            return LocalDate.from(javax.xml.bind.DatatypeConverter.parseDate(dateString).toInstant().atZone(TIMEZONE));
         } else {
-            return new LocalDate(dateString.substring(0, ISO_DATE_PATTERN.length()), TIME_ZONE);
+            return LocalDate.parse(dateString.substring(0, ISO_DATE_PATTERN.length()));
         }
     }
 
@@ -66,9 +62,9 @@ public final class LocalDateTimeWithMillisAdapter {
         // Hence if the date contains an explicit TimeZone, use DatatypeConverter to do the parsing,
         // otherwise use LocalDateTime's parsing.
         if (dateTimeString.matches(XSD_DATETIME_TIMEZONE_REGEXP) || dateTimeString.matches(XSD_DATE_TIMEZONE_REGEXP)) {
-            return new LocalDateTime(javax.xml.bind.DatatypeConverter.parseDateTime(dateTimeString).getTime(), TIME_ZONE);
+            return LocalDateTime.from(javax.xml.bind.DatatypeConverter.parseDateTime(dateTimeString).toInstant().atZone(TIMEZONE));
         } else {
-            return new LocalDateTime(dateTimeString, TIME_ZONE);
+            return LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
         }
     }
 
@@ -83,7 +79,7 @@ public final class LocalDateTimeWithMillisAdapter {
      * Converts an intyg:common-model:1:dateTime to a Joda Time LocalDateTime.
      */
     public static LocalDateTime parseIsoDateTime(String dateTimeString) {
-        return LocalDateTime.parse(dateTimeString);
+        return LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
     }
 
     /**
@@ -104,13 +100,13 @@ public final class LocalDateTimeWithMillisAdapter {
      * Print a DateTime in ISO format.
      */
     public static String printIsoDateTime(LocalDateTime dateTime) {
-        return dateTime.toString(ISO_DATETIME_PATTERN);
+        return dateTime.format(DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
     }
 
     /**
      * Print a Date in ISO format.
      */
     public static String printIsoDate(LocalDate date) {
-        return date.toString(ISO_DATE_PATTERN);
+        return date.format(DateTimeFormatter.ofPattern(ISO_DATE_PATTERN));
     }
 }
