@@ -30,7 +30,7 @@
 
   <groupId>se.riv.infrastructure.directory.employee</groupId>
   <artifactId>infrastructure-directory-employee-schemas</artifactId>
-  <version>1.0.RC4.2</version>
+  <version>0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>HSA Schemas (Infrastructure Directory Employee)</name>
