@@ -19,20 +19,21 @@
 
 package se.inera.intyg.schemas.support.adapter.xml;
 
-import org.joda.time.Partial;
-import se.inera.intyg.schemas.support.adapter.PartialAdapter;
+import java.time.temporal.Temporal;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class PartialDateXmlAdapter extends XmlAdapter<String, Partial> {
+import se.inera.intyg.schemas.support.adapter.PartialDateAdapter;
+
+public class PartialDateXmlAdapter extends XmlAdapter<String, Temporal> {
 
     @Override
-    public Partial unmarshal(String dateString) throws Exception {
-        return PartialAdapter.parsePartial(dateString);
+    public Temporal unmarshal(String dateString) throws Exception {
+        return PartialDateAdapter.parsePartialDate(dateString);
     }
 
     @Override
-    public String marshal(Partial partial) throws Exception {
-        return PartialAdapter.printPartial(partial);
+    public String marshal(Temporal temporal) throws Exception {
+        return PartialDateAdapter.printPartialDate(temporal);
     }
 }

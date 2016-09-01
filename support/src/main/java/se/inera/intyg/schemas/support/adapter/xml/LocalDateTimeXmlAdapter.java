@@ -19,18 +19,19 @@
 
 package se.inera.intyg.schemas.support.adapter.xml;
 
-import org.joda.time.LocalDateTime;
-import se.inera.intyg.schemas.support.adapter.LocalDateAdapter;
+import java.time.LocalDateTime;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import se.inera.intyg.schemas.support.adapter.LocalDateAdapter;
 
 public class LocalDateTimeXmlAdapter extends XmlAdapter<String, LocalDateTime> {
 
     public LocalDateTime unmarshal(String value) {
-        return (LocalDateAdapter.parseDateTime(value));
+        return LocalDateAdapter.parseDateTime(value);
     }
 
     public String marshal(LocalDateTime value) {
-        return (LocalDateAdapter.printDateTime(value));
+        return LocalDateAdapter.printDateTime(value);
     }
 }

@@ -19,7 +19,7 @@
 
 package se.inera.intyg.schemas.support.adapter.xml;
 
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import se.inera.intyg.schemas.support.adapter.LocalDateAdapter;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
