@@ -76,14 +76,14 @@ public final class LocalDateAdapter {
     }
 
     /**
-     * Converts an intyg:common-model:1:date to a Joda Time LocalDate.
+     * Converts an intyg:common-model:1:date to a LocalDate.
      */
     public static LocalDate parseIsoDate(String dateString) {
         return LocalDate.parse(dateString);
     }
 
     /**
-     * Converts an intyg:common-model:1:dateTime to a Joda Time LocalDateTime.
+     * Converts an intyg:common-model:1:dateTime to a LocalDateTime.
      */
     public static LocalDateTime parseIsoDateTime(String dateTimeString) {
         return LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
