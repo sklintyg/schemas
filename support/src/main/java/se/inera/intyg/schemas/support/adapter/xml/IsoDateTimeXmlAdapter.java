@@ -33,6 +33,6 @@ public class IsoDateTimeXmlAdapter extends XmlAdapter<String, LocalDateTime> {
 
     @Override
     public String marshal(LocalDateTime dateValue) throws Exception {
-        return LocalDateAdapter.printIsoDateTime(dateValue);
+        return LocalDateAdapter.printDateTime(dateValue);
     }
 }

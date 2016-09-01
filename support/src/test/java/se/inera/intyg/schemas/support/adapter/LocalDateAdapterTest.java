@@ -210,13 +210,13 @@ public final class LocalDateAdapterTest {
 
     @Test
     public void testPrintIsoDate() {
-        String dateString = LocalDateAdapter.printIsoDate(LOCAL_DATE);
+        String dateString = LocalDateAdapter.printDate(LOCAL_DATE);
         assertEquals(ISO_DATE_STRING, dateString);
     }
 
     @Test
     public void testPrintIsoDateTime() {
-        String dateString = LocalDateAdapter.printIsoDateTime(LOCAL_DATE_TIME);
+        String dateString = LocalDateAdapter.printDateTime(LOCAL_DATE_TIME);
         assertEquals(ISO_DATE_TIME_STRING, dateString);
     }
 

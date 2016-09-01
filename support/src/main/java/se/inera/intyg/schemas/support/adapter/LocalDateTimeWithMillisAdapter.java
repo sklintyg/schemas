@@ -28,28 +28,11 @@ import java.time.format.DateTimeFormatter;
  */
 public final class LocalDateTimeWithMillisAdapter {
     private static final ZoneId TIMEZONE = ZoneId.of("Europe/Stockholm");
-    private static final String ISO_DATE_PATTERN = "yyyy-MM-dd";
     private static final String ISO_DATETIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS";
     private static final String XSD_DATE_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}([+-].*|Z)";
     private static final String XSD_DATETIME_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.?[0-9]*([+-].*|Z)";
 
     private LocalDateTimeWithMillisAdapter() {
-    }
-
-    /**
-     * Converts an xs:date to a LocalDate.
-     */
-    public static LocalDate parseDate(String dateString) {
-        // Workaround for the fact that DatatypeConverter doesn't allow setting the default TimeZone,
-        // (which means that the system default TimeZone will be used, which might be wrong if hosted in
-        // a different TimeZone), and that LocaleDate doesn't handle dates with explicit TimeZone.
-        // Hence if the date contains an explicit TimeZone, use DatatypeConverter to do the parsing,
-        // otherwise use LocalDate's parsing.
-        if (dateString.matches(XSD_DATE_TIMEZONE_REGEXP) || dateString.matches(XSD_DATETIME_TIMEZONE_REGEXP)) {
-            return LocalDate.from(javax.xml.bind.DatatypeConverter.parseDate(dateString).toInstant().atZone(TIMEZONE));
-        } else {
-            return LocalDate.parse(dateString.substring(0, ISO_DATE_PATTERN.length()));
-        }
     }
 
     /**
@@ -69,44 +52,10 @@ public final class LocalDateTimeWithMillisAdapter {
     }
 
     /**
-     * Converts an intyg:common-model:1:date to a LocalDate.
-     */
-    public static LocalDate parseIsoDate(String dateString) {
-        return LocalDate.parse(dateString);
-    }
-
-    /**
-     * Converts an intyg:common-model:1:dateTime to a LocalDateTime.
-     */
-    public static LocalDateTime parseIsoDateTime(String dateTimeString) {
-        return LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
-    }
-
-    /**
      * Print a DateTime (always using ISO format).
      */
     public static String printDateTime(LocalDateTime dateTime) {
-        return printIsoDateTime(dateTime);
-    }
-
-    /**
-     * Print a Date (always using ISO format).
-     */
-    public static String printDate(LocalDate date) {
-        return printIsoDate(date);
-    }
-
-    /**
-     * Print a DateTime in ISO format.
-     */
-    public static String printIsoDateTime(LocalDateTime dateTime) {
         return dateTime.format(DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
     }
 
-    /**
-     * Print a Date in ISO format.
-     */
-    public static String printIsoDate(LocalDate date) {
-        return date.format(DateTimeFormatter.ofPattern(ISO_DATE_PATTERN));
-    }
 }

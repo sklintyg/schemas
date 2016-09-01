@@ -93,27 +93,14 @@ public final class LocalDateAdapter {
      * Print a DateTime (always using ISO format).
      */
     public static String printDateTime(LocalDateTime dateTime) {
-        return printIsoDateTime(dateTime);
+        return dateTime.format(DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
     }
 
     /**
      * Print a Date (always using ISO format).
      */
     public static String printDate(LocalDate date) {
-        return printIsoDate(date);
-    }
-
-    /**
-     * Print a DateTime in ISO format.
-     */
-    public static String printIsoDateTime(LocalDateTime dateTime) {
-        return dateTime.format(DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
-    }
-
-    /**
-     * Print a Date in ISO format.
-     */
-    public static String printIsoDate(LocalDate date) {
         return date.format(DateTimeFormatter.ofPattern(ISO_DATE_PATTERN));
     }
+
 }
