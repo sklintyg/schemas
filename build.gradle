@@ -1,18 +1,19 @@
-buildscript {
-  repositories {
-    jcenter()
-    mavenCentral()
-  }
-
-  dependencies {
-    classpath 'no.nils:wsdl2java:0.10'
-  }
-}
-
 allprojects {
   apply plugin: 'maven'
   group = 'se.inera.intyg.schemas'
   version = '0-SNAPSHOT'
+
+  buildscript {
+    repositories {
+      jcenter()
+      mavenCentral()
+    }
+
+    dependencies {
+      classpath 'no.nils:wsdl2java:0.10'
+    }
+  }
+
 }
 
 subprojects {
@@ -44,7 +45,6 @@ subprojects {
     compile "se.inera.intyg.schemas:schemas-support:2.0.0"
     compile "org.apache.cxf:cxf-rt-frontend-jaxws:3.1.3"
     compile "org.apache.cxf:cxf-rt-transports-http:3.1.3"
-    compile "joda-time:joda-time:2.2"
     compile "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxbVersion}"
 
     wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxbVersion}"
