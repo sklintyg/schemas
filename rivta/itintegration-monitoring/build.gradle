@@ -1,4 +1,4 @@
-description = 'itintegration-monitoring'
+description = "itintegration-monitoring"
 
 wsdl2java {
   wsdlsToGenerate = [  ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
