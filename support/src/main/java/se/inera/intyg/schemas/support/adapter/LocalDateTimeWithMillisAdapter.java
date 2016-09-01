@@ -37,7 +37,7 @@ public final class LocalDateTimeWithMillisAdapter {
     }
 
     /**
-     * Converts an xs:date to a Joda Time LocalDate.
+     * Converts an xs:date to a LocalDate.
      */
     public static LocalDate parseDate(String dateString) {
         // Workaround for the fact that DatatypeConverter doesn't allow setting the default TimeZone,
@@ -53,7 +53,7 @@ public final class LocalDateTimeWithMillisAdapter {
     }
 
     /**
-     * Converts an xs:datetime to a Joda Time LocalDateTime.
+     * Converts an xs:datetime to a LocalDateTime.
      */
     public static LocalDateTime parseDateTime(String dateTimeString) {
         // Workaround for the fact that DatatypeConverter doesn't allow setting the default TimeZone,
@@ -69,14 +69,14 @@ public final class LocalDateTimeWithMillisAdapter {
     }
 
     /**
-     * Converts an intyg:common-model:1:date to a Joda Time LocalDate.
+     * Converts an intyg:common-model:1:date to a LocalDate.
      */
     public static LocalDate parseIsoDate(String dateString) {
         return LocalDate.parse(dateString);
     }
 
     /**
-     * Converts an intyg:common-model:1:dateTime to a Joda Time LocalDateTime.
+     * Converts an intyg:common-model:1:dateTime to a LocalDateTime.
      */
     public static LocalDateTime parseIsoDateTime(String dateTimeString) {
         return LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
