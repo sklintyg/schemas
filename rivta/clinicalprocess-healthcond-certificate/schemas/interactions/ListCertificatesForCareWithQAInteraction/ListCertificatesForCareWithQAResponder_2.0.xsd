@@ -65,7 +65,8 @@
 		<xs:sequence>
 			<xs:element name="intyg" type="core:Intyg" />
 			<xs:element name="handelser" type="tns:HandelseList" />
-			<xs:element name="fragorOchSvar" type="core:FragorOchSvar" />
+			<xs:element name="skickadeFragor" type="core:Arenden" />
+			<xs:element name="mottagnaFragor" type="core:Arenden" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xs:sequence>

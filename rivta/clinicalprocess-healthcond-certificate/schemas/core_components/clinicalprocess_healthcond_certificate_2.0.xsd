@@ -78,10 +78,10 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="enhetsnamn" type="xs:string" />
-			<xs:element name="postadress" type="types:nonEmptyString" />
-			<xs:element name="postnummer" type="types:nonEmptyString" />
-			<xs:element name="postort" type="types:nonEmptyString" />
-			<xs:element name="telefonnummer" type="types:nonEmptyString" />
+			<xs:element name="postadress" type="xs:string" />
+			<xs:element name="postnummer" type="xs:string" />
+			<xs:element name="postort" type="xs:string" />
+			<xs:element name="telefonnummer" type="xs:string" />
 			<xs:element name="epost" type="types:nonEmptyString"
 				minOccurs="0" />
 			<xs:element name="vardgivare" type="Vardgivare" />
@@ -124,8 +124,7 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="meddelande-id" type="xs:string" />
-			<xs:element name="referens-id" type="xs:string" minOccurs="0"
-				maxOccurs="unbounded" />
+			<xs:element name="referens-id" type="xs:string" minOccurs="0" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xs:sequence>
@@ -304,12 +303,12 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="FragorOchSvar"> <!-- Frågor och svar -->
+	<xs:complexType name="Arenden"> <!-- Frågor och svar -->
 		<xs:sequence>
-			<xs:element name="antalFragor" type="xs:int" />
-			<xs:element name="antalHanteradeFragor" type="xs:int" />
-			<xs:element name="antalSvar" type="xs:int" />
-			<xs:element name="antalHanteradeSvar" type="xs:int" />
+			<xs:element name="totalt" type="xs:int" />
+			<xs:element name="ejBesvarade" type="xs:int" />
+			<xs:element name="besvarade" type="xs:int" />
+			<xs:element name="hanterade" type="xs:int" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xs:sequence>
