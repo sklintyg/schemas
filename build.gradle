@@ -45,7 +45,7 @@ subprojects {
 
 configure(subprojects.findAll { ! ['support'].contains(it.name) }) {
   dependencies {
-    compile project(':support')
+    compile "se.inera.intyg.schemas:schemas-support:2.1.0"
   }
 }
 
