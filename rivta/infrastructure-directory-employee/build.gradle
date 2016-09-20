@@ -1,0 +1,22 @@
+description = "infrastructure-directory-employee"
+
+wsdl2java {
+  wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                       "-wsdlLocation",
+                       "classpath:interactions/GetEmployeeIncludingProtectedPersonInteraction/GetEmployeeIncludingProtectedPersonInteraction_1.0_RIVTABP21.wsdl",
+                       "-p",
+                       "urn:riv:infrastructure:directory:1=se.riv.infrastructure.directory.v1",
+                       "-p",
+                       "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
+                       "-p",
+                       "urn:riv:infrastructure:directory:employee:1=se.riv.infrastructure.directory.employee.v1",
+                       "-p",
+                       "urn:riv:infrastructure:directory:employee:GetEmployeeIncludingProtectedPersonResponder:1=se.riv.infrastructure.directory.employee.getemployeeincludingprotectedpersonresponder.v1",
+                       "-p",
+                       "urn:riv:infrastructure:directory:employee:GetEmployeeIncludingProtectedPersonInitiator:1=se.riv.infrastructure.directory.employee.getemployeeincludingprotectedpersoninitiator.v1",
+                       "-p",
+                       "urn:riv:infrastructure:directory:employee:GetEmployeeIncludingProtectedPerson:1:rivtabp21=se.riv.infrastructure.directory.employee.getemployeeincludingprotectedperson.v1.rivtabp21",
+                       "$projectDir/schemas/interactions/GetEmployeeIncludingProtectedPersonInteraction/GetEmployeeIncludingProtectedPersonInteraction_1.0_RIVTABP21.wsdl"],
+
+                    ]
+}

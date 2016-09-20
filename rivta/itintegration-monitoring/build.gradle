@@ -1,0 +1,18 @@
+description = "itintegration-monitoring"
+
+wsdl2java {
+  wsdlsToGenerate = [  ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                        "-wsdlLocation",
+                        "classpath:interactions/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl",
+                        "-p",
+                        "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
+                        "-p",
+                        "urn:riv:itintegration:monitoring:1=se.riv.itintegration.monitoring.v1",
+                        "-p",
+                        "urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.rivtabp21.v1",
+                        "-p",
+                        "urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.v1",
+                        "$projectDir/schemas/interactions/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl"],
+
+                    ]
+}

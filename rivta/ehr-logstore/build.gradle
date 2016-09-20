@@ -1,0 +1,20 @@
+description = "ehr-logstore"
+
+wsdl2java {
+  wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                       "-wsdlLocation",
+                       "classpath:interactions/StoreLogInteraction/StoreLogInteraction_1.0_RIVTABP21.wsdl",
+                       "-p",
+                       "urn:riv:ehr:log:store:StoreLog:1:rivtabp21=se.riv.ehr.log.store.storelog.rivtabp21.v1",
+                       "-p",
+                       "urn:riv:ehr:log:store:StoreLogResponder:1=se.riv.ehr.log.store.storelogresponder.v1",
+                       "-p",
+                       "urn:riv:ehr:log:1=se.riv.ehr.log.v1",
+                       "-p",
+                       "urn:riv:ehr:log:store:1=se.riv.ehr.log.store.v1",
+                       "-p",
+                       "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
+                       "$projectDir/schemas/interactions/StoreLogInteraction/StoreLogInteraction_1.0_RIVTABP21.wsdl"],
+
+                    ]
+}

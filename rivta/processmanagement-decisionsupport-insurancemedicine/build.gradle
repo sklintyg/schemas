@@ -1,0 +1,40 @@
+description = "processmanagement-decisionsupport-insurancemedicine"
+
+wsdl2java {
+  def commonOptions = ["-p",
+                       "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
+                       "-p",
+                       "urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.v1",
+                       "-p",
+                       "urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:types:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.types.v1",
+                      ]
+
+  wsdlsToGenerate = [ commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/GetDiagnosInformationInteraction/GetDiagnosInformationInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformationResponder:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getdiagnosinformationresponder.v1",
+                                       "-p",
+                                       "urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetDiagnosInformation:1:rivtabp21=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getdiagnosinformationresponder.v1",
+                                       "$projectDir/schemas/interactions/GetDiagnosInformationInteraction/GetDiagnosInformationInteraction_1.0_RIVTABP21.wsdl"],
+
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/GetFmbInteraction/GetFmbInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetFmbResponder:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getfmbresponder.v1",
+                                       "-p",
+                                       "urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetFmb:1:rivtabp21=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getfmbresponder.v1",
+                                       "$projectDir/schemas/interactions/GetFmbInteraction/GetFmbInteraction_1.0_RIVTABP21.wsdl"],
+
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/GetVersionsInteraction/GetVersionsInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetVersionsResponder:1=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getversionsresponder.v1",
+                                       "-p",
+                                       "urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetVersions:1:rivtabp21=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getversionsresponder.v1",
+                                       "$projectDir/schemas/interactions/GetVersionsInteraction/GetVersionsInteraction_1.0_RIVTABP21.wsdl"],
+
+                    ]
+}
