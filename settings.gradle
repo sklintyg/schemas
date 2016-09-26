@@ -20,6 +20,7 @@ include ':itintegration-monitoring-schemas'
 include ':population-residentmaster-schemas'
 include ':processmanagement-decisionsupport-insurancemedicine-schemas'
 
+project(':schemas-support').projectDir = "$rootDir/support" as File
 project(':funktionstjanster-grp-schemas').projectDir = "$rootDir/cgi/funktionstjanster-grp" as File
 project(':intyg-clinicalprocess-healthcond-certificate-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-certificate" as File
 project(':intyg-clinicalprocess-healthcond-certificate-schematron').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-certificate-schematron" as File
