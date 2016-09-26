@@ -3,7 +3,7 @@ rootProject.name = 'schemas'
 include ':schemas-support'
 include ':funktionstjanster-grp-schemas'
 include ':intyg-clinicalprocess-healthcond-certificate-schemas'
-include ':intyg-clinicalprocess-healthcond-monitoring-schemas'
+include ':clinicalprocess-healthcond-monitoring-schemas'
 include ':intyg-clinicalprocess-healthcond-certificate-schematron'
 include ':intyg-clinicalprocess-healthcond-rehabilitation-schemas'
 include ':intyg-infrastructure-directory-privatepractitioner-schemas'
@@ -24,7 +24,7 @@ project(':schemas-support').projectDir = "$rootDir/support" as File
 project(':funktionstjanster-grp-schemas').projectDir = "$rootDir/cgi/funktionstjanster-grp" as File
 project(':intyg-clinicalprocess-healthcond-certificate-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-certificate" as File
 project(':intyg-clinicalprocess-healthcond-certificate-schematron').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-certificate-schematron" as File
-project(':intyg-clinicalprocess-healthcond-monitoring-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-monitoring" as File
+project(':clinicalprocess-healthcond-monitoring-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-monitoring" as File
 project(':intyg-clinicalprocess-healthcond-rehabilitation-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-rehabilitation" as File
 project(':intyg-infrastructure-directory-privatepractitioner-schemas').projectDir = "$rootDir/intyg/infrastructure-directory-privatepractitioner" as File
 project(':intyg-infrastructure-directory-privatepractitioner-terms-schemas').projectDir = "$rootDir/intyg/infrastructure-directory-privatepractitioner-terms" as File
