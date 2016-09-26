@@ -21,11 +21,9 @@ subprojects {
 
   repositories {
     mavenLocal()
-
     maven { url "http://repo.maven.apache.org/maven2" }
     maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
     maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
-    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/thirdparty/" }
   }
 
   dependencies {
@@ -50,12 +48,13 @@ configure(subprojects.findAll { ! ['support'].contains(it.name) }) {
 }
 
 buildscript {
-  repositories {
-    jcenter()
-    mavenCentral()
-  }
-
   dependencies {
     classpath 'no.nils:wsdl2java:0.10'
+  }
+
+  repositories {
+    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
+    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
+    maven { url "https://plugins.gradle.org/m2/" }
   }
 }
