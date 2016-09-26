@@ -1,6 +1,6 @@
 rootProject.name = 'schemas'
 
-include ':support'
+include ':schemas-support'
 include ':funktionstjanster-grp-schemas'
 include ':intyg-clinicalprocess-healthcond-certificate-schemas'
 include ':intyg-clinicalprocess-healthcond-monitoring-schemas'
