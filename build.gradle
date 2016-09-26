@@ -1,7 +1,5 @@
 allprojects {
   apply plugin: 'maven'
-  group = 'se.inera.intyg.schemas'
-  version = '0-SNAPSHOT'
 }
 
 configure(subprojects.findAll { ! ['intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
