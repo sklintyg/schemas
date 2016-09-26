@@ -4,7 +4,7 @@ allprojects {
   version = '0-SNAPSHOT'
 }
 
-subprojects {
+configure(subprojects.findAll { ! ['intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
   apply plugin: 'java'
   apply plugin: 'no.nils.wsdl2java'
 
@@ -43,7 +43,7 @@ subprojects {
 
 }
 
-configure(subprojects.findAll { ! ['support'].contains(it.name) }) {
+configure(subprojects.findAll { ! ['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
   dependencies {
     compile "se.inera.intyg.schemas:schemas-support:2.1.0"
   }
