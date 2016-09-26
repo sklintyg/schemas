@@ -1,5 +1,5 @@
 description = "Intyg Schemas (Internal Monitoring)"
-
+version = '1.0.1'
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
                        "-wsdlLocation", "classpath:interactions/InternalPingForConfigurationInteraction/InternalPingForConfigurationInteraction_1.0_RIVTABP21.wsdl",

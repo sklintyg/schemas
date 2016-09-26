@@ -1,5 +1,6 @@
 description = "itintegration-monitoring"
-
+group = 'se.riv.itintegration.monitoring'
+version = '1.0.0.2'
 wsdl2java {
   wsdlsToGenerate = [  ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
                         "-wsdlLocation",

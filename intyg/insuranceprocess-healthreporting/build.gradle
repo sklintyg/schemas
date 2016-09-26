@@ -1,5 +1,6 @@
 description = "Intyg Schemas (Insuranceprocess Healthreporting)"
-
+group = 'se.inera.intyg.insuranceprocess.healthreporting'
+version = '1.0.2'
 wsdl2java {
   def commonOptions = ["-p",
                        "urn:iso:21090:dt:1=iso.v21090.dt.v1",
@@ -11,16 +12,7 @@ wsdl2java {
                        "urn:riv:insuranceprocess:healthreporting:2=se.inera.ifv.insuranceprocess.healthreporting.v2"
                       ]
 
-  wsdlsToGenerate = [ commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
-                                       "-wsdlLocation",
-                                       "classpath:interactions/GetCertificateContent/GetCertificateContentInteraction_1.0_rivtabp20.wsdl",
-                                       "-p",
-                                       "urn:riv:insuranceprocess:healthreporting:GetCertificateContent=se.inera.intyg.insuranceprocess.healthreporting.getcertificatecontent.rivtabp20.v1",
-                                       "-p",
-                                       "urn:riv:insuranceprocess:healthreporting:GetCertificateContentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getcertificatecontentresponder.v1",
-                                       "$projectDir/schemas/interactions/GetCertificateContent/GetCertificateContentInteraction_1.0_rivtabp20.wsdl"],
-
-                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+  wsdlsToGenerate = [commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
                                        "-wsdlLocation",
                                        "classpath:interactions/GetConsentInteraction/GetConsentInteraction_1.0_rivtabp20.wsdl",
                                        "-p",
@@ -29,14 +21,6 @@ wsdl2java {
                                        "urn:riv:insuranceprocess:healthreporting:GetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getconsentresponder.v1",
                                        "$projectDir/schemas/interactions/GetConsentInteraction/GetConsentInteraction_1.0_rivtabp20.wsdl"],
 
-                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
-                                       "-wsdlLocation",
-                                       "classpath:interactions/SetCertificateArchivedInteraction/SetCertificateArchivedInteraction_1.0_rivtabp20.wsdl",
-                                       "-p",
-                                       "urn:riv:insuranceprocess:healthreporting:SetCertificateArchived:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.setcertificatearchived.rivtabp20.v1",
-                                       "-p",
-                                       "urn:riv:insuranceprocess:healthreporting:SetCertificateArchivedResponder:1=se.inera.intyg.insuranceprocess.healthreporting.setcertificatearchivedresponder.v1",
-                                       "$projectDir/schemas/interactions/SetCertificateArchivedInteraction/SetCertificateArchivedInteraction_1.0_rivtabp20.wsdl"],
 
                       commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
                                        "-wsdlLocation",
