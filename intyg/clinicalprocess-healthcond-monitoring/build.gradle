@@ -1,4 +1,5 @@
 description = "Intyg Schemas (Internal Monitoring)"
+group = 'se.riv.clinicalprocess.healthcond.monitoring'
 version = '1.0.1'
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
