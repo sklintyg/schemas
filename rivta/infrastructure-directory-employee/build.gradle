@@ -1,5 +1,6 @@
 description = "infrastructure-directory-employee"
-
+group = 'se.riv.infrastructure.directory.employee'
+version = '1.0.RC4.2'
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
                        "-wsdlLocation",

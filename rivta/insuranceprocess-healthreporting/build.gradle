@@ -1,4 +1,6 @@
 description = "insuranceprocess-healthreporting"
+group = 'se.riv.insuranceprocess.healthreporting'
+version = '3.1.0.2'
 
 wsdl2java {
   def commonOptions = ["-p",

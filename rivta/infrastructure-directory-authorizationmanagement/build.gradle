@@ -1,5 +1,6 @@
 description = "infrastructure-directory-authorizationmanagement"
-
+group = 'se.riv.infrastructure.directory.authorizationmanagement'
+version = '1.0.RC4.2'
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
                        "-wsdlLocation",

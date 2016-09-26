@@ -1,5 +1,6 @@
 description = "clinicalprocess-healthcond-certificate-schemas"
-
+group = 'se.riv.clinicalprocess.healthcond.certificate'
+version = '2.0.RC6.0'
 wsdl2java {
   def commonOptions = ["-p",
                        "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",

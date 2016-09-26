@@ -1,38 +1,40 @@
 rootProject.name = 'schemas'
 
 include ':support'
-include ':funktionstjanster-grp'
-include ':clinicalprocess-healthcond-certificate'
-include ':clinicalprocess-healthcond-monitoring'
-include ':clinicalprocess-healthcond-rehabilitation'
-include ':infrastructure-directory-privatepractitioner'
-include ':infrastructure-directory-privatepractitioner-terms'
-include ':insuranceprocess-healthreporting'
-include ':transportstyrelsen'
-include ':clinicalprocess-healthcond-certificate'
-include ':ehr-logstore'
-include ':infrastructure-directory-authorizationmanagement'
-include ':infrastructure-directory-employee'
-include ':infrastructure-directory-organization'
-include ':insuranceprocess-healthreporting'
-include ':itintegration-monitoring'
-include ':population-residentmaster'
-include ':processmanagement-decisionsupport-insurancemedicine'
+include ':funktionstjanster-grp-schemas'
+include ':intyg-clinicalprocess-healthcond-certificate-schemas'
+include ':intyg-clinicalprocess-healthcond-monitoring-schemas'
+include ':intyg-clinicalprocess-healthcond-certificate-schematron'
+include ':intyg-clinicalprocess-healthcond-rehabilitation-schemas'
+include ':intyg-infrastructure-directory-privatepractitioner-schemas'
+include ':intyg-infrastructure-directory-privatepractitioner-terms-schemas'
+include ':intyg-insuranceprocess-healthreporting-schemas'
+include ':intyg-transportstyrelsen-schemas'
+include ':clinicalprocess-healthcond-certificate-schemas'
+include ':ehr-logstore-schemas'
+include ':infrastructure-directory-authorizationmanagement-schemas'
+include ':infrastructure-directory-employee-schemas'
+include ':infrastructure-directory-organization-schemas'
+include ':insuranceprocess-healthreporting-schemas'
+include ':itintegration-monitoring-schemas'
+include ':population-residentmaster-schemas'
+include ':processmanagement-decisionsupport-insurancemedicine-schemas'
 
-project(':funktionstjanster-grp').projectDir = "$rootDir/cgi/funktionstjanster-grp" as File
-project(':clinicalprocess-healthcond-certificate').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-certificate" as File
-project(':clinicalprocess-healthcond-monitoring').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-monitoring" as File
-project(':clinicalprocess-healthcond-rehabilitation').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-rehabilitation" as File
-project(':infrastructure-directory-privatepractitioner').projectDir = "$rootDir/intyg/infrastructure-directory-privatepractitioner" as File
-project(':infrastructure-directory-privatepractitioner-terms').projectDir = "$rootDir/intyg/infrastructure-directory-privatepractitioner-terms" as File
-project(':insuranceprocess-healthreporting').projectDir = "$rootDir/intyg/insuranceprocess-healthreporting" as File
-project(':transportstyrelsen').projectDir = "$rootDir/intyg/transportstyrelsen" as File
-project(':clinicalprocess-healthcond-certificate').projectDir = "$rootDir/rivta/clinicalprocess-healthcond-certificate" as File
-project(':ehr-logstore').projectDir = "$rootDir/rivta/ehr-logstore" as File
-project(':infrastructure-directory-authorizationmanagement').projectDir = "$rootDir/rivta/infrastructure-directory-authorizationmanagement" as File
-project(':infrastructure-directory-employee').projectDir = "$rootDir/rivta/infrastructure-directory-employee" as File
-project(':infrastructure-directory-organization').projectDir = "$rootDir/rivta/infrastructure-directory-organization" as File
-project(':insuranceprocess-healthreporting').projectDir = "$rootDir/rivta/insuranceprocess-healthreporting" as File
-project(':itintegration-monitoring').projectDir = "$rootDir/rivta/itintegration-monitoring" as File
-project(':population-residentmaster').projectDir = "$rootDir/rivta/population-residentmaster" as File
-project(':processmanagement-decisionsupport-insurancemedicine').projectDir = "$rootDir/rivta/processmanagement-decisionsupport-insurancemedicine" as File
+project(':funktionstjanster-grp-schemas').projectDir = "$rootDir/cgi/funktionstjanster-grp" as File
+project(':intyg-clinicalprocess-healthcond-certificate-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-certificate" as File
+project(':intyg-clinicalprocess-healthcond-certificate-schematron').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-certificate-schematron" as File
+project(':intyg-clinicalprocess-healthcond-monitoring-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-monitoring" as File
+project(':intyg-clinicalprocess-healthcond-rehabilitation-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-rehabilitation" as File
+project(':intyg-infrastructure-directory-privatepractitioner-schemas').projectDir = "$rootDir/intyg/infrastructure-directory-privatepractitioner" as File
+project(':intyg-infrastructure-directory-privatepractitioner-terms-schemas').projectDir = "$rootDir/intyg/infrastructure-directory-privatepractitioner-terms" as File
+project(':intyg-insuranceprocess-healthreporting-schemas').projectDir = "$rootDir/intyg/insuranceprocess-healthreporting" as File
+project(':intyg-transportstyrelsen-schemas').projectDir = "$rootDir/intyg/transportstyrelsen" as File
+project(':clinicalprocess-healthcond-certificate-schemas').projectDir = "$rootDir/rivta/clinicalprocess-healthcond-certificate" as File
+project(':ehr-logstore-schemas').projectDir = "$rootDir/rivta/ehr-logstore" as File
+project(':infrastructure-directory-authorizationmanagement-schemas').projectDir = "$rootDir/rivta/infrastructure-directory-authorizationmanagement" as File
+project(':infrastructure-directory-employee-schemas').projectDir = "$rootDir/rivta/infrastructure-directory-employee" as File
+project(':infrastructure-directory-organization-schemas').projectDir = "$rootDir/rivta/infrastructure-directory-organization" as File
+project(':insuranceprocess-healthreporting-schemas').projectDir = "$rootDir/rivta/insuranceprocess-healthreporting" as File
+project(':itintegration-monitoring-schemas').projectDir = "$rootDir/rivta/itintegration-monitoring" as File
+project(':population-residentmaster-schemas').projectDir = "$rootDir/rivta/population-residentmaster" as File
+project(':processmanagement-decisionsupport-insurancemedicine-schemas').projectDir = "$rootDir/rivta/processmanagement-decisionsupport-insurancemedicine" as File

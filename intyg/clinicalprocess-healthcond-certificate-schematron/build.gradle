@@ -1,0 +1,5 @@
+description = "Intyg Schematron (Internal Monitoring)"
+
+group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'
+
+apply plugin: 'java'

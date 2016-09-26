@@ -1,5 +1,6 @@
 description = "ehr-logstore"
-
+group = 'se.riv.ehr.logstore'
+version = '1.2.2'
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
                        "-wsdlLocation",
