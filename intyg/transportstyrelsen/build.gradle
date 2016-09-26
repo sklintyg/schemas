@@ -1,6 +1,6 @@
 description = "Intyg Schemas (Transportstyrelsen)"
 group = 'se.inera.intyg.transportstyrelsen'
-version = '1.0.2'
+version = '1.0.3'
 wsdl2java {
   def commonOptions = ["-p",
                        "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",

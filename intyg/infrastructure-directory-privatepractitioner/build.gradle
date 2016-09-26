@@ -1,6 +1,6 @@
 description = "Intyg Schemas (Infrastructure Directory Private Practitioner)"
 group = 'se.inera.intyg.infrastructure.directory.privatepractitioner'
-version = '1.0.2'
+version = '1.0.3'
 wsdl2java {
   def commonOptions = ["-p",
                        "urn:riv:infrastructure:directory:privatepractitioner:1=se.riv.infrastructure.directory.privatepractitioner.v1",

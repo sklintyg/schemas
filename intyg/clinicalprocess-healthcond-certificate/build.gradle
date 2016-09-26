@@ -1,6 +1,6 @@
 description = "Intyg Schemas (Clinicalprocess Healthreporting Certificate)"
 group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'
-version = '1.0.2'
+version = '1.0.3'
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
                        "-wsdlLocation", "classpath:interactions/GetRecipientsForCertificateInteraction/GetRecipientsForCertificateInteraction_1.0.wsdl",
