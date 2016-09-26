@@ -1,0 +1,3 @@
+description = "Intyg Schematron (Internal Monitoring)"
+group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'
+sourceSets.main.resources { srcDirs = ["src/main/resources"] }
