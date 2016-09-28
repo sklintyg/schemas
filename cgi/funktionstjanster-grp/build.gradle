@@ -1,6 +1,8 @@
 description = "GRP Schemas (CGI/Funktionstjanster)"
+
 group = 'se.funktionstjanster.grp'
 version = '1.0.3'
+
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
                        "-wsdlLocation",

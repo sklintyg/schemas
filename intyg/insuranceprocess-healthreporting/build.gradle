@@ -1,6 +1,8 @@
 description = "Intyg Schemas (Insuranceprocess Healthreporting)"
+
 group = 'se.inera.intyg.insuranceprocess.healthreporting'
 version = '1.0.3'
+
 wsdl2java {
   def commonOptions = ["-p",
                        "urn:iso:21090:dt:1=iso.v21090.dt.v1",
@@ -13,23 +15,23 @@ wsdl2java {
                       ]
 
   wsdlsToGenerate = [commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
-                                       "-wsdlLocation",
-                                       "classpath:interactions/GetConsentInteraction/GetConsentInteraction_1.0_rivtabp20.wsdl",
-                                       "-p",
-                                       "urn:riv:insuranceprocess:healthreporting:GetConsent:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.getconsent.rivtabp20.v1",
-                                       "-p",
-                                       "urn:riv:insuranceprocess:healthreporting:GetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getconsentresponder.v1",
-                                       "$projectDir/schemas/interactions/GetConsentInteraction/GetConsentInteraction_1.0_rivtabp20.wsdl"],
+                                      "-wsdlLocation",
+                                      "classpath:interactions/GetConsentInteraction/GetConsentInteraction_1.0_rivtabp20.wsdl",
+                                      "-p",
+                                      "urn:riv:insuranceprocess:healthreporting:GetConsent:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.getconsent.rivtabp20.v1",
+                                      "-p",
+                                      "urn:riv:insuranceprocess:healthreporting:GetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.getconsentresponder.v1",
+                                      "$projectDir/schemas/interactions/GetConsentInteraction/GetConsentInteraction_1.0_rivtabp20.wsdl"],
 
 
-                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
-                                       "-wsdlLocation",
-                                       "classpath:interactions/SetConsentInteraction/SetConsentInteraction_1.0_rivtabp20.wsdl",
-                                       "-p",
-                                       "urn:riv:insuranceprocess:healthreporting:SetConsent:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.setconsent.rivtabp20.v1",
-                                       "-p",
-                                       "urn:riv:insuranceprocess:healthreporting:SetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.setconsentresponder.v1",
-                                       "$projectDir/schemas/interactions/SetConsentInteraction/SetConsentInteraction_1.0_rivtabp20.wsdl"],
+                     commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                      "-wsdlLocation",
+                                      "classpath:interactions/SetConsentInteraction/SetConsentInteraction_1.0_rivtabp20.wsdl",
+                                      "-p",
+                                      "urn:riv:insuranceprocess:healthreporting:SetConsent:1:rivtabp20=se.inera.intyg.insuranceprocess.healthreporting.setconsent.rivtabp20.v1",
+                                      "-p",
+                                      "urn:riv:insuranceprocess:healthreporting:SetConsentResponder:1=se.inera.intyg.insuranceprocess.healthreporting.setconsentresponder.v1",
+                                      "$projectDir/schemas/interactions/SetConsentInteraction/SetConsentInteraction_1.0_rivtabp20.wsdl"],
 
                     ]
 }

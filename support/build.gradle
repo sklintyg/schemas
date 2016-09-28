@@ -1,3 +1,4 @@
 description = "Intyg Schemas Support"
+
 group = 'se.inera.intyg.schemas'
 version = '2.1.1'

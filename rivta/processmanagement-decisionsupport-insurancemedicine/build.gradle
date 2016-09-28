@@ -1,6 +1,8 @@
 description = "processmanagement-decisionsupport-insurancemedicine"
+
 group = 'se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport'
 version = '1.0.1'
+
 wsdl2java {
   def commonOptions = ["-p",
                        "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
@@ -36,6 +38,5 @@ wsdl2java {
                                        "-p",
                                        "urn:riv:processmanagement:decisionsupport:insurancemedicinedecisionsupport:GetVersions:1:rivtabp21=se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport.getversionsresponder.v1",
                                        "$projectDir/schemas/interactions/GetVersionsInteraction/GetVersionsInteraction_1.0_RIVTABP21.wsdl"],
-
                     ]
 }

@@ -1,6 +1,8 @@
 description = "clinicalprocess-healthcond-certificate-schemas"
+
 group = 'se.riv.clinicalprocess.healthcond.certificate'
 version = '2.0.RC6.1'
+
 wsdl2java {
   def commonOptions = ["-p",
                        "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
@@ -157,6 +159,5 @@ wsdl2java {
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatusResponder:1=se.riv.clinicalprocess.healthcond.certificate.setCertificateStatus.v1",
                                        "$projectDir/schemas/interactions/SetCertificateStatusInteraction/SetCertificateStatusInteraction_1.0_RIVTABP21.wsdl"],
-
                     ]
 }

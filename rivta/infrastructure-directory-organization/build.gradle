@@ -1,6 +1,8 @@
 description = "infrastructure-directory-organization"
+
 group = 'se.riv.infrastructure.directory.organization'
 version = '1.1.RC5.3'
+
 wsdl2java {
   def commonOptions = ["-p",
                        "urn:riv:itintegration:monitoring:1=se.riv.itintegration.monitoring.v1",
@@ -55,6 +57,5 @@ wsdl2java {
                                        "-p",
                                        "urn:riv:infrastructure:directory:organization:GetUnit:1:rivtabp21=se.riv.infrastructure.directory.organization.getunit.v1.rivtabp21",
                                        "$projectDir/schemas/interactions/GetUnitInteraction/GetUnitInteraction_1.1_RIVTABP21.wsdl"],
-
                     ]
 }

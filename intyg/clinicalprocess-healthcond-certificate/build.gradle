@@ -1,9 +1,9 @@
 description = "Intyg Schemas (Clinicalprocess Healthreporting Certificate)"
+
 group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'
 version = '1.0.3'
+
 wsdl2java {
-
-
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
                        "-wsdlLocation", "classpath:interactions/GetRecipientsForCertificateInteraction/GetRecipientsForCertificateInteraction_1.0.wsdl",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
@@ -12,8 +12,8 @@ wsdl2java {
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificateResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.getrecipientsforcertificate.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificate:1=se.inera.intyg.clinicalprocess.healthcond.certificate.getrecipientsforcertificate.v1",
                        "$projectDir/schemas/interactions/GetRecipientsForCertificateInteraction/GetRecipientsForCertificateInteraction_1.0.wsdl"],
-                       
-                       ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
+
+                      ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
                        "-wsdlLocation", "classpath:interactions/GetMedicalCertificateForCareInteraction/GetMedicalCertificateForCareInteraction_1.0_RIVTABP21.wsdl",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1",
@@ -24,5 +24,5 @@ wsdl2java {
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCareResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.getmedicalcertificateforcare.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCare:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.certificate.getmedicalcertificateforcare.v1",
                        "$projectDir/schemas/interactions/GetMedicalCertificateForCareInteraction/GetMedicalCertificateForCareInteraction_1.0_RIVTABP21.wsdl"]
-                        ]
+                    ]
 }

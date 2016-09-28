@@ -1,23 +1,8 @@
-ext.nexusUsername = System.properties['nexusUsername']
-ext.nexusPassword = System.properties['nexusPassword']
-
 allprojects {
   apply plugin: 'maven'
 }
 
 subprojects {
- uploadArchives {
-    repositories {
-      mavenDeployer {
-        repository(url: "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases") {
-          authentication(userName: nexusUsername, password: nexusPassword)
-        }
-      }
-    }
-  }
-}
-
-configure(subprojects.findAll { ! ['intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
   apply plugin: 'java'
   apply plugin: 'no.nils.wsdl2java'
 
@@ -25,18 +10,21 @@ configure(subprojects.findAll { ! ['intyg-clinicalprocess-healthcond-certificate
   targetCompatibility = 1.8
 
   // Include schemas in jar file
-  sourceSets.main.resources { srcDirs = ["schemas"] }
+  sourceSets.main.resources.srcDirs += file("schemas")
 
   wsdl2java {
     generatedWsdlDir = file("build/generatedSource/java")
     wsdlDir = file("schemas")
   }
 
-  repositories {
-    mavenLocal()
-    maven { url "http://repo.maven.apache.org/maven2" }
-    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
-    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
+  uploadArchives {
+    repositories {
+      mavenDeployer {
+        repository(url: "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases") {
+          authentication(userName: System.properties['nexusUsername'], password: System.properties['nexusPassword'])
+        }
+      }
+    }
   }
 
   dependencies {
@@ -52,9 +40,13 @@ configure(subprojects.findAll { ! ['intyg-clinicalprocess-healthcond-certificate
     wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics:${jaxbVersion}"
   }
 
+  repositories {
+    mavenLocal()
+    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
+    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
+    maven { url "http://repo.maven.apache.org/maven2" }
+  }
 }
-
-
 
 configure(subprojects.findAll { ! ['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
   dependencies {
