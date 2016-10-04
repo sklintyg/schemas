@@ -414,7 +414,7 @@
           'Diagnos för ny uppdatering' får inte fyllas i om 'Diagnosuppdatering?' besvarats med 'NEJ'.
         </iso:assert>
       </iso:rule>
-  </iso:pattern>p
+  </iso:pattern>
 
   <iso:pattern id="q8">
     <iso:rule context="//gn:svar[@id='8']">
