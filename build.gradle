@@ -1,5 +1,6 @@
 allprojects {
   apply plugin: 'maven'
+   apply plugin: 'org.ajoberstar.grgit'
 }
 
 subprojects {
@@ -71,6 +72,7 @@ configure(subprojects.findAll { ! ['support', 'intyg-clinicalprocess-healthcond-
 buildscript {
   dependencies {
     classpath 'no.nils:wsdl2java:0.10'
+    classpath 'org.ajoberstar:gradle-git:1.5.1'
   }
 
   repositories {
