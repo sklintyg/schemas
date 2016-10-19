@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "0.0.1" // "1.0.3"
+def buildVersion = "0.0.1aaa" // "1.0.3"
 def projectName = "intyg-insuranceprocess-healthreporting-schemas"
 stage('checkout') {
     node {
