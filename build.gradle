@@ -35,7 +35,7 @@ task tagRelease {
     doLast {
         def grgit = org.ajoberstar.grgit.Grgit.open(creds: new org.ajoberstar.grgit.Credentials(System.properties['githubUser'], System.properties['githubPassword']))
         grgit.tag.add {
-            name = "v" + version
+            name = project.name + "-v" + version
             message = "Release of ${version}"
         }
         grgit.push(tags: true)
