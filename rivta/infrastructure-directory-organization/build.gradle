@@ -1,7 +1,7 @@
 description = "infrastructure-directory-organization"
 
 group = 'se.riv.infrastructure.directory.organization'
-version = '1.1.RC5.3'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
   def commonOptions = ["-p",

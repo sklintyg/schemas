@@ -1,7 +1,7 @@
 description = "Intyg Schemas (Infrastructure Directory Private Practitioner Terms)"
 
 group = 'se.inera.intyg.infrastructure.directory.privatepractitioner.terms'
-version = '1.0.3'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",

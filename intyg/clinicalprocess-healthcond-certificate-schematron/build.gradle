@@ -1,4 +1,4 @@
 description = "Intyg Schematron"
 
-version = '1.0.0'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'

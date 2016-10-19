@@ -1,7 +1,7 @@
 description = "Intyg Schemas (Insuranceprocess Healthreporting)"
 
 group = 'se.inera.intyg.insuranceprocess.healthreporting'
-version = '1.0.3'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
   def commonOptions = ["-p",

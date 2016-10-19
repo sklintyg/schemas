@@ -1,7 +1,7 @@
 description = "Intyg Schemas (Clinicalprocess Healthreporting Rehabilitation)"
 
 group = 'se.inera.intyg.clinicalprocess.healthcond.rehabilitation'
-version = '1.0.3'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",

@@ -1,7 +1,7 @@
 description = "infrastructure-directory-employee"
 
 group = 'se.riv.infrastructure.directory.employee'
-version = '1.0.RC4.3'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
   wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",

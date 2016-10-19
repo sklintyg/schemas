@@ -1,7 +1,7 @@
 description = "processmanagement-decisionsupport-insurancemedicine"
 
 group = 'se.riv.processmanagement.decisionsupport.insurancemedicinedecisionsupport'
-version = '1.0.1'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
   def commonOptions = ["-p",

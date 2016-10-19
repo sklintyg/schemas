@@ -1,7 +1,7 @@
 description = "Intyg Schemas (Infrastructure Directory Private Practitioner)"
 
 group = 'se.inera.intyg.infrastructure.directory.privatepractitioner'
-version = '1.0.3'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
   def commonOptions = ["-p",
