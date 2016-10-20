@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "0.0.1b" // "1.0.3"
+def buildVersion = "1.0.4"
 def projectName = "intyg-infrastructure-directory-privatepractitioner-terms-schemas"
 stage('checkout') {
     node {

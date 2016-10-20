@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "0.0.1az" // "1.1.3.4"
+def buildVersion = "1.1.3.5"
 def projectName = "population-residentmaster-schemas"
 
 stage('checkout') {

@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "0.0.1yy" // "1.0.RC4.3"
+def buildVersion = "1.0.RC4.4"
 def projectName = "infrastructure-directory-employee-schemas"
 stage('checkout') {
     node {

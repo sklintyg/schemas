@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "0.0.1za" // "1.0.1"
+def buildVersion = "1.0.2"
 def projectName = "processmanagement-decisionsupport-insurancemedicinedecisionsupport-schemas"
 
 stage('checkout') {
