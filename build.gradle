@@ -65,7 +65,7 @@ task tagRelease {
 
 configure(subprojects.findAll { ! ['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
   dependencies {
-    compile "se.inera.intyg.schemas:schemas-support:2.1.1"
+    compile "se.inera.intyg.schemas:schemas-support:2.1.2"
   }
 }
 
