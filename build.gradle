@@ -1,83 +1,84 @@
 allprojects {
-  apply plugin: 'maven'
-   apply plugin: 'org.ajoberstar.grgit'
+    apply plugin: 'maven'
+    apply plugin: 'org.ajoberstar.grgit'
 }
 
 subprojects {
-  apply plugin: 'java'
-  apply plugin: 'no.nils.wsdl2java'
-  apply plugin: 'org.ajoberstar.grgit'
+    apply plugin: 'java'
+    apply plugin: 'no.nils.wsdl2java'
+    apply plugin: 'org.ajoberstar.grgit'
 
-  sourceCompatibility = 1.8
-  targetCompatibility = 1.8
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
-  // Include schemas in jar file
-  sourceSets.main.resources.srcDirs += file("schemas")
+    // Include schemas in jar file
+    sourceSets.main.resources.srcDirs += file("schemas")
 
-  wsdl2java {
-    generatedWsdlDir = file("build/generatedSource/java")
-    wsdlDir = file("schemas")
-  }
+    wsdl2java {
+        generatedWsdlDir = file("build/generatedSource/java")
+        wsdlDir = file("schemas")
+    }
 
-  uploadArchives {
+    uploadArchives {
+        repositories {
+            mavenDeployer {
+                repository(url: "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases") {
+                    authentication(userName: System.properties['nexusUsername'], password: System.properties['nexusPassword'])
+                }
+            }
+        }
+    }
+
+
+    task tagRelease {
+        description = 'Tags the current head with the projects version.'
+        doLast {
+            def grgit = org.ajoberstar.grgit.Grgit.open(creds: new org.ajoberstar.grgit.Credentials(System.properties['githubUser'],
+                                                                                                    System.properties['githubPassword']))
+            grgit.tag.add {
+                name = project.name + "-v" + version
+                message = "Release of ${version}"
+            }
+            grgit.push(tags: true)
+        }
+    }
+
+    dependencies {
+        def jaxbVersion = "0.9.5"
+        def cxfVersion = "3.1.3"
+
+        compile "org.apache.cxf:cxf-rt-frontend-jaxws:${cxfVersion}"
+        compile "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
+        compile "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxbVersion}"
+
+        testCompile "junit:junit:4.+"
+
+        wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxbVersion}"
+        wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics:${jaxbVersion}"
+    }
+
     repositories {
-      mavenDeployer {
-        repository(url: "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases") {
-          authentication(userName: System.properties['nexusUsername'], password: System.properties['nexusPassword'])
-        }
-      }
+        maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
+        maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
+        maven { url "http://repo.maven.apache.org/maven2" }
     }
-  }
-
-
-task tagRelease {
-    description = 'Tags the current head with the projects version.'
-    doLast {
-        def grgit = org.ajoberstar.grgit.Grgit.open(creds: new org.ajoberstar.grgit.Credentials(System.properties['githubUser'], System.properties['githubPassword']))
-        grgit.tag.add {
-            name = project.name + "-v" + version
-            message = "Release of ${version}"
-        }
-        grgit.push(tags: true)
-    }
-}
-
-  dependencies {
-    def jaxbVersion = "0.9.5"
-    def cxfVersion = "3.1.3"
-    
-    compile "org.apache.cxf:cxf-rt-frontend-jaxws:${cxfVersion}"
-    compile "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
-    compile "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxbVersion}"
-
-    testCompile "junit:junit:4.+"
-
-    wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxbVersion}"
-    wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics:${jaxbVersion}"
-  }
-
-  repositories {
-    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
-    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
-    maven { url "http://repo.maven.apache.org/maven2" }
-  }
 }
 
 configure(subprojects.findAll { ! ['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
-  dependencies {
-    compile "se.inera.intyg.schemas:schemas-support:2.1.2"
-  }
+    dependencies {
+        compile "se.inera.intyg.schemas:schemas-support:2.1.2"
+    }
 }
 
 buildscript {
-  dependencies {
-    classpath 'no.nils:wsdl2java:0.10'
-    classpath 'org.ajoberstar:gradle-git:1.5.1'
-  }
+    dependencies {
+        classpath 'no.nils:wsdl2java:0.10'
+        classpath 'org.ajoberstar:gradle-git:1.5.1'
+    }
 
-  repositories {
-    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
-    maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
-    maven { url "https://plugins.gradle.org/m2/" }
-  }
+    repositories {
+        maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
+        maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
 }
