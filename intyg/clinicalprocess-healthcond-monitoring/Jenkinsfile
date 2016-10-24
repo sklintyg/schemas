@@ -20,4 +20,3 @@ stage('tag and upload') {
         shgradle ":${projectName}:uploadArchives :${projectName}:tagRelease -DbuildVersion=${buildVersion}"
     }
 }
-

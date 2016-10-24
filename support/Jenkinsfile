@@ -2,6 +2,7 @@
 
 def buildVersion = "2.1.2"
 def projectName = "schemas-support"
+
 stage('checkout') {
     node {
         util.run { checkout scm }

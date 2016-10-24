@@ -2,6 +2,7 @@
 
 def buildVersion = "1.0.4"
 def projectName = "intyg-transportstyrelsen-schemas"
+
 stage('checkout') {
     node {
         util.run { checkout scm }

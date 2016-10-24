@@ -2,6 +2,7 @@
 
 def buildVersion = "1.0.RC4.4"
 def projectName = "infrastructure-directory-employee-schemas"
+
 stage('checkout') {
     node {
         util.run { checkout scm }
@@ -19,4 +20,3 @@ stage('tag and upload') {
         shgradle ":${projectName}:uploadArchives :${projectName}:tagRelease -DbuildVersion=${buildVersion}"
     }
 }
-
