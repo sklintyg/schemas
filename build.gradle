@@ -29,7 +29,6 @@ subprojects {
         }
     }
 
-
     task tagRelease {
         description = 'Tags the current head with the projects version.'
         doLast {
