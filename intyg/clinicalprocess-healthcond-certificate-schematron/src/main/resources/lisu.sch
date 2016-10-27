@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://purl.oclc.org/dsdl/schematron"
     queryBinding='xslt2' schemaVersion='ISO19757-3'>
 
-  <iso:title>Schematron file for "Läkarintyg för sjukpenning utökat".</iso:title>
+  <iso:title>Schematron file for "Läkarintyg för sjukpenning".</iso:title>
 
   <iso:ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
   <iso:ns prefix="rg" uri="urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificateResponder:2"/>
@@ -12,11 +12,11 @@
 
   <iso:pattern id="intyg">
     <iso:rule context="//rg:intyg">
-      <iso:assert test="count(gn:svar[@id='1']) ge 1 and count(gn:svar[@id='1']) le 4">
-        Ett 'MU' måste ha mellan 1 och 4 'Grund för medicinskt underlag'
+      <iso:assert test="count(gn:svar[@id='1']) le 4">
+        Ett 'MU' får ha högst 4 'Grund för medicinskt underlag'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='28']) = 1">
-        Ett 'MU' måste ha ett 'Typ av sysselsättning'
+      <iso:assert test="count(gn:svar[@id='28']) le 5">
+        Ett 'MU' får ha högst 5 'Typ av sysselsättning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='29']) le 1">
         Ett 'MU' får ha högst ett 'Nuvarande arbete'
@@ -24,14 +24,14 @@
       <iso:assert test="count(gn:svar[@id='30']) le 1">
         Ett 'MU' får ha högst ett 'Arbetsmarknadspolitiskt program'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='6']) ge 1 and count(gn:svar[@id='6']) le 3">
-        Ett 'MU' måste ha mellan 1 och 3 'Typ av diagnos'
+      <iso:assert test="count(gn:svar[@id='6']) = 1">
+        Ett 'MU' måste ha en 'Typ av diagnos'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='35']) = 1">
-        Ett 'MU' måste ha ett 'Funktionsnedsättning'
+      <iso:assert test="count(gn:svar[@id='35']) le 1">
+        Ett 'MU' får ha högst ett 'Funktionsnedsättning'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='17']) = 1">
-        Ett 'MU' måste ha ett 'Aktivitetsbegränsningar'
+      <iso:assert test="count(gn:svar[@id='17']) le 1">
+        Ett 'MU' får ha högst ett 'Aktivitetsbegränsningar'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='19']) le 1">
         Ett 'MU' får ha högst ett 'Pågående medicinska behandlingar'
@@ -51,14 +51,11 @@
       <iso:assert test="count(gn:svar[@id='34']) le 1">
         Ett 'MU' får ha högst ett 'Arbetsresor'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='23']) le 1">
-        Ett 'MU' får ha högst ett 'Förmåga trots begränsningar'
+      <iso:assert test="count(gn:svar[@id='39']) le 1">
+        Ett 'MU' får ha högst ett 'Prognos'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='39']) = 1">
-        Ett 'MU' måste ha ett 'Prognos'
-      </iso:assert>
-      <iso:assert test="count(gn:svar[@id='40']) = 1">
-        Ett 'MU' måste ha ett 'Arbetslivsinriktade åtgärder'
+      <iso:assert test="count(gn:svar[@id='40']) le 10">
+        Ett 'MU' får ha högst 10 'Arbetslivsinriktade åtgärder'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='25']) le 1">
         Ett 'MU' får ha högst ett 'Övrigt'
@@ -66,7 +63,28 @@
       <iso:assert test="count(gn:svar[@id='26']) le 1">
         Ett 'MU' får ha högst ett 'Kontakt önskas'
       </iso:assert>
-      <iso:let name="svarsIdExpr" value="'^([16]|1[79]|2[035689]|3[0234579]|40|9[0-9]{3})$'"/>
+      <iso:assert test="count(gn:svar[@id='27']) le 1">
+        Ett 'MU' får ha högst ett 'Smittbärarpenning'
+      </iso:assert>
+      <iso:assert test="count(gn:svar[@id='1']) ge 1 or count(gn:svar[@id='27']) = 1">
+        Ett 'MU' måste antingen ha 'Grund för medicinskt underlag' eller 'Smittbärarpenning'
+      </iso:assert>
+      <iso:assert test="count(gn:svar[@id='28']) ge 1 or count(gn:svar[@id='27']) = 1">
+        Ett 'MU' måste antingen ha 'Typ av sysselsättning' eller 'Smittbärarpenning'
+      </iso:assert>
+      <iso:assert test="count(gn:svar[@id='35']) = 1 or count(gn:svar[@id='27']) = 1">
+        Ett 'MU' måste antingen ha 'Funktionsnedsättning' eller 'Smittbärarpenning'
+      </iso:assert>
+      <iso:assert test="count(gn:svar[@id='17']) = 1 or count(gn:svar[@id='27']) = 1">
+        Ett 'MU' måste antingen ha 'Aktivitetsbegränsningar' eller 'Smittbärarpenning'
+      </iso:assert>
+      <iso:assert test="count(gn:svar[@id='39']) = 1 or count(gn:svar[@id='27']) = 1">
+        Ett 'MU' måste antingen ha 'Prognos' eller 'Smittbärarpenning'
+      </iso:assert>
+      <iso:assert test="count(gn:svar[@id='40']) ge 1 or count(gn:svar[@id='27']) = 1">
+        Ett 'MU' måste antingen ha 'Arbetslivsinriktade åtgärder' eller 'Smittbärarpenning'
+      </iso:assert>
+      <iso:let name="svarsIdExpr" value="'^([16]|1[79]|2[056789]|3[0234579]|40|9[0-9]{3})$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
@@ -131,8 +149,47 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q27">
+    <iso:rule context="//gn:svar[@id='27']">
+      <iso:assert test="count(gn:delsvar[@id='27.1']) = 1">
+        'Smittbärarpenning' måste ha ett 'Om smittbärarpenning'.
+      </iso:assert>
+      <iso:let name="delsvarsIdExpr" value="'^27\.[1]$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q27.1">
+    <iso:rule context="//gn:delsvar[@id='27.1']">
+      <iso:extends rule="boolean"/>
+      <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='1']) ge 1">
+        Ett 'MU' måste ange minst en 'Grund för medicinskt underlag' om 'Om smittbärarpenning' inte är 'true'.
+      </iso:assert>
+      <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='28']) ge 1">
+        Ett 'MU' måste ange minst en 'Typ av sysselsättning' om 'Om smittbärarpenning' inte är 'true'.
+      </iso:assert>
+      <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='35']) = 1">
+        Ett 'MU' måste ange 'Funktionsnedsättning' om 'Om smittbärarpenning' inte är 'true'.
+      </iso:assert>
+      <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='17']) = 1">
+        Ett 'MU' måste ange 'Aktivitetsbegränsningar' om 'Om smittbärarpenning' inte är 'true'.
+      </iso:assert>
+      <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='39']) = 1">
+        Ett 'MU' måste ange 'Prognos' om 'Om smittbärarpenning' inte är 'true'.
+      </iso:assert>
+      <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='40']) ge 1">
+        Ett 'MU' måste ange minst en 'Arbetslivsinriktade åtgärder' om 'Om smittbärarpenning' inte är 'true'.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q28">
     <iso:rule context="//gn:svar[@id='28']">
+      <iso:assert test="count(gn:instans) = 1">
+        'Typ av sysselsättning' måste ha ett instansnummer.
+      </iso:assert>
       <iso:assert test="count(gn:delsvar[@id='28.1']) = 1">
         'Typ av sysselsättning' måste ha ett 'Typ av sysselsättning'.
       </iso:assert>
@@ -159,9 +216,9 @@
         Om 'Typ av sysselsättning' besvarats med 1, måste 'Nuvarande arbete' besvaras
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='28.1']/tp:cv/tp:code[normalize-space(.) != 'NUVARANDE_ARBETE']">
-      <iso:assert test="count(../../../../gn:svar[@id='29']) = 0">
-        Om 'Typ av sysselsättning' besvarats med något annat än 1, får 'Nuvarande arbete' inte besvaras
+    <iso:rule context="//gn:svar[@id='29']">
+      <iso:assert test="count(//gn:delsvar[@id='28.1']/tp:cv/tp:code[normalize-space(.) = 'NUVARANDE_ARBETE']) = 1">
+        Om 'Typ av sysselsättning' inte besvarats med 1, får 'Nuvarande arbete' inte besvaras
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -172,9 +229,9 @@
         Om 'Typ av sysselsättning' besvarats med 5, måste 'Arbetsmarknadspolitiskt program' besvaras
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='28.1']/tp:cv/tp:code[normalize-space(.) != 'PROGRAM']">
-      <iso:assert test="count(../../../../gn:svar[@id='30']) = 0">
-        Om 'Typ av sysselsättning' besvarats med något annat än 5, får 'Arbetsmarknadspolitiskt program' inte besvaras
+    <iso:rule context="//gn:svar[@id='30']">
+      <iso:assert test="count(//gn:delsvar[@id='28.1']/tp:cv/tp:code[normalize-space(.) = 'PROGRAM']) = 1">
+        Om 'Typ av sysselsättning' inte besvarats med 5, får 'Arbetsmarknadspolitiskt program' inte besvaras
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -217,16 +274,13 @@
 
   <iso:pattern id="q6">
     <iso:rule context="//gn:svar[@id='6']">
-      <iso:assert test="count(gn:instans) = 1">
-        'Typ av diagnos' måste ha ett instansnummer.
-      </iso:assert>
       <iso:assert test="count(gn:delsvar[@id='6.1']) = 1">
         'Typ av diagnos' måste ha en 'Diagnostext'.
       </iso:assert>
       <iso:assert test="count(gn:delsvar[@id='6.2']) = 1">
         'Typ av diagnos' måste ha en 'Diagnoskod ICD-10'.
       </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^6\.[12]$'"/>
+      <iso:let name="delsvarsIdExpr" value="'^6\.[123456]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
       </iso:assert>
@@ -241,6 +295,46 @@
 
   <iso:pattern id="q6.2">
     <iso:rule context="//gn:delsvar[@id='6.2']"> 
+      <iso:extends rule="cv"/>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '(1.2.752.116.1.1.1.1.3|1.2.752.116.1.3.1.4.1)')">
+        Diagnoskodsystem måste vara OID för ICD-10-SE eller KSH97-P.
+      </iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code),'^([A-EG-Ya-eg-y][0-9]{2}[A-Za-z0-9-]*|[Zz][0-689][0-9][A-Za-z0-9-]*|[Zz]7[0-24-9][A-Za-z0-9-]*|[Zz]73[A-Za-z0-9-]+|[Ff][0-9]{2}[A-Za-z0-9-]+)$')">
+        Diagnoskod måste anges som bokstav följt av två siffror följt av noll eller flera bokstäver, siffror eller bindestreck, d.v.s. minst tre positioner
+        måste anges. Om diagnoskoden börjar med F eller Z73 måste bokstav och två siffor följas av minst en bokstav, siffra eller bindestreck, d.v.s. minst fyra
+        positioner måste anges.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q6.3">
+    <iso:rule context="//gn:delsvar[@id='6.3']">
+      <iso:extends rule="non-empty-string"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q6.4">
+    <iso:rule context="//gn:delsvar[@id='6.4']"> 
+      <iso:extends rule="cv"/>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '(1.2.752.116.1.1.1.1.3|1.2.752.116.1.3.1.4.1)')">
+        Diagnoskodsystem måste vara OID för ICD-10-SE eller KSH97-P.
+      </iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code),'^([A-EG-Ya-eg-y][0-9]{2}[A-Za-z0-9-]*|[Zz][0-689][0-9][A-Za-z0-9-]*|[Zz]7[0-24-9][A-Za-z0-9-]*|[Zz]73[A-Za-z0-9-]+|[Ff][0-9]{2}[A-Za-z0-9-]+)$')">
+        Diagnoskod måste anges som bokstav följt av två siffror följt av noll eller flera bokstäver, siffror eller bindestreck, d.v.s. minst tre positioner
+        måste anges. Om diagnoskoden börjar med F eller Z73 måste bokstav och två siffor följas av minst en bokstav, siffra eller bindestreck, d.v.s. minst fyra
+        positioner måste anges.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q6.5">
+    <iso:rule context="//gn:delsvar[@id='6.5']">
+      <iso:extends rule="non-empty-string"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q6.6">
+    <iso:rule context="//gn:delsvar[@id='6.6']"> 
       <iso:extends rule="cv"/>
       <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '(1.2.752.116.1.1.1.1.3|1.2.752.116.1.3.1.4.1)')">
         Diagnoskodsystem måste vara OID för ICD-10-SE eller KSH97-P.
@@ -444,24 +538,6 @@
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q23">
-    <iso:rule context="//gn:svar[@id='23']">
-      <iso:assert test="count(gn:delsvar[@id='23.1']) = 1">
-        'Förmåga trots begränsningar' måste ha ett 'Beskrivning'.
-      </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^23\.[1]$'"/>
-      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
-        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="q23.1">
-    <iso:rule context="//gn:delsvar[@id='23.1']">
-      <iso:extends rule="non-empty-string"/>
-    </iso:rule>
-  </iso:pattern>
-
   <iso:pattern id="q39">
     <iso:rule context="//gn:svar[@id='39']">
       <iso:assert test="count(gn:delsvar[@id='39.1']) = 1">
@@ -491,8 +567,8 @@
     <iso:rule context="//gn:delsvar[@id='39.3']">
       <iso:extends rule="cv"/>
       <iso:assert test="tp:cv/tp:codeSystem = 'KV_FKMU_0007'">'codeSystem' måste vara 'KV_FKMU_0007'.</iso:assert>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(30_DAGAR|60_DAGAR|90_DAGAR|180_DAGAR)$')">
-        'Patienten kommer med stor sannolikhet att återgå helt i nuvarande sysselsättning efter x antal dagar' kan ha ett av värdena 30_DAGAR, 60_DAGAR, 90_DAGAR eller 180_DAGAR.
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(TRETTIO_DGR|SEXTIO_DGR|NITTIO_DGR|HUNDRAATTIO_DAGAR|TREHUNDRASEXTIOFEM_DAGAR)$')">
+        'Patienten kommer med stor sannolikhet att återgå helt i nuvarande sysselsättning efter x antal dagar' kan ha ett av värdena TRETTIO_DGR, SEXTIO_DGR, NITTIO_DGR, HUNDRAATTIO_DAGAR eller TREHUNDRASEXTIOFEM_DAGAR.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -512,16 +588,22 @@
 
   <iso:pattern id="q40">
     <iso:rule context="//gn:svar[@id='40']">
-      <iso:assert test="count(gn:delsvar[@id='40.1']) ge 1 and count(gn:delsvar[@id='40.1']) le 10">
-        'Arbetslivsinriktade åtgärder' måste ha mellan 1 och 10 'Val av arbetslivsinriktade åtgärder'.
+      <iso:assert test="count(gn:instans) = 1">
+        'Arbetslivsinriktade åtgärder' måste ha ett instansnummer.
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='40.1']) = 1">
+        'Arbetslivsinriktade åtgärder' måste ha ett 'Val av arbetslivsinriktade åtgärder'.
       </iso:assert>
       <iso:assert test="count(gn:delsvar[@id='40.2']) le 1">
         'Arbetslivsinriktade åtgärder' får ha högst ett 'Beskrivning arbetslivsriktade åtgärder aktuellt'.
       </iso:assert>
-      <iso:assert test="count(gn:delsvar[@id='40.3']) le 1">
-        'Arbetslivsinriktade åtgärder' får ha högst ett 'Beskrivning arbetslivsriktade åtgärder ej aktuellt'.
+      <iso:assert test="not(preceding-sibling::gn:svar[@id='40']/gn:delsvar[@id='40.1']/tp:cv/tp:code[.!='EJ_AKTUELLT'] and gn:delsvar[@id='40.1']/tp:cv/tp:code[.='EJ_AKTUELLT'])">
+        'Inte aktuellt' kan inte kombineras med andra svar
       </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^40\.[123]$'"/>
+      <iso:assert test="not(preceding-sibling::gn:svar[@id='40']/gn:delsvar[@id='40.1']/tp:cv/tp:code[.='EJ_AKTUELLT'] and gn:delsvar[@id='40.1']/tp:cv/tp:code[.!='EJ_AKTUELLT'])">
+        'Inte aktuellt' kan inte kombineras med andra svar
+      </iso:assert>
+      <iso:let name="delsvarsIdExpr" value="'^40\.[12]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
       </iso:assert>
@@ -535,23 +617,11 @@
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(EJ_AKTUELLT|ARBETSTRANING|ARBETSANPASSNING|SOKA_NYTT_ARBETE|BESOK_ARBETSPLATS|ERGONOMISK|HJALPMEDEL|KONFLIKTHANTERING|KONTAKT_FHV|OMFORDELNING|OVRIGA_ATGARDER)$')">
         'Val av arbetslivsinriktade åtgärder' kan ha ett av värdena EJ_AKTUELLT, ARBETSTRANING, ARBETSANPASSNING, SOKA_NYTT_ARBETE, BESOK_ARBETSPLATS, ERGONOMISK, HJALPMEDEL, KONFLIKTHANTERING, KONTAKT_FHV, OMFORDELNING eller OVRIGA_ATGARDER.
       </iso:assert>
-      <iso:assert test="not(preceding-sibling::gn:delsvar[@id='40.1']/tp:cv/tp:code[.!='EJ_AKTUELLT'] and tp:cv/tp:code[.='EJ_AKTUELLT'])">
-        'Inte aktuellt' kan inte kombineras med andra svar
-      </iso:assert>
-      <iso:assert test="not(preceding-sibling::gn:delsvar[@id='40.1']/tp:cv/tp:code[.='EJ_AKTUELLT'] and tp:cv/tp:code[.!='EJ_AKTUELLT'])">
-        'Inte aktuellt' kan inte kombineras med andra svar
-      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q40.2">
     <iso:rule context="//gn:delsvar[@id='40.2']">
-      <iso:extends rule="non-empty-string"/>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="q40.3">
-    <iso:rule context="//gn:delsvar[@id='40.3']">
       <iso:extends rule="non-empty-string"/>
     </iso:rule>
   </iso:pattern>
@@ -565,19 +635,6 @@
     <iso:rule context="//gn:delsvar[@id='40.1']/tp:cv/tp:code[normalize-space(.) = 'EJ_AKTUELLT']">
       <iso:assert test="count(../../../gn:delsvar[@id='40.2']) = 0">
         Om 'Val av arbetslivsinriktade åtgärder' är 'EJ_AKTUELLT' så får 'Beskrivning arbetslivsriktade åtgärder aktuellt' inte anges.
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="q40.1-40.3">
-    <iso:rule context="//gn:delsvar[@id='40.1']/tp:cv/tp:code[normalize-space(.) = 'EJ_AKTUELLT']">
-      <iso:assert test="../../../gn:delsvar[@id='40.3']">
-        Om 'Val av arbetslivsinriktade åtgärder' är 'EJ_AKTUELLT' så måste 'Beskrivning arbetslivsriktade åtgärder ej aktuellt' anges.
-      </iso:assert>
-    </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='40.1']/tp:cv/tp:code[normalize-space(.) != 'EJ_AKTUELLT']">
-      <iso:assert test="count(../../../gn:delsvar[@id='40.3']) = 0">
-        Om 'Val av arbetslivsinriktade åtgärder' är skiljt från 'EJ_AKTUELLT' så får 'Beskrivning arbetslivsriktade åtgärder ej aktuellt' inte anges.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
