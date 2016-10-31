@@ -508,12 +508,12 @@
   </iso:pattern>
 
   <iso:pattern id="q33.1-33.2">
-    <iso:rule context="//gn:delsvar[@id='33.1' and (normalize-space(.) = '1' or normalize-space(.) = 'true')]">
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(.), '1|true')]">
       <iso:assert test="../gn:delsvar[@id='33.2']">
         Om 'Om arbetstidsförläggning' är 'true' så måste 'Motivering arbetstidsförläggning' anges.
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='33.1' and (normalize-space(.) = '0' or normalize-space(.) = 'false')]">
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(.), '0|false')]">
       <iso:assert test="count(../gn:delsvar[@id='33.2']) = 0">
         Om 'Om arbetstidsförläggning' är 'false' så får 'Motivering arbetstidsförläggning' inte anges.
       </iso:assert>
@@ -685,7 +685,7 @@
   </iso:pattern>
 
   <iso:pattern id="q26.1-26.2">
-    <iso:rule context="//gn:delsvar[@id='26.1' and (normalize-space(.)='0' or normalize-space(.)='false')]">
+    <iso:rule context="//gn:delsvar[@id='26.1' and matches(normalize-space(.), '0|false')]">
       <iso:assert test="count(../gn:delsvar[@id='26.2']) = 0">
         Om 'Kontakt önskas' besvarats med nej kan 'Motivering av kontakt önskas' inte fyllas i.
       </iso:assert>
