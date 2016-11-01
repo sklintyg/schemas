@@ -21,7 +21,7 @@ subprojects {
     }
 
     task tagRelease(type: TagReleaseTask)
-                      
+
     uploadArchives {
         repositories {
             mavenDeployer {
@@ -48,7 +48,6 @@ subprojects {
 
     repositories {
         maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
-        maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
         maven { url "http://repo.maven.apache.org/maven2" }
     }
 }
@@ -68,7 +67,6 @@ buildscript {
 
     repositories {
         maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases/" }
-        maven { url "https://build-inera.nordicmedtest.se/nexus/content/repositories/snapshots/" }
         maven { url "https://plugins.gradle.org/m2/" }
     }
 }
