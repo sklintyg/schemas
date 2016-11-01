@@ -22,13 +22,9 @@ subprojects {
 
     task tagRelease(type: TagReleaseTask)
 
-    uploadArchives {
-        repositories {
-            mavenDeployer {
-                repository(url: "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases") {
-                    authentication(userName: System.properties['nexusUsername'], password: System.properties['nexusPassword'])
-                }
-            }
+    uploadArchives.repositories.mavenDeployer {
+        repository(url: "https://build-inera.nordicmedtest.se/nexus/content/repositories/releases") {
+            authentication(userName: System.properties['nexusUsername'], password: System.properties['nexusPassword'])
         }
     }
 
