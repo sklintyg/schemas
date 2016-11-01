@@ -456,7 +456,7 @@
 
   <iso:pattern id="q32.1-33">
     <iso:rule context="//gn:delsvar[@id='32.1']/tp:cv/tp:code[matches(normalize-space(.), '^(TRE_FJARDEDEL|HALFTEN|EN_FJARDEDEL)$')]">
-      <iso:assert test="count(../../../../gn:svar[@id='33']) = 1">
+      <iso:assert test="count(../../../../gn:svar[@id='33']) = 1 or //gn:delsvar[@id='27.1' and matches(normalize-space(.), '1|true')]">
         Om 'Sjukskrivningsnivå' är TRE_FJARDEDEL, HALFTEN eller EN_FJARDEDEL så måste 'Arbetstidsförläggning' anges.
       </iso:assert>
     </iso:rule>
