@@ -57,6 +57,9 @@
       <iso:assert test="count(gn:svar[@id='40']) le 10">
         Ett 'MU' får ha högst 10 'Arbetslivsinriktade åtgärder'
       </iso:assert>
+      <iso:assert test="count(gn:svar[@id='44']) le 1">
+        Ett 'MU' får ha högst ett 'Arbetslivsinriktade åtgärder aktuellt'
+      </iso:assert>
       <iso:assert test="count(gn:svar[@id='25']) le 1">
         Ett 'MU' får ha högst ett 'Övrigt'
       </iso:assert>
@@ -84,7 +87,7 @@
       <iso:assert test="count(gn:svar[@id='40']) ge 1 or count(gn:svar[@id='27']) = 1">
         Ett 'MU' måste antingen ha 'Arbetslivsinriktade åtgärder' eller 'Smittbärarpenning'
       </iso:assert>
-      <iso:let name="svarsIdExpr" value="'^([16]|1[79]|2[056789]|3[0234579]|40|9[0-9]{3})$'"/>
+      <iso:let name="svarsIdExpr" value="'^([16]|1[79]|2[056789]|3[0234579]|4[04]|9[0-9]{3})$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
@@ -594,16 +597,13 @@
       <iso:assert test="count(gn:delsvar[@id='40.1']) = 1">
         'Arbetslivsinriktade åtgärder' måste ha ett 'Val av arbetslivsinriktade åtgärder'.
       </iso:assert>
-      <iso:assert test="count(gn:delsvar[@id='40.2']) le 1">
-        'Arbetslivsinriktade åtgärder' får ha högst ett 'Beskrivning arbetslivsriktade åtgärder aktuellt'.
-      </iso:assert>
       <iso:assert test="not(preceding-sibling::gn:svar[@id='40']/gn:delsvar[@id='40.1']/tp:cv/tp:code[.!='EJ_AKTUELLT'] and gn:delsvar[@id='40.1']/tp:cv/tp:code[.='EJ_AKTUELLT'])">
         'Inte aktuellt' kan inte kombineras med andra svar
       </iso:assert>
       <iso:assert test="not(preceding-sibling::gn:svar[@id='40']/gn:delsvar[@id='40.1']/tp:cv/tp:code[.='EJ_AKTUELLT'] and gn:delsvar[@id='40.1']/tp:cv/tp:code[.!='EJ_AKTUELLT'])">
         'Inte aktuellt' kan inte kombineras med andra svar
       </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^40\.[12]$'"/>
+      <iso:let name="delsvarsIdExpr" value="'^40\.[1]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
       </iso:assert>
@@ -620,22 +620,34 @@
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q40.2">
-    <iso:rule context="//gn:delsvar[@id='40.2']">
-      <iso:extends rule="non-empty-string"/>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="q40.1-40.2">
+  <iso:pattern id="q40.1-44">
     <iso:rule context="//gn:delsvar[@id='40.1']/tp:cv/tp:code[normalize-space(.) != 'EJ_AKTUELLT']">
-      <iso:assert test="../../../gn:delsvar[@id='40.2']">
+      <iso:assert test="../../../../gn:svar[@id='44']">
         Om 'Val av arbetslivsinriktade åtgärder' är skiljt från 'EJ_AKTUELLT' så måste 'Beskrivning arbetslivsriktade åtgärder aktuellt' anges.
       </iso:assert>
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='40.1']/tp:cv/tp:code[normalize-space(.) = 'EJ_AKTUELLT']">
-      <iso:assert test="count(../../../gn:delsvar[@id='40.2']) = 0">
+      <iso:assert test="count(../../../../gn:svar[@id='44']) = 0">
         Om 'Val av arbetslivsinriktade åtgärder' är 'EJ_AKTUELLT' så får 'Beskrivning arbetslivsriktade åtgärder aktuellt' inte anges.
       </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q44">
+    <iso:rule context="//gn:svar[@id='44']">
+      <iso:assert test="count(gn:delsvar[@id='44.1']) = 1">
+        'Arbetslivsinriktade åtgärder aktuellt' måste ha ett 'Beskrivning arbetslivsriktade åtgärder aktuellt'.
+      </iso:assert>
+      <iso:let name="delsvarsIdExpr" value="'^44\.[1]$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q44.1">
+    <iso:rule context="//gn:delsvar[@id='44.1']">
+      <iso:extends rule="non-empty-string"/>
     </iso:rule>
   </iso:pattern>
 
