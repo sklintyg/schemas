@@ -238,7 +238,7 @@
         positioner måste anges.
       </iso:assert>
       <iso:assert test="string-length(normalize-space(tp:cv/tp:code)) le 5">
-      Diagnoskod får inte vara längre än 5 tecken. 
+      Diagnoskod får inte vara längre än 5 tecken.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
