@@ -302,6 +302,9 @@
         måste anges. Om diagnoskoden börjar med F eller Z73 måste bokstav och två siffor följas av minst en bokstav, siffra eller bindestreck, d.v.s. minst fyra
         positioner måste anges.
       </iso:assert>
+      <iso:assert test="string-length(normalize-space(tp:cv/tp:code)) le 5">
+      Diagnoskod får inte vara längre än 5 tecken. 
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -322,6 +325,9 @@
         måste anges. Om diagnoskoden börjar med F eller Z73 måste bokstav och två siffor följas av minst en bokstav, siffra eller bindestreck, d.v.s. minst fyra
         positioner måste anges.
       </iso:assert>
+      <iso:assert test="string-length(normalize-space(tp:cv/tp:code)) le 5">
+      Diagnoskod får inte vara längre än 5 tecken. 
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -341,6 +347,9 @@
         Diagnoskod måste anges som bokstav följt av två siffror följt av noll eller flera bokstäver, siffror eller bindestreck, d.v.s. minst tre positioner
         måste anges. Om diagnoskoden börjar med F eller Z73 måste bokstav och två siffor följas av minst en bokstav, siffra eller bindestreck, d.v.s. minst fyra
         positioner måste anges.
+      </iso:assert>
+      <iso:assert test="string-length(normalize-space(tp:cv/tp:code)) le 5">
+      Diagnoskod får inte vara längre än 5 tecken. 
       </iso:assert>
     </iso:rule>
   </iso:pattern>
