@@ -49,6 +49,7 @@
         <xs:sequence>
             <xs:element name="person-id" type="types:PersonIdExtension"/>
             <xs:element name="diagnos" type="tns:diagnos" maxOccurs="unbounded"/>
+            <xs:element name="omfattning" type="tns:omfattning" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -93,10 +94,11 @@
     <xs:complexType name="diagnosprediktion">
         <xs:sequence>
             <xs:element name="diagnos" type="tns:diagnos"/>
-            <xs:element name="sskrlangd" type="xs:positiveInteger"/>
-            <xs:element name="sskromfattning" type="xs:positiveInteger"/>
-            <xs:element name="forklaringsinformation" type="xs:string"/>
-            <xs:element name="status" type="xs:integer"/>
+            <xs:element name="sannolikhet-langvarig" type="xs:double" minOccurs="0"/>
+            <xs:element name="sskrlangd" type="xs:positiveInteger" minOccurs="0"/>
+            <xs:element name="sskromfattning" type="xs:positiveInteger" minOccurs="0"/>
+            <xs:element name="forklaringsinformation" type="xs:string" minOccurs="0"/>
+            <xs:element name="status" type="xs:integer" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -108,5 +110,14 @@
             <xs:element name="status" type="xs:integer"/>
         </xs:sequence>
     </xs:complexType>
+
+    <xs:simpleType name="omfattning">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="HELT_NEDSATT"/>
+            <xs:enumeration value="TRE_FJARDEDEL"/>
+            <xs:enumeration value="HALFTEN"/>   
+            <xs:enumeration value="EN_FJARDEDEL"/>
+        </xs:restriction>
+    </xs:simpleType>
 
 </xs:schema>
