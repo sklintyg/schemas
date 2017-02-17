@@ -36,7 +36,7 @@ public final class PartialDateAdapter {
     }
 
     /**
-     * Converts an intyg:common-model:1:partialDate to a Temporal
+     * Converts an intyg:common-model:1:partialDate to a Temporal.
      */
     public static Temporal parsePartialDate(String dateString) {
         if (dateString == null) {

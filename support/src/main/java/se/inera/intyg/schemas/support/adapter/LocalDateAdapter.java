@@ -30,6 +30,7 @@ import java.time.temporal.ChronoField;
  */
 public final class LocalDateAdapter {
 
+    // CHECKSTYLE:OFF MagicNumber
     private static final ZoneId TIMEZONE = ZoneId.of("Europe/Stockholm");
     private static final String ISO_DATE_PATTERN = "yyyy-MM-dd";
     private static final String ISO_DATETIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
@@ -37,6 +38,7 @@ public final class LocalDateAdapter {
             .appendFraction(ChronoField.NANO_OF_SECOND, 0, 9, true).toFormatter();
     private static final String XSD_DATE_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}([+-].*|Z)";
     private static final String XSD_DATETIME_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.?[0-9]*([+-].*|Z)";
+    // CHECKSTYLE:ON MagicNumber
 
     private LocalDateAdapter() {
     }
