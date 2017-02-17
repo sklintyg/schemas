@@ -20,13 +20,13 @@
 <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'
     xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:ListSickLeavesForCareResponder:1'
     xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
-    xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:1"
+    xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:2"
     targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListSickLeavesForCareResponder:1'
     elementFormDefault='qualified'
     attributeFormDefault='unqualified'
     version='1.0'>
 
-  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:1" schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_1.0.xsd" />
+  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:2" schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_2.0.xsd" />
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2" schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd" />
 
   <xs:element name='ListSickLeavesForCare' type='tns:ListSickLeavesForCareType' />
@@ -36,7 +36,7 @@
     <xs:sequence>
       <xs:element name='enhets-id' type='types:HsaId' />
       <xs:element name='maxDagarMellanIntyg' type='xs:int' />
-      <xs:element name='minstaSjukskrivningslangd' type='xs:int' minOccurs='0' />
+      <xs:element name='minstaSjukskrivningslangd' type='xs:int' minOccurs='0'/>
       <xs:element name='maxSjukskrivningslangd' type='xs:int' minOccurs='0'/>
       <xs:element name='lakare-id' type='types:HsaId' minOccurs='0'/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
