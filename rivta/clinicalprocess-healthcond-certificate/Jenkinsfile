@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "2.0" // Next version is 2.0.1, NOT 2.1
+def buildVersion = "2.0.1-beta1" // Next version is 2.0.1, NOT 2.1
 def projectName = "clinicalprocess-healthcond-certificate-schemas"
 
 stage('checkout') {
