@@ -60,6 +60,6 @@ allprojects {
 
 configure(subprojects.findAll { ! ['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
     dependencies {
-        compile "se.inera.intyg.schemas:schemas-support:2.1.2"
+        compile "se.inera.intyg.schemas:schemas-support:2.1.3"
     }
 }

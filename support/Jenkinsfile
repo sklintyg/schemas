@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "2.1.2"
+def buildVersion = "2.1.3"
 def projectName = "schemas-support"
 
 stage('checkout') {
@@ -11,7 +11,7 @@ stage('checkout') {
 
 stage('build') {
     node {
-        shgradle "--refresh-dependencies :${projectName}:clean :${projectName}:build -DbuildVersion=${buildVersion}"
+        shgradle "--refresh-dependencies :${projectName}:clean :${projectName}:build -DbuildVersion=${buildVersion} -PcodeQuality"
     }
 }
 
