@@ -7,7 +7,7 @@ buildscript {
 
     dependencies {
         classpath 'se.inera.intyg:gradle-intyg-plugin:1.0.+'
-        classpath 'no.nils:wsdl2java:0.+'
+        classpath 'no.nils:wsdl2java:0.10'
     }
 }
 
@@ -17,8 +17,9 @@ allprojects {
         maven { url "http://repo.maven.apache.org/maven2" }
     }
 
-    project.ext.useErrorprone = false
-    
+    // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
+    ext.errorproneExclude = ".*-schemas\$"
+
     apply plugin: 'inera-intyg'
     apply plugin: 'maven'
     apply plugin: 'no.nils.wsdl2java'
@@ -46,10 +47,6 @@ allprojects {
     wsdl2java {
         generatedWsdlDir = file("build/generatedSource/java")
         wsdlDir = file("schemas")
-    }
-
-    checkstyle {
-        configProperties = ['package_name': 'schemas']
     }
 
     task tagRelease(type: TagReleaseTask)

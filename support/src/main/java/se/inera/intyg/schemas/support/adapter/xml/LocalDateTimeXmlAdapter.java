@@ -27,10 +27,12 @@ import se.inera.intyg.schemas.support.adapter.LocalDateAdapter;
 
 public class LocalDateTimeXmlAdapter extends XmlAdapter<String, LocalDateTime> {
 
+    @Override
     public LocalDateTime unmarshal(String value) {
         return LocalDateAdapter.parseDateTime(value);
     }
 
+    @Override
     public String marshal(LocalDateTime value) {
         return LocalDateAdapter.printDateTime(value);
     }
