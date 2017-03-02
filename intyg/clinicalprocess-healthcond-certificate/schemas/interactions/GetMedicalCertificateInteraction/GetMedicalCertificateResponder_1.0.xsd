@@ -18,26 +18,27 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCareResponder:1"
-    xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateForCareResponder:1"
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateResponder:1"
+    xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificateResponder:1"
     xmlns:pref1="urn:riv:clinicalprocess:healthcond:certificate:1"
     xmlns:mu7263="urn:riv:insuranceprocess:healthreporting:mu7263:3"
     elementFormDefault="qualified">
 
     <import schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_1.0.xsd" namespace="urn:riv:clinicalprocess:healthcond:certificate:1" />
     <import schemaLocation="../../core_components/MU7263-RIV_3.1.xsd" namespace="urn:riv:insuranceprocess:healthreporting:mu7263:3" />
-    
-    <element name="GetMedicalCertificateForCareRequest" type="tns:GetMedicalCertificateForCareRequestType" />
-    <complexType name="GetMedicalCertificateForCareRequestType">
+
+    <element name="GetMedicalCertificateRequest" type="tns:GetMedicalCertificateRequestType" />
+    <complexType name="GetMedicalCertificateRequestType">
         <sequence>
             <element name="certificateId" type="string" minOccurs="1" maxOccurs="1" />
             <element name="nationalIdentityNumber" type="string" minOccurs="1" maxOccurs="1" />
+            <element name="part" type="string" minOccurs="1" maxOccurs="1" />
             <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
         </sequence>
     </complexType>
 
-    <element name="GetMedicalCertificateForCareResponse" type="tns:GetMedicalCertificateForCareResponseType" />
-    <complexType name="GetMedicalCertificateForCareResponseType">
+    <element name="GetMedicalCertificateResponse" type="tns:GetMedicalCertificateResponseType" />
+    <complexType name="GetMedicalCertificateResponseType">
         <sequence>
             <element name="meta" type="pref1:CertificateMetaType" minOccurs="0" maxOccurs="1" />
             <element name="lakarutlatande" type="mu7263:lakarutlatandeType" minOccurs="0" maxOccurs="1"/>
