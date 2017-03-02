@@ -38,7 +38,7 @@
       <xs:element name='maxDagarMellanIntyg' type='xs:int'/>
       <xs:element name='minstaSjukskrivningslangd' type='xs:int' minOccurs='0'/>
       <xs:element name='maxSjukskrivningslangd' type='xs:int' minOccurs='0'/>
-      <xs:element name='personal-id' type='types:HsaId' minOccurs='0'/>
+      <xs:element name='personal-id' type='types:HsaId' minOccurs='0' maxOccurs='unbounded' />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded'/>
     </xs:sequence>
   </xs:complexType>
@@ -66,11 +66,28 @@
       <xs:element name="personal-id" type="types:HsaId"/>
       <xs:element name="startdatum" type="types:DateType"/>
       <xs:element name="slutdatum" type="types:DateType"/>
-      <xs:element name="diagnoskod" type="types:CVType"/>
+      <xs:element name="diagnoskod" type="tns:Diagnoskod"/>
       <xs:element name="antalIntyg" type="xs:int"/>
       <xs:element name="sjukskrivningslangd" type="xs:int"/>
       <xs:element name="sjukskrivningsgrad" type="tns:Sjukskrivningsgrad"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Diagnoskod">
+    <xs:annotation>
+      <xs:documentation />
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="xs:string" />
+      <xs:element name="codeSystem" type="xs:string" minOccurs="0" />
+      <xs:element name="codeSystemName" type="xs:string"
+          minOccurs="0" />
+      <xs:element name="codeSystemVersion" type="xs:string"
+          minOccurs="0" />
+      <xs:element name="displayName" type="xs:string" minOccurs="0" />
+      <xs:element name="originalText" type="xs:string"
+          minOccurs="0" />
     </xs:sequence>
   </xs:complexType>
 
