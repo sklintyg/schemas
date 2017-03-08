@@ -160,7 +160,7 @@ wsdl2java {
                                        "urn:riv:clinicalprocess:healthcond:certificate:SetCertificateStatusResponder:1=se.riv.clinicalprocess.healthcond.certificate.setCertificateStatus.v1",
                                        "$projectDir/schemas/interactions/SetCertificateStatusInteraction/SetCertificateStatusInteraction_1.0_RIVTABP21.wsdl"],
 
-                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
                                        "classpath:interactions/ListSickLeavesForCareInteraction/ListSickLeavesForCareInteraction_1.0_RIVTABP21.wsdl",
                                        "-p",
