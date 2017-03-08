@@ -14,6 +14,10 @@ wsdl2java {
                        "urn:riv:clinicalprocess:healthcond:certificate:2=se.riv.clinicalprocess.healthcond.certificate.v2",
                        "-p",
                        "urn:riv:clinicalprocess:healthcond:certificate:types:2=se.riv.clinicalprocess.healthcond.certificate.types.v2",
+                       "-p",
+                       "urn:riv:clinicalprocess:healthcond:certificate:3=se.riv.clinicalprocess.healthcond.certificate.v3",
+                       "-p",
+                       "urn:riv:clinicalprocess:healthcond:certificate:types:3=se.riv.clinicalprocess.healthcond.certificate.types.v3",
                       ]
 
   wsdlsToGenerate = [ commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
