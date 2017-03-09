@@ -16,25 +16,25 @@
  KIND, either express or implied. See the License for the
  specific language governing permissions and limitations
  under the License.
- -->		
+ -->
 <wsdl:definitions name='ListSickLeavesForCareInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
     xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema'
-    xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:ListSickLeavesForCareResponder:1' 
+    xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:ListSickLeavesForCareResponder:1'
     xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:ListSickLeavesForCare:1:rivtabp21'
     targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListSickLeavesForCare:1:rivtabp21'
     xmlns:itr='urn:riv:itintegration:registry:1'>
-  <xs:annotation>
-    <xs:documentation>
-			 Tjänsteinteraktionens namn: ListSickLeavesForCareInteraction
-			 Beskrivning: 
-			   List sick leaves for a given care unit
-			 Revisioner: 
-			 Tjänstedomän: clinicalprocess:healthcond:certificate
-			 Tjänsteinteraktionstyp: Fråga-Svar
-			 WS-profil: RIVTABP21
-			 Förvaltas av: Sveriges Kommuner och Landsting
-			 </xs:documentation>
-  </xs:annotation>
+
+  <wsdl:documentation>
+     Tjänsteinteraktionens namn: ListSickLeavesForCareInteraction
+     Beskrivning:
+       List sick leaves for a given care unit
+     Revisioner:
+     Tjänstedomän: clinicalprocess:healthcond:certificate
+     Tjänsteinteraktionstyp: Fråga-Svar
+     WS-profil: RIVTABP21
+     Förvaltas av: Sveriges Kommuner och Landsting
+     </wsdl:documentation>
+
   <wsdl:types>
     <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListSickLeavesForCare:1:rivtabp21'>
       <xs:import schemaLocation='ListSickLeavesForCareResponder_1.0.xsd' namespace='urn:riv:clinicalprocess:healthcond:certificate:ListSickLeavesForCareResponder:1' />

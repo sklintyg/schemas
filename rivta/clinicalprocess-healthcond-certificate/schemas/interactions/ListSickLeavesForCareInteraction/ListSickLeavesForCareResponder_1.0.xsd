@@ -88,6 +88,7 @@
       <xs:element name="displayName" type="xs:string" minOccurs="0" />
       <xs:element name="originalText" type="xs:string"
           minOccurs="0" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
