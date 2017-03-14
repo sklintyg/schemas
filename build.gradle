@@ -24,6 +24,12 @@ allprojects {
     apply plugin: 'maven'
     apply plugin: 'no.nils.wsdl2java'
 
+    ext {
+	guavaVersion = "20.0"
+	jacksonVersion = "2.8.1"
+	logbackVersion = "1.0.11"
+    }
+
     dependencies {
         def jaxbVersion = "0.9.5"
         def cxfVersion = "3.1.3"
