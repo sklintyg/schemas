@@ -354,6 +354,14 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q6.2-6.4-6.6-R9">
+    <iso:rule context="//gn:svar[@id='6']">
+      <iso:assert test="(matches(normalize-space(gn:delsvar[@id='6.2']/tp:cv/tp:codeSystem), normalize-space(gn:delsvar[@id='6.4']/tp:cv/tp:codeSystem)) and matches(normalize-space(gn:delsvar[@id='6.2']/tp:cv/tp:codeSystem), normalize-space(gn:delsvar[@id='6.6']/tp:cv/tp:codeSystem)))">
+	'Huvuddiagnoskod' (DFR 6.2), 'Bidiagnoskod 1' (DFR 6.4) och 'Bidiagnoskod 2' (DFR 6.6) ska besvaras med samma kodverk
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q6.3-6.4">
     <iso:rule context="//gn:svar[@id='6']">
       <iso:assert test="(count(gn:delsvar[@id='6.3']) = 1 and count(gn:delsvar[@id='6.4']) = 1) or (count(gn:delsvar[@id='6.3']) = 0 and count(gn:delsvar[@id='6.4']) = 0)">

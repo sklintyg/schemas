@@ -239,6 +239,14 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q28.1-R5">
+    <iso:rule context="//gn:svar[@id='28']">
+      <iso:assert test="not(preceding-sibling::gn:svar[@id='28']/gn:delsvar[@id='28.1']/tp:cv/tp:code/normalize-space() = normalize-space(gn:delsvar[@id='28.1']/tp:cv/tp:code))">
+        'Typ av sysselsättning' (DFR 28.1) får besvaras med flera olika koder (KV_FKMU_0002) men varje kod får bara förekomma en gång.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q29">
     <iso:rule context="//gn:svar[@id='29']">
       <iso:assert test="count(gn:delsvar[@id='29.1']) = 1">
@@ -375,6 +383,14 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q6.2-6.4-6.6-R12">
+    <iso:rule context="//gn:svar[@id='6']">
+      <iso:assert test="(matches(normalize-space(gn:delsvar[@id='6.2']/tp:cv/tp:codeSystem), normalize-space(gn:delsvar[@id='6.4']/tp:cv/tp:codeSystem)) and matches(normalize-space(gn:delsvar[@id='6.2']/tp:cv/tp:codeSystem), normalize-space(gn:delsvar[@id='6.6']/tp:cv/tp:codeSystem)))">
+        'Huvuddiagnoskod' (DFR 6.2), 'Bidiagnoskod 1' (DFR 6.4) och 'Bidiagnoskod 2' (DFR 6.6) ska besvaras med samma kodverk.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q35">
     <iso:rule context="//gn:svar[@id='35']">
       <iso:assert test="count(gn:delsvar[@id='35.1']) = 1">
@@ -476,6 +492,14 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q32.1-R22">
+    <iso:rule context="//gn:svar[@id='32']">
+      <iso:assert test="not(preceding-sibling::gn:svar[@id='32']/gn:delsvar[@id='32.1']/tp:cv/tp:code/normalize-space() = normalize-space(gn:delsvar['32.1']/tp:cv/tp:code))">
+	'Sjukskrivningsnivå' (DFR 32.1) får besvaras med flera olika koder (KV_FKMU_0003) men varje kod får bara förekomma en gång.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q32.2">
     <iso:rule context="//gn:delsvar[@id='32.2']">
       <iso:extends rule="period"/>
@@ -486,6 +510,14 @@
     <iso:rule context="//gn:delsvar[@id='32.1']/tp:cv/tp:code[matches(normalize-space(.), '^(TRE_FJARDEDEL|HALFTEN|EN_FJARDEDEL)$')]">
       <iso:assert test="count(../../../../gn:svar[@id='33']) = 1 or //gn:delsvar[@id='27.1' and matches(normalize-space(.), '1|true')]">
         Om 'Sjukskrivningsnivå' är TRE_FJARDEDEL, HALFTEN eller EN_FJARDEDEL så måste 'Arbetstidsförläggning' anges.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q32.1-33.1-R26">
+    <iso:rule context="//gn:delsvar[@id='32.1']/tp:cv/tp:code[not(matches(normalize-space(.), '^(TRE_FJARDEDEL|HALFTEN|EN_FJARDEDEL)$'))]">
+      <iso:assert test="count(../../../../gn:svar[@id='33']) = 0">
+	'Om arbetstidsförläggning' (DFR 33.1) ska endast besvaras om 'Sjukskrivningsnivå' (DFR 32.1) är besvarad med kod EN_FJARDEDEL, HALFTEN eller TRE_FJARDEDEL (KV_FKMU_0003).
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -645,12 +677,15 @@
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q40.1-44">
-    <iso:rule context="//gn:delsvar[@id='40.1']/tp:cv/tp:code[normalize-space(.) != 'EJ_AKTUELLT']">
-      <iso:assert test="../../../../gn:svar[@id='44']">
-        Om 'Val av arbetslivsinriktade åtgärder' är skiljt från 'EJ_AKTUELLT' så måste 'Beskrivning arbetslivsriktade åtgärder aktuellt' anges.
+  <iso:pattern id="q40.1-R29">
+    <iso:rule context="//gn:svar[@id='40']">
+      <iso:assert test="not(preceding-sibling::gn:svar[@id='40']/gn:delsvar[@id='40.1']/tp:cv/tp:code/normalize-space() = normalize-space(gn:delsvar['40.1']/tp:cv/tp:code))">
+	'Val av arbetslivsinriktade åtgärder' (DFR 40.1) får besvaras med flera olika koder (KV_FKMU_0004) men varje kod får bara förekomma en gång.
       </iso:assert>
     </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q40.1-44">
     <iso:rule context="//gn:delsvar[@id='40.1']/tp:cv/tp:code[normalize-space(.) = 'EJ_AKTUELLT']">
       <iso:assert test="count(../../../../gn:svar[@id='44']) = 0">
         Om 'Val av arbetslivsinriktade åtgärder' är 'EJ_AKTUELLT' så får 'Beskrivning arbetslivsriktade åtgärder aktuellt' inte anges.
