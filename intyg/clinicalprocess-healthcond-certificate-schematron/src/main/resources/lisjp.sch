@@ -515,8 +515,8 @@
   </iso:pattern>
 
   <iso:pattern id="q32.1-33.1-R26">
-    <iso:rule context="//gn:delsvar[@id='32.1']/tp:cv/tp:code[not(matches(normalize-space(.), '^(TRE_FJARDEDEL|HALFTEN|EN_FJARDEDEL)$'))]">
-      <iso:assert test="count(../../../../gn:svar[@id='33']) = 0">
+    <iso:rule context="//gn:delsvar[@id='32.1']/tp:cv/tp:code[matches(normalize-space(.), 'HELT_NEDSATT')]">
+      <iso:assert test="count(../gn:svar[@id='32']/gn:delsvar[@id='32.1']/tp:cv/tp:code[matches(normalize-space(.), '^(TRE_FJARDEDEL|HALFTEN|EN_FJARDEDEL)$')]) = 0 and count(../gn:svar[@id='33']) = 0">
 	'Om arbetstidsförläggning' (DFR 33.1) ska endast besvaras om 'Sjukskrivningsnivå' (DFR 32.1) är besvarad med kod EN_FJARDEDEL, HALFTEN eller TRE_FJARDEDEL (KV_FKMU_0003).
       </iso:assert>
     </iso:rule>
