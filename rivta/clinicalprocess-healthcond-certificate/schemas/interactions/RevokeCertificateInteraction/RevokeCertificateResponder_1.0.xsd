@@ -20,15 +20,15 @@
  <schema xmlns="http://www.w3.org/2001/XMLSchema"
 	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:RevokeCertificateResponder:1"
 	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:RevokeCertificateResponder:1"
-	xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2" elementFormDefault="qualified"
+	xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3" elementFormDefault="qualified"
 	attributeFormDefault="unqualified"
-	version="1.0" xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:2">
+	version="1.0" xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3">
 
 	<import
-		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_2.0.xsd"
-		namespace="urn:riv:clinicalprocess:healthcond:certificate:2" />
-	<import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
-		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd" />
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.0.xsd"
+		namespace="urn:riv:clinicalprocess:healthcond:certificate:3" />
+	<import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.0.xsd" />
 
 	<element name="RevokeCertificate" type="tns:RevokeCertificateType" />
 	<element name="RevokeCertificateResponse" type="tns:RevokeCertificateResponseType" />

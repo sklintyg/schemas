@@ -65,7 +65,7 @@ wsdl2java {
                                        "urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCare:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v2",
                                        "$projectDir/schemas/interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_2.0_RIVTABP21.wsdl"],
 
-                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
                                        "classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_2.0_RIVTABP21.wsdl",
                                        "-p",
@@ -83,6 +83,15 @@ wsdl2java {
                                        "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:2=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v2",
                                        "$projectDir/schemas/interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_2.0_RIVTABP21.wsdl"],
 
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_3.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v3",
+                                       "-p",
+                                       "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v3",
+                                       "$projectDir/schemas/interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_3.0_RIVTABP21.wsdl"],
+
                       commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
                                        "-wsdlLocation",
                                        "classpath:interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_2.0_RIVTABP21.wsdl",
@@ -91,8 +100,9 @@ wsdl2java {
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:2=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCareWithQA.v2",
                                        "$projectDir/schemas/interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_2.0_RIVTABP21.wsdl"],
+          
 
-                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
                                        "classpath:interactions/RegisterCertificateInteraction/RegisterCertificateInteraction_2.0_RIVTABP21.wsdl",
                                        "-p",
@@ -109,6 +119,15 @@ wsdl2java {
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.getCertificate.v1",
                                        "$projectDir/schemas/interactions/GetCertificateInteraction/GetCertificateInteraction_1.0_RIVTABP21.wsdl"],
+
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/GetCertificateInteraction/GetCertificateInteraction_2.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:clinicalprocess:healthcond:certificate:GetCertificate:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.getCertificate.v2",
+                                       "-p",
+                                       "urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:2=se.riv.clinicalprocess.healthcond.certificate.getCertificate.v2",
+                                       "$projectDir/schemas/interactions/GetCertificateInteraction/GetCertificateInteraction_2.0_RIVTABP21.wsdl"],
 
                       commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
                                        "-wsdlLocation",
@@ -128,7 +147,7 @@ wsdl2java {
                                        "urn:riv:clinicalprocess:healthcond:certificate:SendMessageToRecipientResponder:1=se.riv.clinicalprocess.healthcond.certificate.sendMessageToRecipient.v1",
                                        "$projectDir/schemas/interactions/SendMessageToRecipientInteraction/SendMessageToRecipientInteraction_1.0_RIVTABP21.wsdl"],
 
-                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
                                        "classpath:interactions/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_1.0_RIVTABP21.wsdl",
                                        "-p",
@@ -146,7 +165,16 @@ wsdl2java {
                                        "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:2=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v2",
                                        "$projectDir/schemas/interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_2.0_RIVTABP21.wsdl"],
 
-                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_3.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizen:3:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v3",
+                                       "-p",
+                                       "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:3=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v3",
+                                       "$projectDir/schemas/interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_3.0_RIVTABP21.wsdl"],
+
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
                                        "classpath:interactions/RevokeCertificateInteraction/RevokeCertificateInteraction_1.0_RIVTABP21.wsdl",
                                        "-p",
@@ -155,7 +183,7 @@ wsdl2java {
                                        "urn:riv:clinicalprocess:healthcond:certificate:RevokeCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.revokeCertificate.v1",
                                        "$projectDir/schemas/interactions/RevokeCertificateInteraction/RevokeCertificateInteraction_1.0_RIVTABP21.wsdl"],
 
-                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
                                        "classpath:interactions/SetCertificateStatusInteraction/SetCertificateStatusInteraction_1.0_RIVTABP21.wsdl",
                                        "-p",
