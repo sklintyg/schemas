@@ -87,7 +87,7 @@ wsdl2java {
                                        "-wsdlLocation",
                                        "classpath:interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_3.0_RIVTABP21.wsdl",
                                        "-p",
-                                       "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v3",
+                                       "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v3",
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3=se.riv.clinicalprocess.healthcond.certificate.listcertificatesforcare.v3",
                                        "$projectDir/schemas/interactions/ListCertificatesForCareInteraction/ListCertificatesForCareInteraction_3.0_RIVTABP21.wsdl"],

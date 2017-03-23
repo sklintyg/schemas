@@ -20,9 +20,9 @@
 <wsdl:definitions name='ListCertificatesForCareInteraction'
 		xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
 		xmlns:xs='http://www.w3.org/2001/XMLSchema'
-		xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:2'
-		xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:2:rivtabp21'
-		targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:2:rivtabp21'
+		xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3'
+		xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21'
+		targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21'
 		xmlns:itr='urn:riv:itintegration:registry:1'>
 	<wsdl:documentation>
 		Tjänsteinteraktionens namn: ListCertificatesForCareInteraction
@@ -40,9 +40,9 @@
 
 	<wsdl:types>
 		<xs:schema
-				targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:2:rivtabp21'>
+				targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21'>
 			<xs:import schemaLocation='ListCertificatesForCareResponder_3.0.xsd'
-					namespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:2' />
+					namespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3' />
 			<xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd'
 					namespace='urn:riv:itintegration:registry:1' />
 		</xs:schema>
@@ -71,7 +71,7 @@
 				transport='http://schemas.xmlsoap.org/soap/http' />
 		<wsdl:operation name='ListCertificatesForCare'>
 			<soap:operation
-					soapAction='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:2:ListCertificatesForCare'
+					soapAction='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3:ListCertificatesForCare'
 					style='document' />
 			<wsdl:input>
 				<soap:header use='literal' message='tns:ListCertificatesForCareRequest'

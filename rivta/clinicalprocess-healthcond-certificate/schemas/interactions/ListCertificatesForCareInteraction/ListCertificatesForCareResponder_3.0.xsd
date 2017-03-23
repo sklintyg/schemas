@@ -10,8 +10,8 @@
 	OR CONDITIONS OF ANY KIND, either express or implied. See the License for
 	the specific language governing permissions and limitations under the License. -->
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-		targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:2"
-		xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:2"
+		targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3"
+		xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3"
 		xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 		elementFormDefault="qualified" attributeFormDefault="unqualified"
 		version="3.0" xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3">
