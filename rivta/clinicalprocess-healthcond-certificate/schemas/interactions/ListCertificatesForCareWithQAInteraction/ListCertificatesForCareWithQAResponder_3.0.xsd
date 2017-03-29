@@ -49,6 +49,7 @@
   <xs:complexType name="ListCertificatesForCareWithQAResponseType">
     <xs:sequence>
       <xs:element name="list" type="tns:List" minOccurs="0" />
+      <xs:element name="result" type="core:ResultType" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0"
           maxOccurs="unbounded" />
     </xs:sequence>

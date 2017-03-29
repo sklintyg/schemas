@@ -53,6 +53,7 @@
   <xs:complexType name="SjukfallLista">
     <xs:sequence>
       <xs:element name="sjukfall" type="tns:Sjukfall" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="result" type="core:ResultType" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>

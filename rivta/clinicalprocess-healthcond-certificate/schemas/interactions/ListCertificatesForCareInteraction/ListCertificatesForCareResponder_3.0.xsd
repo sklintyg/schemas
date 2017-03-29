@@ -40,6 +40,7 @@
 	<complexType name="ListCertificatesForCareResponseType">
 		<sequence>
 			<element name="intygsLista" type="tns:ListaType" />
+			<element name="result" type="core:ResultType" />
 			<any namespace="##other" processContents="lax" minOccurs="0"
 					maxOccurs="unbounded" />
 		</sequence>
