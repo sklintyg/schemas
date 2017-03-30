@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
+<!-- 
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
@@ -17,49 +17,49 @@
  specific language governing permissions and limitations
  under the License.
  -->
-<schema xmlns="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:3"
-    xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:3"
-    elementFormDefault="qualified"
-    attributeFormDefault="unqualified" version="3.0"
-    xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3"
-    xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3">
+ <schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:3"
+        xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:3"
+        elementFormDefault="qualified"
+	attributeFormDefault="unqualified" version="3.0"
+        xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3"
+        xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3">
+   
+    <import schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.0.xsd"
+        namespace="urn:riv:clinicalprocess:healthcond:certificate:3"/>
+    <import schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.0.xsd"
+        namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"/>
+    
+    <element name="ListCertificatesForCitizen" type="tns:ListCertificatesForCitizenType"/>
+    <element name="ListCertificatesForCitizenResponse" type="tns:ListCertificatesForCitizenResponseType"/>
 
-  <import schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.0.xsd"
-      namespace="urn:riv:clinicalprocess:healthcond:certificate:3"/>
-  <import schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.0.xsd"
-      namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"/>
-
-  <element name="ListCertificatesForCitizen" type="tns:ListCertificatesForCitizenType"/>
-  <element name="ListCertificatesForCitizenResponse" type="tns:ListCertificatesForCitizenResponseType"/>
-
-  <complexType name="ListCertificatesForCitizenType">
-    <sequence>
-      <element name="person-id" type="types:PersonId"/>
-      <element name="intygTyp" type="types:TypAvIntyg" minOccurs="0" maxOccurs="unbounded"/> <!-- Default all types -->
-      <element name="arkiverade" type="boolean"/>
-      <element name="fromDatum" type="types:DateType" minOccurs="0"/>
-      <element name="tomDatum" type="types:DateType" minOccurs="0"/>
-      <element name="part" type="types:Part"/>
-      <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </sequence>
-  </complexType>
-
-  <complexType name="ListCertificatesForCitizenResponseType">
-    <sequence>
-      <element name="intygsLista" type="tns:ListaType" />
-      <element name="result" type="core:ResultType" />
-      <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </sequence>
-  </complexType>
-
-  <complexType name="ListaType">
-    <sequence>
-      <element name="intyg" type="core:Intyg" maxOccurs="unbounded"
-          minOccurs="0" />
-      <any namespace="##other" processContents="lax" minOccurs="0"
-          maxOccurs="unbounded" />
-    </sequence>
-  </complexType>
-
+    <complexType name="ListCertificatesForCitizenType">
+        <sequence>
+            <element name="person-id" type="types:PersonId"/>
+            <element name="intygTyp" type="types:TypAvIntyg" minOccurs="0" maxOccurs="unbounded"/> <!-- Default all types -->
+            <element name="arkiverade" type="boolean"/>
+            <element name="fromDatum" type="types:DateType" minOccurs="0"/>
+            <element name="tomDatum" type="types:DateType" minOccurs="0"/>
+	    <element name="part" type="types:Part"/>
+            <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    
+    <complexType name="ListCertificatesForCitizenResponseType">
+        <sequence>
+			<element name="intygsLista" type="tns:ListaType" />
+            <element name="result" type="core:ResultType"/>
+            <any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    
+    <complexType name="ListaType">
+		<sequence>
+			<element name="intyg" type="core:Intyg" maxOccurs="unbounded"
+				minOccurs="0" />
+			<any namespace="##other" processContents="lax" minOccurs="0"
+				maxOccurs="unbounded" />
+		</sequence>
+	</complexType>
+	
 </schema>

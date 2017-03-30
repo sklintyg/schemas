@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--
+<!-- 
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
@@ -18,64 +18,63 @@
  under the License.
  -->
 <wsdl:definitions name='ListCertificatesForCareInteraction'
-		xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
-		xmlns:xs='http://www.w3.org/2001/XMLSchema'
-		xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3'
-		xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21'
-		targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21'
-		xmlns:itr='urn:riv:itintegration:registry:1'>
+	xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns:xs='http://www.w3.org/2001/XMLSchema'
+	xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3'
+	xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21'
+	targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21'
+	xmlns:itr='urn:riv:itintegration:registry:1'>
 	<wsdl:documentation>
 		Tjänsteinteraktionens namn: ListCertificatesForCareInteraction
 		Beskrivning:
 		Interaction to list certificates a patient's certificates for given care units.
 		Revisioner:
 		2013-11-20: Utkast Version 1.0, mats.ekhammar@callistaenterprise.se
-		2015-09-30: Version 2.0,
-		johan.zetterstrom@callistaenterprise.se
-		2017-03-20: Version 2.1, peter.hernfalk@callistaenterprise.se
+		2015-09-30: Version 2.0, johan.zetterstrom@callistaenterprise.se
+		2017-03-29: Version 3.0, peter.hernfalk@callistaenterprise.se
 		Tjänstedomän: clinicalprocess:healthcond:certificate
 		Tjänsteinteraktionstyp: Fråga-svar
 		WS-profil: RIVTABP21
 	</wsdl:documentation>
-
+	
 	<wsdl:types>
 		<xs:schema
-				targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21'>
+			targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCare:3:rivtabp21'>
 			<xs:import schemaLocation='ListCertificatesForCareResponder_3.0.xsd'
-					namespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3' />
+				namespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3' />
 			<xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd'
-					namespace='urn:riv:itintegration:registry:1' />
+				namespace='urn:riv:itintegration:registry:1' />
 		</xs:schema>
 	</wsdl:types>
-
+	
 	<wsdl:message name='ListCertificatesForCareRequest'>
 		<wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
 		</wsdl:part>
 		<wsdl:part name='parameters' element='tjsr:ListCertificatesForCare' />
 	</wsdl:message>
-
+	
 	<wsdl:message name='ListCertificatesForCareResponse'>
 		<wsdl:part name='parameters' element='tjsr:ListCertificatesForCareResponse' />
 	</wsdl:message>
-
+	
 	<wsdl:portType name='ListCertificatesForCareResponderInterface'>
 		<wsdl:operation name='ListCertificatesForCare'>
 			<wsdl:input message='tns:ListCertificatesForCareRequest' />
 			<wsdl:output message='tns:ListCertificatesForCareResponse' />
 		</wsdl:operation>
 	</wsdl:portType>
-
+	
 	<wsdl:binding name='ListCertificatesForCareResponderBinding'
-			type='tns:ListCertificatesForCareResponderInterface'>
+		type='tns:ListCertificatesForCareResponderInterface'>
 		<soap:binding style='document'
-				transport='http://schemas.xmlsoap.org/soap/http' />
+			transport='http://schemas.xmlsoap.org/soap/http' />
 		<wsdl:operation name='ListCertificatesForCare'>
 			<soap:operation
-					soapAction='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3:ListCertificatesForCare'
-					style='document' />
+				soapAction='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareResponder:3:ListCertificatesForCare'
+				style='document' />
 			<wsdl:input>
 				<soap:header use='literal' message='tns:ListCertificatesForCareRequest'
-						part='LogicalAddress' />
+					part='LogicalAddress' />
 				<soap:body use='literal' parts='parameters' />
 			</wsdl:input>
 			<wsdl:output>
@@ -83,12 +82,12 @@
 			</wsdl:output>
 		</wsdl:operation>
 	</wsdl:binding>
-
+	
 	<wsdl:service name='ListCertificatesForCareResponderService'>
 		<wsdl:port name='ListCertificatesForCareResponderPort'
-				binding='tns:ListCertificatesForCareResponderBinding'>
+			binding='tns:ListCertificatesForCareResponderBinding'>
 			<soap:address location='http://tempuri.org' />
 		</wsdl:port>
 	</wsdl:service>
-
+	
 </wsdl:definitions>

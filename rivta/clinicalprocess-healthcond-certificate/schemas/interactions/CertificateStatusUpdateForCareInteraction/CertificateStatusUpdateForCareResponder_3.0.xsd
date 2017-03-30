@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
+<!-- 
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
@@ -18,40 +18,40 @@
  under the License.
  -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3"
-    xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-    xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:3"
-    targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:3"
-    elementFormDefault="qualified" attributeFormDefault="unqualified"
-    version="3.0">
+	xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3"
+	xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
+	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:3"
+	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:3"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="3.0">
 
-  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3"
-      schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.0.xsd" />
-  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-      schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.0.xsd" />
+	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3"
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.0.xsd" />
+	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.0.xsd" />
 
-  <xs:element name="CertificateStatusUpdateForCare" type="tns:CertificateStatusUpdateForCareType" />
-  <xs:element name="CertificateStatusUpdateForCareResponse"
-      type="tns:CertificateStatusUpdateForCareResponseType" />
+	<xs:element name="CertificateStatusUpdateForCare" type="tns:CertificateStatusUpdateForCareType" />
+	<xs:element name="CertificateStatusUpdateForCareResponse"
+		type="tns:CertificateStatusUpdateForCareResponseType" />
 
-  <xs:complexType name="CertificateStatusUpdateForCareType">
-    <xs:sequence>
-      <xs:element name="intyg" type="core:Intyg" />
-      <xs:element name="handelse" type="core:Handelse" />
-      <xs:element name="skickadeFragor" type="core:Arenden" />
-      <xs:element name="mottagnaFragor" type="core:Arenden" />
-      <xs:element name="ref" type="xs:string" minOccurs="0"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0"
-          maxOccurs="unbounded" />
-    </xs:sequence>
-  </xs:complexType>
+	<xs:complexType name="CertificateStatusUpdateForCareType">
+		<xs:sequence>
+			<xs:element name="intyg" type="core:Intyg" />
+			<xs:element name="handelse" type="core:Handelse" />
+			<xs:element name="skickadeFragor" type="core:Arenden" />
+			<xs:element name="mottagnaFragor" type="core:Arenden" />
+			<xs:element name="ref" type="xs:string" minOccurs="0"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
 
-  <xs:complexType name="CertificateStatusUpdateForCareResponseType">
-    <xs:sequence>
-      <xs:element name="result" type="core:ResultType" />
-      <xs:any namespace="##other" processContents="lax" minOccurs="0"
-          maxOccurs="unbounded" />
-    </xs:sequence>
-  </xs:complexType>
-
+	<xs:complexType name="CertificateStatusUpdateForCareResponseType">
+		<xs:sequence>
+			<xs:element name="result" type="core:ResultType" />
+			<xs:any namespace="##other" processContents="lax" minOccurs="0"
+				maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
 </xs:schema>
