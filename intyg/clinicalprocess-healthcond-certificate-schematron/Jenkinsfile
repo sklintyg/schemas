@@ -17,6 +17,6 @@ stage('build') {
 
 stage('tag and upload') {
     node {
-        shgradle ":${projectName}:uploadArchives :${projectName}:tagRelease -DbuildVersion=${buildVersion}"
+        shgradle ":${projectName}:uploadArchives :${projectName}:tagRelease -DbuildVersion=${buildVersion} -Dintyg.tag.prefix=${projectName}-"
     }
 }
