@@ -114,7 +114,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="insatsrekommendationlista">  <!-- Peter -->
+    <xs:complexType name="insatsrekommendationlista">
         <xs:sequence>
             <xs:element name="diagnos" type="tns:diagnos"/>
             <xs:element name="insatsrekommendation" type="tns:insatsrekommendation" minOccurs="0" maxOccurs="unbounded"/>
@@ -122,7 +122,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="insatsrekommendation">  <!-- Peter -->
+    <xs:complexType name="insatsrekommendation">
         <xs:sequence>
             <xs:element name="atgardsforslag" type="xs:string"/>
             <xs:element name="prioritet" type="xs:positiveInteger"/>
@@ -130,7 +130,7 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="insatsrekommendationstatus">  <!-- Peter -->
+    <xs:complexType name="insatsrekommendationstatus">
       <xs:restriction base="xs:string">
           <xs:enumeration value="OK"/>
           <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
