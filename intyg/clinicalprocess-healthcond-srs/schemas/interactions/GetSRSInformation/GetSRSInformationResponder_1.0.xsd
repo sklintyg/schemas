@@ -59,7 +59,7 @@
                 <xs:sequence>
                     <xs:element name="code" type="xs:string"/>
                     <xs:element name="codeSystem" type="xs:string" fixed="1.2.752.116.1.1.1.1.3"/>
-		    <xs:element name="displayName" type="xs:string" minOccurs="0" />
+                    <xs:element name="displayName" type="xs:string" minOccurs="0"/>
                 </xs:sequence>
             </xs:restriction>
         </xs:complexContent>
@@ -68,7 +68,7 @@
     <xs:complexType name="utdatafilter">
         <xs:sequence>
             <xs:element name="prediktion" type="xs:boolean"/>
-	    <xs:element name="insatsrekommendation" type="xs:boolean"/>
+            <xs:element name="insatsrekommendation" type="xs:boolean"/>
             <xs:element name="fmbinformation" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
@@ -78,7 +78,7 @@
             <xs:element name="person-id" type="types:PersonIdExtension"/>
             <xs:element name="prediktion" type="tns:prediktion" minOccurs="0"/>
             <xs:element name="fmbinformation" type="tns:fmbinformation" minOccurs="0"/>
-	    <xs:element name="insatsrekommendationlista" type="tns:insatsrekommendationlista" minOccurs="0"/>
+            <xs:element name="insatsrekommendationlista" type="tns:insatsrekommendationlista" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -130,19 +130,19 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="insatsrekommendationstatus">
-      <xs:restriction base="xs:string">
-          <xs:enumeration value="OK"/>
-          <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
-          <xs:enumeration value="INFORMATION_SAKNAS"/>
-      </xs:restriction>
-    </xs:complexType>
-    
+    <xs:simpleType name="insatsrekommendationstatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OK"/>
+            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
+            <xs:enumeration value="INFORMATION_SAKNAS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:simpleType name="omfattning">
         <xs:restriction base="xs:string">
             <xs:enumeration value="HELT_NEDSATT"/>
             <xs:enumeration value="TRE_FJARDEDEL"/>
-            <xs:enumeration value="HALFTEN"/>   
+            <xs:enumeration value="HALFTEN"/>
             <xs:enumeration value="EN_FJARDEDEL"/>
         </xs:restriction>
     </xs:simpleType>
