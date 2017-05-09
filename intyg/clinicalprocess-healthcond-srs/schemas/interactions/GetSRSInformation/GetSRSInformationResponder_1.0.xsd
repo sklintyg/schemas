@@ -78,7 +78,7 @@
             <xs:element name="person-id" type="types:PersonIdExtension"/>
             <xs:element name="prediktion" type="tns:prediktion" minOccurs="0"/>
             <xs:element name="fmbinformation" type="tns:fmbinformation" minOccurs="0"/>
-            <xs:element name="insatsrekommendationlista" type="tns:insatsrekommendationlista" minOccurs="0"/>
+            <xs:element name="insatsrekommendationer" type="tns:insatsrekommendationer" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -91,6 +91,12 @@
     <xs:complexType name="fmbinformation">
         <xs:sequence>
             <xs:element name="fmb" type="tns:fmb" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="insatsrekommendationer">
+        <xs:sequence>
+            <xs:element name="rekommendation" type="tns:insatsrekommendation" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -114,15 +120,15 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="insatsrekommendationlista">
+    <xs:complexType name="insatsrekommendation">
         <xs:sequence>
             <xs:element name="diagnos" type="tns:diagnos"/>
-            <xs:element name="insatsrekommendation" type="tns:insatsrekommendation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="insatsrekommendationstatus" type="tns:insatsrekommendationstatus"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="insatsrekommendation">
+    <xs:complexType name="atgard">
         <xs:sequence>
             <xs:element name="atgardsforslag" type="xs:string"/>
             <xs:element name="prioritet" type="xs:positiveInteger"/>
