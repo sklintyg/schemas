@@ -81,12 +81,12 @@ wsdl2java {
 
                       commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
-                                       "classpath:interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_3.0_RIVTABP21.wsdl",
+                                       "classpath:interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_3.1_RIVTABP21.wsdl",
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQA:3:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCareWithQA.v3",
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:3=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCareWithQA.v3",
-                                       "$projectDir/schemas/interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_3.0_RIVTABP21.wsdl"],
+                                       "$projectDir/schemas/interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_3.1_RIVTABP21.wsdl"],
 
 
                       commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
