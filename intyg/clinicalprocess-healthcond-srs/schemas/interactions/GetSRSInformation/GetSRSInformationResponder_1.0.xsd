@@ -132,9 +132,15 @@
         <xs:sequence>
             <xs:element name="atgardsforslag" type="xs:string"/>
             <xs:element name="prioritet" type="xs:positiveInteger"/>
-            <xs:element name="version" type="xs:double"/>
+            <xs:element name="version" type="tns:version"/>
         </xs:sequence>
     </xs:complexType>
+
+    <xs:simpleType name="version">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+(\.[0-9]+){1,2}"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:simpleType name="insatsrekommendationstatus">
         <xs:restriction base="xs:string">
