@@ -50,7 +50,7 @@
 
   <xs:complexType name='ListRelationsForCertificateResponseType'>
     <xs:sequence>
-      <xs:element name="intygRelations" type="tns:IntygRelations" maxOccurs="unbounded"/>
+      <xs:element name="intygRelation" type="tns:IntygRelations" maxOccurs="unbounded"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -58,7 +58,7 @@
   <xs:complexType name="IntygRelations">
     <xs:sequence>
       <xs:element name="intygs-id" type="types:IntygId"/>
-      <xs:element name="relations" type="tns:Relation" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="relation" type="tns:Relation" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
