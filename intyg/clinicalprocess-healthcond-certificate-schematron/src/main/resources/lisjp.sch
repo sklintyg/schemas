@@ -15,14 +15,11 @@
       <iso:assert test="count(gn:svar[@id='1']) le 4">
         Ett 'MU' får ha högst 4 'Grund för medicinskt underlag'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='28']) le 5">
-        Ett 'MU' får ha högst 5 'Typ av sysselsättning'
+      <iso:assert test="count(gn:svar[@id='28']) le 4">
+        Ett 'MU' får ha högst 4 'Typ av sysselsättning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='29']) le 1">
         Ett 'MU' får ha högst ett 'Nuvarande arbete'
-      </iso:assert>
-      <iso:assert test="count(gn:svar[@id='30']) le 1">
-        Ett 'MU' får ha högst ett 'Arbetsmarknadspolitiskt program'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='6']) = 1">
         Ett 'MU' måste ha en 'Typ av diagnos'
@@ -87,7 +84,7 @@
       <iso:assert test="count(gn:svar[@id='40']) ge 1 or count(gn:svar[@id='27']) = 1">
         Ett 'MU' måste antingen ha 'Arbetslivsinriktade åtgärder' eller 'Smittbärarpenning'
       </iso:assert>
-      <iso:let name="svarsIdExpr" value="'^([16]|1[79]|2[056789]|3[0234579]|4[04]|9[0-9]{3})$'"/>
+      <iso:let name="svarsIdExpr" value="'^([16]|1[79]|2[056789]|3[234579]|4[04]|9[0-9]{3})$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
@@ -207,8 +204,8 @@
     <iso:rule context="//gn:delsvar[@id='28.1']">
       <iso:extends rule="cv"/>
       <iso:assert test="tp:cv/tp:codeSystem = 'KV_FKMU_0002'">'codeSystem' måste vara 'KV_FKMU_0002'.</iso:assert>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(NUVARANDE_ARBETE|ARBETSSOKANDE|FORALDRALEDIG|STUDIER|PROGRAM)$')">
-        'Typ av sysselsättning' kan ha ett av värdena NUVARANDE_ARBETE, ARBETSSOKANDE, FORALDRALEDIG, STUDIER eller PROGRAM.
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(NUVARANDE_ARBETE|ARBETSSOKANDE|FORALDRALEDIG|STUDIER)$')">
+        'Typ av sysselsättning' kan ha ett av värdena NUVARANDE_ARBETE, ARBETSSOKANDE, FORALDRALEDIG eller STUDIER.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -222,19 +219,6 @@
     <iso:rule context="//gn:svar[@id='29']">
       <iso:assert test="count(//gn:delsvar[@id='28.1']/tp:cv/tp:code[normalize-space(.) = 'NUVARANDE_ARBETE']) = 1">
         Om 'Typ av sysselsättning' inte besvarats med 1, får 'Nuvarande arbete' inte besvaras
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="q28.1-q30">
-    <iso:rule context="//gn:delsvar[@id='28.1']/tp:cv/tp:code[normalize-space(.) = 'PROGRAM']">
-      <iso:assert test="count(../../../../gn:svar[@id='30']) = 1">
-        Om 'Typ av sysselsättning' besvarats med 5, måste 'Arbetsmarknadspolitiskt program' besvaras
-      </iso:assert>
-    </iso:rule>
-    <iso:rule context="//gn:svar[@id='30']">
-      <iso:assert test="count(//gn:delsvar[@id='28.1']/tp:cv/tp:code[normalize-space(.) = 'PROGRAM']) = 1">
-        Om 'Typ av sysselsättning' inte besvarats med 5, får 'Arbetsmarknadspolitiskt program' inte besvaras
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -261,24 +245,6 @@
 
   <iso:pattern id="q29.1">
     <iso:rule context="//gn:delsvar[@id='29.1']">
-      <iso:extends rule="non-empty-string"/>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="q30">
-    <iso:rule context="//gn:svar[@id='30']">
-      <iso:assert test="count(gn:delsvar[@id='30.1']) = 1">
-        'Arbetsmarknadspolitiskt program' måste ha ett 'Aktiviteter i arbetsmarknadspolitiskt program'.
-      </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^30\.[1]$'"/>
-      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
-        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="q30.1">
-    <iso:rule context="//gn:delsvar[@id='30.1']">
       <iso:extends rule="non-empty-string"/>
     </iso:rule>
   </iso:pattern>
