@@ -68,7 +68,7 @@
     <xs:complexType name="utdatafilter">
         <xs:sequence>
             <xs:element name="prediktion" type="xs:boolean"/>
-            <xs:element name="insatsrekommendation" type="xs:boolean"/>
+            <xs:element name="atgardsrekommendation" type="xs:boolean"/>
             <xs:element name="fmbinformation" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
@@ -78,7 +78,7 @@
             <xs:element name="person-id" type="types:PersonIdExtension"/>
             <xs:element name="prediktion" type="tns:prediktion" minOccurs="0"/>
             <xs:element name="fmbinformation" type="tns:fmbinformation" minOccurs="0"/>
-            <xs:element name="insatsrekommendationer" type="tns:insatsrekommendationer" minOccurs="0"/>
+            <xs:element name="atgardsrekommendationer" type="tns:atgardsrekommendationer" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -94,9 +94,9 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="insatsrekommendationer">
+    <xs:complexType name="atgardsrekommendationer">
         <xs:sequence>
-            <xs:element name="rekommendation" type="tns:insatsrekommendation" maxOccurs="unbounded"/>
+            <xs:element name="rekommendation" type="tns:atgardsrekommendation" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -104,10 +104,11 @@
         <xs:sequence>
             <xs:element name="diagnos" type="tns:diagnos"/>
             <xs:element name="sannolikhet-langvarig" type="xs:double" minOccurs="0"/>
+             <xs:element name="sannolikhet-overgransvarde" type="xs:double" minOccurs="0"/>
             <xs:element name="sskrlangd" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element name="sskromfattning" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element name="forklaringsinformation" type="xs:string" minOccurs="0"/>
-            <xs:element name="status" type="xs:integer" minOccurs="0"/>
+            <xs:element name="diagnosprediktionstatus" type="tns:diagnosprediktionstatus" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -120,11 +121,11 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="insatsrekommendation">
+    <xs:complexType name="atgardsrekommendation">
         <xs:sequence>
             <xs:element name="diagnos" type="tns:diagnos"/>
             <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="insatsrekommendationstatus" type="tns:insatsrekommendationstatus"/>
+            <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -142,11 +143,19 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="insatsrekommendationstatus">
+    <xs:simpleType name="atgardsrekommendationstatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
             <xs:enumeration value="INFORMATION_SAKNAS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="diagnosprediktionstatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OK"/>
+            <xs:enumeration value="NOT_OK"/>
+            <xs:enumeration value="PREDIKTIONSMODELL_SAKNAS"/>
         </xs:restriction>
     </xs:simpleType>
 
