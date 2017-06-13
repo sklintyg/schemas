@@ -49,7 +49,7 @@
         <xs:sequence>
             <xs:element name="person-id" type="types:PersonIdExtension"/>
             <xs:element name="diagnos" type="tns:diagnos" maxOccurs="unbounded"/>
-            <xs:element name="omfattning" type="tns:omfattning" minOccurs="0"/>
+            <xs:element name="omfattning" type="tns:omfattning"/>
         </xs:sequence>
     </xs:complexType>
 
