@@ -155,6 +155,7 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="NOT_OK"/>
+            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
             <xs:enumeration value="PREDIKTIONSMODELL_SAKNAS"/>
         </xs:restriction>
     </xs:simpleType>
