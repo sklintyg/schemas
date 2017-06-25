@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions name='GetDiagnosisCodesInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+                  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+                  xmlns:xs='http://www.w3.org/2001/XMLSchema'
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:srs:GetDiagnosisCodesResponder:1'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:GetDiagnosisCodes:1:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetDiagnosisCodes:1:rivtabp21'>
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetDiagnosisCodes:1:rivtabp21'>
+            <xs:import schemaLocation='GetDiagnosisCodesResponder_1.0.xsd'
+                       namespace='urn:riv:clinicalprocess:healthcond:srs:GetDiagnosisCodesResponder:1'/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name='GetDiagnosisCodesRequest'>
+        <wsdl:part name='parameters' element='tjsr:GetDiagnosisCodesRequest'/>
+    </wsdl:message>
+
+    <wsdl:message name='GetDiagnosisCodesResponse'>
+        <wsdl:part name='parameters' element='tjsr:GetDiagnosisCodesResponse'/>
+    </wsdl:message>
+
+    <wsdl:portType name='GetDiagnosisCodesResponderInterface'>
+        <wsdl:operation name='GetDiagnosisCodes'>
+            <wsdl:input message='tns:GetDiagnosisCodesRequest'/>
+            <wsdl:output message='tns:GetDiagnosisCodesResponse'/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='GetDiagnosisCodesResponderBinding' type='tns:GetDiagnosisCodesResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+        <wsdl:operation name='GetDiagnosisCodes'>
+            <soap:operation
+                    soapAction='urn:riv:clinicalprocess:healthcond:srs:GetDiagnosisCodesResponder:1:GetDiagnosisCodes'
+                    style='document'/>
+            <wsdl:input>
+                <soap:header use='literal' message='tns:GetDiagnosisCodesRequest' part='LogicalAddress'/>
+                <soap:body use='literal' parts='parameters'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='GetDiagnosisCodesResponderService'>
+        <wsdl:port name='GetDiagnosisCodesResponderPort' binding='tns:GetDiagnosisCodesResponderBinding'>
+            <soap:address location='http://tempuri.org'/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
