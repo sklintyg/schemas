@@ -25,19 +25,11 @@
 
     <xs:complexType name="GetSRSInformationResponseType">
         <xs:sequence>
-            <xs:element name="resultCode" type="tns:ResultCodeEnum"/>
+            <xs:element name="resultCode" type="types:ResultCodeEnum"/>
             <xs:element name="bedomningsunderlag" type="tns:bedomningsunderlag" maxOccurs="unbounded"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-
-    <xs:simpleType name="ResultCodeEnum">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="OK"/>
-            <xs:enumeration value="ERROR"/>
-            <xs:enumeration value="INFO"/>
-        </xs:restriction>
-    </xs:simpleType>
 
     <xs:complexType name="individfaktorer">
         <xs:sequence>
@@ -49,7 +41,7 @@
         <xs:sequence>
             <xs:element name="person-id" type="types:PersonIdExtension"/>
             <xs:element name="diagnos" type="tns:diagnos" maxOccurs="unbounded"/>
-            <xs:element name="omfattning" type="tns:omfattning"/>
+            <xs:element name="omfattning" type="tns:omfattning" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -70,6 +62,7 @@
             <xs:element name="prediktion" type="xs:boolean"/>
             <xs:element name="atgardsrekommendation" type="xs:boolean"/>
             <xs:element name="fmbinformation" type="xs:boolean"/>
+            <xs:element name="statistik" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -79,6 +72,7 @@
             <xs:element name="prediktion" type="tns:prediktion" minOccurs="0"/>
             <xs:element name="fmbinformation" type="tns:fmbinformation" minOccurs="0"/>
             <xs:element name="atgardsrekommendationer" type="tns:atgardsrekommendationer" minOccurs="0"/>
+            <xs:element name="statistik" type="tns:statistik" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -99,6 +93,31 @@
             <xs:element name="rekommendation" type="tns:atgardsrekommendation" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
+
+    <xs:complexType name="atgardsrekommendation">
+        <xs:sequence>
+            <xs:element name="diagnos" type="tns:diagnos"/>
+            <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="atgardsrekommendationstatus" type="tns:infopadiagnosnivastatus"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="atgard">
+        <xs:sequence>
+            <xs:element name="atgard-id" type="xs:positiveInteger"/>
+            <xs:element name="atgardstyp" type="tns:atgardstyp"/>
+            <xs:element name="atgardsforslag" type="xs:string"/>
+            <xs:element name="prioritet" type="xs:positiveInteger"/>
+            <xs:element name="version" type="tns:version"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="atgardstyp">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OBS"/>
+            <xs:enumeration value="REK"/>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:complexType name="diagnosprediktion">
         <xs:sequence>
@@ -121,21 +140,6 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="atgardsrekommendation">
-        <xs:sequence>
-            <xs:element name="diagnos" type="tns:diagnos"/>
-            <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="atgard">
-        <xs:sequence>
-            <xs:element name="atgardsforslag" type="xs:string"/>
-            <xs:element name="prioritet" type="xs:positiveInteger"/>
-            <xs:element name="version" type="tns:version"/>
-        </xs:sequence>
-    </xs:complexType>
 
     <xs:simpleType name="version">
         <xs:restriction base="xs:string">
@@ -143,7 +147,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="atgardsrekommendationstatus">
+    <xs:simpleType name="infopadiagnosnivastatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
@@ -155,7 +159,6 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="NOT_OK"/>
-            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
             <xs:enumeration value="PREDIKTIONSMODELL_SAKNAS"/>
         </xs:restriction>
     </xs:simpleType>
@@ -168,5 +171,19 @@
             <xs:enumeration value="EN_FJARDEDEL"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:complexType name="statistik">
+        <xs:sequence>
+            <xs:element name="statistikbild" type="statistikbild" minOccurs="0"
+			maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="statistikbild">
+        <xs:sequence>
+            <xs:element name="bildadress" type="xs:anyURI"/>
+            <xs:element name="andringstidpunkt" type="types:TimeStampType"/>
+        </xs:sequence>
+    </xs:complexType>
 
 </xs:schema>
