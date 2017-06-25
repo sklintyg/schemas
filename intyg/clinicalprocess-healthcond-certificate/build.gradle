@@ -32,6 +32,15 @@ wsdl2java {
                        "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:ListKnownRecipientsResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.listknownrecipients.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:ListKnownRecipients:1=se.inera.intyg.clinicalprocess.healthcond.certificate.listknownrecipients.v1",
-                       "$projectDir/schemas/interactions/ListKnownRecipientsInteraction/ListKnownRecipientsInteraction_1.0.wsdl"]
+                       "$projectDir/schemas/interactions/ListKnownRecipientsInteraction/ListKnownRecipientsInteraction_1.0.wsdl"],
+
+                      ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
+                       "-wsdlLocation", "classpath:interactions/ListRelationsForCertificateInteraction/ListRelationsForCertificateInteraction_1.0.wsdl",
+                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:3=se.riv.clinicalprocess.healthcond.certificate.v3",
+                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:3=se.riv.clinicalprocess.healthcond.certificate.types.v3",
+                       "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
+                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:ListRelationsForCertificateResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.listrelationsforcertificate.v1",
+                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:ListRelationsForCertificate:1=se.inera.intyg.clinicalprocess.healthcond.certificate.listrelationsforcertificate.v1",
+                       "$projectDir/schemas/interactions/ListRelationsForCertificateInteraction/ListRelationsForCertificateInteraction_1.0.wsdl"]
                     ]
 }
