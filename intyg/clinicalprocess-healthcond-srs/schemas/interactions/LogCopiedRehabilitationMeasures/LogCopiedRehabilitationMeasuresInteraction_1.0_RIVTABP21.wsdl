@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions name='LogCopiedRehabilitationMeasuresInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+                  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+                  xmlns:xs='http://www.w3.org/2001/XMLSchema'
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:srs:LogCopiedRehabilitationMeasuresResponder:1'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:LogCopiedRehabilitationMeasures:1:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:srs:LogCopiedRehabilitationMeasures:1:rivtabp21'>
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:srs:LogCopiedRehabilitationMeasures:1:rivtabp21'>
+            <xs:import schemaLocation='LogCopiedRehabilitationMeasuresResponder_1.0.xsd'
+                       namespace='urn:riv:clinicalprocess:healthcond:srs:LogCopiedRehabilitationMeasuresResponder:1'/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name='LogCopiedRehabilitationMeasuresRequest'>
+        <wsdl:part name='parameters' element='tjsr:LogCopiedRehabilitationMeasuresRequest'/>
+    </wsdl:message>
+
+    <wsdl:message name='LogCopiedRehabilitationMeasuresResponse'>
+        <wsdl:part name='parameters' element='tjsr:LogCopiedRehabilitationMeasuresResponse'/>
+    </wsdl:message>
+
+    <wsdl:portType name='LogCopiedRehabilitationMeasuresResponderInterface'>
+        <wsdl:operation name='LogCopiedRehabilitationMeasures'>
+            <wsdl:input message='tns:LogCopiedRehabilitationMeasuresRequest'/>
+            <wsdl:output message='tns:LogCopiedRehabilitationMeasuresResponse'/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='LogCopiedRehabilitationMeasuresResponderBinding' type='tns:LogCopiedRehabilitationMeasuresResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+        <wsdl:operation name='LogCopiedRehabilitationMeasures'>
+            <soap:operation
+                    soapAction='urn:riv:clinicalprocess:healthcond:srs:LogCopiedRehabilitationMeasuresResponder:1:LogCopiedRehabilitationMeasures'
+                    style='document'/>
+            <wsdl:input>
+                <soap:header use='literal' message='tns:LogCopiedRehabilitationMeasuresRequest' part='LogicalAddress'/>
+                <soap:body use='literal' parts='parameters'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='LogCopiedRehabilitationMeasuresResponderService'>
+        <wsdl:port name='LogCopiedRehabilitationMeasuresResponderPort' binding='tns:LogCopiedRehabilitationMeasuresResponderBinding'>
+            <soap:address location='http://tempuri.org'/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
