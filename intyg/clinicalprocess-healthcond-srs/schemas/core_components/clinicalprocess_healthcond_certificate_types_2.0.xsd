@@ -300,6 +300,16 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<!-- Elementet flyttat hit från GetSRSInformation, eftersom
+	     det används av flera tjänstekontrakt -->
+	<xs:simpleType name="ResultCodeEnum">
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="OK"/>
+            <xs:enumeration value="ERROR"/>
+            <xs:enumeration value="INFO"/>
+          </xs:restriction>
+	</xs:simpleType>
+
 	<!-- Element tillagda dör att kunna hantera användning av datatyperna i 
 		any-tag -->
 	<xs:element name="timePeriod" type="TimePeriodType" />
