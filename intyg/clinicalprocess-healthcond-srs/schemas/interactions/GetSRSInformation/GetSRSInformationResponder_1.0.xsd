@@ -174,7 +174,7 @@
 
     <xs:complexType name="statistik">
         <xs:sequence>
-            <xs:element name="statistikbild" type="statistikbild" minOccurs="0"
+            <xs:element name="statistikbild" type="tns:statistikbild" minOccurs="0"
 			maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
