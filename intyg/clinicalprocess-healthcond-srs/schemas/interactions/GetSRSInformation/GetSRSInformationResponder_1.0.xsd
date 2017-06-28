@@ -98,7 +98,7 @@
         <xs:sequence>
             <xs:element name="diagnos" type="tns:diagnos"/>
             <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="atgardsrekommendationstatus" type="tns:infopadiagnosnivastatus"/>
+            <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -127,7 +127,7 @@
             <xs:element name="sskrlangd" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element name="sskromfattning" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element name="forklaringsinformation" type="xs:string" minOccurs="0"/>
-            <xs:element name="diagnosprediktionstatus" type="tns:diagnosprediktionstatus" minOccurs="0"/>
+            <xs:element name="diagnosprediktionstatus" type="tns:diagnosprediktionstatus"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -147,7 +147,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="infopadiagnosnivastatus">
+    <xs:simpleType name="atgardsrekommendationstatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
@@ -159,6 +159,7 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="NOT_OK"/>
+            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
             <xs:enumeration value="PREDIKTIONSMODELL_SAKNAS"/>
         </xs:restriction>
     </xs:simpleType>
