@@ -140,7 +140,6 @@
         </xs:sequence>
     </xs:complexType>
 
-
     <xs:simpleType name="version">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]+(\.[0-9]+){1,2}"/>
@@ -164,6 +163,14 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:simpleType name="statistikstatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OK"/>
+            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
+            <xs:enumeration value="STATISTIK_SAKNAS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:simpleType name="omfattning">
         <xs:restriction base="xs:string">
             <xs:enumeration value="HELT_NEDSATT"/>
@@ -175,15 +182,16 @@
 
     <xs:complexType name="statistik">
         <xs:sequence>
-            <xs:element name="statistikbild" type="tns:statistikbild" minOccurs="0"
-			maxOccurs="unbounded"/>
+            <xs:element name="statistikbild" type="tns:statistikbild" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="statistikbild">
         <xs:sequence>
-            <xs:element name="bildadress" type="xs:anyURI"/>
-            <xs:element name="andringstidpunkt" type="types:TimeStampType"/>
+            <xs:element name="diagnos" type="tns:diagnos"/>
+            <xs:element name="bildadress" type="xs:anyURI" minOccurs="0"/>
+            <xs:element name="andringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
+            <xs:element name="statistikstatus" type="tns:statistikstatus"/>
         </xs:sequence>
     </xs:complexType>
 
