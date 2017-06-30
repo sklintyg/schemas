@@ -96,7 +96,8 @@
 
     <xs:complexType name="atgardsrekommendation">
         <xs:sequence>
-            <xs:element name="diagnos" type="tns:diagnos"/>
+            <xs:element name="diagnos" type="tns:diagnos" minOccurs="0"/>
+            <xs:element name="inkommandediagnos" type="tns:diagnos"/>
             <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
         </xs:sequence>
@@ -121,9 +122,10 @@
 
     <xs:complexType name="diagnosprediktion">
         <xs:sequence>
-            <xs:element name="diagnos" type="tns:diagnos"/>
+            <xs:element name="diagnos" type="tns:diagnos" minOccurs="0"/>
+            <xs:element name="inkommandediagnos" type="tns:diagnos"/>
             <xs:element name="sannolikhet-langvarig" type="xs:double" minOccurs="0"/>
-             <xs:element name="sannolikhet-overgransvarde" type="xs:double" minOccurs="0"/>
+            <xs:element name="sannolikhet-overgransvarde" type="xs:double" minOccurs="0"/>
             <xs:element name="sskrlangd" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element name="sskromfattning" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element name="forklaringsinformation" type="xs:string" minOccurs="0"/>
@@ -188,7 +190,8 @@
 
     <xs:complexType name="statistikbild">
         <xs:sequence>
-            <xs:element name="diagnos" type="tns:diagnos"/>
+            <xs:element name="diagnos" type="tns:diagnos" minOccurs="0"/>
+            <xs:element name="inkommandediagnos" type="tns:diagnos"/>
             <xs:element name="bildadress" type="xs:anyURI" minOccurs="0"/>
             <xs:element name="andringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
             <xs:element name="statistikstatus" type="tns:statistikstatus"/>
