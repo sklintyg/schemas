@@ -98,7 +98,7 @@
         <xs:sequence>
             <xs:element name="diagnos" type="tns:diagnos"/>
             <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="atgardsrekommendationstatus" type="tns:infopadiagnosnivastatus"/>
+            <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -127,7 +127,7 @@
             <xs:element name="sskrlangd" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element name="sskromfattning" type="xs:positiveInteger" minOccurs="0"/>
             <xs:element name="forklaringsinformation" type="xs:string" minOccurs="0"/>
-            <xs:element name="diagnosprediktionstatus" type="tns:diagnosprediktionstatus" minOccurs="0"/>
+            <xs:element name="diagnosprediktionstatus" type="tns:diagnosprediktionstatus"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -140,14 +140,13 @@
         </xs:sequence>
     </xs:complexType>
 
-
     <xs:simpleType name="version">
         <xs:restriction base="xs:string">
             <xs:pattern value="[0-9]+(\.[0-9]+){1,2}"/>
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="infopadiagnosnivastatus">
+    <xs:simpleType name="atgardsrekommendationstatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
@@ -159,7 +158,16 @@
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="NOT_OK"/>
+            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
             <xs:enumeration value="PREDIKTIONSMODELL_SAKNAS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="statistikstatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OK"/>
+            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
+            <xs:enumeration value="STATISTIK_SAKNAS"/>
         </xs:restriction>
     </xs:simpleType>
 
@@ -174,15 +182,16 @@
 
     <xs:complexType name="statistik">
         <xs:sequence>
-            <xs:element name="statistikbild" type="statistikbild" minOccurs="0"
-			maxOccurs="unbounded"/>
+            <xs:element name="statistikbild" type="tns:statistikbild" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="statistikbild">
         <xs:sequence>
-            <xs:element name="bildadress" type="xs:anyURI"/>
-            <xs:element name="andringstidpunkt" type="types:TimeStampType"/>
+            <xs:element name="diagnos" type="tns:diagnos"/>
+            <xs:element name="bildadress" type="xs:anyURI" minOccurs="0"/>
+            <xs:element name="andringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
+            <xs:element name="statistikstatus" type="tns:statistikstatus"/>
         </xs:sequence>
     </xs:complexType>
 
