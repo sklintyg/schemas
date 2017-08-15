@@ -39,14 +39,17 @@
       <iso:assert test="count(gn:svar[@id='12']) = 1">
         Ett intyg måste ha en 'Skada förgiftning'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='13']) = 1">
-        Ett intyg måste ha en 'Grunder för dödsorsaksuppgifter'
+      <iso:assert test="count(gn:svar[@id='13']) ge 1">
+        Ett intyg måste ha minst en 'Grunder för dödsorsaksuppgifter'
+      </iso:assert>
+      <iso:assert test="count(gn:svar[@id='13']) le 5">
+        Ett intyg får högst ha fem 'Grunder för dödsorsaksuppgifter'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='14']) le 1">
         Ett intyg får ha upp till ett 'Land'
       </iso:assert>
 
-      <iso:let name="svarsIdExpr" value="'^([123489]|1[01234])$'"/>
+      <iso:let name="svarsIdExpr" value="'^([123489]|1[01234]|9[0-9]{3})$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
@@ -146,7 +149,10 @@
   <iso:pattern id="q3.2">
     <iso:rule context="//gn:delsvar[@id='3.2']">
       <iso:extends rule="cv"/>
-      <!-- TODO: add codeSystem etc -->
+      <iso:assert test="tp:cv/tp:codeSystem = 'KV_DODSPLATS_BOENDE'">'codeSystem' måste vara 'KV_DODSPLATS_BOENDE'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(SJUKHUS|ORDINART_BOENDE|SARSKILT_BOENDE|ANNAN)$')">
+        'KV_DODSPLATS_BOENDE' kan ha ett av värdena SJUKHUS, ORDINART_BOENDE, SARSKILT_BOENDE, ANNAN.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -201,7 +207,10 @@
   <iso:pattern id="q8.3">
     <iso:rule context="//gn:delsvar[@id='8.3']">
       <iso:extends rule="cv"/>
-      <!-- TODO: add codeSystem etc -->
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(v3 Code System NullFlavor|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för ICD-10-SE eller 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(90734009|424124008|NI)$')">
+        Code kan ha ett av värdena 90734009, 424124008, NI.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -241,7 +250,10 @@
   <iso:pattern id="q9.3">
     <iso:rule context="//gn:delsvar[@id='9.3']">
       <iso:extends rule="cv"/>
-      <!-- TODO: add codeSystem etc -->
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(v3 Code System NullFlavor|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för ICD-10-SE eller 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(90734009|424124008|NI)$')">
+        Code kan ha ett av värdena 90734009, 424124008, NI.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -287,7 +299,10 @@
   <iso:pattern id="q10.3">
     <iso:rule context="//gn:delsvar[@id='10.3']">
       <iso:extends rule="cv"/>
-      <!-- TODO: add codeSystem etc -->
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(v3 Code System NullFlavor|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för ICD-10-SE eller 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(90734009|424124008|NI)$')">
+        Code kan ha ett av värdena 90734009, 424124008, NI.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -310,15 +325,35 @@
   </iso:pattern>
 
   <iso:pattern id="q11.1">
+    <iso:rule context="//gn:delsvar[@id='11.1' and string(.) castable as xs:boolean]">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
     <iso:rule context="//gn:delsvar[@id='11.1']">
       <iso:extends rule="cv"/>
-      <!-- TODO: add codeSystem etc -->
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^v3 Code System NullFlavor$')">'codeSystem' måste vara 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^NI$')">
+        Code kan endast vara NI.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q11.2">
-    <iso:rule context="//gn:delsvar[@id='11.2']">
+  <iso:pattern id="q11.2-11.1">
+    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '0|false')]">
+      <iso:assert test="not(//gn:delsvar[@id='11.2'])">
+        'Datum operation' får inte finnas om 'Om operation inom fyra veckor' är true
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='11.2' and ../gn:delsvar[@id='11.1' and matches(normalize-space(.), '1|true')]]">
       <iso:extends rule="date"/>
+      <iso:assert test="//gn:delsvar[@id='2.2'] castable as xs:date and xs:date(.) le xs:date(//gn:delsvar[@id='2.2'])">
+        'Datum operation' får inte vara efter 'Om dödsdatum'
+      </iso:assert>
+    </iso:rule>
+    <!-- Om vi kommer hit så betyder det att 2.3 inte finns fast 2.1 är false -->
+    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '1|true')]">
+      <iso:assert test="count(//gn:delsvar[@id='11.2']) = 1">
+        'Datum operation' måste finnas om 'Om operation inom fyra veckor' är true
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -363,7 +398,10 @@
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='12.2' and ../gn:delsvar[@id='12.1' and matches(normalize-space(.), '1|true')]]">
       <iso:extends rule="cv"/>
-      <!-- TODO: add codeSystem etc -->
+      <iso:assert test="tp:cv/tp:codeSystem = 'KV_ORSAK'">'codeSystem' måste vara 'KV_ORSAK'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(OLYCKSFALL|SJALVMORD|AVSIKTLIGT_VALLAD|OKLART)$')">
+        'KV_ORSAK' kan ha ett av värdena OLYCKSFALL, SJALVMORD, AVSIKTLIGT_VALLAD, OKLART
+      </iso:assert>
     </iso:rule>
     <!-- Om vi kommer hit så betyder det att 12.2 inte finns fast 12.1 är true -->
     <iso:rule context="//gn:delsvar[@id='12.1' and matches(normalize-space(.), '1|true')]">
@@ -381,6 +419,9 @@
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='12.3' and ../gn:delsvar[@id='12.1' and matches(normalize-space(.), '1|true')]]">
       <iso:extends rule="date"/>
+      <iso:assert test="//gn:delsvar[@id='2.2'] castable as xs:date and xs:date(.) le xs:date(//gn:delsvar[@id='2.2'])">
+        'Datum skada förgiftning' får inte vara efter 'Om dödsdatum'
+      </iso:assert>
     </iso:rule>
     <!-- Om vi kommer hit så betyder det att 12.3 inte finns fast 12.1 är true -->
     <iso:rule context="//gn:delsvar[@id='12.1' and matches(normalize-space(.), '1|true')]">
@@ -412,6 +453,9 @@
       <iso:assert test="count(gn:delsvar[@id='13.1']) = 1">
         'Grunder för dödsorsaksuppgifter' måste ha ett 'Om grunder för dödsorsaksuppgifter'
       </iso:assert>
+      <iso:assert test="not(preceding-sibling::gn:svar[@id='13']/gn:delsvar[@id='13.1']/tp:cv/tp:code/normalize-space() = normalize-space(gn:delsvar[@id='13.1']/tp:cv/tp:code))">
+        Samma 'Om grunder för dödsorsaksuppgifter' kan inte användas flera gånger i samma intyg.
+      </iso:assert>
       <iso:let name="delsvarsIdExpr" value="'^13\.1$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
@@ -422,7 +466,10 @@
   <iso:pattern id="q13.1">
     <iso:rule context="//gn:delsvar[@id='13.1']">
       <iso:extends rule="cv"/>
-      <!-- TODO: add codeSystem etc -->
+      <iso:assert test="tp:cv/tp:codeSystem = 'KV_DODSORSAKSUPPGIFTER'">'codeSystem' måste vara 'KV_DODSORSAKSUPPGIFTER'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(UNDERSOKNING_FORE_DODEN|UNDERSOKNING_EFTER_DODEN|KLINISK_OBDUKTION|RATTSMEDICINSK_OBDUKTION|RATTSMEDICINSK_BESIKTNING)$')">
+        'KV_DODSORSAKSUPPGIFTER' kan ha ett av värdena UNDERSOKNING_FORE_DODEN, UNDERSOKNING_EFTER_DODEN, KLINISK_OBDUKTION, RATTSMEDICINSK_OBDUKTION, RATTSMEDICINSK_BESIKTNING.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
