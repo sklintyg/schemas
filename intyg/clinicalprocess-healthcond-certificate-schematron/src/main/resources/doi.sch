@@ -338,9 +338,9 @@
   </iso:pattern>
 
   <iso:pattern id="q11.2-11.1">
-    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '0|false')]">
+    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '1|true'))]">
       <iso:assert test="not(//gn:delsvar[@id='11.2'])">
-        'Datum operation' får inte finnas om 'Om operation inom fyra veckor' är true
+        'Datum operation' får inte finnas om 'Om operation inom fyra veckor' är false eller NI
       </iso:assert>
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='11.2' and ../gn:delsvar[@id='11.1' and matches(normalize-space(.), '1|true')]]">
@@ -358,6 +358,11 @@
   </iso:pattern>
 
   <iso:pattern id="q11.3">
+    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '1|true'))]">
+      <iso:assert test="not(//gn:delsvar[@id='11.3'])">
+        'Anledning operation' får inte finnas om 'Om operation inom fyra veckor' är false eller NI
+      </iso:assert>
+    </iso:rule>
     <iso:rule context="//gn:delsvar[@id='11.3']">
       <iso:extends rule="non-empty-string"/>
     </iso:rule>
@@ -411,7 +416,7 @@
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q13.2-12.1">
+  <iso:pattern id="q12.3-12.1">
     <iso:rule context="//gn:delsvar[@id='12.1' and matches(normalize-space(.), '0|false')]">
       <iso:assert test="not(//gn:delsvar[@id='12.3'])">
           'Datum skada förgiftning' får inte finnas om 'Om skada förgiftning' är false
@@ -431,7 +436,7 @@
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q14.2-12.1">
+  <iso:pattern id="q12.4-12.1">
     <iso:rule context="//gn:delsvar[@id='12.1' and matches(normalize-space(.), '0|false')]">
       <iso:assert test="not(//gn:delsvar[@id='12.4'])">
           'Uppkommelse skada förgiftning' får inte finnas om 'Om skada förgiftning' är false
