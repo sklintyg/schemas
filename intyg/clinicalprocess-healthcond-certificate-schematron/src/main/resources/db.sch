@@ -34,11 +34,10 @@
         Ett intyg måste ha en 'Polisanmälan'
       </iso:assert>
 
-      <iso:let name="svarsIdExpr" value="'^([1234567]|9[0-9]{3})$'"/>
+      <iso:let name="svarsIdExpr" value="'^([1234567])$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
-      <!-- Meddelandet kan innehålla ett valfritt antal tilläggsfrågor -->
     </iso:rule>
   </iso:pattern>
 
@@ -84,6 +83,12 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q2.3">
+    <iso:rule context="//gn:delsvar[@id='2.3']">
+      <iso:extends rule="date"/>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q2.2-2.1">
     <iso:rule context="//gn:delsvar[@id='2.2' and ../gn:delsvar[@id='2.1' and matches(normalize-space(.), '1|true')]]">
       <iso:extends rule="date"/>
@@ -99,10 +104,6 @@
         'Anträffad död' får inte finnas om 'Säkert ej säkert' är true
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='2.3' and ../gn:delsvar[@id='2.1' and matches(normalize-space(.), '0|false')]]">
-      <iso:extends rule="date"/>
-    </iso:rule>
-    <!-- Om vi kommer hit så betyder det att 2.3 inte finns fast 2.1 är false -->
     <iso:rule context="//gn:delsvar[@id='2.1' and matches(normalize-space(.), '0|false')]">
       <iso:assert test="count(//gn:delsvar[@id='2.3']) = 1">
         'Anträffad död' måste finnas om 'Säkert ej säkert' är false
@@ -180,16 +181,18 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q5.2">
+    <iso:rule context="//gn:delsvar[@id='5.2']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q5.2-5.1">
     <iso:rule context="//gn:delsvar[@id='5.1' and matches(normalize-space(.), '0|false')]">
       <iso:assert test="not(//gn:delsvar[@id='5.2'])">
         Om 'Finns explosiv implantat' är false får inte 'Har implantat avlägsnats' finnas
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='5.2' and ../gn:delsvar[@id='5.1' and matches(normalize-space(.), '1|true')]]">
-      <iso:extends rule="boolean"/>
-    </iso:rule>
-    <!-- Om vi kommer hit så betyder det att 5.2 inte finns fast 5.1 är true -->
     <iso:rule context="//gn:delsvar[@id='5.1' and matches(normalize-space(.), '1|true')]">
       <iso:assert test="count(//gn:delsvar[@id='5.2']) = 1">
         Om 'Finns explosiv implantat' är true måste 'Har implantat avlägsnats' finnas
@@ -221,21 +224,28 @@
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q6.2-6.1">
-    <iso:rule context="//gn:delsvar[@id='6.1' and matches(normalize-space(.), '1|true')]">
-      <iso:assert test="not(//gn:delsvar[@id='6.2'])">
-        Om 'Om undersökning' är true får inte 'Detaljer undersökning' finnas
-      </iso:assert>
-    </iso:rule>
+  <iso:pattern id="q6.2">
     <iso:rule context="//gn:delsvar[@id='6.2' and ../gn:delsvar[@id='6.1' and matches(normalize-space(.), '0|false')]]">
       <iso:extends rule="cv"/>
       <iso:assert test="tp:cv/tp:codeSystem = 'KV_DETALJER_UNDERSOKNING'">'codeSystem' måste vara 'KV_DETALJER_UNDERSOKNING'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(UNDERSOKNING_GJORT|UNDERSOKNING_SKA_GORAS)$')">
         'KV_DETALJER_UNDERSOKNING' kan ha ett av värdena UNDERSOKNING_GJORT, UNDERSOKNING_SKA_GORAS.
       </iso:assert>
-
     </iso:rule>
-    <!-- Om vi kommer hit så betyder det att 6.2 inte finns fast 6.1 är false -->
+  </iso:pattern>
+
+  <iso:pattern id="q6.3">
+    <iso:rule context="//gn:delsvar[@id='6.3' and ../gn:delsvar[@id='6.2' and matches(normalize-space(.), '^UNDERSOKNING_GJORT$')]]">
+      <iso:extends rule="date"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q6.2-6.1">
+    <iso:rule context="//gn:delsvar[@id='6.1' and matches(normalize-space(.), '1|true')]">
+      <iso:assert test="not(//gn:delsvar[@id='6.2'])">
+        Om 'Om undersökning' är true får inte 'Detaljer undersökning' finnas
+      </iso:assert>
+    </iso:rule>
     <iso:rule context="//gn:delsvar[@id='6.1' and matches(normalize-space(.), '0|false')]">
       <iso:assert test="count(//gn:delsvar[@id='6.2']) = 1">
         Om 'Om undersökning' är false måste 'Detaljer undersökning' finnas
@@ -249,10 +259,6 @@
         Om 'Detaljer undersökning' inte är 'UNDERSOKNING_GJORT' får inte 'Datum undersökning före döden' finnas
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='6.3' and ../gn:delsvar[@id='6.2' and matches(normalize-space(.), '^UNDERSOKNING_GJORT$')]]">
-      <iso:extends rule="date"/>
-    </iso:rule>
-    <!-- Om vi kommer hit så betyder det att 6.3 inte finns fast 6.2 är satt till att den avlidne är undersökt kort före döden -->
     <iso:rule context="//gn:delsvar[@id='6.2' and matches(normalize-space(./tp:cv/tp:code), '^UNDERSOKNING_GJORT$')]">
       <iso:assert test="count(//gn:delsvar[@id='6.3']) = 1">
         Om 'Detaljer undersökning' är 'UNDERSOKNING_GJORT' måste 'Datum undersökning före döden' finnas
