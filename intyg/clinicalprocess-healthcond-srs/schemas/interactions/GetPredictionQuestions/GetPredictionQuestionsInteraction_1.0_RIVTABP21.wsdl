@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions name='GetConsentInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+                  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+                  xmlns:xs='http://www.w3.org/2001/XMLSchema'
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:srs:GetPredictionQuestionsResponder:1'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:GetPredictionQuestions:1:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetPredictionQuestions:1:rivtabp21'>
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetPredictionQuestions:1:rivtabp21'>
+            <xs:import schemaLocation='GetPredictionQuestionsResponder_1.0.xsd'
+                       namespace='urn:riv:clinicalprocess:healthcond:srs:GetPredictionQuestionsResponder:1'/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name='GetPredictionQuestionsRequest'>
+        <wsdl:part name='parameters' element='tjsr:GetPredictionQuestionsRequest'/>
+    </wsdl:message>
+
+    <wsdl:message name='GetPredictionQuestionsResponse'>
+        <wsdl:part name='parameters' element='tjsr:GetPredictionQuestionsResponse'/>
+    </wsdl:message>
+
+    <wsdl:portType name='GetPredictionQuestionsResponderInterface'>
+        <wsdl:operation name='GetPredictionQuestions'>
+            <wsdl:input message='tns:GetPredictionQuestionsRequest'/>
+            <wsdl:output message='tns:GetPredictionQuestionsResponse'/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='GetPredictionQuestionsResponderBinding' type='tns:GetPredictionQuestionsResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+        <wsdl:operation name='GetPredictionQuestions'>
+            <soap:operation
+                    soapAction='urn:riv:clinicalprocess:healthcond:srs:GetPredictionQuestionsResponder:1:GetPredictionQuestions'
+                    style='document'/>
+            <wsdl:input>
+                <soap:header use='literal' message='tns:GetPredictionQuestionsRequest' part='LogicalAddress'/>
+                <soap:body use='literal' parts='parameters'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='GetPredictionQuestionsResponderService'>
+        <wsdl:port name='GetPredictionQuestionsResponderPort' binding='tns:GetPredictionQuestionsResponderBinding'>
+            <soap:address location='http://tempuri.org'/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
