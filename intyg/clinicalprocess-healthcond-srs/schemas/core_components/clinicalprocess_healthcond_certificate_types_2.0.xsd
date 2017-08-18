@@ -310,7 +310,21 @@
           </xs:restriction>
 	</xs:simpleType>
 
-	<!-- Element tillagda dör att kunna hantera användning av datatyperna i 
+	<!-- Elementet flyttat hit från GetSRSInformation, eftersom
+	     det används av flera tjänstekontrakt -->
+    <xs:complexType name="Diagnos">
+        <xs:complexContent>
+            <xs:restriction base="types:CVType">
+                <xs:sequence>
+                    <xs:element name="code" type="xs:string"/>
+                    <xs:element name="codeSystem" type="xs:string" fixed="1.2.752.116.1.1.1.1.3"/>
+                    <xs:element name="displayName" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+
+	<!-- Element tillagda för att kunna hantera användning av datatyperna i 
 		any-tag -->
 	<xs:element name="timePeriod" type="TimePeriodType" />
 	<xs:element name="datePeriod" type="DatePeriodType" />
