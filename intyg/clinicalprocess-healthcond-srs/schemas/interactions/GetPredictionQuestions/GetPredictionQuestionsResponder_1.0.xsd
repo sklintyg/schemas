@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:GetPredictionQuestionsResponder:1"
+           xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
+           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:GetPredictionQuestionsResponder:1"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+    <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
+               schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
+
+    <xs:element name="GetPredictionQuestionsRequest" type="tns:GetPredictionQuestionsRequestType"/>
+    <xs:element name="GetPredictionQuestionsResponse" type="tns:GetPredictionQuestionsResponseType"/>
+
+    <xs:complexType name="GetPredictionQuestionsRequestType">
+        <xs:sequence>
+            <xs:element name="diagnos"  type="types:Diagnos"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GetPredictionQuestionsResponseType">
+        <xs:sequence>
+            <xs:element name="prediktionsfraga" type="tns:prediktionsfraga" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="prediktionsfraga">
+        <xs:sequence>
+            <xs:element name="fraga" type="tns:fraga"/>
+            <xs:element name="svarsalternativ" type="tns:svarsalternativ" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="fraga">
+        <xs:sequence>
+            <xs:element name="frageid-srs" type="xs:positiveInteger"/>
+            <xs:element name="fragetext" type="xs:string"/>
+            <xs:element name="prioritet" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="svarsalternativ">
+        <xs:sequence>
+            <xs:element name="svarsalternativ-id" type="xs:positiveInteger"/>
+            <xs:element name="svarstext" type="xs:string"/>
+            <xs:element name="default" type="xs:boolean"/>
+            <xs:element name="prioritet" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
