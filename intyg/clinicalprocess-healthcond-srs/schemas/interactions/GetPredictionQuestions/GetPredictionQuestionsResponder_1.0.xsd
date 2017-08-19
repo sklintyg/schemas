@@ -15,7 +15,7 @@
 
     <xs:complexType name="GetPredictionQuestionsRequestType">
         <xs:sequence>
-            <xs:element name="diagnos"  type="types:Diagnos"/>
+            <xs:element name="diagnos"  type="types:diagnos"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
