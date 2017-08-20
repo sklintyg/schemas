@@ -312,7 +312,7 @@
 
 	<!-- Elementet flyttat hit från GetSRSInformation, eftersom
 	     det används av flera tjänstekontrakt -->
-    <xs:complexType name="Diagnos">
+    <xs:complexType name="diagnos">
         <xs:complexContent>
             <xs:restriction base="types:CVType">
                 <xs:sequence>
