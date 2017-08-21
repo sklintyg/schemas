@@ -17,7 +17,7 @@
         <xs:sequence>
             <xs:element name="version" type="xs:string"/>
             <xs:element name="konsument-id" type="types:HsaId"/>
-            <xs:element name="prediktionsfaktorer" type="tns:Prediktionsfaktorer"/>
+            <xs:element name="prediktionsfaktorer" type="tns:Prediktionsfaktorer" minOccurs="0"/>
             <xs:element name="individer" type="tns:individfaktorer"/>
             <xs:element name="utdatafilter" type="tns:utdatafilter"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
@@ -101,8 +101,7 @@
     <xs:complexType name="atgardsrekommendation">
         <xs:sequence>
             <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
-            <xs:element name="inkommandediagnos"
-			type="types:diagnos"/>  <!-- ***** Fråga Jesper vad detta är *****-->
+            <xs:element name="inkommandediagnos" type="types:diagnos"/>
             <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
         </xs:sequence>
@@ -128,10 +127,10 @@
     <xs:complexType name="diagnosprediktion">
         <xs:sequence>
             <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
-            <xs:element name="inkommandediagnos" type="types:diagnos"/>  <!-- ***** Fråga Jesper vad detta är *****-->
+            <xs:element name="inkommandediagnos" type="types:diagnos"/>
             <xs:element name="sannolikhet-overgransvarde" type="xs:double" minOccurs="0"/>
             <xs:element name="forklaringsinformation" type="xs:string" minOccurs="0"/>
-            <xs:element name="risksignal" type="tns:Risksignal"/>
+            <xs:element name="risksignal" type="tns:risksignal"/>
             <xs:element name="diagnosprediktionstatus" type="tns:diagnosprediktionstatus"/>
         </xs:sequence>
     </xs:complexType>
@@ -159,7 +158,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-    <xs:simpleType name="diagnosprediktionstatus">diagnos
+    <xs:simpleType name="diagnosprediktionstatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="NOT_OK"/>
@@ -194,7 +193,7 @@
     <xs:complexType name="statistikbild">
         <xs:sequence>
             <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
-            <xs:element name="inkommandediagnos" type="types:diagnos"/>  <!-- ***** Fråga Jesper vad detta är *****-->
+            <xs:element name="inkommandediagnos" type="types:diagnos"/>
             <xs:element name="bildadress" type="xs:anyURI" minOccurs="0"/>
             <xs:element name="andringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
             <xs:element name="statistikstatus" type="tns:statistikstatus"/>
@@ -205,14 +204,14 @@
         <xs:sequence>
             <xs:element name="anvandare-id" type="types:HsaId"/>
             <xs:element name="postnummer" type="xs:positiveInteger"/>
-            <xs:element name="fragasvar" type="tns:FragaSvar"/>
+            <xs:element name="fragasvar" type="tns:FragaSvar" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="FragaSvar">
         <xs:sequence>
             <xs:element name="frageid-srs" type="xs:positiveInteger"/>
-            <xs:element name="svarsalternativ-id" type="xs:positiveInteger"  maxOccurs="unbounded"/>
+            <xs:element name="svarsalternativ-id" type="xs:positiveInteger"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -222,6 +221,5 @@
             <xs:element name="beskrivning" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-
 
 </xs:schema>
