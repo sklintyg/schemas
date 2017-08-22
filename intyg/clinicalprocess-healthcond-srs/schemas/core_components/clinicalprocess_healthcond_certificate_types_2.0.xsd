@@ -314,7 +314,7 @@
 	     det används av flera tjänstekontrakt -->
     <xs:complexType name="diagnos">
         <xs:complexContent>
-            <xs:restriction base="types:CVType">
+            <xs:restriction base="CVType">
                 <xs:sequence>
                     <xs:element name="code" type="xs:string"/>
                     <xs:element name="codeSystem" type="xs:string" fixed="1.2.752.116.1.1.1.1.3"/>
