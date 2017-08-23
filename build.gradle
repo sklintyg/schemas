@@ -1,33 +1,24 @@
-buildscript {
-    repositories {
-        mavenLocal()
-        maven { url "https://build-inera.nordicmedtest.se/nexus/repository/releases/" }
-        maven { url "https://plugins.gradle.org/m2/" }
-    }
-
-    dependencies {
-        classpath 'se.inera.intyg:gradle-intyg-plugin:1.0.+'
-        classpath 'no.nils:wsdl2java:0.10'
-    }
+plugins {
+    id "se.inera.intyg.plugin.common" version "1.0.45" apply false
+    id "no.nils.wsdl2java" version "0.10" apply false
 }
 
 allprojects {
+    apply plugin: 'se.inera.intyg.plugin.common'
+    apply plugin: 'no.nils.wsdl2java'
+    apply plugin: 'maven'
+
+    ext {
+        guavaVersion = "20.0"
+        jacksonVersion = "2.8.1"
+        logbackVersion = "1.0.11"
+        // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
+        errorproneExclude = ".*-schemas\$"
+    }
+
     repositories {
         maven { url "https://build-inera.nordicmedtest.se/nexus/repository/releases/" }
         maven { url "http://repo.maven.apache.org/maven2" }
-    }
-
-    // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
-    ext.errorproneExclude = ".*-schemas\$"
-
-    apply plugin: 'inera-intyg'
-    apply plugin: 'maven'
-    apply plugin: 'no.nils.wsdl2java'
-
-    ext {
-	guavaVersion = "20.0"
-	jacksonVersion = "2.8.1"
-	logbackVersion = "1.0.11"
     }
 
     dependencies {
@@ -64,7 +55,7 @@ allprojects {
     }
 }
 
-configure(subprojects.findAll { ! ['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
+configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
     dependencies {
         compile "se.inera.intyg.schemas:schemas-support:2.1.3"
     }
