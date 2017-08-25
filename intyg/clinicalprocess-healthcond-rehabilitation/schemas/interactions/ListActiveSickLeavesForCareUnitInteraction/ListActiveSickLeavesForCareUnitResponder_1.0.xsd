@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- 
+<!--
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
@@ -16,7 +16,7 @@
  KIND, either express or implied. See the License for the
  specific language governing permissions and limitations
  under the License.
- -->		
+ -->
 <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'
     xmlns:tns='urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForCareUnitResponder:1'
     xmlns:core='urn:riv:clinicalprocess:healthcond:rehabilitation:1'
@@ -35,6 +35,7 @@
   <xs:complexType name='ListActiveSickLeavesForCareUnitType'>
     <xs:sequence>
       <xs:element name='enhets-id' type='types:HsaId' />
+      <xs:element name='person-id' type='types:PersonId' minOccurs="0"/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
