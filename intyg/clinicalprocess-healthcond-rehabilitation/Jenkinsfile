@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "1.0.5"
+def buildVersion = "1.0.6"
 def projectName = "intyg-clinicalprocess-healthcond-rehabilitation-schemas"
 
 stage('checkout') {
@@ -20,3 +20,4 @@ stage('tag and upload') {
         shgradle ":${projectName}:uploadArchives :${projectName}:tagRelease -DbuildVersion=${buildVersion} -Dintyg.tag.prefix=${projectName}-"
     }
 }
+
