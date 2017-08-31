@@ -203,7 +203,7 @@
     <xs:complexType name="Prediktionsfaktorer">
         <xs:sequence>
             <xs:element name="anvandare-id" type="types:HsaId"/>
-            <xs:element name="postnummer" type="xs:positiveInteger"/>
+            <xs:element name="postnummer" type="xs:string"/>
             <xs:element name="fragasvar" type="tns:FragaSvar" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>

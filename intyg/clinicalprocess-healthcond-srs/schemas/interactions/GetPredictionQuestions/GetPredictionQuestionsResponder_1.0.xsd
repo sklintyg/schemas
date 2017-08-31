@@ -29,19 +29,14 @@
 
     <xs:complexType name="prediktionsfraga">
         <xs:sequence>
-            <xs:element name="fraga" type="tns:fraga"/>
+            <xs:element name="frageid" type="xs:positiveInteger"/>
+            <xs:element name="fragetext" type="xs:string"/>
+            <xs:element name="hjalptext" type="xs:string" />
+            <xs:element name="prioritet" type="xs:positiveInteger"/>
             <xs:element name="svarsalternativ" type="tns:svarsalternativ" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="fraga">
-        <xs:sequence>
-            <xs:element name="frageid-srs" type="xs:positiveInteger"/>
-            <xs:element name="fragetext" type="xs:string"/>
-            <xs:element name="prioritet" type="xs:positiveInteger"/>
-        </xs:sequence>
-    </xs:complexType>
-    
     <xs:complexType name="svarsalternativ">
         <xs:sequence>
             <xs:element name="svarsalternativ-id" type="xs:positiveInteger"/>
