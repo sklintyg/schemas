@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions name='SetUserReviewInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+                  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+                  xmlns:xs='http://www.w3.org/2001/XMLSchema'
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:srs:SetUserReviewResponder:1'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:SetUserReview:1:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:srs:SetUserReview:1:rivtabp21'>
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:srs:SetUserReview:1:rivtabp21'>
+            <xs:import schemaLocation='SetUserReviewResponder_1.0.xsd'
+                       namespace='urn:riv:clinicalprocess:healthcond:srs:SetUserReviewResponder:1'/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name='SetUserReviewRequest'>
+        <wsdl:part name='parameters' element='tjsr:SetUserReviewRequest'/>
+    </wsdl:message>
+
+    <wsdl:message name='SetUserReviewResponse'>
+        <wsdl:part name='parameters' element='tjsr:SetUserReviewResponse'/>
+    </wsdl:message>
+
+    <wsdl:portType name='SetUserReviewResponderInterface'>
+        <wsdl:operation name='SetUserReview'>
+            <wsdl:input message='tns:SetUserReviewRequest'/>
+            <wsdl:output message='tns:SetUserReviewResponse'/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='SetUserReviewResponderBinding' type='tns:SetUserReviewResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+        <wsdl:operation name='SetUserReview'>
+            <soap:operation
+                    soapAction='urn:riv:clinicalprocess:healthcond:srs:SetUserReviewResponder:1:SetUserReview'
+                    style='document'/>
+            <wsdl:input>
+                <soap:header use='literal' message='tns:SetUserReviewRequest' part='LogicalAddress'/>
+                <soap:body use='literal' parts='parameters'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='SetUserReviewResponderService'>
+        <wsdl:port name='SetUserReviewResponderPort' binding='tns:SetUserReviewResponderBinding'>
+            <soap:address location='http://tempuri.org'/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
+
