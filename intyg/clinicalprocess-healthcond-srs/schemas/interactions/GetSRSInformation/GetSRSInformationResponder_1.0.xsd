@@ -17,6 +17,7 @@
         <xs:sequence>
             <xs:element name="version" type="xs:string"/>
             <xs:element name="konsument-id" type="types:HsaId"/>
+            <xs:element name="anvandare-id" type="types:HsaId"/>
             <xs:element name="prediktionsfaktorer" type="tns:Prediktionsfaktorer" minOccurs="0"/>
             <xs:element name="individer" type="tns:individfaktorer"/>
             <xs:element name="utdatafilter" type="tns:utdatafilter"/>
@@ -42,30 +43,14 @@
         <xs:sequence>
             <xs:element name="person-id" type="types:PersonIdExtension"/>
             <xs:element name="diagnos" type="types:diagnos" maxOccurs="unbounded"/>
-            <xs:element name="omfattning" type="tns:omfattning" minOccurs="0"/>
             <xs:element name="intyg-id" type="types:IntygId"/>
         </xs:sequence>
     </xs:complexType>
-
-    <!-- Ersatt av types:diagnos
-    <xs:complexType name="diagnos">
-        <xs:complexContent>
-            <xs:restriction base="types:CVType">
-                <xs:sequence>
-                    <xs:element name="code" type="xs:string"/>
-                    <xs:element name="codeSystem" type="xs:string" fixed="1.2.752.116.1.1.1.1.3"/>
-                    <xs:element name="displayName" type="xs:string" minOccurs="0"/>
-                </xs:sequence>
-            </xs:restriction>
-        </xs:complexContent>
-	</xs:complexType>
-	-->
 
     <xs:complexType name="utdatafilter">
         <xs:sequence>
             <xs:element name="prediktion" type="xs:boolean"/>
             <xs:element name="atgardsrekommendation" type="xs:boolean"/>
-            <xs:element name="fmbinformation" type="xs:boolean"/>
             <xs:element name="statistik" type="xs:boolean"/>
         </xs:sequence>
     </xs:complexType>
@@ -74,21 +59,8 @@
         <xs:sequence>
             <xs:element name="person-id" type="types:PersonIdExtension"/>
             <xs:element name="prediktion" type="tns:prediktion" minOccurs="0"/>
-            <xs:element name="fmbinformation" type="tns:fmbinformation" minOccurs="0"/>
             <xs:element name="atgardsrekommendationer" type="tns:atgardsrekommendationer" minOccurs="0"/>
             <xs:element name="statistik" type="tns:statistik" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="prediktion">
-        <xs:sequence>
-            <xs:element name="diagnosprediktion" type="tns:diagnosprediktion" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="fmbinformation">
-        <xs:sequence>
-            <xs:element name="fmb" type="tns:fmb" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -124,6 +96,20 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:simpleType name="atgardsrekommendationstatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OK"/>
+            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
+            <xs:enumeration value="INFORMATION_SAKNAS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="prediktion">
+        <xs:sequence>
+            <xs:element name="diagnosprediktion" type="tns:diagnosprediktion" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="diagnosprediktion">
         <xs:sequence>
             <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
@@ -135,29 +121,6 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="fmb">
-        <xs:sequence>
-            <xs:element name="diagnos" type="types:diagnos"/>
-            <xs:element name="maxlangd" type="xs:positiveInteger"/>
-            <xs:element name="beskrivning" type="xs:string"/>
-            <xs:element name="status" type="xs:integer"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:simpleType name="version">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[0-9]+(\.[0-9]+){1,2}"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-    <xs:simpleType name="atgardsrekommendationstatus">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="OK"/>
-            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
-            <xs:enumeration value="INFORMATION_SAKNAS"/>
-        </xs:restriction>
-    </xs:simpleType>
-
     <xs:simpleType name="diagnosprediktionstatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
@@ -167,20 +130,32 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:complexType name="Prediktionsfaktorer">
+        <xs:sequence>
+            <xs:element name="postnummer" type="xs:string"/>
+            <xs:element name="fragasvar" type="tns:FragaSvar" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FragaSvar">
+        <xs:sequence>
+            <xs:element name="frageid-srs" type="xs:positiveInteger"/>
+            <xs:element name="svarsalternativ-id" type="xs:positiveInteger"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="risksignal">
+        <xs:sequence>
+            <xs:element name="riskkategori" type="xs:positiveInteger"/>
+            <xs:element name="beskrivning" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:simpleType name="statistikstatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
             <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
             <xs:enumeration value="STATISTIK_SAKNAS"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-    <xs:simpleType name="omfattning">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="HELT_NEDSATT"/>
-            <xs:enumeration value="TRE_FJARDEDEL"/>
-            <xs:enumeration value="HALFTEN"/>
-            <xs:enumeration value="EN_FJARDEDEL"/>
         </xs:restriction>
     </xs:simpleType>
 
@@ -200,26 +175,10 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="Prediktionsfaktorer">
-        <xs:sequence>
-            <xs:element name="anvandare-id" type="types:HsaId"/>
-            <xs:element name="postnummer" type="xs:string"/>
-            <xs:element name="fragasvar" type="tns:FragaSvar" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="FragaSvar">
-        <xs:sequence>
-            <xs:element name="frageid-srs" type="xs:positiveInteger"/>
-            <xs:element name="svarsalternativ-id" type="xs:positiveInteger"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="risksignal">
-        <xs:sequence>
-            <xs:element name="riskkategori" type="xs:positiveInteger"/>
-            <xs:element name="beskrivning" type="xs:string"/>
-        </xs:sequence>
-    </xs:complexType>
+    <xs:simpleType name="version">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]+(\.[0-9]+){1,2}"/>
+        </xs:restriction>
+    </xs:simpleType>
 
 </xs:schema>
