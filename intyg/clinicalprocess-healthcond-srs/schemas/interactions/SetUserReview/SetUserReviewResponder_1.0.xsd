@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:LogCopiedRehabilitationMeasuresResponder:1"
+           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:SetUserReviewResponder:1"
            xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
-           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:LogCopiedRehabilitationMeasuresResponder:1"
+           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:SetUserReviewResponder:1"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
            version="1.0">
@@ -10,20 +10,18 @@
     <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
                schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
 
-    <xs:element name="LogCopiedRehabilitationMeasuresRequest" type="tns:LogCopiedRehabilitationMeasuresRequestType"/>
-    <xs:element name="LogCopiedRehabilitationMeasuresResponse" type="tns:LogCopiedRehabilitationMeasuresResponseType"/>
+    <xs:element name="SetUserReviewRequest" type="tns:SetUserReviewRequestType"/>
+    <xs:element name="SetUserReviewResponse" type="tns:SetUserReviewResponseType"/>
 
-    <xs:complexType name="LogCopiedRehabilitationMeasuresRequestType">
+    <xs:complexType name="SetUserReviewRequestType">
         <xs:sequence>
-            <xs:element name="diagnos" type="tns:diagnos"/>
-            <xs:element name="atgard-id" type="positiveinteger" maxOccurs="unbounded"/>
-            <xs:element name="intyg-id" type="types:IntygId"/>
-            <xs:element name="vardenhet-id" type="types:HsaId"/>
+            <xs:element name="vardgivare-id" type="types:HsaId"/>
+            <xs:element name="userreview" type="xs:boolean"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="LogCopiedRehabilitationMeasuresResponseType">
+    <xs:complexType name="SetUserReviewResponseType">
         <xs:sequence>
             <xs:element name="resultCode" type="types:ResultCodeEnum"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>

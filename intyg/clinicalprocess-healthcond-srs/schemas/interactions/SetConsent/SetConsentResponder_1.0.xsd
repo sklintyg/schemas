@@ -16,7 +16,7 @@
     <xs:complexType name="SetConsentRequestType">
         <xs:sequence>
             <xs:element name="vardgivare-id" type="types:HsaId"/>
-            <xs:element name="person-id" type="types:PersonIdExtension"/>
+            <xs:element name="person-id" type="types:PersonIdExtension" minOccurs="0"/>
             <xs:element name="samtycke" type="xs:boolean"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
