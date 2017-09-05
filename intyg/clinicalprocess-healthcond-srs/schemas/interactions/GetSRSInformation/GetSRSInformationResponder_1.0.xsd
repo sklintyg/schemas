@@ -28,7 +28,7 @@
     <xs:complexType name="GetSRSInformationResponseType">
         <xs:sequence>
             <xs:element name="resultCode" type="types:ResultCodeEnum"/>
-            <xs:element name="bedomningsunderlag" type="tns:bedomningsunderlag" maxOccurs="unbounded"/>
+            <xs:element name="bedomningsunderlag" type="tns:bedomningsunderlag" minOccurs="0" maxOccurs="unbounded"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
@@ -139,8 +139,8 @@
 
     <xs:complexType name="FragaSvar">
         <xs:sequence>
-            <xs:element name="frageid-srs" type="xs:positiveInteger"/>
-            <xs:element name="svarsalternativ-id" type="xs:positiveInteger"/>
+            <xs:element name="frageid-srs" type="types:nonEmptyString"/>
+            <xs:element name="svarsid-srs" type="types:nonEmptyString"/>
         </xs:sequence>
     </xs:complexType>
 

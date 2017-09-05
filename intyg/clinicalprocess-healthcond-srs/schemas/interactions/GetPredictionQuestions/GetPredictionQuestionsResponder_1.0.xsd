@@ -30,6 +30,7 @@
     <xs:complexType name="prediktionsfraga">
         <xs:sequence>
             <xs:element name="frageid" type="xs:positiveInteger"/>
+            <xs:element name="frageid-srs" type="types:nonEmptyString"/>
             <xs:element name="fragetext" type="xs:string"/>
             <xs:element name="hjalptext" type="xs:string" />
             <xs:element name="prioritet" type="xs:positiveInteger"/>
@@ -39,7 +40,8 @@
 
     <xs:complexType name="svarsalternativ">
         <xs:sequence>
-            <xs:element name="svarsalternativ-id" type="xs:positiveInteger"/>
+            <xs:element name="svarsid" type="xs:positiveInteger"/>
+            <xs:element name="svarsid-srs" type="types:nonEmptyString"/>
             <xs:element name="svarstext" type="xs:string"/>
             <xs:element name="default" type="xs:boolean"/>
             <xs:element name="prioritet" type="xs:positiveInteger"/>
