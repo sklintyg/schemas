@@ -20,14 +20,11 @@
 <xs:schema
     xmlns:xs='http://www.w3.org/2001/XMLSchema'
     xmlns:tns='urn:riv:clinicalprocess:healthcond:rehabilitation:1'
-    xmlns:cert="urn:riv:clinicalprocess:healthcond:certificate:1"
     xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
     targetNamespace='urn:riv:clinicalprocess:healthcond:rehabilitation:1'
     elementFormDefault='qualified'
     attributeFormDefault='unqualified'
     version='1.0'>
-
-  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:1" schemaLocation="clinicalprocess_healthcond_certificate_1.0.xsd" />
 
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2" schemaLocation="clinicalprocess_healthcond_certificate_types_2.0.xsd" />
 
@@ -61,7 +58,7 @@
       <xs:element name="arbetsformaga" type="tns:Arbetsformaga" />
       <xs:element name="enkeltIntyg" type="xs:boolean" />
       <xs:element name="signeringsTidpunkt" type="xs:dateTime" />
-      <xs:element name="sysselsattning" type="cert:Sysselsattning" minOccurs="0" maxOccurs="4"/>
+      <xs:element name="sysselsattning" type="xs:string" minOccurs="0" maxOccurs="4"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
     </xs:sequence>
   </xs:complexType>
