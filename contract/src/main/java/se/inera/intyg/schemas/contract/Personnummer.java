@@ -26,11 +26,14 @@ import se.inera.intyg.schemas.contract.util.HashUtility;
 import java.util.Calendar;
 import java.util.Optional;
 
-
 @JsonDeserialize(using = PersonnummerDeserializer.class)
 public class Personnummer {
 
     private final String pnr;
+
+    private static final int[] CONTROL_DIGIT_WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
+    private static final int SHORT_PNR_LEN = 10;
+    private static final int LONG_PNR_LEN = 12;
 
     public Personnummer(String pnr) {
         this.pnr = pnr;
@@ -38,14 +41,15 @@ public class Personnummer {
 
     /**
      * Returns a Personnummer with a dash, iff the String is a valid personnummer.
+     *
      * @return Validated personnummer on form (19|20)[0-9]{6}-[0-9]{4}
      */
     public static Optional<Personnummer> createValidatedPersonnummerWithDash(String nonValidatedPnr) {
         try {
             String pnrWithoutDash = new Personnummer(nonValidatedPnr).getNormalizedPnr();
-            //CHECKSTYLE:OFF MagicNumber
+            // CHECKSTYLE:OFF MagicNumber
             return Optional.of(new Personnummer(pnrWithoutDash.substring(0, 8) + '-' + pnrWithoutDash.substring(8, 12)));
-            //CHECKSTYLE:ON MagicNumber
+            // CHECKSTYLE:ON MagicNumber
         } catch (InvalidPersonNummerException e) {
             return Optional.empty();
         }
@@ -62,6 +66,7 @@ public class Personnummer {
 
     /**
      * Will return the hashed personnummer to make sure the real personnummer is not accidentally logged.
+     *
      * @return Hashed personnummer
      */
     @Override
@@ -115,19 +120,60 @@ public class Personnummer {
         return String.valueOf(century);
     }
 
-//    public boolean isSamordningsNummer() {
-//        final String normalizedPnr = getNormalizedPnrIfPossible(null);
-//        if (normalizedPnr == null) {
-//            return false;
-//        }
-//        return SamordningsnummerValidator.isSamordningsNummer(normalizedPnr);
-//    }
-
     public String getPersonnummerWithoutDash() {
         if (pnr == null) {
             return null;
         }
         return pnr.replace("-", "");
+    }
+
+    /**
+     * Returns true if the actual control digit is the one calculated by Personnummer#calculateControlDigit.
+     *
+     * @return
+     *      true or false.
+     */
+    public boolean verifyControlDigit() {
+        String withoutDash = getPersonnummerWithoutDash();
+        if (withoutDash == null || withoutDash.length() < SHORT_PNR_LEN) {
+            return false;
+        }
+        int lastDigit = Integer.parseInt(withoutDash.substring(withoutDash.length() - 1));
+        return lastDigit == calculateControlDigit();
+    }
+
+    /**
+     * If we need to check the syntactic validity of a personnummer, this function can be used to calculate the
+     * "control digit" of a swedish personnummer.
+     *
+     * @return
+     *         The expected control digit. If the personnummer was syntactically invalid, -1 will be returned.
+     */
+    public int calculateControlDigit() {
+        String noDash = getPersonnummerWithoutDash();
+        if (noDash == null) {
+            return -1;
+        }
+        // Remove 19 or 20 (or whatever century...) if necessary.
+        if (noDash.length() == LONG_PNR_LEN) {
+            noDash = noDash.substring(2);
+        }
+
+        String[] parts = noDash.split("(?!^)");
+
+        int sum = 0;
+        for (int n = 0; n < parts.length - 1; n++) {
+            sum += sumControlDigit(Integer.parseInt(parts[n]) * CONTROL_DIGIT_WEIGHTS[n]);
+        }
+        return (SHORT_PNR_LEN - sum % SHORT_PNR_LEN) % SHORT_PNR_LEN;
+    }
+
+    private int sumControlDigit(int i) {
+        if (i < SHORT_PNR_LEN) {
+            return i;
+        } else {
+            return i / SHORT_PNR_LEN + i % SHORT_PNR_LEN;
+        }
     }
 
     @Override

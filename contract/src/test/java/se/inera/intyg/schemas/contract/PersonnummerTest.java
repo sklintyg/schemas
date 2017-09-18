@@ -182,7 +182,7 @@ public class PersonnummerTest {
         assertEquals(null, empty.getPersonnummerWithoutDash());
         assertEquals(false, empty.equals(null));
         assertEquals(31, empty.hashCode());
-    //    assertEquals(false, SamordningsnummerValidator.isSamordningsNummer(empty    ));
+        assertEquals(false, empty.verifyControlDigit());
 
         try {
             assertEquals(HashUtility.EMPTY, empty.toString());
@@ -199,7 +199,7 @@ public class PersonnummerTest {
         assertTrue(exceptionThrownWhenNormalizing);
 
         //Fail this test if a new method is added to Personnummer to make sure a call to it is added here
-        assertEquals(7, countNonPrivateMethodsInClass(Personnummer.class));
+        assertEquals(9, countNonPrivateMethodsInClass(Personnummer.class));
 
     }
 
@@ -369,27 +369,43 @@ public class PersonnummerTest {
         //Then
         assertEquals("1234", personnummer.getPersonnummer());
     }
-//
-//    @Test
-//    public void testSerializeDeserializePersonnummerAsPartOfComplexType() throws Exception {
-//        //Given
-//        final ObjectMapper objectMapper = new ObjectMapper();
-//        final Personnummer originalPnr = new Personnummer("191212121212");
-//        final CertificateHolder complexType = new CertificateHolder();
-//        complexType.setCivicRegistrationNumber(originalPnr);
-//        complexType.setAdditionalInfo("test text");
-//
-//        //When
-//        final String json = objectMapper.writeValueAsString(complexType);
-//
-//        //Then
-//        assertTrue(json.contains("\"civicRegistrationNumber\":\"191212121212\""));
-//
-//        //When
-//        final CertificateHolder patient = objectMapper.readValue(json, CertificateHolder.class);
-//
-//        //Then
-//        assertEquals(originalPnr.getPersonnummer(), patient.getCivicRegistrationNumber().getPersonnummer());
-//    }
+
+    @Test
+    public void testVerifyControlDigit10Digits() {
+        Personnummer pnr = new Personnummer("1212121212");
+        assertTrue(pnr.verifyControlDigit());
+    }
+
+    @Test
+    public void testVerifyControlDigit12Digits() {
+        Personnummer pnr = new Personnummer("191212121212");
+        assertTrue(pnr.verifyControlDigit());
+    }
+
+    @Test
+    public void testVerifyControlDigitEmpty() {
+        Personnummer pnr = Personnummer.empty();
+        assertEquals(false, pnr.verifyControlDigit());
+    }
+
+
+    @Test
+    public void testCalculateControlDigit10Digits() {
+        Personnummer pnr = new Personnummer("1212121212");
+        assertEquals(2, pnr.calculateControlDigit());
+    }
+
+    @Test
+    public void testCalculateControlDigit12Digits() {
+        Personnummer pnr = new Personnummer("191212121212");
+        assertEquals(2, pnr.calculateControlDigit());
+    }
+
+    @Test
+    public void testCalculateControlDigitEmpty() {
+        Personnummer pnr = Personnummer.empty();
+        assertEquals(-1, pnr.calculateControlDigit());
+    }
+
 
 }
