@@ -270,12 +270,12 @@
   <iso:pattern id="q10">
     <iso:rule context="//gn:svar[@id='10']">
       <iso:assert test="count(gn:delsvar[@id='10.1']) = 1">
-        'Bidragande sjukdom skador' får ha upp till en 'Om bidragande sjukdom skador'
+        'Bidragande sjukdom skador' måste ha en 'Om bidragande sjukdom skador'
       </iso:assert>
-      <iso:assert test="count(gn:delsvar[@id='10.2']) = 1">
+      <iso:assert test="count(gn:delsvar[@id='10.2']) le 1">
         'Bidragande sjukdom skador' får ha upp till ett 'Datum bidragande sjukdom skador'
       </iso:assert>
-      <iso:assert test="count(gn:delsvar[@id='10.3']) = 1">
+      <iso:assert test="count(gn:delsvar[@id='10.3']) le 1">
         'Bidragande sjukdom skador' får ha upp till ett 'Specifikation bidragande sjukdom skador'
       </iso:assert>
       <iso:let name="delsvarsIdExpr" value="'^10\.[123]$'"/>
