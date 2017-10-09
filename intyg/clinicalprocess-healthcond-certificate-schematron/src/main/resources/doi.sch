@@ -175,6 +175,21 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q4.1-birth">
+    <iso:let name="personId" value="//gn:person-id/tp:extension" />
+    <!-- Handle samordningsnummer -->
+    <iso:let name="birthDay" value="if (substring($personId,7,2) lt '60') then substring($personId,7,2) else xs:string(xs:integer(substring($personId,7,2)) - 60)" />
+    <iso:let name="birthDate" value="xs:date(string-join((substring($personId,1,4),substring($personId,5,2),$birthDay), '-'))"/>
+    <iso:rule context="//gn:delsvar[@id='2.1' and matches(normalize-space(.), '1|true') and string(../gn:delsvar[@id='2.2']) castable as xs:date]">
+      <iso:assert test="(matches(normalize-space(//gn:delsvar[@id='4.1']), '0|false') or (xs:date(//gn:delsvar[@id='2.2']) le $birthDate + xs:dayTimeDuration('P28D')))">
+        Om 'Säkert Ej säkert' besvarats med 'Säkert' OCH om 'Om dödsdatum' är större än 28 dagar efter födelsedatumet ska 'Barn avlidit' endast kunna besvaras med 'Nej'.
+      </iso:assert>
+      <iso:assert test="(matches(normalize-space(//gn:delsvar[@id='4.1']), '1|true') or (xs:date(//gn:delsvar[@id='2.2']) gt $birthDate + xs:dayTimeDuration('P28D')))">
+        Om 'Säkert Ej säkert' besvarats med 'Säkert' OCH om 'Om dödsdatum' är mindre eller lika med 28 dagar efter födelsedatumet ska 'Barn avlidit' endast kunna besvaras med 'Ja'.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q8">
     <iso:rule context="//gn:svar[@id='8']">
       <iso:assert test="count(gn:delsvar[@id='8.1']) = 1">
@@ -341,7 +356,7 @@
   <iso:pattern id="q11.2">
     <iso:rule context="//gn:delsvar[@id='11.2']">
       <iso:extends rule="date"/>
-      <iso:assert test="//gn:delsvar[@id='2.2'] castable as xs:date and xs:date(.) le xs:date(//gn:delsvar[@id='2.2'])">
+      <iso:assert test="not(//gn:delsvar[@id='2.2'] castable as xs:date) or xs:date(.) le xs:date(//gn:delsvar[@id='2.2'])">
         'Datum operation' får inte vara efter 'Om dödsdatum'
       </iso:assert>
     </iso:rule>
@@ -364,6 +379,11 @@
     <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '1|true'))]">
       <iso:assert test="not(//gn:delsvar[@id='11.3'])">
         'Anledning operation' får inte finnas om 'Om operation inom fyra veckor' är false eller NI
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '1|true')]">
+      <iso:assert test="count(//gn:delsvar[@id='11.3']) = 1">
+        'Anledning operation' måste finnas om 'Om operation inom fyra veckor' är true
       </iso:assert>
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='11.3']">
@@ -411,7 +431,7 @@
   <iso:pattern id="q12.3">
     <iso:rule context="//gn:delsvar[@id='12.3']">
       <iso:extends rule="date"/>
-      <iso:assert test="//gn:delsvar[@id='2.2'] castable as xs:date and xs:date(.) le xs:date(//gn:delsvar[@id='2.2'])">
+      <iso:assert test="not(//gn:delsvar[@id='2.2'] castable as xs:date) or xs:date(.) le xs:date(//gn:delsvar[@id='2.2'])">
         'Datum skada förgiftning' får inte vara efter 'Om dödsdatum'
       </iso:assert>
     </iso:rule>
