@@ -569,7 +569,7 @@
   <iso:pattern id="partial-date-pattern">
     <iso:rule id="partial-date" abstract="true">
       <iso:assert test="count(*) = 0">Partiellt datum får inte vara inbäddat i något element.</iso:assert>
-      <iso:assert test="matches(., '^\d{4}(-\d\d(-\d\d)?)?$')">Partiellt datum måste uttryckas som YYYY(-MM(-DD)?)?.</iso:assert>
+      <iso:assert test="matches(., '^\d{4}-\d{2}-\d{2}$')">Partiellt datum måste uttryckas som YYYY-MM-DD (enbart 0:or är acceptabelt.</iso:assert>
     </iso:rule>
   </iso:pattern>
 </iso:schema>
