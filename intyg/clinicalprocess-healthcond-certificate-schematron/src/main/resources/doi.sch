@@ -359,6 +359,9 @@
       <iso:assert test="not(//gn:delsvar[@id='2.2'] castable as xs:date) or xs:date(.) le xs:date(//gn:delsvar[@id='2.2'])">
         'Datum operation' får inte vara efter 'Om dödsdatum'
       </iso:assert>
+      <iso:assert test="not(//gn:delsvar[@id='2.3'] castable as xs:date) or xs:date(.) le xs:date(//gn:delsvar[@id='2.3'])">
+        'Datum operation' får inte vara efter 'Anträffat död'
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -433,6 +436,9 @@
       <iso:extends rule="date"/>
       <iso:assert test="not(//gn:delsvar[@id='2.2'] castable as xs:date) or xs:date(.) le xs:date(//gn:delsvar[@id='2.2'])">
         'Datum skada förgiftning' får inte vara efter 'Om dödsdatum'
+      </iso:assert>
+      <iso:assert test="not(//gn:delsvar[@id='2.3'] castable as xs:date) or xs:date(.) le xs:date(//gn:delsvar[@id='2.3'])">
+        'Datum skada förgiftning' får inte vara efter 'Anträffat död'
       </iso:assert>
     </iso:rule>
   </iso:pattern>
