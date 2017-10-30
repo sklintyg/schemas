@@ -259,7 +259,11 @@
 
   <iso:pattern id="q9.2">
     <iso:rule context="//gn:delsvar[@id='9.2']">
+      <iso:let name="instansNr" value="number(../gn:instans)"/>
       <iso:extends rule="date"/>
+      <iso:assert test="(not(//gn:delsvar[@id='8.2'] castable as xs:date) or xs:date(.) le xs:date(//gn:delsvar[@id='8.2'])) and count(//gn:delsvar[@id='9.2' and number(../gn:instans) lt $instansNr and xs:date(.) lt xs:date(//gn:delsvar[@id='9.2' and number(../gn:instans) = $instansNr])]) = 0">
+          'Datum som följd' med instansnummer "<value-of select="$instansNr"/>" får inte vara efter 'Datum terminal dödsorsak' eller 'Datum som följd' med tidigare instansnummer.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -575,7 +579,7 @@
   <iso:pattern id="partial-date-pattern">
     <iso:rule id="partial-date" abstract="true">
       <iso:assert test="count(*) = 0">Partiellt datum får inte vara inbäddat i något element.</iso:assert>
-      <iso:assert test="matches(., '^\d{4}-\d{2}-\d{2}$')">Partiellt datum måste uttryckas som YYYY-MM-DD (enbart 0:or är acceptabelt.</iso:assert>
+      <iso:assert test="matches(., '^\d{4}-\d{2}-\d{2}$')">Partiellt datum måste uttryckas som YYYY-MM-DD (enbart 0:or är acceptabelt).</iso:assert>
     </iso:rule>
   </iso:pattern>
 </iso:schema>
