@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:GetRiskPredictionForCertificateResponder:1"
+    targetNamespace="urn:riv:clinicalprocess:healthcond:srs:GetRiskPredictionForCertificateResponder:1"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    version="1.0">
+
+    <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
+               schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
+
+    <xs:element name="GetRiskPredictionForCertificateRequest" type="tns:GetRiskPredictionForCertificateRequestType"/>
+    <xs:element name="GetRiskPredictionForCertificateResponse" type="tns:GetRiskPredictionForCertificateResponseType"/>
+
+    <xs:complexType name="GetRiskPredictionForCertificateRequestType">
+        <xs:sequence>
+            <xs:element name='intygs-id' type='xs:string' minOccurs="1" maxOccurs="unbounded"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GetRiskPredictionForCertificateResponseType">
+        <xs:sequence>
+            <xs:element name="riskPrediktioner" type="tns:RiskPrediktion" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="RiskPrediktion">
+        <xs:sequence>
+            <xs:element name="intygs-id" type="xs:positiveInteger"/>
+            <xs:element name="risksignal" type="tns:risksignal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="risksignal">
+        <xs:sequence>
+            <xs:element name="riskkategori" type="xs:positiveInteger"/>
+            <xs:element name="beskrivning" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
