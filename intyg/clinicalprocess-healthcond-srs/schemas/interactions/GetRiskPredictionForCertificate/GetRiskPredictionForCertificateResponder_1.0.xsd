@@ -28,7 +28,7 @@
 
     <xs:complexType name="RiskPrediktion">
         <xs:sequence>
-            <xs:element name="intygs-id" type="xs:positiveInteger"/>
+            <xs:element name="intygs-id" type="xs:string"/>
             <xs:element name="risksignal" type="tns:risksignal"/>
         </xs:sequence>
     </xs:complexType>
