@@ -23,24 +23,34 @@
     <xs:complexType name="GetSRSInformationForDiagnosisResponseType">
         <xs:sequence>
             <xs:element name="resultCode" type="types:ResultCodeEnum"/>
-            <xs:element name="bedomningsunderlag" type="tns:bedomningsunderlag" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="atgardsrekommendation" type="tns:atgardsrekommendation" minOccurs="0" maxOccurs="1" />
+            <xs:element name="statistik" type="tns:statistik" minOccurs="0"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
+    <!--
     <xs:complexType name="bedomningsunderlag">
         <xs:sequence>
             <xs:element name="atgardsrekommendationer" type="tns:atgardsrekommendationer" minOccurs="0"/>
             <xs:element name="statistik" type="tns:statistik" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
+    -->
 
-    <xs:complexType name="atgardsrekommendationer">
+    <xs:complexType name="atgardsrekommendation">
         <xs:sequence>
+            <!--
             <xs:element name="rekommendation" type="tns:atgardsrekommendation" maxOccurs="unbounded"/>
+            -->
+            <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
+            <xs:element name="inkommandediagnos" type="types:diagnos"/>
+            <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
         </xs:sequence>
     </xs:complexType>
 
+    <!--
     <xs:complexType name="atgardsrekommendation">
         <xs:sequence>
             <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
@@ -49,6 +59,7 @@
             <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
         </xs:sequence>
     </xs:complexType>
+    -->
 
     <xs:complexType name="atgard">
         <xs:sequence>
@@ -75,7 +86,7 @@
         </xs:restriction>
     </xs:simpleType>
 
-
+    <!--
     <xs:simpleType name="diagnosprediktionstatus">
         <xs:restriction base="xs:string">
             <xs:enumeration value="OK"/>
@@ -84,6 +95,7 @@
             <xs:enumeration value="PREDIKTIONSMODELL_SAKNAS"/>
         </xs:restriction>
     </xs:simpleType>
+    -->
 
     <xs:simpleType name="statistikstatus">
         <xs:restriction base="xs:string">
