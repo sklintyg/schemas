@@ -15,6 +15,8 @@ wsdl2java {
                         "-p", "urn:riv:clinicalprocess:healthcond:srs:1=se.riv.clinicalprocess.healthcond.srs.v1",
                         "-p",
                         "urn:riv:clinicalprocess:healthcond:certificate:types:2=se.riv.clinicalprocess.healthcond.certificate.types.v2",
+                        "-p",
+                        "urn:riv:clinicalprocess:healthcond:srs:types:1=se.inera.intyg.clinicalprocess.healthcond.srs.types.v1",
                         "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
                         "$projectDir/schemas/interactions/GetSRSInformation/GetSRSInformationInteraction_1.0_RIVTABP21.wsdl"],
 
@@ -28,6 +30,8 @@ wsdl2java {
                         "-p", "urn:riv:clinicalprocess:healthcond:srs:1=se.riv.clinicalprocess.healthcond.srs.v1",
                         "-p",
                         "urn:riv:clinicalprocess:healthcond:certificate:types:2=se.riv.clinicalprocess.healthcond.certificate.types.v2",
+                        "-p",
+                        "urn:riv:clinicalprocess:healthcond:srs:types:1=se.inera.intyg.clinicalprocess.healthcond.srs.types.v1",
                         "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
                         "$projectDir/schemas/interactions/GetSRSInformationForDiagnosis/GetSRSInformationForDiagnosisInteraction_1.0_RIVTABP21.wsdl"],
 

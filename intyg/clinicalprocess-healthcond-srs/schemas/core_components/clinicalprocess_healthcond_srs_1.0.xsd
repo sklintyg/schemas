@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->
+<xs:schema
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:types:1'
+    xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
+    targetNamespace='urn:riv:clinicalprocess:healthcond:srs:types:1'
+    elementFormDefault='qualified'
+    attributeFormDefault='unqualified'
+    version='1.0'>
+
+  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2" schemaLocation="clinicalprocess_healthcond_certificate_types_2.0.xsd" />
+
+
+  <!-- Elementet flyttat hit från GetSRSInformation, eftersom
+     det används av flera tjänstekontrakt -->
+  <xs:complexType name="atgardsrekommendation">
+    <xs:sequence>
+      <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
+      <xs:element name="inkommandediagnos" type="types:diagnos"/>
+      <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+  <xs:simpleType name="atgardsrekommendationstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
+      <xs:enumeration value="INFORMATION_SAKNAS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="statistikstatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
+      <xs:enumeration value="STATISTIK_SAKNAS"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="statistik">
+    <xs:sequence>
+      <xs:element name="statistikbild" type="tns:statistikbild" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="statistikbild">
+    <xs:sequence>
+      <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
+      <xs:element name="inkommandediagnos" type="types:diagnos"/>
+      <xs:element name="bildadress" type="xs:anyURI" minOccurs="0"/>
+      <xs:element name="andringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
+      <xs:element name="statistikstatus" type="tns:statistikstatus"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="atgard">
+    <xs:sequence>
+      <xs:element name="atgard-id" type="xs:positiveInteger"/>
+      <xs:element name="atgardstyp" type="tns:atgardstyp"/>
+      <xs:element name="atgardsforslag" type="xs:string"/>
+      <xs:element name="prioritet" type="xs:positiveInteger"/>
+      <xs:element name="version" type="tns:version"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="atgardstyp">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OBS"/>
+      <xs:enumeration value="REK"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="version">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]+(\.[0-9]+){1,2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+
+</xs:schema>

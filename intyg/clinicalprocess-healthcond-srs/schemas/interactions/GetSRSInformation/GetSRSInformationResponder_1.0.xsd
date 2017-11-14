@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:1"
+           xmlns:srs="urn:riv:clinicalprocess:healthcond:srs:types:1"
            xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
            targetNamespace="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:1"
            elementFormDefault="qualified"
@@ -8,7 +9,9 @@
            version="1.0">
 
     <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
-               schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
+        schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
+    <xs:import namespace="urn:riv:clinicalprocess:healthcond:srs:types:1"
+               schemaLocation="../../core_components/clinicalprocess_healthcond_srs_1.0.xsd"/>
 
     <xs:element name="GetSRSInformationRequest" type="tns:GetSRSInformationRequestType"/>
     <xs:element name="GetSRSInformationResponse" type="tns:GetSRSInformationResponseType"/>
@@ -60,49 +63,15 @@
             <xs:element name="person-id" type="types:PersonIdExtension"/>
             <xs:element name="prediktion" type="tns:prediktion" minOccurs="0"/>
             <xs:element name="atgardsrekommendationer" type="tns:atgardsrekommendationer" minOccurs="0"/>
-            <xs:element name="statistik" type="tns:statistik" minOccurs="0"/>
+            <xs:element name="statistik" type="srs:statistik" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="atgardsrekommendationer">
         <xs:sequence>
-            <xs:element name="rekommendation" type="tns:atgardsrekommendation" maxOccurs="unbounded"/>
+            <xs:element name="rekommendation" type="srs:atgardsrekommendation" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-
-    <xs:complexType name="atgardsrekommendation">
-        <xs:sequence>
-            <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
-            <xs:element name="inkommandediagnos" type="types:diagnos"/>
-            <xs:element name="atgard" type="tns:atgard" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element name="atgardsrekommendationstatus" type="tns:atgardsrekommendationstatus"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="atgard">
-        <xs:sequence>
-            <xs:element name="atgard-id" type="xs:positiveInteger"/>
-            <xs:element name="atgardstyp" type="tns:atgardstyp"/>
-            <xs:element name="atgardsforslag" type="xs:string"/>
-            <xs:element name="prioritet" type="xs:positiveInteger"/>
-            <xs:element name="version" type="tns:version"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:simpleType name="atgardstyp">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="OBS"/>
-            <xs:enumeration value="REK"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-    <xs:simpleType name="atgardsrekommendationstatus">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="OK"/>
-            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
-            <xs:enumeration value="INFORMATION_SAKNAS"/>
-        </xs:restriction>
-    </xs:simpleType>
 
     <xs:complexType name="prediktion">
         <xs:sequence>
@@ -150,35 +119,4 @@
             <xs:element name="beskrivning" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-
-    <xs:simpleType name="statistikstatus">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="OK"/>
-            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
-            <xs:enumeration value="STATISTIK_SAKNAS"/>
-        </xs:restriction>
-    </xs:simpleType>
-
-    <xs:complexType name="statistik">
-        <xs:sequence>
-            <xs:element name="statistikbild" type="tns:statistikbild" maxOccurs="unbounded"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="statistikbild">
-        <xs:sequence>
-            <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
-            <xs:element name="inkommandediagnos" type="types:diagnos"/>
-            <xs:element name="bildadress" type="xs:anyURI" minOccurs="0"/>
-            <xs:element name="andringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
-            <xs:element name="statistikstatus" type="tns:statistikstatus"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:simpleType name="version">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[0-9]+(\.[0-9]+){1,2}"/>
-        </xs:restriction>
-    </xs:simpleType>
-
 </xs:schema>
