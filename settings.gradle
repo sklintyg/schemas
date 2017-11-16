@@ -27,6 +27,7 @@ include ':infrastructure-directory-organization-schemas'
 include ':insuranceprocess-healthreporting-schemas'
 include ':itintegration-monitoring-schemas'
 include ':population-residentmaster-schemas'
+include ':strategicresourcemanagement-persons-person-schemas'
 
 project(':schemas-contract').projectDir = "$rootDir/contract" as File
 project(':schemas-support').projectDir = "$rootDir/support" as File
@@ -48,3 +49,4 @@ project(':infrastructure-directory-organization-schemas').projectDir = "$rootDir
 project(':insuranceprocess-healthreporting-schemas').projectDir = "$rootDir/rivta/insuranceprocess-healthreporting" as File
 project(':itintegration-monitoring-schemas').projectDir = "$rootDir/rivta/itintegration-monitoring" as File
 project(':population-residentmaster-schemas').projectDir = "$rootDir/rivta/population-residentmaster" as File
+project(':strategicresourcemanagement-persons-person-schemas').projectDir = "$rootDir/rivta/strategicresourcemanagement-persons-person" as File
