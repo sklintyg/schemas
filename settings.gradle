@@ -10,6 +10,7 @@ rootProject.name = 'schemas'
 include ':schemas-contract'
 include ':schemas-support'
 include ':funktionstjanster-grp-schemas'
+include ':secmaker-nias-schemas'
 include ':intyg-clinicalprocess-healthcond-certificate-schemas'
 include ':clinicalprocess-healthcond-monitoring-schemas'
 include ':intyg-clinicalprocess-healthcond-certificate-schematron'
@@ -32,6 +33,7 @@ include ':strategicresourcemanagement-persons-person-schemas'
 project(':schemas-contract').projectDir = "$rootDir/contract" as File
 project(':schemas-support').projectDir = "$rootDir/support" as File
 project(':funktionstjanster-grp-schemas').projectDir = "$rootDir/cgi/funktionstjanster-grp" as File
+project(':secmaker-nias-schemas').projectDir = "$rootDir/netid/netid-access-server" as File
 project(':intyg-clinicalprocess-healthcond-certificate-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-certificate" as File
 project(':intyg-clinicalprocess-healthcond-certificate-schematron').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-certificate-schematron" as File
 project(':clinicalprocess-healthcond-monitoring-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-monitoring" as File
