@@ -28,17 +28,7 @@ public class PersonnummerDeserializer extends JsonDeserializer<Personnummer> {
 
     @Override
     public Personnummer deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        return new Personnummer(jsonParser.getValueAsString());
-    }
-
-    @Override
-    public Personnummer getNullValue() {
-        return new Personnummer(null);
-    }
-
-    @Override
-    public Personnummer getEmptyValue() {
-        return new Personnummer("");
+        return Personnummer.createValidatedPersonnummer(jsonParser.getValueAsString()).get();
     }
 
 }
