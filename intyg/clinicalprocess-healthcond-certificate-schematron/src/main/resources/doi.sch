@@ -126,6 +126,21 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q2.3-2.2">
+    <iso:let name="dodsdatum" value="xs:string(//gn:delsvar[@id='2.2'])" />
+    <iso:let name="antraffadDod" value="xs:string(//gn:delsvar[@id='2.3'])" />
+    <iso:rule context="//gn:delsvar[@id='2.3' and $antraffadDod castable as xs:date and $dodsdatum and $dodsdatum castable as xs:date]">
+      <iso:assert test="xs:date($antraffadDod) gt xs:date($dodsdatum)">
+        'Dödsdatum' får inte vara efter datumet för 'Anträffad död'.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='2.3' and $antraffadDod castable as xs:date and $dodsdatum and not($dodsdatum castable as xs:date)]">
+      <iso:assert test="$antraffadDod gt $dodsdatum">
+        'Dödsdatum' får inte vara efter datumet för 'Anträffad död'.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q3">
     <iso:rule context="//gn:svar[@id='3']">
       <iso:assert test="count(gn:delsvar[@id='3.1']) = 1">
