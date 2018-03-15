@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	   xmlns="urn:riv:clinicalprocess:healthcond:certificate:3"
-	   xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-	   xmlns:m1="urn:riv:clinicalprocess:healthcond:certificate:3.2"
-	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3"
-	elementFormDefault="qualified" attributeFormDefault="unqualified"
-	version="3.2">
+		xmlns="urn:riv:clinicalprocess:healthcond:certificate:3"
+		xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
+		xmlns:m1="urn:riv:clinicalprocess:healthcond:certificate:3.2"
+		targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3"
+		elementFormDefault="qualified" attributeFormDefault="unqualified"
+		version="3.2">
 
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-		schemaLocation="clinicalprocess_healthcond_certificate_types_3.0.xsd" />
+			schemaLocation="clinicalprocess_healthcond_certificate_types_3.0.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
-		schemaLocation="clinicalprocess_healthcond_certificate_3.2_ext.xsd" />
+			schemaLocation="clinicalprocess_healthcond_certificate_3.2_ext.xsd" />
 
 	<xs:complexType name="Intyg">
 		<xs:annotation>
@@ -28,7 +28,7 @@
 			<xs:element name="relation" type="Relation" minOccurs="0" maxOccurs="unbounded" />
 			<xs:element name="status" type="IntygsStatus" minOccurs="0" maxOccurs="unbounded" />
 			<xs:element name="svar" type="Svar" minOccurs="0" maxOccurs="unbounded" />
-			<xs:element ref="m1:underskrift" minOccurs="0" />
+			<xs:element ref="m1:valideringsunderlag" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -49,14 +49,14 @@
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="forskrivarkod" type="xs:string"
-				minOccurs="0" />
+					minOccurs="0" />
 			<xs:element name="befattning" type="types:Befattning"
-				minOccurs="0" maxOccurs="unbounded" />
+					minOccurs="0" maxOccurs="unbounded" />
 			<xs:element name="enhet" type="Enhet" />
 			<xs:element name="specialistkompetens" type="types:Specialistkompetens"
-				minOccurs="0" maxOccurs="unbounded" />
+					minOccurs="0" maxOccurs="unbounded" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -80,10 +80,10 @@
 			<xs:element name="postort" type="xs:string" />
 			<xs:element name="telefonnummer" type="xs:string" />
 			<xs:element name="epost" type="types:nonEmptyString"
-				minOccurs="0" />
+					minOccurs="0" />
 			<xs:element name="vardgivare" type="Vardgivare" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -97,7 +97,7 @@
 			</xs:element>
 			<xs:element name="vardgivarnamn" type="xs:string" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -111,7 +111,7 @@
 			<xs:element name="postnummer" type="xs:string" />
 			<xs:element name="postort" type="xs:string" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -123,7 +123,7 @@
 			<xs:element name="meddelande-id" type="xs:string" />
 			<xs:element name="referens-id" type="xs:string" minOccurs="0" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -137,13 +137,13 @@
 				<xs:complexType mixed="true">
 					<xs:sequence>
 						<xs:any namespace="##other" processContents="lax"
-							minOccurs="0" maxOccurs="unbounded" />
+								minOccurs="0" maxOccurs="unbounded" />
 					</xs:sequence>
 					<xs:attribute name="id" type="DelfrageIdType" use="required" />
 				</xs:complexType>
 			</xs:element>
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 		<xs:attribute name="id" type="FrageIdType" use="required" />
 	</xs:complexType>
@@ -183,7 +183,7 @@
 			<xs:element name="resultText" type="xs:string" minOccurs="0" />
 			<xs:element name="errorId" type="ErrorIdType" minOccurs="0" />
 			<xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other"
-				processContents="lax" />
+					processContents="lax" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -286,7 +286,7 @@
 			<xs:element name="status" type="types:Statuskod" />
 			<xs:element name="tidpunkt" type="types:TimeStampType" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -298,7 +298,7 @@
 			<xs:element name="amne" type="types:Amneskod"  minOccurs="0"/>
 			<xs:element name="sistaDatumForSvar" type="types:DateType"  minOccurs="0"/>
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -309,7 +309,7 @@
 			<xs:element name="besvarade" type="xs:int" />
 			<xs:element name="hanterade" type="xs:int" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 	<!-- slut typer som används vid integrerad intygsapplikation -->
@@ -319,7 +319,7 @@
 			<xs:element name="typ" type="types:TypAvRelation" />
 			<xs:element name="intygs-id" type="types:IntygId" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
+<!--
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
@@ -26,7 +26,7 @@
 	version="3.0">
 
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3"
-		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.0.xsd" />
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.0.xsd" />
 
@@ -53,5 +53,5 @@
 				maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
-	
+
 </xs:schema>
