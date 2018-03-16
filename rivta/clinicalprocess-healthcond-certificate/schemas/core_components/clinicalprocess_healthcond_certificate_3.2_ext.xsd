@@ -21,7 +21,9 @@
   <xs:simpleType name="MediaTypeEnum">
     <xs:restriction base="xs:string">
       <xs:enumeration value="text/xml"/>
+      <xs:enumeration value="application/pkcs7-mime"/>
     </xs:restriction>
   </xs:simpleType>
+
 
 </xs:schema>

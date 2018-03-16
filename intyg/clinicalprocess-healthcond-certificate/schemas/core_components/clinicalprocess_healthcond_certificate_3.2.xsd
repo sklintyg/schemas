@@ -5,12 +5,13 @@
 		xmlns:m1="urn:riv:clinicalprocess:healthcond:certificate:3.2"
 		targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3"
 		elementFormDefault="qualified" attributeFormDefault="unqualified"
-		version="3.2">
+		version="3.0">
 
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 			schemaLocation="clinicalprocess_healthcond_certificate_types_3.0.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
 			schemaLocation="clinicalprocess_healthcond_certificate_3.2_ext.xsd" />
+
 
 	<xs:complexType name="Intyg">
 		<xs:annotation>
@@ -18,17 +19,26 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="intygs-id" type="types:IntygId" />
-			<xs:element name="mottagare" type="types:Part" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="mottagare" type="types:Part" minOccurs="0"
+					maxOccurs="unbounded" />
 			<xs:element name="typ" type="types:TypAvIntyg" />
 			<xs:element name="version" type="xs:string" />
-			<xs:element name="signeringstidpunkt" type="types:TimeStampType" minOccurs="0" />
-			<xs:element name="skickatTidpunkt" type="types:TimeStampType" minOccurs="0" />
+			<xs:element name="signeringstidpunkt" type="types:TimeStampType"
+					minOccurs="0" />
+			<xs:element name="skickatTidpunkt" type="types:TimeStampType"
+					minOccurs="0" />
 			<xs:element name="patient" type="Patient" />
 			<xs:element name="skapadAv" type="HosPersonal" />
-			<xs:element name="relation" type="Relation" minOccurs="0" maxOccurs="unbounded" />
-			<xs:element name="status" type="IntygsStatus" minOccurs="0" maxOccurs="unbounded" />
-			<xs:element name="svar" type="Svar" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="relation" type="Relation" minOccurs="0"
+					maxOccurs="unbounded" />
+			<xs:element name="status" type="IntygsStatus" minOccurs="0"
+					maxOccurs="unbounded" />
+			<xs:element name="svar" type="Svar" minOccurs="0"
+					maxOccurs="unbounded" />
 			<xs:element ref="m1:valideringsunderlag" minOccurs="0" />
+
+			<xs:any namespace="##other" processContents="lax" minOccurs="0"
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
