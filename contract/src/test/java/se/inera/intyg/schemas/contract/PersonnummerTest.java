@@ -42,31 +42,6 @@ public class PersonnummerTest {
         ClassLoader.getSystemClassLoader().setClassAssertionStatus("se.inera.intyg.schemas.contract.Personnummer", true);
     }
 
-    private void createValidatedPersonnummerWithoutDash(String input, String expected) {
-        Optional<Personnummer> pnr = Personnummer.createValidatedPersonnummer(input);
-        if(!pnr.isPresent()) {
-            fail();
-        } else {
-            assertEquals(expected, pnr.get().getPersonnummer());
-        }
-    }
-
-    private void createValidatedPersonnummerWithDash(String input, String expected) {
-        Optional<Personnummer> pnr = Personnummer.createValidatedPersonnummer(input);
-        if(!pnr.isPresent()) {
-            fail();
-        } else {
-            assertEquals(expected, pnr.get().getPersonnummerWithDash());
-        }
-    }
-
-    private void expectExceptionWhenCreatingValidatedPersonnummer(String input) {
-        Optional<Personnummer> pnr = Personnummer.createValidatedPersonnummer(input);
-        if (pnr.isPresent()) {
-            fail(String.format("The personnummer %s in test should have failed, i.e should have returned an empty Optional", input));
-        }
-    }
-
     @Test
     public void testInvalidPersonnummer() {
         expectExceptionWhenCreatingValidatedPersonnummer(null);
@@ -78,24 +53,24 @@ public class PersonnummerTest {
 
     @Test
     public void testGetPersonnummer() {
-        createValidatedPersonnummerWithoutDash("19121212-1212", "191212121212");
-        createValidatedPersonnummerWithoutDash("191212121212", "191212121212");
-        createValidatedPersonnummerWithoutDash("1212121212", "201212121212");
-        createValidatedPersonnummerWithoutDash("20121212-1212", "201212121212");
-        createValidatedPersonnummerWithoutDash("201212121212", "201212121212");
-        createValidatedPersonnummerWithoutDash("121212+1212", "191212121212");
-        createValidatedPersonnummerWithoutDash("600101+1111", "186001011111");
+        validatePersonnummerWithoutDash("19121212-1212", "191212121212");
+        validatePersonnummerWithoutDash("191212121212", "191212121212");
+        validatePersonnummerWithoutDash("1212121212", "201212121212");
+        validatePersonnummerWithoutDash("20121212-1212", "201212121212");
+        validatePersonnummerWithoutDash("201212121212", "201212121212");
+        validatePersonnummerWithoutDash("121212+1212", "191212121212");
+        validatePersonnummerWithoutDash("600101+1111", "186001011111");
     }
 
     @Test
     public void testGetPersonnummerWithDash() {
-        createValidatedPersonnummerWithDash("19121212-1212", "19121212-1212");
-        createValidatedPersonnummerWithDash("191212121212", "19121212-1212");
-        createValidatedPersonnummerWithDash("1212121212", "20121212-1212");
-        createValidatedPersonnummerWithDash("20121212-1212", "20121212-1212");
-        createValidatedPersonnummerWithDash("201212121212", "20121212-1212");
-        createValidatedPersonnummerWithDash("121212+1212", "19121212-1212");
-        createValidatedPersonnummerWithDash("600101+1111", "18600101-1111");
+        validatePersonnummerWithDash("19121212-1212", "19121212-1212");
+        validatePersonnummerWithDash("191212121212", "19121212-1212");
+        validatePersonnummerWithDash("1212121212", "20121212-1212");
+        validatePersonnummerWithDash("20121212-1212", "20121212-1212");
+        validatePersonnummerWithDash("201212121212", "20121212-1212");
+        validatePersonnummerWithDash("121212+1212", "19121212-1212");
+        validatePersonnummerWithDash("600101+1111", "18600101-1111");
     }
 
     @Test
@@ -103,7 +78,7 @@ public class PersonnummerTest {
         final List<String> pnrs = Arrays.asList("121212-1212", "19121212-1212", "1212121212", "191212121212");
         for (String pnr : pnrs) {
             try {
-                Personnummer personnummer = Personnummer.createValidatedPersonnummer(pnr).get();
+                Personnummer personnummer = createPnr(pnr).get();
                 assertEquals(personnummer.getPersonnummerHash(), personnummer.toString());
             } catch (AssertionError ae) {
                 //I don't know how to disable assertions in code when running test via maven, hence let this assertion error pass
@@ -114,16 +89,16 @@ public class PersonnummerTest {
     @Test
     public void testGetPnrHash() {
         assertEquals("1424d7d0b8d4afd3c1ab1068a5a54d2d6d05d5b07e16effe36c176bd14b53c1c",
-                Personnummer.createValidatedPersonnummer("920926-2386").get().getPersonnummerHash());
+                createPnr("920926-2386").get().getPersonnummerHash());
         assertEquals("1424d7d0b8d4afd3c1ab1068a5a54d2d6d05d5b07e16effe36c176bd14b53c1c",
-                Personnummer.createValidatedPersonnummer("199209262386").get().getPersonnummerHash());
+                createPnr("199209262386").get().getPersonnummerHash());
     }
 
     @Test
     public void testTwoDifferentPnrsNotEquals() throws Exception {
         //Given
-        final Personnummer personnummer0 = Personnummer.createValidatedPersonnummer("000000-0000").get();
-        final Personnummer personnummer9 = Personnummer.createValidatedPersonnummer("999999-9999").get();
+        final Personnummer personnummer0 = createPnr("000000-0000").get();
+        final Personnummer personnummer9 = createPnr("999999-9999").get();
 
         //Then
         assertFalse(personnummer0.equals(personnummer9));
@@ -133,8 +108,8 @@ public class PersonnummerTest {
     @Test
     public void testTwoIdenticalPnrsEquals() throws Exception {
         //Given
-        final Personnummer personnummer0 = Personnummer.createValidatedPersonnummer("000000-0000").get();
-        final Personnummer personnummer1 = Personnummer.createValidatedPersonnummer("000000-0000").get();
+        final Personnummer personnummer0 = createPnr("000000-0000").get();
+        final Personnummer personnummer1 = createPnr("000000-0000").get();
 
         //Then
         assertTrue(personnummer0.equals(personnummer1));
@@ -144,8 +119,8 @@ public class PersonnummerTest {
     @Test
     public void testPnrWithOrWithoutDashEquals() throws Exception {
         //Given
-        final Personnummer personnummer0 = Personnummer.createValidatedPersonnummer("920926-2386").get();
-        final Personnummer personnummer1 = Personnummer.createValidatedPersonnummer("9209262386").get();
+        final Personnummer personnummer0 = createPnr("920926-2386").get();
+        final Personnummer personnummer1 = createPnr("9209262386").get();
 
         //Then
         assertTrue(personnummer0.equals(personnummer1));
@@ -155,8 +130,8 @@ public class PersonnummerTest {
     @Test
     public void testHashCode() throws Exception {
         //Given
-        final Personnummer personnummer0 = Personnummer.createValidatedPersonnummer("000000-0000").get();
-        final Personnummer personnummer9 = Personnummer.createValidatedPersonnummer("999999-9999").get();
+        final Personnummer personnummer0 = createPnr("000000-0000").get();
+        final Personnummer personnummer9 = createPnr("999999-9999").get();
 
         //Then
         assertTrue(personnummer0.hashCode() != personnummer9.hashCode());
@@ -167,7 +142,7 @@ public class PersonnummerTest {
     public void testGetPnrHashSafe() throws Exception {
         assertEquals(HashUtility.EMPTY, Personnummer.getPersonnummerHashSafe(null));
 
-        final Personnummer personnummer = Personnummer.createValidatedPersonnummer("920926-2386").get();
+        final Personnummer personnummer = createPnr("920926-2386").get();
         assertEquals("1424d7d0b8d4afd3c1ab1068a5a54d2d6d05d5b07e16effe36c176bd14b53c1c", Personnummer.getPersonnummerHashSafe(personnummer));
         assertEquals(personnummer.getPersonnummerHash(), Personnummer.getPersonnummerHashSafe(personnummer));
     }
@@ -176,7 +151,7 @@ public class PersonnummerTest {
     public void testSerializePersonnummer() throws Exception {
         //Given
         final ObjectMapper objectMapper = new ObjectMapper();
-        final Personnummer value = Personnummer.createValidatedPersonnummer("199209262386").get();
+        final Personnummer value = createPnr("199209262386").get();
 
         //When
         final String json = objectMapper.writeValueAsString(value);
@@ -199,124 +174,54 @@ public class PersonnummerTest {
 
     @Test
     public void testVerifyControlDigit10Digits() {
-        Personnummer pnr = Personnummer.createValidatedPersonnummer("1212121212").get();
+        Personnummer pnr = createPnr("1212121212").get();
         assertTrue(pnr.verifyControlDigit());
     }
 
     @Test
     public void testVerifyControlDigit12Digits() {
-        Personnummer pnr = Personnummer.createValidatedPersonnummer("191212121212").get();
+        Personnummer pnr = createPnr("191212121212").get();
         assertTrue(pnr.verifyControlDigit());
     }
-
-    /*
-    @Test
-    public void testVerifyControlDigitEmpty() {
-        Personnummer pnr = Personnummer.empty();
-        assertEquals(false, pnr.verifyControlDigit());
-    }
-
-    @Test
-    public void testCalculateControlDigitEmpty() {
-        Personnummer pnr = Personnummer.empty();
-        assertEquals(-1, pnr.calculateControlDigit());
-    }
-    */
-
     @Test
     public void testCalculateControlDigit10Digits() {
-        Personnummer pnr = Personnummer.createValidatedPersonnummer("1212121212").get();
+        Personnummer pnr = createPnr("1212121212").get();
         assertEquals(2, pnr.calculateControlDigit());
     }
 
     @Test
     public void testCalculateControlDigit12Digits() {
-        Personnummer pnr = Personnummer.createValidatedPersonnummer("191212121212").get();
+        Personnummer pnr = createPnr("191212121212").get();
         assertEquals(2, pnr.calculateControlDigit());
     }
 
-    /*
-    @Test
-    public void testEmptyPersonnummerCanHandleAllCalls() throws Exception {
-        //Given
-        final Personnummer empty = Personnummer.empty();
-
-        //Then
-        assertEquals(HashUtility.EMPTY, empty.getPersonnummerHash());
-        assertEquals(null, empty.getPersonnummer());
-        assertEquals(null, empty.getPersonnummerWithoutDash());
-        assertEquals(false, empty.equals(null));
-        assertEquals(31, empty.hashCode());
-        assertEquals(false, empty.verifyControlDigit());
-
-        try {
-            assertEquals(HashUtility.EMPTY, empty.toString());
-        } catch (AssertionError ae) {
-            //I don't know how to disable assertions in code when running test via maven, hence let this assertion error pass
+    private void validatePersonnummerWithoutDash(String input, String expected) {
+        Optional<Personnummer> pnr = createPnr(input);
+        if(!pnr.isPresent()) {
+            fail();
+        } else {
+            assertEquals(expected, pnr.get().getPersonnummer());
         }
+    }
 
-        boolean exceptionThrownWhenNormalizing = false;
-        try {
-            empty.getNormalizedPnr();
-        } catch (InvalidPersonNummerException e) {
-            exceptionThrownWhenNormalizing = true;
+    private void validatePersonnummerWithDash(String input, String expected) {
+        Optional<Personnummer> pnr = createPnr(input);
+        if(!createPnr(input).isPresent()) {
+            fail();
+        } else {
+            assertEquals(expected, pnr.get().getPersonnummerWithDash());
         }
-        assertTrue(exceptionThrownWhenNormalizing);
-
-        //Fail this test if a new method is added to Personnummer to make sure a call to it is added here
-        assertEquals(9, countNonPrivateMethodsInClass(Personnummer.class));
-
     }
 
-    private int countNonPrivateMethodsInClass(Class<Personnummer> personnummerClass) {
-        final Method[] declaredMethods = personnummerClass.getDeclaredMethods();
-        int counter = 0;
-        for (Method declaredMethod : declaredMethods) {
-            int modifierBits = declaredMethod.getModifiers();
-            if (!Modifier.isPrivate(modifierBits) && !Modifier.isStatic(modifierBits)) {
-                counter++;
-            }
+    private void expectExceptionWhenCreatingValidatedPersonnummer(String input) {
+        if (createPnr(input).isPresent()) {
+            fail(String.format("The personnummer %s in test should have failed, i.e should have returned an empty Optional", input));
         }
-        return counter;
     }
 
-    @Test
-    public void testSerializeDeserializePersonnummerNull() throws Exception {
-        //Given
-        final ObjectMapper objectMapper = new ObjectMapper();
-        final Personnummer originalPnr = new Personnummer(null);
-
-        //When
-        final String json = objectMapper.writeValueAsString(originalPnr);
-
-        //Then
-        assertEquals("null", json);
-
-        //When
-        final Personnummer personnummer = objectMapper.readValue(json, Personnummer.class);
-
-        //Then
-        assertEquals(originalPnr.getPersonnummer(), personnummer.getPersonnummer());
+    private Optional<Personnummer> createPnr(String input) {
+        return Personnummer.createValidatedPersonnummer(input);
     }
 
-    @Test
-    public void testSerializeDeserializePersonnummerEmpty() throws Exception {
-        //Given
-        final ObjectMapper objectMapper = new ObjectMapper();
-        final Personnummer originalPnr = new Personnummer("");
-
-        //When
-        final String json = objectMapper.writeValueAsString(originalPnr);
-
-        //Then
-        assertEquals("\"\"", json);
-
-        //When
-        final Personnummer personnummer = objectMapper.readValue(json, Personnummer.class);
-
-        //Then
-        assertEquals(originalPnr.getPersonnummer(), personnummer.getPersonnummer());
-    }
-    */
 
 }

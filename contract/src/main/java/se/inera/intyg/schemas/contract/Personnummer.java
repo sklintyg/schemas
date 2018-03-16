@@ -46,24 +46,24 @@ public class Personnummer {
      */
     private String normalizedPnr;
 
-    /**
-     * Tells the user if the personnummer is valid or not
-     */
-    private boolean valid;
-
-
     private Personnummer() {}
 
     private Personnummer(String originalPnr) throws InvalidPersonNummerException {
         this.originalPnr = originalPnr;
         this.normalizedPnr = normalizePnr();
-        this.valid = true;
     }
 
     /**
-     * Returns a Personnummer, iff the String is a valid personnummer.
+     * Returns a Personnummer, iff the String is has a valid format.
+     * Valid formats are:
+     * <ul>
+     *     <li>^(19|20)[0-9]{6}[-+]?[0-9]{4}$</li>
+     *     <li>^[0-9]{6}[+-]?[0-9]{4}$</li>
+     * </ul>
      *
-     * @return Validated personnummer on form (19|20)[0-9]{6}[0-9]{4}
+     * Empty string and null will return an Optional.empty()
+     *
+     * @return A normalized personnummer on the form (19|20)[0-9]{6}[0-9]{4}
      */
     public static Optional<Personnummer> createValidatedPersonnummer(String nonValidatedPnr) {
         try {
@@ -116,15 +116,6 @@ public class Personnummer {
      */
     public String getOriginalPnr() {
         return originalPnr;
-    }
-
-    /**
-     * Convenience method telling the caller if it is a valid personnummer or not.
-     *
-     * @return true if personnummer is valid, otherwise false
-     */
-    public boolean isValid() {
-        return valid;
     }
 
     /**
