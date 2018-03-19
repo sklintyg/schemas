@@ -29,7 +29,7 @@ import java.util.Calendar;
 import java.util.Optional;
 
 @JsonDeserialize(using = PersonnummerDeserializer.class)
-public class Personnummer {
+public final class Personnummer {
 
     private static final Logger LOG = LoggerFactory.getLogger(Personnummer.class);
 
@@ -47,7 +47,8 @@ public class Personnummer {
      */
     private String normalizedPnr;
 
-    private Personnummer() {}
+    private Personnummer() {
+    }
 
     private Personnummer(String originalPnr) throws InvalidPersonNummerException {
         this.originalPnr = originalPnr;
@@ -76,7 +77,7 @@ public class Personnummer {
     }
 
     /**
-     * Returns the personnummer on the format yyyyMMddxxxx
+     * Returns the personnummer on the format yyyyMMddxxxx.
      *
      * @return A string on the form (19|20)[0-9]{6}-[0-9]{4}
      */
@@ -86,7 +87,7 @@ public class Personnummer {
     }
 
     /**
-     * Returns a hashed personnummer
+     * Returns a hashed personnummer.
      *
      * @return A string on the form (19|20)[0-9]{6}-[0-9]{4}
      */
@@ -99,7 +100,7 @@ public class Personnummer {
     }
 
     /**
-     * Returns a personnummer with a dash
+     * Returns a personnummer with a dash.
      *
      * @return Personnummer on form (19|20)[0-9]{6}-[0-9]{4}
      */
