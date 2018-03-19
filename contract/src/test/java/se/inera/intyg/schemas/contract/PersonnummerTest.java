@@ -220,7 +220,7 @@ public class PersonnummerTest {
     }
 
     private Optional<Personnummer> createPnr(String input) {
-        return Personnummer.createValidatedPersonnummer(input);
+        return Personnummer.createPersonnummer(input);
     }
 
 

@@ -30,6 +30,7 @@ import java.util.Optional;
 
 @JsonDeserialize(using = PersonnummerDeserializer.class)
 public class Personnummer {
+
     private static final Logger LOG = LoggerFactory.getLogger(Personnummer.class);
 
     private static final int[] CONTROL_DIGIT_WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
@@ -65,12 +66,11 @@ public class Personnummer {
      *
      * @return A normalized personnummer on the form (19|20)[0-9]{6}[0-9]{4}
      */
-    public static Optional<Personnummer> createValidatedPersonnummer(String nonValidatedPnr) {
+    public static Optional<Personnummer> createPersonnummer(String personnummer) {
         try {
-            Personnummer personnummer = new Personnummer(nonValidatedPnr);
-            return Optional.of(personnummer);
+            return Optional.of(new Personnummer(personnummer));
         } catch (InvalidPersonNummerException e) {
-            LOG.error("Error validating personnummer " + nonValidatedPnr, e);
+            LOG.error("Error creating personnummer: " + personnummer + " Returning Optional.empty()", e);
             return Optional.empty();
         }
     }
