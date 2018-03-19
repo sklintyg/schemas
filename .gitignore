@@ -8,3 +8,6 @@ target
 intygstjanst/target
 webcert/target
 /target
+build
+.gradle
+out

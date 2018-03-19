@@ -1,0 +1,5 @@
+description = "Intyg Schemas Support"
+
+group = 'se.inera.intyg.schemas'
+
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'

@@ -1,0 +1,11 @@
+description = "Intyg Schemas Common Contract"
+
+group = 'se.inera.intyg.schemas'
+
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
+
+dependencies {
+    compile "ch.qos.logback:logback-classic:${logbackVersion}"
+    compile "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+    compile "com.google.guava:guava:${guavaVersion}"
+}

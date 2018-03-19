@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions name='GetConsentInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+                  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+                  xmlns:xs='http://www.w3.org/2001/XMLSchema'
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:srs:GetConsentResponder:1'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:GetConsent:1:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetConsent:1:rivtabp21'>
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetConsent:1:rivtabp21'>
+            <xs:import schemaLocation='GetConsentResponder_1.0.xsd'
+                       namespace='urn:riv:clinicalprocess:healthcond:srs:GetConsentResponder:1'/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name='GetConsentRequest'>
+        <wsdl:part name='parameters' element='tjsr:GetConsentRequest'/>
+    </wsdl:message>
+
+    <wsdl:message name='GetConsentResponse'>
+        <wsdl:part name='parameters' element='tjsr:GetConsentResponse'/>
+    </wsdl:message>
+
+    <wsdl:portType name='GetConsentResponderInterface'>
+        <wsdl:operation name='GetConsent'>
+            <wsdl:input message='tns:GetConsentRequest'/>
+            <wsdl:output message='tns:GetConsentResponse'/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='GetConsentResponderBinding' type='tns:GetConsentResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+        <wsdl:operation name='GetConsent'>
+            <soap:operation
+                    soapAction='urn:riv:clinicalprocess:healthcond:srs:GetConsentResponder:1:GetConsent'
+                    style='document'/>
+            <wsdl:input>
+                <soap:header use='literal' message='tns:GetConsentRequest' part='LogicalAddress'/>
+                <soap:body use='literal' parts='parameters'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='GetConsentResponderService'>
+        <wsdl:port name='GetConsentResponderPort' binding='tns:GetConsentResponderBinding'>
+            <soap:address location='http://tempuri.org'/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

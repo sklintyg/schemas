@@ -1,0 +1,42 @@
+description = "Intyg Schemas (Infrastructure Directory Private Practitioner)"
+
+group = 'se.inera.intyg.infrastructure.directory.privatepractitioner'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
+
+wsdl2java {
+  def commonOptions = ["-p",
+                       "urn:riv:infrastructure:directory:privatepractitioner:1=se.riv.infrastructure.directory.privatepractitioner.v1",
+                       "-p",
+                       "urn:riv:infrastructure:directory:privatepractitioner:types:1=se.riv.infrastructure.directory.privatepractitioner.types.v1",
+                       "-p",
+                       "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1"
+                      ]
+
+  wsdlsToGenerate = [ commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/GetPrivatePractitionerInteraction/GetPrivatePractitionerInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:infrastructure:directory:privatepractitioner:GetPrivatePractitionerResponder:1=se.riv.infrastructure.directory.privatepractitioner.getprivatepractitionerresponder.v1",
+                                       "-p", "urn:riv:infrastructure:directory:privatepractitioner:GetPrivatePractitioner:1:rivtabp21=se.riv.infrastructure.directory.privatepractitioner.getprivatepractitioner.v1.rivtabp21",
+                                       "$projectDir/schemas/interactions/GetPrivatePractitionerInteraction/GetPrivatePractitionerInteraction_1.0_RIVTABP21.wsdl"],
+
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/ValidatePrivatePractitionerInteraction/ValidatePrivatePractitionerInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:infrastructure:directory:privatepractitioner:ValidatePrivatePractitionerResponder:1=se.riv.infrastructure.directory.privatepractitioner.validateprivatepractitionerresponder.v1",
+                                       "-p",
+                                       "urn:riv:infrastructure:directory:privatepractitioner:ValidatePrivatePractitioner:1:rivtabp21=se.riv.infrastructure.directory.privatepractitioner.validateprivatepractitioner.v1.rivtabp21",
+                                       "$projectDir/schemas/interactions/ValidatePrivatePractitionerInteraction/ValidatePrivatePractitionerInteraction_1.0_RIVTABP21.wsdl"],
+
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:itintegration:monitoring:PingForConfigurationResponder:1=se.riv.itintegration.monitoring.pingforconfigurationresponder.v1",
+                                       "-p",
+                                       "urn:riv:itintegration:monitoring:PingForConfiguration:1:rivtabp21=se.riv.itintegration.monitoring.pingforconfiguration.v1.rivtabp21",
+                                       "$projectDir/schemas/interactions/PingForConfigurationInteraction/PingForConfigurationInteraction_1.0_RIVTABP21.wsdl"]
+                    ]
+
+}

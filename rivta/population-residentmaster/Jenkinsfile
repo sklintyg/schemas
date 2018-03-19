@@ -1,0 +1,22 @@
+#!groovy
+
+def buildVersion = "1.1.3.5"
+def projectName = "population-residentmaster-schemas"
+
+stage('checkout') {
+    node {
+        util.run { checkout scm }
+    }
+}
+
+stage('build') {
+    node {
+        shgradle "--refresh-dependencies :${projectName}:clean :${projectName}:build -DbuildVersion=${buildVersion}"
+    }
+}
+
+stage('tag and upload') {
+    node {
+        shgradle ":${projectName}:uploadArchives :${projectName}:tagRelease -DbuildVersion=${buildVersion} -Dintyg.tag.prefix=${projectName}-"
+    }
+}

@@ -1,0 +1,14 @@
+description = "GRP Schemas (CGI/Funktionstjanster)"
+
+group = 'se.funktionstjanster.grp'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
+
+wsdl2java {
+  wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                       "-wsdlLocation",
+                       "classpath:interactions/GrpServiceInteraction/grp.wsdl",
+                       "-p",
+                       "http://funktionstjanster.se/grp/service/v1.0.0/=se.funktionstjanster.grp.v1",
+                       "$projectDir/schemas/interactions/GrpServiceInteraction/grp.wsdl"],
+                    ]
+}

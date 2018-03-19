@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions name='GetRiskPredictionForCertificateInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+                  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+                  xmlns:xs='http://www.w3.org/2001/XMLSchema'
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:srs:GetRiskPredictionForCertificateResponder:1'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:GetRiskPredictionForCertificate:1:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetRiskPredictionForCertificate:1:rivtabp21'>
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetRiskPredictionForCertificate:1:rivtabp21'>
+            <xs:import schemaLocation='GetRiskPredictionForCertificateResponder_1.0.xsd'
+                       namespace='urn:riv:clinicalprocess:healthcond:srs:GetRiskPredictionForCertificateResponder:1'/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name='GetRiskPredictionForCertificateRequest'>
+        <wsdl:part name='parameters' element='tjsr:GetRiskPredictionForCertificateRequest'/>
+    </wsdl:message>
+
+    <wsdl:message name='GetRiskPredictionForCertificateResponse'>
+        <wsdl:part name='parameters' element='tjsr:GetRiskPredictionForCertificateResponse'/>
+    </wsdl:message>
+
+    <wsdl:portType name='GetRiskPredictionForCertificateResponderInterface'>
+        <wsdl:operation name='GetRiskPredictionForCertificate'>
+            <wsdl:input message='tns:GetRiskPredictionForCertificateRequest'/>
+            <wsdl:output message='tns:GetRiskPredictionForCertificateResponse'/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='GetRiskPredictionForCertificateResponderBinding' type='tns:GetRiskPredictionForCertificateResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+        <wsdl:operation name='GetRiskPredictionForCertificate'>
+            <soap:operation
+                    soapAction='urn:riv:clinicalprocess:healthcond:srs:GetRiskPredictionForCertificateResponder:1:GetRiskPredictionForCertificate'
+                    style='document'/>
+            <wsdl:input>
+                <soap:header use='literal' message='tns:GetRiskPredictionForCertificateRequest' part='LogicalAddress'/>
+                <soap:body use='literal' parts='parameters'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='GetRiskPredictionForCertificateResponderService'>
+        <wsdl:port name='GetRiskPredictionForCertificateResponderPort' binding='tns:GetRiskPredictionForCertificateResponderBinding'>
+            <soap:address location='http://tempuri.org'/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>

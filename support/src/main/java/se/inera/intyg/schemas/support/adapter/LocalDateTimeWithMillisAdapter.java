@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 Inera AB (http://www.inera.se)
+ * Copyright (C) 2018 Inera AB (http://www.inera.se)
  *
  * This file is part of sklintyg (https://github.com/sklintyg).
  *
@@ -18,11 +18,8 @@
  */
 package se.inera.intyg.schemas.support.adapter;
 
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Adapter for converting XML Schema types to Java dates and vice versa.
@@ -30,10 +27,8 @@ import org.joda.time.format.ISODateTimeFormat;
  * @author andreaskaltenbach
  */
 public final class LocalDateTimeWithMillisAdapter {
-
-    private static final DateTimeZone TIME_ZONE = DateTimeZone.forID("Europe/Stockholm");
-    private static final String ISO_DATE_PATTERN = "YYYY-MM-dd";
-    private static final String ISO_DATETIME_PATTERN = "YYYY-MM-dd'T'HH:mm:ss.SSS";
+    private static final ZoneId TIMEZONE = ZoneId.of("Europe/Stockholm");
+    private static final String ISO_DATETIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS";
     private static final String XSD_DATE_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}([+-].*|Z)";
     private static final String XSD_DATETIME_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.?[0-9]*([+-].*|Z)";
 
@@ -41,23 +36,7 @@ public final class LocalDateTimeWithMillisAdapter {
     }
 
     /**
-     * Converts an xs:date to a Joda Time LocalDate.
-     */
-    public static LocalDate parseDate(String dateString) {
-        // Workaround for the fact that DatatypeConverter doesn't allow setting the default TimeZone,
-        // (which means that the system default TimeZone will be used, which might be wrong if hosted in
-        // a different TimeZone), and that LocaleDate doesn't handle dates with explicit TimeZone.
-        // Hence if the date contains an explicit TimeZone, use DatatypeConverter to do the parsing,
-        // otherwise use LocalDate's parsing.
-        if (dateString.matches(XSD_DATE_TIMEZONE_REGEXP) || dateString.matches(XSD_DATETIME_TIMEZONE_REGEXP)) {
-            return new LocalDate (javax.xml.bind.DatatypeConverter.parseDate(dateString).getTime(), TIME_ZONE);
-        } else {
-            return new LocalDate(dateString.substring(0, ISO_DATE_PATTERN.length()), TIME_ZONE);
-        }
-    }
-
-    /**
-     * Converts an xs:datetime to a Joda Time LocalDateTime.
+     * Converts an xs:datetime to a LocalDateTime.
      */
     public static LocalDateTime parseDateTime(String dateTimeString) {
         // Workaround for the fact that DatatypeConverter doesn't allow setting the default TimeZone,
@@ -66,51 +45,17 @@ public final class LocalDateTimeWithMillisAdapter {
         // Hence if the date contains an explicit TimeZone, use DatatypeConverter to do the parsing,
         // otherwise use LocalDateTime's parsing.
         if (dateTimeString.matches(XSD_DATETIME_TIMEZONE_REGEXP) || dateTimeString.matches(XSD_DATE_TIMEZONE_REGEXP)) {
-            return new LocalDateTime(javax.xml.bind.DatatypeConverter.parseDateTime(dateTimeString).getTime(), TIME_ZONE);
+            return LocalDateTime.from(javax.xml.bind.DatatypeConverter.parseDateTime(dateTimeString).toInstant().atZone(TIMEZONE));
         } else {
-            return new LocalDateTime(dateTimeString, TIME_ZONE);
+            return LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
         }
-    }
-
-    /**
-     * Converts an intyg:common-model:1:date to a Joda Time LocalDate.
-     */
-    public static LocalDate parseIsoDate(String dateString) {
-        return LocalDate.parse(dateString);
-    }
-
-    /**
-     * Converts an intyg:common-model:1:dateTime to a Joda Time LocalDateTime.
-     */
-    public static LocalDateTime parseIsoDateTime(String dateTimeString) {
-        return LocalDateTime.parse(dateTimeString);
     }
 
     /**
      * Print a DateTime (always using ISO format).
      */
     public static String printDateTime(LocalDateTime dateTime) {
-        return printIsoDateTime(dateTime);
+        return dateTime.format(DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
     }
 
-    /**
-     * Print a Date (always using ISO format).
-     */
-    public static String printDate(LocalDate date) {
-        return printIsoDate(date);
-    }
-
-    /**
-     * Print a DateTime in ISO format.
-     */
-    public static String printIsoDateTime(LocalDateTime dateTime) {
-        return dateTime.toString(ISO_DATETIME_PATTERN);
-    }
-
-    /**
-     * Print a Date in ISO format.
-     */
-    public static String printIsoDate(LocalDate date) {
-        return date.toString(ISO_DATE_PATTERN);
-    }
 }

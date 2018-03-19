@@ -1,0 +1,53 @@
+description = "Intyg Schemas (Transportstyrelsen)"
+
+group = 'se.inera.intyg.transportstyrelsen'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
+
+wsdl2java {
+  def commonOptions = ["-p",
+                       "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
+                       "-p",
+                       "urn:local:se:intygstjanster:services:1=se.inera.intygstjanster.ts.services.v1",
+                       "-p",
+                       "urn:local:se:intygstjanster:services:types:1=se.inera.intygstjanster.ts.services.types.v1",
+                      ]
+
+  wsdlsToGenerate = [ commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/GetTSBasInteraction/GetTSBasInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:local:se:intygstjanster:services:GetTSBasResponder:1=se.inera.intygstjanster.ts.services.GetTSBasResponder.v1",
+                                       "-p",
+                                       "urn:local:se:intygstjanster:services:GetTSBas:1:rivtabp21=se.inera.intygstjanster.ts.services.GetTSBasResponder.v1",
+                                       "$projectDir/schemas/interactions/GetTSBasInteraction/GetTSBasInteraction_1.0_RIVTABP21.wsdl"],
+
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/RegisterTSBasInteraction/RegisterTSBasInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:local:se:intygstjanster:services:RegisterTSBasResponder:1=se.inera.intygstjanster.ts.services.RegisterTSBasResponder.v1",
+                                       "-p",
+                                       "urn:local:se:intygstjanster:services:RegisterTSBas:1:rivtabp21=se.inera.intygstjanster.ts.services.RegisterTSBasResponder.v1",
+                                       "$projectDir/schemas/interactions/RegisterTSBasInteraction/RegisterTSBasInteraction_1.0_RIVTABP21.wsdl"],
+
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/GetTSDiabetesInteraction/GetTSDiabetesInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:local:se:intygstjanster:services:GetTSDiabetesResponder:1=se.inera.intygstjanster.ts.services.GetTSDiabetesResponder.v1",
+                                       "-p",
+                                       "urn:local:se:intygstjanster:services:GetTSDiabetes:1:rivtabp21=se.inera.intygstjanster.ts.services.GetTSDiabetesResponder.v1",
+                                       "$projectDir/schemas/interactions/GetTSDiabetesInteraction/GetTSDiabetesInteraction_1.0_RIVTABP21.wsdl"],
+
+
+                      commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/RegisterTSDiabetesInteraction/RegisterTSDiabetesInteraction_1.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:local:se:intygstjanster:services:RegisterTSDiabetesResponder:1=se.inera.intygstjanster.ts.services.RegisterTSDiabetesResponder.v1",
+                                       "-p",
+                                       "urn:local:se:intygstjanster:services:RegisterTSDiabetes:1:rivtabp21=se.inera.intygstjanster.ts.services.RegisterTSDiabetesResponder.v1",
+                                       "$projectDir/schemas/interactions/RegisterTSDiabetesInteraction/RegisterTSDiabetesInteraction_1.0_RIVTABP21.wsdl"],
+
+                    ]
+}

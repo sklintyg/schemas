@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:1"
+           xmlns:srs="urn:riv:clinicalprocess:healthcond:srs:types:1"
+           xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
+           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:1"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+    <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
+        schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
+    <xs:import namespace="urn:riv:clinicalprocess:healthcond:srs:types:1"
+               schemaLocation="../../core_components/clinicalprocess_healthcond_srs_1.0.xsd"/>
+
+    <xs:element name="GetSRSInformationRequest" type="tns:GetSRSInformationRequestType"/>
+    <xs:element name="GetSRSInformationResponse" type="tns:GetSRSInformationResponseType"/>
+
+    <xs:complexType name="GetSRSInformationRequestType">
+        <xs:sequence>
+            <xs:element name="version" type="xs:string"/>
+            <xs:element name="konsument-id" type="types:HsaId"/>
+            <xs:element name="anvandare-id" type="types:HsaId"/>
+            <xs:element name="prediktionsfaktorer" type="tns:Prediktionsfaktorer" minOccurs="0"/>
+            <xs:element name="individer" type="tns:individfaktorer"/>
+            <xs:element name="utdatafilter" type="tns:utdatafilter"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="GetSRSInformationResponseType">
+        <xs:sequence>
+            <xs:element name="resultCode" type="types:ResultCodeEnum"/>
+            <xs:element name="bedomningsunderlag" type="tns:bedomningsunderlag" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="individfaktorer">
+        <xs:sequence>
+            <xs:element name="individ" type="tns:individ" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="individ">
+        <xs:sequence>
+            <xs:element name="person-id" type="types:PersonIdExtension"/>
+            <xs:element name="diagnos" type="types:diagnos" maxOccurs="unbounded"/>
+            <xs:element name="intyg-id" type="types:IntygId"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="utdatafilter">
+        <xs:sequence>
+            <xs:element name="prediktion" type="xs:boolean"/>
+            <xs:element name="atgardsrekommendation" type="xs:boolean"/>
+            <xs:element name="statistik" type="xs:boolean"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="bedomningsunderlag">
+        <xs:sequence>
+            <xs:element name="person-id" type="types:PersonIdExtension"/>
+            <xs:element name="prediktion" type="tns:prediktion" minOccurs="0"/>
+            <xs:element name="atgardsrekommendationer" type="tns:atgardsrekommendationer" minOccurs="0"/>
+            <xs:element name="statistik" type="srs:statistik" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="atgardsrekommendationer">
+        <xs:sequence>
+            <xs:element name="rekommendation" type="srs:atgardsrekommendation" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="prediktion">
+        <xs:sequence>
+            <xs:element name="diagnosprediktion" type="tns:diagnosprediktion" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="diagnosprediktion">
+        <xs:sequence>
+            <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
+            <xs:element name="inkommandediagnos" type="types:diagnos"/>
+            <xs:element name="sannolikhet-overgransvarde" type="xs:double" minOccurs="0"/>
+            <xs:element name="forklaringsinformation" type="xs:string" minOccurs="0"/>
+            <xs:element name="risksignal" type="tns:risksignal"/>
+            <xs:element name="diagnosprediktionstatus" type="tns:diagnosprediktionstatus"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="diagnosprediktionstatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="OK"/>
+            <xs:enumeration value="NOT_OK"/>
+            <xs:enumeration value="DIAGNOSKOD_PA_HOGRE_NIVA"/>
+            <xs:enumeration value="PREDIKTIONSMODELL_SAKNAS"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="Prediktionsfaktorer">
+        <xs:sequence>
+            <xs:element name="postnummer" type="xs:string"/>
+            <xs:element name="fragasvar" type="tns:FragaSvar" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="FragaSvar">
+        <xs:sequence>
+            <xs:element name="frageid-srs" type="types:nonEmptyString"/>
+            <xs:element name="svarsid-srs" type="types:nonEmptyString"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="risksignal">
+        <xs:sequence>
+            <xs:element name="riskkategori" type="xs:positiveInteger"/>
+            <xs:element name="beskrivning" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

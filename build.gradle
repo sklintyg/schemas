@@ -1,0 +1,62 @@
+plugins {
+    id "se.inera.intyg.plugin.common" version "1.0.62" apply false
+    id "no.nils.wsdl2java" version "0.10" apply false
+}
+
+allprojects {
+    apply plugin: 'se.inera.intyg.plugin.common'
+    apply plugin: 'no.nils.wsdl2java'
+    apply plugin: 'maven'
+
+    ext {
+        guavaVersion = "20.0"
+        jacksonVersion = "2.8.1"
+        logbackVersion = "1.0.11"
+        // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
+        errorproneExclude = ".*-schemas\$"
+    }
+
+    repositories {
+        maven { url "https://build-inera.nordicmedtest.se/nexus/repository/releases/" }
+        maven { url "http://repo.maven.apache.org/maven2" }
+    }
+
+    dependencies {
+        def jaxbVersion = "0.9.5"
+        def cxfVersion = "3.1.3"
+
+        compile "org.apache.cxf:cxf-rt-frontend-jaxws:${cxfVersion}"
+        compile "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
+        compile "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxbVersion}"
+
+        testCompile "junit:junit:4.+"
+
+        wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxbVersion}"
+        wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics:${jaxbVersion}"
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    // Include schemas in jar file
+    sourceSets.main.resources.srcDirs += file("schemas")
+
+    wsdl2java {
+        generatedWsdlDir = file("build/generatedSource/java")
+        wsdlDir = file("schemas")
+    }
+
+    task tagRelease(type: TagReleaseTask)
+
+    uploadArchives.repositories.mavenDeployer {
+        repository(url: "https://build-inera.nordicmedtest.se/nexus/repository/releases/") {
+            authentication(userName: System.properties['nexusUsername'], password: System.properties['nexusPassword'])
+        }
+    }
+}
+
+configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
+    dependencies {
+        compile "se.inera.intyg.schemas:schemas-support:2.1.3"
+    }
+}
