@@ -3,27 +3,15 @@
 <xs:schema
     xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:3.2"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
     targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
     version="3.2">
 
-  <xs:element name="valideringsunderlag" type="tns:valideringsunderlagType"/>
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_0.1.xsd"/>
 
-  <xs:complexType name="valideringsunderlagType">
-    <xs:sequence>
-      <xs:element name="id" type="xs:string" minOccurs="0"/>
-      <xs:element name="mediaType" type="tns:MediaTypeEnum"/>
-      <xs:element name="value" type="xs:base64Binary" minOccurs="0"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:simpleType name="MediaTypeEnum">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="text/xml"/>
-      <xs:enumeration value="application/pkcs7-mime"/>
-    </xs:restriction>
-  </xs:simpleType>
+  <xs:element name="valideringsunderlag" type="ds:SignatureType"/>
 
 
 </xs:schema>
