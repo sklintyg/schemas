@@ -71,7 +71,7 @@ public final class Personnummer {
         try {
             return Optional.of(new Personnummer(personnummer));
         } catch (InvalidPersonNummerException e) {
-            LOG.error("Error creating personnummer: " + personnummer + " Returning Optional.empty()", e);
+            LOG.info("Could not create a Personnumer object with '" + personnummer + "'. Returning Optional.empty()", e);
             return Optional.empty();
         }
     }
