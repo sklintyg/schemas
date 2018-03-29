@@ -4,7 +4,7 @@ group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'
 version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
-  wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
+  wsdlsToGenerate = [ ["-xjc=-extension,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
                        "-wsdlLocation", "classpath:interactions/GetRecipientsForCertificateInteraction/GetRecipientsForCertificateInteraction_1.0.wsdl",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1",
@@ -13,7 +13,7 @@ wsdl2java {
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificate:1=se.inera.intyg.clinicalprocess.healthcond.certificate.getrecipientsforcertificate.v1",
                        "$projectDir/schemas/interactions/GetRecipientsForCertificateInteraction/GetRecipientsForCertificateInteraction_1.0.wsdl"],
 
-                      ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
+                      ["-xjc=-extension,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
                        "-wsdlLocation", "classpath:interactions/GetMedicalCertificateInteraction/GetMedicalCertificateInteraction_1.0_RIVTABP21.wsdl",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1",
@@ -25,7 +25,7 @@ wsdl2java {
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:GetMedicalCertificate:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.certificate.getmedicalcertificate.v1",
                        "$projectDir/schemas/interactions/GetMedicalCertificateInteraction/GetMedicalCertificateInteraction_1.0_RIVTABP21.wsdl"],
 
-                      ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
+                      ["-xjc=-extension,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding.xjb",
                        "-wsdlLocation", "classpath:interactions/ListKnownRecipientsInteraction/ListKnownRecipientsInteraction_1.0.wsdl",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1",
@@ -34,7 +34,7 @@ wsdl2java {
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:ListKnownRecipients:1=se.inera.intyg.clinicalprocess.healthcond.certificate.listknownrecipients.v1",
                        "$projectDir/schemas/interactions/ListKnownRecipientsInteraction/ListKnownRecipientsInteraction_1.0.wsdl"],
 
-                      ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
+                      ["-xjc=-extension,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",  "-b", "$projectDir/xmldsig-binding.xjb",
                        "-wsdlLocation", "classpath:interactions/GetCertificateTypeInteraction/GetCertificateTypeInteraction_1.0.wsdl",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:3=se.riv.clinicalprocess.healthcond.certificate.v3",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:3.2=se.riv.clinicalprocess.healthcond.certificate.v32",
@@ -45,7 +45,7 @@ wsdl2java {
                        "$projectDir/schemas/interactions/GetCertificateTypeInteraction/GetCertificateTypeInteraction_1.0.wsdl"],
 
 
-                       ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
+                       ["-xjc=-extension,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",  "-b", "$projectDir/xmldsig-binding.xjb",
                        "-wsdlLocation", "classpath:interactions/ListRelationsForCertificateInteraction/ListRelationsForCertificateInteraction_1.0.wsdl",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:3=se.riv.clinicalprocess.healthcond.certificate.v3",
                         "-p", "urn:riv:clinicalprocess:healthcond:certificate:3.2=se.riv.clinicalprocess.healthcond.certificate.v32",
