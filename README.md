@@ -13,6 +13,11 @@ $ cd schemas
 $ mvn install
 ```
 
+### Stöd för namespace prefixes
+Vi använder en extension till JAXB för att kunna generera package-info.java för XMLDSig utan namespace-prefix. Se:
+
+https://github.com/Siggen/jaxb2-namespace-prefix
+
 ## Licens
 Copyright (C) 2014 Inera AB (http://www.inera.se)
 
