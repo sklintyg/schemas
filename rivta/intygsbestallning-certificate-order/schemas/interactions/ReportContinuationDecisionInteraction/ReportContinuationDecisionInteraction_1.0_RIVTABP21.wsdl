@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->		
+<wsdl:definitions name='ReportContinuationDecisionInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tjsr='urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecisionResponder:1' xmlns:tjsi='urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecisionInitiator:1' xmlns:tns='urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecision:1:rivtabp21' targetNamespace='urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecision:1:rivtabp21' xmlns:itr='urn:riv:itintegration:registry:1'>
+  <wsdl:documentation>
+		Tjänsteinteraktionens namn: ReportContinuationDecisionInteraction
+		Beskrivning: 
+		  Hantera myndighetsbeställningar av medicinska utredningar
+		Revisioner: 
+		Tjänstedomän: intygsbestallning:certificate:order
+		Tjänsteinteraktionstyp: Fråga-Svar
+		WS-profil: RIVTABP21
+		Förvaltas av: Sveriges Kommuner och Landsting
+		</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema targetNamespace='urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecision:1:rivtabp21'>
+      <xs:import schemaLocation='ReportContinuationDecisionResponder_1.0.xsd' namespace='urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecisionResponder:1' />
+      <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd' namespace='urn:riv:itintegration:registry:1' />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name='ReportContinuationDecisionRequest'>
+    <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
+      <wsdl:documentation>The organisation number of the receiving insurance institution</wsdl:documentation>
+    </wsdl:part>
+    <wsdl:part name='parameters' element='tjsr:ReportContinuationDecision' />
+  </wsdl:message>
+  <wsdl:message name='ReportContinuationDecisionResponse'>
+    <wsdl:part name='parameters' element='tjsr:ReportContinuationDecisionResponse' />
+  </wsdl:message>
+  <wsdl:portType name='ReportContinuationDecisionResponderInterface'>
+    <wsdl:operation name='ReportContinuationDecision'>
+      <wsdl:input message='tns:ReportContinuationDecisionRequest' />
+      <wsdl:output message='tns:ReportContinuationDecisionResponse' />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name='ReportContinuationDecisionResponderBinding' type='tns:ReportContinuationDecisionResponderInterface'>
+    <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+    <wsdl:operation name='ReportContinuationDecision'>
+      <soap:operation soapAction='urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecisionResponder:1:ReportContinuationDecision' style='document' />
+      <wsdl:input>
+        <soap:header use='literal' message='tns:ReportContinuationDecisionRequest' part='LogicalAddress' />
+        <soap:body use='literal' parts='parameters' />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use='literal' />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name='ReportContinuationDecisionResponderService'>
+    <wsdl:port name='ReportContinuationDecisionResponderPort' binding='tns:ReportContinuationDecisionResponderBinding'>
+      <soap:address location='http://tempuri.org' />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
