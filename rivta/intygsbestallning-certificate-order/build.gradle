@@ -1,0 +1,155 @@
+/*
+ * Copyright (C) 2018 Inera AB (http://www.inera.se)
+ *
+ * This file is part of sklintyg (https://github.com/sklintyg).
+ *
+ * sklintyg is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * sklintyg is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+description = "intygsbestallning-certificate-order"
+
+group = 'se.riv.intygsbestallning.certificate.order'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
+
+wsdl2java {
+  def commonOptions = [
+          "-p",
+          "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1"
+  ]
+
+  wsdlsToGenerate = [
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                   "classpath:interactions/EndAssessmentInteraction/EndAssessmentInteraction_1.0_RIVTABP21.wsdl",
+                   "-p",
+                   "urn:riv-application:intygsbestallning:certificate:order:EndAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.endassessment.rivtabp21.v1",
+                   "-p",
+                   "urn:riv-application:intygsbestallning:certificate:order:EndAssessmentResponder:1=se.riv.intygsbestallning.certificate.order.endassessmentresponder.v1",
+                   "$projectDir/schemas/interactions/EndAssessmentInteraction/EndAssessmentInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/OrderMedicalAssessmentInteraction/OrderMedicalAssessmentInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:OrderMedicalAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.ordermedicalassessment.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:OrderMedicalAssessmentResponder:1=se.riv.intygsbestallning.certificate.order.ordermedicalassessment.v1",
+                  "$projectDir/schemas/interactions/OrderMedicalAssessmentInteraction/OrderMedicalAssessmentInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/ReportCareContactInteraction/ReportCareContactInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportCareContact:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcarecontact.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportCareContactResponder:1=se.riv.intygsbestallning.certificate.order.reportcarecontact.v1",
+                  "$projectDir/schemas/interactions/ReportCareContactInteraction/ReportCareContactInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/ReportCertificateReceivalInteraction/ReportCertificateReceivalInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportCertificateReceival:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcertificatereceival.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportCertificateReceivalResponder:1=se.riv.intygsbestallning.certificate.order.reportcertificatereceival.v1",
+                  "$projectDir/schemas/interactions/ReportCertificateReceivalInteraction/ReportCertificateReceivalInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/ReportContinuationDecisionInteraction/ReportContinuationDecisionInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecision:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcontinuationdecision.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecisionResponder:1=se.riv.intygsbestallning.certificate.order.reportcontinuationdecision.v1",
+                  "$projectDir/schemas/interactions/ReportContinuationDecisionInteraction/ReportContinuationDecisionInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/ReportDeviationInteraction/ReportDeviationInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportDeviation:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportdeviation.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportDeviationResponder:1=se.riv.intygsbestallning.certificate.order.reportdeviation.v1",
+                  "$projectDir/schemas/interactions/ReportDeviationInteraction/ReportDeviationInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/ReportSupplementReceivalInteraction/ReportSupplementReceivalInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportSupplementReceival:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportsupplementreceival.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportSupplementReceivalResponder:1=se.riv.intygsbestallning.certificate.order.reportsupplementreceival.v1",
+                  "$projectDir/schemas/interactions/ReportSupplementReceivalInteraction/ReportSupplementReceivalInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/RequestHealthcarePerformerForAssessmentInteraction/RequestHealthcarePerformerForAssessmentInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:RequestHealthcarePerformerForAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.requesthealthcareperformerforassessment.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:RequestHealthcarePerformerForAssessmentResponder:1=se.riv.intygsbestallning.certificate.order.requesthealthcareperformerforassessment.v1",
+                  "$projectDir/schemas/interactions/RequestHealthcarePerformerForAssessmentInteraction/RequestHealthcarePerformerForAssessmentInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/RequestMedicalCertificateSupplementInteraction/RequestMedicalCertificateSupplementInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:RequestMedicalCertificateSupplement:1:rivtabp21=se.riv.intygsbestallning.certificate.order.requestmedicalcertificatesupplement.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:RequestMedicalCertificateSupplementResponder:1=se.riv.intygsbestallning.certificate.order.requestmedicalcertificatesupplement.v1",
+                  "$projectDir/schemas/interactions/RequestMedicalCertificateSupplementInteraction/RequestMedicalCertificateSupplementInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/RespondToPerformerRequestInteraction/RespondToPerformerRequestInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:RespondToPerformerRequest:1:rivtabp21=se.riv.intygsbestallning.certificate.order.respondtoperformerrequest.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:RespondToPerformerRequestResponder:1=se.riv.intygsbestallning.certificate.order.respondtoperformerrequest.v1",
+                  "$projectDir/schemas/interactions/RespondToPerformerRequestInteraction/RespondToPerformerRequestInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/UpdateAssessmentInteraction/UpdateAssessmentInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:UpdateAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.updateassessment.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:UpdateAssessmentResponder:1=se.riv.intygsbestallning.certificate.order.updateassessment.v1",
+                  "$projectDir/schemas/interactions/UpdateAssessmentInteraction/UpdateAssessmentInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/UpdateOrderInteraction/UpdateOrderInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:UpdateOrder:1:rivtabp21=se.riv.intygsbestallning.certificate.order.updateorder.rivtabp21.v1",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:UpdateOrderResponder:1=se.riv.intygsbestallning.certificate.order.updateorder.v1",
+                  "$projectDir/schemas/interactions/UpdateOrderInteraction/UpdateOrderInteraction_1.0_RIVTABP21.wsdl"
+          ]
+
+  ]
+
+}
