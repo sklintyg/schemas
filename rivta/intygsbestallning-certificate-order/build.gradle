@@ -6,6 +6,10 @@ version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 wsdl2java {
   def commonOptions = [
           "-p",
+          "urn:riv-application:intygsbestallning:certificate:order:1=se.riv.intygsbestallning.certificate.order.v1",
+          "-p",
+          "urn:riv-application:intygsbestallning:certificate:order:enum:1=se.riv.intygsbestallning.certificate.order.v1.enums",
+          "-p",
           "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1"
   ]
 
@@ -15,9 +19,9 @@ wsdl2java {
                   "-wsdlLocation",
                    "classpath:interactions/EndAssessmentInteraction/EndAssessmentInteraction_1.0_RIVTABP21.wsdl",
                    "-p",
-                   "urn:riv-application:intygsbestallning:certificate:order:EndAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.endassessment.rivtabp21.v1",
+                   "urn:riv-application:intygsbestallning:certificate:order:EndAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.endassessment.v1.rivtabp21",
                    "-p",
-                   "urn:riv-application:intygsbestallning:certificate:order:EndAssessmentResponder:1=se.riv.intygsbestallning.certificate.order.endassessmentresponder.v1",
+                   "urn:riv-application:intygsbestallning:certificate:order:EndAssessmentResponder:1=se.riv.intygsbestallning.certificate.order.endassessment.v1",
                    "$projectDir/schemas/interactions/EndAssessmentInteraction/EndAssessmentInteraction_1.0_RIVTABP21.wsdl"
           ],
           commonOptions + [
@@ -25,7 +29,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/OrderMedicalAssessmentInteraction/OrderMedicalAssessmentInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:OrderMedicalAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.ordermedicalassessment.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:OrderMedicalAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.ordermedicalassessment.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:OrderMedicalAssessmentResponder:1=se.riv.intygsbestallning.certificate.order.ordermedicalassessment.v1",
                   "$projectDir/schemas/interactions/OrderMedicalAssessmentInteraction/OrderMedicalAssessmentInteraction_1.0_RIVTABP21.wsdl"
@@ -35,7 +39,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/ReportCareContactInteraction/ReportCareContactInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:ReportCareContact:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcarecontact.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportCareContact:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcarecontact.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:ReportCareContactResponder:1=se.riv.intygsbestallning.certificate.order.reportcarecontact.v1",
                   "$projectDir/schemas/interactions/ReportCareContactInteraction/ReportCareContactInteraction_1.0_RIVTABP21.wsdl"
@@ -45,7 +49,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/ReportCertificateReceivalInteraction/ReportCertificateReceivalInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:ReportCertificateReceival:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcertificatereceival.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportCertificateReceival:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcertificatereceival.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:ReportCertificateReceivalResponder:1=se.riv.intygsbestallning.certificate.order.reportcertificatereceival.v1",
                   "$projectDir/schemas/interactions/ReportCertificateReceivalInteraction/ReportCertificateReceivalInteraction_1.0_RIVTABP21.wsdl"
@@ -55,7 +59,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/ReportContinuationDecisionInteraction/ReportContinuationDecisionInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecision:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcontinuationdecision.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecision:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcontinuationdecision.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecisionResponder:1=se.riv.intygsbestallning.certificate.order.reportcontinuationdecision.v1",
                   "$projectDir/schemas/interactions/ReportContinuationDecisionInteraction/ReportContinuationDecisionInteraction_1.0_RIVTABP21.wsdl"
@@ -65,7 +69,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/ReportDeviationInteraction/ReportDeviationInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:ReportDeviation:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportdeviation.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportDeviation:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportdeviation.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:ReportDeviationResponder:1=se.riv.intygsbestallning.certificate.order.reportdeviation.v1",
                   "$projectDir/schemas/interactions/ReportDeviationInteraction/ReportDeviationInteraction_1.0_RIVTABP21.wsdl"
@@ -75,7 +79,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/ReportSupplementReceivalInteraction/ReportSupplementReceivalInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:ReportSupplementReceival:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportsupplementreceival.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:ReportSupplementReceival:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportsupplementreceival.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:ReportSupplementReceivalResponder:1=se.riv.intygsbestallning.certificate.order.reportsupplementreceival.v1",
                   "$projectDir/schemas/interactions/ReportSupplementReceivalInteraction/ReportSupplementReceivalInteraction_1.0_RIVTABP21.wsdl"
@@ -85,7 +89,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/RequestHealthcarePerformerForAssessmentInteraction/RequestHealthcarePerformerForAssessmentInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:RequestHealthcarePerformerForAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.requesthealthcareperformerforassessment.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:RequestHealthcarePerformerForAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.requesthealthcareperformerforassessment.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:RequestHealthcarePerformerForAssessmentResponder:1=se.riv.intygsbestallning.certificate.order.requesthealthcareperformerforassessment.v1",
                   "$projectDir/schemas/interactions/RequestHealthcarePerformerForAssessmentInteraction/RequestHealthcarePerformerForAssessmentInteraction_1.0_RIVTABP21.wsdl"
@@ -95,7 +99,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/RequestMedicalCertificateSupplementInteraction/RequestMedicalCertificateSupplementInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:RequestMedicalCertificateSupplement:1:rivtabp21=se.riv.intygsbestallning.certificate.order.requestmedicalcertificatesupplement.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:RequestMedicalCertificateSupplement:1:rivtabp21=se.riv.intygsbestallning.certificate.order.requestmedicalcertificatesupplement.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:RequestMedicalCertificateSupplementResponder:1=se.riv.intygsbestallning.certificate.order.requestmedicalcertificatesupplement.v1",
                   "$projectDir/schemas/interactions/RequestMedicalCertificateSupplementInteraction/RequestMedicalCertificateSupplementInteraction_1.0_RIVTABP21.wsdl"
@@ -105,7 +109,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/RespondToPerformerRequestInteraction/RespondToPerformerRequestInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:RespondToPerformerRequest:1:rivtabp21=se.riv.intygsbestallning.certificate.order.respondtoperformerrequest.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:RespondToPerformerRequest:1:rivtabp21=se.riv.intygsbestallning.certificate.order.respondtoperformerrequest.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:RespondToPerformerRequestResponder:1=se.riv.intygsbestallning.certificate.order.respondtoperformerrequest.v1",
                   "$projectDir/schemas/interactions/RespondToPerformerRequestInteraction/RespondToPerformerRequestInteraction_1.0_RIVTABP21.wsdl"
@@ -115,7 +119,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/UpdateAssessmentInteraction/UpdateAssessmentInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:UpdateAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.updateassessment.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:UpdateAssessment:1:rivtabp21=se.riv.intygsbestallning.certificate.order.updateassessment.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:UpdateAssessmentResponder:1=se.riv.intygsbestallning.certificate.order.updateassessment.v1",
                   "$projectDir/schemas/interactions/UpdateAssessmentInteraction/UpdateAssessmentInteraction_1.0_RIVTABP21.wsdl"
@@ -125,7 +129,7 @@ wsdl2java {
                   "-wsdlLocation",
                   "classpath:interactions/UpdateOrderInteraction/UpdateOrderInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:UpdateOrder:1:rivtabp21=se.riv.intygsbestallning.certificate.order.updateorder.rivtabp21.v1",
+                  "urn:riv-application:intygsbestallning:certificate:order:UpdateOrder:1:rivtabp21=se.riv.intygsbestallning.certificate.order.updateorder.v1.rivtabp21",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:UpdateOrderResponder:1=se.riv.intygsbestallning.certificate.order.updateorder.v1",
                   "$projectDir/schemas/interactions/UpdateOrderInteraction/UpdateOrderInteraction_1.0_RIVTABP21.wsdl"
