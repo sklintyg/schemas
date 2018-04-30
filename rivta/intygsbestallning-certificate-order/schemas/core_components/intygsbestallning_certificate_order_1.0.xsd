@@ -38,24 +38,16 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name='CareContactContinuationDecisionType'>
-    <xs:sequence>
-      <xs:element name="assessmentCareContactId" type="tns:IIType"/>
-      <xs:element name="decision" type="tns:CVType"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
-    </xs:sequence> 
-  </xs:complexType>  
-
   <xs:complexType name="CareUnitType">
     <xs:sequence>
       <xs:element name="careUnitId" type="tns:IIType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="careUnitName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="careUnitName" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element name="careGiverId" type="tns:IIType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="careGiverName" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element name="postalAddress" type="tns:AddressType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="phoneNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="subcontractorName" minOccurs="0" maxOccurs="1" />
+      <xs:element name="subcontractorName" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -84,7 +76,7 @@
   
   <xs:complexType name="CitizenLimitedType">
     <xs:sequence>
-      <xs:element name="postalCity" type="tns:CVType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="postalCity" type="xs:string" minOccurs="1" maxOccurs="1"/>
       <xs:element name="specialNeeds" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="earlierAssessmentPerformer" type="tns:IIType" minOccurs="0" maxOccurs="unbounded"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
@@ -94,9 +86,9 @@
   <xs:complexType name="CitizenType">
     <xs:sequence>
       <xs:element name="personalIdentity" type="tns:IIType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="firstName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="firstName" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="middleName" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="lastName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="lastName" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="specialNeeds" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="situationBackground" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>

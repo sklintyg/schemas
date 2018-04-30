@@ -57,16 +57,6 @@ wsdl2java {
           commonOptions + [
                   "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
                   "-wsdlLocation",
-                  "classpath:interactions/ReportContinuationDecisionInteraction/ReportContinuationDecisionInteraction_1.0_RIVTABP21.wsdl",
-                  "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecision:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportcontinuationdecision.v1.rivtabp21",
-                  "-p",
-                  "urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecisionResponder:1=se.riv.intygsbestallning.certificate.order.reportcontinuationdecision.v1",
-                  "$projectDir/schemas/interactions/ReportContinuationDecisionInteraction/ReportContinuationDecisionInteraction_1.0_RIVTABP21.wsdl"
-          ],
-          commonOptions + [
-                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
-                  "-wsdlLocation",
                   "classpath:interactions/ReportDeviationInteraction/ReportDeviationInteraction_1.0_RIVTABP21.wsdl",
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:ReportDeviation:1:rivtabp21=se.riv.intygsbestallning.certificate.order.reportdeviation.v1.rivtabp21",
@@ -133,8 +123,16 @@ wsdl2java {
                   "-p",
                   "urn:riv-application:intygsbestallning:certificate:order:UpdateOrderResponder:1=se.riv.intygsbestallning.certificate.order.updateorder.v1",
                   "$projectDir/schemas/interactions/UpdateOrderInteraction/UpdateOrderInteraction_1.0_RIVTABP21.wsdl"
+          ],
+          commonOptions + [
+                  "-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                  "-wsdlLocation",
+                  "classpath:interactions/RespondToOrderInteraction/RespondToOrderInteraction_1.0_RIVTABP21.wsdl",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:RespondToOrder:1:rivtabp21=se.riv.intygsbestallning.certificate.order.respondtoorder.v1.rivtabp21",
+                  "-p",
+                  "urn:riv-application:intygsbestallning:certificate:order:RespondToOrderResponder:1=se.riv.intygsbestallning.certificate.order.respondtoorderresponder.v1",
+                  "$projectDir/schemas/interactions/RespondToOrderInteraction/RespondToOrderInteraction_1.0_RIVTABP21.wsdl"
           ]
-
   ]
-
 }

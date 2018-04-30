@@ -19,9 +19,9 @@
  -->		
 <xs:schema 
   xmlns:xs='http://www.w3.org/2001/XMLSchema' 
-  xmlns:tns='urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecisionResponder:1' 
+  xmlns:tns='urn:riv-application:intygsbestallning:certificate:order:RespondToOrderResponder:1' 
   xmlns:core='urn:riv-application:intygsbestallning:certificate:order:1' 
-  targetNamespace='urn:riv-application:intygsbestallning:certificate:order:ReportContinuationDecisionResponder:1' 
+  targetNamespace='urn:riv-application:intygsbestallning:certificate:order:RespondToOrderResponder:1' 
   elementFormDefault='qualified' 
   attributeFormDefault='unqualified' 
   version='1.0'>
@@ -30,21 +30,20 @@
     schemaLocation='../../core_components/intygsbestallning_certificate_order_1.0.xsd' 
     namespace='urn:riv-application:intygsbestallning:certificate:order:1' />
 
-  <xs:element name='ReportContinuationDecision' type='tns:ReportContinuationDecisionType' />
+  <xs:element name='RespondToOrder' type='tns:RespondToOrderType' />
 
-  <xs:element name='ReportContinuationDecisionResponse' type='tns:ReportContinuationDecisionResponseType' />
+  <xs:element name='RespondToOrderResponse' type='tns:RespondToOrderResponseType' />
 
-  <xs:complexType name='ReportContinuationDecisionType'>
+  <xs:complexType name='RespondToOrderType'>
     <xs:sequence>
       <xs:element name='assessmentId' type='core:IIType' minOccurs="1" maxOccurs="1" />
-      <xs:element name='description' type='xs:string' minOccurs="0" maxOccurs="1"/>
-      <xs:element name='causedByDeviationId' type='core:IIType' minOccurs="0" maxOccurs="1" />
-      <xs:element name='careContactDecisions' type='core:CareContactContinuationDecisionType' minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name='response' type='core:CVType' minOccurs="0" maxOccurs="1"/>
+      <xs:element name='comment' type='xs:string' minOccurs="0" maxOccurs="1" />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
   
-  <xs:complexType name='ReportContinuationDecisionResponseType'>
+  <xs:complexType name='RespondToOrderResponseType'>
     <xs:sequence>
       <xs:element name="result" type="core:ResultType" minOccurs="1" maxOccurs="1"/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
