@@ -150,9 +150,9 @@
   <iso:pattern id="q3.2">
     <iso:rule context="//gn:delsvar[@id='3.2']">
       <iso:extends rule="cv"/>
-      <iso:assert test="tp:cv/tp:codeSystem = 'KV_DODSPLATS_BOENDE'">'codeSystem' måste vara 'KV_DODSPLATS_BOENDE'.</iso:assert>
+      <iso:assert test="tp:cv/tp:codeSystem = '65f0069f-14b5-4634-b187-5193580a3349'">'codeSystem' måste vara '65f0069f-14b5-4634-b187-5193580a3349'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(SJUKHUS|ORDINART_BOENDE|SARSKILT_BOENDE|ANNAN)$')">
-        'KV_DODSPLATS_BOENDE' kan ha ett av värdena SJUKHUS, ORDINART_BOENDE, SARSKILT_BOENDE, ANNAN.
+        '65f0069f-14b5-4634-b187-5193580a3349' kan ha ett av värdena SJUKHUS, ORDINART_BOENDE, SARSKILT_BOENDE, ANNAN.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -257,9 +257,9 @@
   <iso:pattern id="q6.2">
     <iso:rule context="//gn:delsvar[@id='6.2' and ../gn:delsvar[@id='6.1' and matches(normalize-space(.), '0|false')]]">
       <iso:extends rule="cv"/>
-      <iso:assert test="tp:cv/tp:codeSystem = 'KV_DETALJER_UNDERSOKNING'">'codeSystem' måste vara 'KV_DETALJER_UNDERSOKNING'.</iso:assert>
+      <iso:assert test="tp:cv/tp:codeSystem = 'da46dd8c-b3f1-4e39-8d62-777d069213ea'">'codeSystem' måste vara 'da46dd8c-b3f1-4e39-8d62-777d069213ea'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(UNDERSOKNING_GJORT|UNDERSOKNING_SKA_GORAS)$')">
-        'KV_DETALJER_UNDERSOKNING' kan ha ett av värdena UNDERSOKNING_GJORT, UNDERSOKNING_SKA_GORAS.
+        'da46dd8c-b3f1-4e39-8d62-777d069213ea' kan ha ett av värdena UNDERSOKNING_GJORT, UNDERSOKNING_SKA_GORAS.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
