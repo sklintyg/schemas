@@ -25,11 +25,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import se.inera.intyg.schemas.contract.util.HashUtility;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Optional;
 
 @JsonDeserialize(using = PersonnummerDeserializer.class)
-public final class Personnummer {
+public final class Personnummer implements Serializable {
 
     private static final Logger LOG = LoggerFactory.getLogger(Personnummer.class);
 
