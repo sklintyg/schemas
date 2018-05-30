@@ -165,9 +165,9 @@
   <iso:pattern id="q3.2">
     <iso:rule context="//gn:delsvar[@id='3.2']">
       <iso:extends rule="cv"/>
-      <iso:assert test="tp:cv/tp:codeSystem = 'KV_DODSPLATS_BOENDE'">'codeSystem' måste vara 'KV_DODSPLATS_BOENDE'.</iso:assert>
+      <iso:assert test="tp:cv/tp:codeSystem = '65f0069f-14b5-4634-b187-5193580a3349'">'codeSystem' måste vara '65f0069f-14b5-4634-b187-5193580a3349'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(SJUKHUS|ORDINART_BOENDE|SARSKILT_BOENDE|ANNAN)$')">
-        'KV_DODSPLATS_BOENDE' kan ha ett av värdena SJUKHUS, ORDINART_BOENDE, SARSKILT_BOENDE, ANNAN.
+        '65f0069f-14b5-4634-b187-5193580a3349' kan ha ett av värdena SJUKHUS, ORDINART_BOENDE, SARSKILT_BOENDE, ANNAN.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -449,9 +449,9 @@
   <iso:pattern id="q12.2">
     <iso:rule context="//gn:delsvar[@id='12.2']">
       <iso:extends rule="cv"/>
-      <iso:assert test="tp:cv/tp:codeSystem = 'KV_ORSAK'">'codeSystem' måste vara 'KV_ORSAK'.</iso:assert>
+      <iso:assert test="tp:cv/tp:codeSystem = 'e5d1d1fb-d918-47b4-9e69-483d3be523ee'">'codeSystem' måste vara 'e5d1d1fb-d918-47b4-9e69-483d3be523ee'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(OLYCKSFALL|SJALVMORD|AVSIKTLIGT_VALLAD|OKLART)$')">
-        'KV_ORSAK' kan ha ett av värdena OLYCKSFALL, SJALVMORD, AVSIKTLIGT_VALLAD, OKLART
+        'e5d1d1fb-d918-47b4-9e69-483d3be523ee' kan ha ett av värdena OLYCKSFALL, SJALVMORD, AVSIKTLIGT_VALLAD, OKLART
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -531,9 +531,9 @@
   <iso:pattern id="q13.1">
     <iso:rule context="//gn:delsvar[@id='13.1']">
       <iso:extends rule="cv"/>
-      <iso:assert test="tp:cv/tp:codeSystem = 'KV_DODSORSAKSUPPGIFTER'">'codeSystem' måste vara 'KV_DODSORSAKSUPPGIFTER'.</iso:assert>
+      <iso:assert test="tp:cv/tp:codeSystem = 'f9051865-b97c-4ee3-98ab-db2b7a11176e'">'codeSystem' måste vara 'f9051865-b97c-4ee3-98ab-db2b7a11176e'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(UNDERSOKNING_FORE_DODEN|UNDERSOKNING_EFTER_DODEN|KLINISK_OBDUKTION|RATTSMEDICINSK_OBDUKTION|RATTSMEDICINSK_BESIKTNING)$')">
-        'KV_DODSORSAKSUPPGIFTER' kan ha ett av värdena UNDERSOKNING_FORE_DODEN, UNDERSOKNING_EFTER_DODEN, KLINISK_OBDUKTION, RATTSMEDICINSK_OBDUKTION, RATTSMEDICINSK_BESIKTNING.
+        'f9051865-b97c-4ee3-98ab-db2b7a11176e' kan ha ett av värdena UNDERSOKNING_FORE_DODEN, UNDERSOKNING_EFTER_DODEN, KLINISK_OBDUKTION, RATTSMEDICINSK_OBDUKTION, RATTSMEDICINSK_BESIKTNING.
       </iso:assert>
     </iso:rule>
   </iso:pattern>

@@ -1,7 +1,7 @@
 #!groovy
 
-def buildVersion = "1.0.RC4.5"
-def projectName = "infrastructure-directory-employee-schemas"
+def buildVersion = "1.0-RC3"
+def projectName = "intygsbestallning-certificate-order-schemas"
 
 stage('checkout') {
     node {

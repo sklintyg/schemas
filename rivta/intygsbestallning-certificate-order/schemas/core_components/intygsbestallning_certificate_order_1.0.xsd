@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Sveriges Kommuner och Landsting licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->		
+<xs:schema 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  xmlns:tns="urn:riv-application:intygsbestallning:certificate:order:1"
+  xmlns:codes="urn:riv-application:intygsbestallning:certificate:order:enum:1"
+  targetNamespace="urn:riv-application:intygsbestallning:certificate:order:1" 
+  elementFormDefault="qualified" 
+  attributeFormDefault="unqualified" 
+  version="1.0">
+  
+  <xs:import namespace="urn:riv-application:intygsbestallning:certificate:order:enum:1"
+    schemaLocation="intygsbestallning_certificate_order_enum_1.0.xsd"/>  
+  
+  <xs:complexType name="AddressType">
+    <xs:sequence>
+      <xs:element name="postalAddress" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="postalCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="postalCity" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CareUnitType">
+    <xs:sequence>
+      <xs:element name="careUnitId" type="tns:IIType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="careUnitName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="careGiverId" type="tns:IIType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="careGiverName" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="postalAddress" type="tns:AddressType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="phoneNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="subcontractorName" type="xs:string" minOccurs="0" maxOccurs="1" />
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PerformerRequestResponseType">
+    <xs:sequence>
+      <xs:element name="response" type="tns:CVType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="comment" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="performerCareUnit" type="tns:CareUnitType" minOccurs="0" maxOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="AuthorityAdministrativeOfficialType">
+    <xs:sequence>
+      <xs:element name="fullName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="phoneNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="authority" type="tns:CVType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="officeName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="officeCostCenter" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="officeAddress" type="tns:AddressType" minOccurs="0" maxOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>  
+  
+  <xs:complexType name="CitizenLimitedType">
+    <xs:sequence>
+      <xs:element name="postalCity" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="specialNeeds" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="earlierAssessmentPerformer" type="tns:IIType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="CitizenType">
+    <xs:sequence>
+      <xs:element name="personalIdentity" type="tns:IIType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="firstName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="middleName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="lastName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="specialNeeds" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="situationBackground" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>  
+  
+  <xs:complexType name="CVType">
+    <xs:annotation>
+      <xs:documentation/>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="codeSystem" type="xs:string"/>
+      <xs:element minOccurs="0" name="codeSystemName" type="xs:string"/>
+      <xs:element minOccurs="0" name="codeSystemVersion" type="xs:string"/>
+      <xs:element minOccurs="0" name="displayName" type="xs:string"/>
+      <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="IIType">
+    <xs:sequence>
+      <xs:element name="root" type="xs:string"/>
+      <xs:element name="extension" type="xs:string"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="TimeStampType">
+    <xs:annotation>
+      <xs:documentation>
+        A quantity specifying a point on the axis of natural time.
+        A point in time is most often represented as a calendar
+        expression.
+        
+        The time has the format YYYYMMDDhhmmss
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern
+        value="(19|20)\d\d(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])(0[0-9]|1[0-9]|2[0123])([0-5])([0-9])([0-5])([0-9])"
+      />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="DateType">
+    <xs:annotation>
+      <xs:documentation>
+        A quantity specifying a date.
+        
+        The date has the format YYYYMMDD
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern
+        value="(19|20)\d\d(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])"
+      />
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="TimePeriodType">
+    <xs:sequence>
+      <xs:element name="start" type="tns:TimeStampType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="end" type="tns:TimeStampType" minOccurs="0" maxOccurs="1"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ResultType">
+    <xs:annotation>
+      <xs:documentation xml:lang="sv">
+        Datatyp som returneras
+        som ett generellt svar från alla förändrande tjänster, t.ex. skapa,
+        radera, etc.
+        En anropande klient skall alltid kontrollera att
+        resultatkoden inte innehåller fel för att på så sätt veta om anropet
+        lyckades.
+        Alla svarskoder förutom OK och INFO betyder att åtgärden
+        inte genomfördes.
+        Om svarskoden är INFO skall fältet resultText
+        innehålla mer information.
+        Om svarskorden är ERROR skall fältet
+        errorId innehålla en specifik felkod, och fältet resultText
+        innehålla mer information.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="resultCode" type="tns:ResultCodeType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="resultText" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="logId" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="errorId" type="tns:ErrorIdType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:simpleType name="ResultCodeType">
+    <xs:annotation>
+      <xs:documentation xml:lang="sv">
+        Enumerationsvärde som
+        anger de svarskoder som finns.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har
+            utförts enligt uppdraget.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="INFO">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har
+            utförts enligt begäran, men det finns ett meddelande som
+            konsumenten bör visa upp.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ERROR">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har INTE
+            kunnat utföras. Det finns en felkod som klassificerar
+            felet, samt
+            ett meddelande som konsumenten bör visa upp.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:simpleType name="ErrorIdType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="VALIDATION_ERROR">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            En eller flera
+            inparametrar innehåller felaktiga värden. Angiven
+            tjänst utfördes
+            ej, och omsändning av
+            transaktionen är inte tillämpbart.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="APPLICATION_ERROR">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har INTE
+            kunnat utföras p.g.a ett logiskt fel. Det finns ett
+            meddelande som
+            konsumenten bör
+            visa upp. Då felet är logisk är omsändning av
+            transaktionen inte
+            tillämpbart.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TECHNICAL_ERROR">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Transaktionen har INTE
+            kunnat utföras p.g.a ett tekniskt fel. Det finns ett
+            meddelande som
+            konsumenten bör
+            visa upp. Felet kan vara intermittent, varför
+            omsändning av transaktionen är tillämpbart.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

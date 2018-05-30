@@ -195,6 +195,13 @@ public class PersonnummerTest {
         assertEquals(2, pnr.calculateControlDigit());
     }
 
+
+    @Test
+    public void testCalculateControlDigit12DigitsWithLargeDigits() {
+        Personnummer pnr = createPnr("19990104-2383").get();
+        assertEquals(3, pnr.calculateControlDigit());
+    }
+
     private void validatePersonnummerWithoutDash(String input, String expected) {
         Optional<Personnummer> pnr = createPnr(input);
         if(!pnr.isPresent()) {

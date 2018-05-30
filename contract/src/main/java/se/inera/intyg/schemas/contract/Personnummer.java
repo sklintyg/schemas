@@ -25,17 +25,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import se.inera.intyg.schemas.contract.util.HashUtility;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Optional;
 
 @JsonDeserialize(using = PersonnummerDeserializer.class)
-public final class Personnummer {
+public final class Personnummer implements Serializable {
 
     private static final Logger LOG = LoggerFactory.getLogger(Personnummer.class);
 
     private static final int[] CONTROL_DIGIT_WEIGHTS = { 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
     private static final int SHORT_PNR_LEN = 10;
     private static final int LONG_PNR_LEN = 12;
+
+    private static final int CONTROL_DIGIT_SUM_THRESHOLD = 10;
 
     /*
      * The original personnummer
@@ -71,7 +74,7 @@ public final class Personnummer {
         try {
             return Optional.of(new Personnummer(personnummer));
         } catch (InvalidPersonNummerException e) {
-            LOG.error("Error creating personnummer: " + personnummer + " Returning Optional.empty()", e);
+            LOG.info("Could not create a Personnumer object with '" + personnummer + "'. Returning Optional.empty()", e);
             return Optional.empty();
         }
     }
@@ -235,11 +238,16 @@ public final class Personnummer {
         return String.valueOf(century);
     }
 
+    /**
+     * When calculating control digit with the 2,1,2,1... method, the sum for a digit
+     * may be > 9. For example in 1978 the 7 will be multiplied by 2, e.g i == 14. 14 is summed as 1+4.
+     * In that case 14/10 == 1 and then 14%10 == 4. Result is 5.
+     */
     private int sumControlDigit(int i) {
-        if (i < SHORT_PNR_LEN) {
+        if (i < CONTROL_DIGIT_SUM_THRESHOLD) {
             return i;
         } else {
-            return i / SHORT_PNR_LEN + i % SHORT_PNR_LEN;
+            return i / CONTROL_DIGIT_SUM_THRESHOLD + i % CONTROL_DIGIT_SUM_THRESHOLD;
         }
     }
 

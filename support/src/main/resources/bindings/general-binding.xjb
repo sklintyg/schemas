@@ -27,6 +27,7 @@
   <jaxb:globalBindings collectionType="java.util.ArrayList" generateValueClass="true">
     <xjc:javaType name="java.time.LocalDate" xmlType="xs:date" adapter="se.inera.intyg.schemas.support.adapter.xml.LocalDateXmlAdapter" />
     <xjc:javaType name="java.time.LocalDateTime" xmlType="xs:dateTime" adapter="se.inera.intyg.schemas.support.adapter.xml.LocalDateTimeXmlAdapter" />
+    <xjc:serializable uid="1" />
   </jaxb:globalBindings>
 
 </jaxb:bindings>
