@@ -21,6 +21,7 @@ package se.inera.intyg.schemas.contract;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.Objects;
+import com.oracle.tools.packager.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import se.inera.intyg.schemas.contract.util.HashUtility;
@@ -74,7 +75,8 @@ public final class Personnummer implements Serializable {
         try {
             return Optional.of(new Personnummer(personnummer));
         } catch (InvalidPersonNummerException e) {
-            LOG.info("Could not create a Personnumer object with '" + personnummer + "'. Returning Optional.empty()", e);
+            LOG.debug(e.getMessage());
+            LOG.info(String.format("Can not create a Personnumer object with '%s'. Returning Optional.empty()", personnummer));
             return Optional.empty();
         }
     }
