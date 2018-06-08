@@ -4,12 +4,14 @@
     xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:3.2"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+    xmlns:xf="http://www.w3.org/2002/06/xmldsig-filter2"
     targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
     elementFormDefault="qualified"
     attributeFormDefault="unqualified"
     version="3.2">
 
   <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_0.1.xsd"/>
+  <xs:import namespace="http://www.w3.org/2002/06/xmldsig-filter2" schemaLocation="xmldsig-filter2.xsd"/>
 
   <xs:element name="valideringsunderlag" type="ds:SignatureType"/>
 

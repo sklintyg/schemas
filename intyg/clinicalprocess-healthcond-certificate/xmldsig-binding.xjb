@@ -18,6 +18,7 @@
   -->
 
 <jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+               xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
                xmlns:namespace="http://jaxb2-commons.dev.java.net/namespace-prefix"
                jaxb:extensionBindingPrefixes="xjc"
                jaxb:version="2.1">
@@ -25,6 +26,15 @@
     <jaxb:bindings schemaLocation="schemas/core_components/xmldsig-core-schema_0.1.xsd">
         <jaxb:schemaBindings>
             <jaxb:package name="org.w3._2000._09.xmldsig_" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings>
+            <namespace:prefix name="" />
+        </jaxb:bindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="schemas/core_components/xmldsig-filter2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="org.w3._2002._06.xmldsig_filter2" />
         </jaxb:schemaBindings>
         <jaxb:bindings>
             <namespace:prefix name="" />

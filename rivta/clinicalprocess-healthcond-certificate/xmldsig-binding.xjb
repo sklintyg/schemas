@@ -31,4 +31,13 @@
         </jaxb:bindings>
     </jaxb:bindings>
 
+    <jaxb:bindings schemaLocation="schemas/core_components/xmldsig-filter2.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="org.w3._2002._06.xmldsig_filter2" />
+        </jaxb:schemaBindings>
+        <jaxb:bindings>
+            <namespace:prefix name="" />
+        </jaxb:bindings>
+    </jaxb:bindings>
+
 </jaxb:bindings>
