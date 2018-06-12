@@ -13,7 +13,13 @@
   <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_0.1.xsd"/>
   <xs:import namespace="http://www.w3.org/2002/06/xmldsig-filter2" schemaLocation="xmldsig-filter2.xsd"/>
 
-  <xs:element name="valideringsunderlag" type="ds:SignatureType"/>
+  <xs:element name="Signature" type="ds:SignatureType"/>
+  <xs:element name="utredningsID" type="tns:UtredningsIDType"/>
 
-
+  <xs:complexType name="UtredningsIDType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string" minOccurs="0"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
 </xs:schema>

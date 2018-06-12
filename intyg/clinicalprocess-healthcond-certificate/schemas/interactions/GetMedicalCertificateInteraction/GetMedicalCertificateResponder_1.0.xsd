@@ -42,7 +42,7 @@
     xmlns:mu7263="urn:riv:insuranceprocess:healthreporting:mu7263:3"
     elementFormDefault="qualified">
 
-    <import schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_1.0.xsd" namespace="urn:riv:clinicalprocess:healthcond:certificate:1" />
+    <import schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_1.0.xsd" namespace="urn:riv:clinicalprocess:healthcond:certificate:1" />
     <import schemaLocation="../../core_components/MU7263-RIV_3.1.xsd" namespace="urn:riv:insuranceprocess:healthreporting:mu7263:3" />
 
     <element name="GetMedicalCertificateRequest" type="tns:GetMedicalCertificateRequestType" />
