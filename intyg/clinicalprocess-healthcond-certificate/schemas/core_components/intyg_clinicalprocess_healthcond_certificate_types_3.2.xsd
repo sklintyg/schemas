@@ -3,7 +3,7 @@
 	xmlns="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 	elementFormDefault="qualified" attributeFormDefault="unqualified"
-	version="3.0">
+	version="3.2">
 
 	<xs:complexType name="IntygId">
 		<xs:complexContent>
@@ -295,6 +295,30 @@
 			<xs:element name="start" type="TimeStampType" minOccurs="0" />
 			<xs:element name="end" type="TimeStampType" minOccurs="0" />
 		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="KallaAdressuppgifterType">
+		<xs:complexContent>
+			<xs:restriction base="CVType">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string" />
+					<xs:element name="codeSystem" type="xs:string" fixed="4ade8de2-effe-41d0-b177-fedc820e69fa" />
+					<xs:element name="displayName" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="LegitimeratYrkeType">
+		<xs:complexContent>
+			<xs:restriction base="CVType">
+				<xs:sequence>
+					<xs:element name="code" type="xs:string" />
+					<xs:element name="codeSystem" type="xs:string" fixed="1.2.752.29.23.1.6" />
+					<xs:element name="displayName" type="xs:string" minOccurs="0" />
+				</xs:sequence>
+			</xs:restriction>
+		</xs:complexContent>
 	</xs:complexType>
 
 	<!-- Element tillagda för att kunna hantera användning av datatyperna i 

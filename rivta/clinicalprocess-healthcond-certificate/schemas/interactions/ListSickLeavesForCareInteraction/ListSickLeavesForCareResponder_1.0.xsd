@@ -27,7 +27,7 @@
     version='1.0'>
 
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3" schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd"/>
-  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.0.xsd"/>
+  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.2.xsd"/>
   <xs:import schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2_ext.xsd"
           namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2" />
   <xs:import namespace="http://www.w3.org/2000/09/xmldsig#"

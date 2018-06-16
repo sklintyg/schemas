@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xs:schema
-    xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:3.2"
-    xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
-    xmlns:xf="http://www.w3.org/2002/06/xmldsig-filter2"
-    targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
-    elementFormDefault="qualified"
-    attributeFormDefault="unqualified"
-    version="3.2">
+<xs:schema xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:3.2"
+           xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+           targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="3.2">
 
-  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_0.1.xsd"/>
-  <xs:import namespace="http://www.w3.org/2002/06/xmldsig-filter2" schemaLocation="xmldsig-filter2.xsd"/>
+  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="clinicalprocess_healthcond_certificate_types_3.2.xsd" />
+  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_0.1.xsd" />
 
-  <xs:element name="Signature" type="ds:SignatureType"/>
-  <xs:element name="utredningsID" type="tns:UtredningsIDType"/>
+  <xs:element name="Signature" type="ds:SignatureType" />
+  <xs:element name="legitimeratyrke" type="types:LegitimeratYrkeType" />
+  <xs:element name="kallaAdressuppgifter" type="types:KallaAdressuppgifterType" />
 
-  <xs:complexType name="UtredningsIDType">
-    <xs:sequence>
-      <xs:element name="id" type="xs:string" minOccurs="0"/>
-      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded" />
-    </xs:sequence>
-  </xs:complexType>
 </xs:schema>

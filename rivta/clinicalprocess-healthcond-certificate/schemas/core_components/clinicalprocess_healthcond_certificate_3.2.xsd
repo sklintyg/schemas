@@ -8,7 +8,7 @@
 		version="3.2">
 
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-			schemaLocation="clinicalprocess_healthcond_certificate_types_3.0.xsd" />
+			schemaLocation="clinicalprocess_healthcond_certificate_types_3.2.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
 			schemaLocation="clinicalprocess_healthcond_certificate_3.2_ext.xsd" />
 
@@ -29,7 +29,6 @@
 			<xs:element name="status" type="IntygsStatus" minOccurs="0" maxOccurs="unbounded" />
 			<xs:element name="svar" type="Svar" minOccurs="0" maxOccurs="unbounded" />
 			<xs:element ref="m1:Signature" minOccurs="0" />
-			<xs:element ref="m1:utredningsID" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -56,8 +55,7 @@
 			<xs:element name="enhet" type="Enhet" />
 			<xs:element name="specialistkompetens" type="types:Specialistkompetens"
 					minOccurs="0" maxOccurs="unbounded" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-					maxOccurs="unbounded" />
+			<xs:element ref="m1:legitimeratyrke" minOccurs="0"  maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -111,8 +109,7 @@
 			<xs:element name="postadress" type="xs:string" />
 			<xs:element name="postnummer" type="xs:string" />
 			<xs:element name="postort" type="xs:string" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-					maxOccurs="unbounded" />
+			<xs:element ref="m1:kallaAdressuppgifter" minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
