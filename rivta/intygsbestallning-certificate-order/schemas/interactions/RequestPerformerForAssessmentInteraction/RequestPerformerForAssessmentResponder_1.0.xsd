@@ -18,22 +18,22 @@
  under the License.
  -->		
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:tns="urn:riv-application:intygsbestallning:certificate:order:RequestHealthcarePerformerForAssessmentResponder:1"
+  xmlns:tns="urn:riv-application:intygsbestallning:certificate:order:RequestPerformerForAssessmentResponder:1"
   xmlns:core="urn:riv-application:intygsbestallning:certificate:order:1"
-  targetNamespace="urn:riv-application:intygsbestallning:certificate:order:RequestHealthcarePerformerForAssessmentResponder:1"
+  targetNamespace="urn:riv-application:intygsbestallning:certificate:order:RequestPerformerForAssessmentResponder:1"
   elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
   
   <xs:import
     schemaLocation="../../core_components/intygsbestallning_certificate_order_1.0.xsd"
     namespace="urn:riv-application:intygsbestallning:certificate:order:1"/>
 
-  <xs:element name="RequestHealthcarePerformerForAssessment"
-    type="tns:RequestHealthcarePerformerForAssessmentType"/>
+  <xs:element name="RequestPerformerForAssessment"
+    type="tns:RequestPerformerForAssessmentType"/>
 
-  <xs:element name="RequestHealthcarePerformerForAssessmentResponse"
-    type="tns:RequestHealthcarePerformerForAssessmentResponseType"/>
+  <xs:element name="RequestPerformerForAssessmentResponse"
+    type="tns:RequestPerformerForAssessmentResponseType"/>
 
-  <xs:complexType name="RequestHealthcarePerformerForAssessmentType">
+  <xs:complexType name="RequestPerformerForAssessmentType">
     <xs:sequence>
       <xs:element name="certificateType" type="core:CVType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="lastResponseDate" type="core:DateType" minOccurs="1" maxOccurs="1"/>
@@ -48,7 +48,7 @@
     </xs:sequence>
   </xs:complexType>
   
-  <xs:complexType name="RequestHealthcarePerformerForAssessmentResponseType">
+  <xs:complexType name="RequestPerformerForAssessmentResponseType">
     <xs:sequence>
       <xs:element name="assessmentId" type="core:IIType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="result" type="core:ResultType" minOccurs="1" maxOccurs="1"/>

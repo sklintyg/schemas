@@ -21,14 +21,12 @@ package se.inera.intyg.schemas.contract;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.Objects;
-import com.oracle.tools.packager.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import se.inera.intyg.schemas.contract.util.HashUtility;
-
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Optional;
+import se.inera.intyg.schemas.contract.util.HashUtility;
 
 @JsonDeserialize(using = PersonnummerDeserializer.class)
 public final class Personnummer implements Serializable {

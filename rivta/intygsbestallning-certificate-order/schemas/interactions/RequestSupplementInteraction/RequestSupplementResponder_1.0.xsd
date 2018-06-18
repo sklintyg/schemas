@@ -19,9 +19,9 @@
  -->		
 <xs:schema 
   xmlns:xs='http://www.w3.org/2001/XMLSchema' 
-  xmlns:tns='urn:riv-application:intygsbestallning:certificate:order:RequestMedicalCertificateSupplementResponder:1' 
+  xmlns:tns='urn:riv-application:intygsbestallning:certificate:order:RequestSupplementResponder:1'
   xmlns:core='urn:riv-application:intygsbestallning:certificate:order:1' 
-  targetNamespace='urn:riv-application:intygsbestallning:certificate:order:RequestMedicalCertificateSupplementResponder:1' 
+  targetNamespace='urn:riv-application:intygsbestallning:certificate:order:RequestSupplementResponder:1'
   elementFormDefault='qualified' 
   attributeFormDefault='unqualified' 
   version='1.0'>
@@ -30,11 +30,11 @@
     schemaLocation='../../core_components/intygsbestallning_certificate_order_1.0.xsd' 
     namespace='urn:riv-application:intygsbestallning:certificate:order:1' />
   
-  <xs:element name='RequestMedicalCertificateSupplement' type='tns:RequestMedicalCertificateSupplementType' />
+  <xs:element name='RequestSupplement' type='tns:RequestSupplementType' />
   
-  <xs:element name='RequestMedicalCertificateSupplementResponse' type='tns:RequestMedicalCertificateSupplementResponseType' />
+  <xs:element name='RequestSupplementResponse' type='tns:RequestSupplementResponseType' />
   
-  <xs:complexType name='RequestMedicalCertificateSupplementType'>
+  <xs:complexType name='RequestSupplementType'>
     <xs:sequence>
       <xs:element name='assessmentId' type='core:IIType' minOccurs="1" maxOccurs="1" />
       <xs:element name='lastDateForSupplementReceival' type='core:DateType' minOccurs="0" maxOccurs="1"/>
@@ -42,7 +42,7 @@
     </xs:sequence>
   </xs:complexType>
   
-  <xs:complexType name='RequestMedicalCertificateSupplementResponseType'>
+  <xs:complexType name='RequestSupplementResponseType'>
     <xs:sequence>
       <xs:element name='supplementRequestId' type='core:IIType' minOccurs="1" maxOccurs="1" />
       <xs:element name="result" type="core:ResultType" minOccurs="1" maxOccurs="1"/>

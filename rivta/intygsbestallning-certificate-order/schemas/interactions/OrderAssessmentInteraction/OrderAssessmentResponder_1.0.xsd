@@ -19,9 +19,9 @@
  -->		
 <xs:schema 
   xmlns:xs='http://www.w3.org/2001/XMLSchema' 
-  xmlns:tns='urn:riv-application:intygsbestallning:certificate:order:OrderMedicalAssessmentResponder:1' 
+  xmlns:tns='urn:riv-application:intygsbestallning:certificate:order:OrderAssessmentResponder:1'
   xmlns:core='urn:riv-application:intygsbestallning:certificate:order:1' 
-  targetNamespace='urn:riv-application:intygsbestallning:certificate:order:OrderMedicalAssessmentResponder:1' 
+  targetNamespace='urn:riv-application:intygsbestallning:certificate:order:OrderAssessmentResponder:1'
   elementFormDefault='qualified' 
   attributeFormDefault='unqualified' 
   version='1.0'>
@@ -30,11 +30,11 @@
     schemaLocation='../../core_components/intygsbestallning_certificate_order_1.0.xsd' 
     namespace='urn:riv-application:intygsbestallning:certificate:order:1' />
   
-  <xs:element name='OrderMedicalAssessment' type='tns:OrderMedicalAssessmentType' />
+  <xs:element name='OrderAssessment' type='tns:OrderAssessmentType' />
   
-  <xs:element name='OrderMedicalAssessmentResponse' type='tns:OrderMedicalAssessmentResponseType' />
+  <xs:element name='OrderAssessmentResponse' type='tns:OrderAssessmentResponseType' />
   
-  <xs:complexType name='OrderMedicalAssessmentType'>
+  <xs:complexType name='OrderAssessmentType'>
     <xs:sequence>
       <xs:element name='assessmentId' type='core:IIType' minOccurs="0" maxOccurs="1" />
       <xs:element name='careUnitId' type='core:IIType' minOccurs="1" maxOccurs="1"/>
@@ -53,7 +53,7 @@
     </xs:sequence>
   </xs:complexType>
   
-  <xs:complexType name='OrderMedicalAssessmentResponseType'>
+  <xs:complexType name='OrderAssessmentResponseType'>
     <xs:sequence>
       <xs:element name="assessmentId" type="core:IIType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="result" type="core:ResultType" minOccurs="1" maxOccurs="1"/>

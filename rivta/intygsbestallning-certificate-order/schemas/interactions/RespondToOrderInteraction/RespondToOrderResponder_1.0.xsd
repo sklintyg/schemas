@@ -37,7 +37,7 @@
   <xs:complexType name='RespondToOrderType'>
     <xs:sequence>
       <xs:element name='assessmentId' type='core:IIType' minOccurs="1" maxOccurs="1" />
-      <xs:element name='response' type='core:CVType' minOccurs="0" maxOccurs="1"/>
+      <xs:element name='response' type='core:CVType' minOccurs="1" maxOccurs="1"/>
       <xs:element name='comment' type='xs:string' minOccurs="0" maxOccurs="1" />
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
