@@ -309,7 +309,7 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="LegitimeratYrkeType">
+	<xs:complexType name="legitimeratYrkeType">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
 				<xs:sequence>

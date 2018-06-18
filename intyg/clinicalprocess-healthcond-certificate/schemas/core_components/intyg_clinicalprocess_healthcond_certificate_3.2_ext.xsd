@@ -14,7 +14,7 @@
   <xs:import namespace="http://www.w3.org/2002/06/xmldsig-filter2" schemaLocation="xmldsig-filter2.xsd" />
 
   <xs:element name="Signature" type="ds:SignatureType" />
-  <xs:element name="legitimeratyrke" type="types:LegitimeratYrkeType" />
+  <xs:element name="legitimeratYrke" type="types:legitimeratYrkeType" />
   <xs:element name="kallaAdressuppgifter" type="types:KallaAdressuppgifterType" />
 
 </xs:schema>

@@ -13,7 +13,7 @@
   <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_0.1.xsd" />
 
   <xs:element name="Signature" type="ds:SignatureType" />
-  <xs:element name="legitimeratyrke" type="types:LegitimeratYrkeType" />
+  <xs:element name="legitimeratYrke" type="types:legitimeratYrkeType" />
   <xs:element name="kallaAdressuppgifter" type="types:KallaAdressuppgifterType" />
 
 </xs:schema>
