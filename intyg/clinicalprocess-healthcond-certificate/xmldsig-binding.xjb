@@ -27,7 +27,7 @@
             <jaxb:package name="org.w3._2000._09.xmldsig_" />
         </jaxb:schemaBindings>
         <jaxb:bindings>
-            <namespace:prefix name="" />
+            <namespace:prefix name="ds" />
         </jaxb:bindings>
     </jaxb:bindings>
 
@@ -36,7 +36,7 @@
             <jaxb:package name="org.w3._2002._06.xmldsig_filter2" />
         </jaxb:schemaBindings>
         <jaxb:bindings>
-            <namespace:prefix name="" />
+            <namespace:prefix name="dsf" />
         </jaxb:bindings>
     </jaxb:bindings>
 

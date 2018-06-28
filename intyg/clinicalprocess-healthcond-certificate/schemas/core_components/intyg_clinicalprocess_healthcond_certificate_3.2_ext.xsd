@@ -3,18 +3,15 @@
 <xs:schema xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:3.2"
            xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
            targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
            version="3.2">
 
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="intyg_clinicalprocess_healthcond_certificate_types_3.2.xsd" />
-  <xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_0.1.xsd" />
-  <xs:import namespace="http://www.w3.org/2002/06/xmldsig-filter2" schemaLocation="xmldsig-filter2.xsd" />
 
-  <xs:element name="Signature" type="ds:SignatureType" />
-  <xs:element name="legitimeratYrke" type="types:legitimeratYrkeType" />
+  <xs:element name="underskrift" type="types:UnderskriftType" />
+  <xs:element name="legitimeratYrke" type="types:LegitimeratYrkeType" />
   <xs:element name="kallaAdressuppgifter" type="types:KallaAdressuppgifterType" />
 
 </xs:schema>

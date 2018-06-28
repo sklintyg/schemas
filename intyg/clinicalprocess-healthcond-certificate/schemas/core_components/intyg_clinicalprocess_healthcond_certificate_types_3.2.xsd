@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	xmlns="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-	elementFormDefault="qualified" attributeFormDefault="unqualified"
-	version="3.2">
+		   xmlns="urn:riv:clinicalprocess:healthcond:certificate:types:3"
+		   xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+		   targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
+		   elementFormDefault="qualified" attributeFormDefault="unqualified"
+		   version="3.2">
+
+	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema_0.1.xsd" />
+	<xs:import namespace="http://www.w3.org/2002/06/xmldsig-filter2" schemaLocation="xmldsig-filter2.xsd" />
 
 	<xs:complexType name="IntygId">
 		<xs:complexContent>
@@ -23,7 +27,7 @@
 					<xs:element name="code" type="xs:string" />
 					<xs:element name="codeSystem" type="xs:string"/>
 					<xs:element name="displayName" type="xs:string"
-						minOccurs="0" />
+								minOccurs="0" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -76,7 +80,7 @@
 					<xs:element name="code" type="xs:string" />
 					<xs:element name="codeSystem" type="xs:string" fixed="1.2.752.129.2.2.1.4" />
 					<xs:element name="displayName" type="xs:string"
-						minOccurs="0" />
+								minOccurs="0" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -95,9 +99,9 @@
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
 					<xs:element name="codeSystem" type="xs:string"
-						fixed="dfd7bbad-dbe5-4a2f-ba25-f7b9b2cc6b14" />
+								fixed="dfd7bbad-dbe5-4a2f-ba25-f7b9b2cc6b14" />
 					<xs:element name="displayName" type="xs:string"
-						minOccurs="0" />
+								minOccurs="0" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -120,9 +124,9 @@
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
 					<xs:element name="codeSystem" type="xs:string"
-						fixed="9871cd17-8755-4ed9-b894-ff3729e775a4" />
+								fixed="9871cd17-8755-4ed9-b894-ff3729e775a4" />
 					<xs:element name="displayName" type="xs:string"
-						minOccurs="0" />
+								minOccurs="0" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -134,9 +138,9 @@
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
 					<xs:element name="codeSystem" type="xs:string"
-						fixed="769bb12b-bd9f-4203-a5cd-fd14f2eb3b80" />
+								fixed="769bb12b-bd9f-4203-a5cd-fd14f2eb3b80" />
 					<xs:element name="displayName" type="xs:string"
-						minOccurs="0" />
+								minOccurs="0" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -148,9 +152,9 @@
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
 					<xs:element name="codeSystem" type="xs:string"
-						fixed="c2362fcd-eda0-4f9a-bd13-b3bbaf7f2146" />
+								fixed="c2362fcd-eda0-4f9a-bd13-b3bbaf7f2146" />
 					<xs:element name="displayName" type="xs:string"
-						minOccurs="0" />
+								minOccurs="0" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -162,9 +166,9 @@
 				<xs:sequence>
 					<xs:element name="code" type="xs:string" />
 					<xs:element name="codeSystem" type="xs:string"
-						fixed="ffa59d8f-8d7e-46ae-ac9e-31804e8e8499" />
+								fixed="ffa59d8f-8d7e-46ae-ac9e-31804e8e8499" />
 					<xs:element name="displayName" type="xs:string"
-						minOccurs="0" />
+								minOccurs="0" />
 				</xs:sequence>
 			</xs:restriction>
 		</xs:complexContent>
@@ -238,7 +242,7 @@
 		</xs:annotation>
 		<xs:restriction base="xs:string">
 			<xs:pattern
-				value="[1-2][0-9]{3,3}(-((0[1-9])|(1[0-2]))(-((0[1-9])|([1-2][0-9])|(3[0-1])))?)?" />
+					value="[1-2][0-9]{3,3}(-((0[1-9])|(1[0-2]))(-((0[1-9])|([1-2][0-9])|(3[0-1])))?)?" />
 		</xs:restriction>
 	</xs:simpleType>
 
@@ -251,12 +255,12 @@
 			<xs:element name="code" type="xs:string" />
 			<xs:element name="codeSystem" type="xs:string" />
 			<xs:element name="codeSystemName" type="xs:string"
-				minOccurs="0" />
+						minOccurs="0" />
 			<xs:element name="codeSystemVersion" type="xs:string"
-				minOccurs="0" />
+						minOccurs="0" />
 			<xs:element name="displayName" type="xs:string" minOccurs="0" />
 			<xs:element name="originalText" type="xs:string"
-				minOccurs="0" />
+						minOccurs="0" />
 		</xs:sequence>
 	</xs:complexType>
 
@@ -282,7 +286,6 @@
 	</xs:complexType>
 
 	<xs:complexType name="DatePeriodType">
-
 		<xs:sequence>
 			<xs:element name="start" type="DateType" minOccurs="0" />
 			<xs:element name="end" type="DateType" minOccurs="0" />
@@ -290,7 +293,6 @@
 	</xs:complexType>
 
 	<xs:complexType name="TimePeriodType">
-
 		<xs:sequence>
 			<xs:element name="start" type="TimeStampType" minOccurs="0" />
 			<xs:element name="end" type="TimeStampType" minOccurs="0" />
@@ -309,7 +311,7 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<xs:complexType name="legitimeratYrkeType">
+	<xs:complexType name="LegitimeratYrkeType">
 		<xs:complexContent>
 			<xs:restriction base="CVType">
 				<xs:sequence>
@@ -321,8 +323,13 @@
 		</xs:complexContent>
 	</xs:complexType>
 
-	<!-- Element tillagda för att kunna hantera användning av datatyperna i 
-		any-tag -->
+	<xs:complexType name="UnderskriftType">
+		<xs:sequence>
+			<xs:element ref="ds:Signature" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<!-- Element tillagda för att kunna hantera användning av datatyperna i any-tag -->
 	<xs:element name="timePeriod" type="TimePeriodType" />
 	<xs:element name="datePeriod" type="DatePeriodType" />
 	<xs:element name="pq" type="PQType" />
