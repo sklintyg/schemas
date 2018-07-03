@@ -3,6 +3,7 @@
 <xs:schema xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:3.2"
            xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
            targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
