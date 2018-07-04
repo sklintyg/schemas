@@ -12,122 +12,117 @@
 
   <iso:pattern id="intyg">
     <iso:rule context="//rg:intyg">
-      <iso:assert test="count(gn:svar[@id='35']) le 1">
+      <iso:assert test="count(gn:svar[@id='1']) le 1">
         Ett 'MU' får ha högst ett 'Funktionsnedsättning'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='17']) le 1">
+      <iso:assert test="count(gn:svar[@id='2']) le 1">
         Ett 'MU' får ha högst ett 'Aktivitetsbegränsningar'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='19']) le 1">
+      <iso:assert test="count(gn:svar[@id='3']) le 1">
         Ett 'MU' får ha högst ett 'Pågående medicinska behandlingar'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='20']) le 1">
+      <iso:assert test="count(gn:svar[@id='4']) le 1">
         Ett 'MU' får ha högst ett 'Planerade medicinska behandlingar'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='25']) le 1">
+      <iso:assert test="count(gn:svar[@id='5']) le 1">
         Ett 'MU' får ha högst ett 'Övrigt'
       </iso:assert>
-      <iso:let name="svarsIdExpr" value="'^([16]|1[79]|2[056789]|3[234579]|4[04]|9[0-9]{3})$'"/>
+      <!--
+      <iso:let name="svarsIdExpr" value="'^(1[12]|2[12]|3[12]|4[12]|5[1])$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
+      -->
       <!-- Meddelandet kan innehålla ett valfritt antal tilläggsfrågor -->
     </iso:rule>
   </iso:pattern>
 
-
-  <iso:pattern id="q29.1">
-    <iso:rule context="//gn:delsvar[@id='29.1']">
-      <iso:extends rule="non-empty-string"/>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="q35">
-    <iso:rule context="//gn:svar[@id='35']">
-      <iso:assert test="count(gn:delsvar[@id='35.1']) = 1">
+  <iso:pattern id="q1">
+    <iso:rule context="//gn:svar[@id='1']">
+      <iso:assert test="count(gn:delsvar[@id='1.1']) = 1">
         'Funktionsnedsättning' måste ha ett 'Beskrivning'.
       </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^35\.[1]$'"/>
+      <iso:let name="delsvarsIdExpr" value="'^1\.[1]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
       </iso:assert>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q35.1">
-    <iso:rule context="//gn:delsvar[@id='35.1']">
+  <iso:pattern id="q1.1">
+    <iso:rule context="//gn:delsvar[@id='1.1']">
       <iso:extends rule="non-empty-string"/>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q17">
-    <iso:rule context="//gn:svar[@id='17']">
-      <iso:assert test="count(gn:delsvar[@id='17.1']) = 1">
+  <iso:pattern id="q2">
+    <iso:rule context="//gn:svar[@id='2']">
+      <iso:assert test="count(gn:delsvar[@id='2.1']) = 1">
         'Aktivitetsbegränsningar' måste ha ett 'Beskrivning'.
       </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^17\.[1]$'"/>
+      <iso:let name="delsvarsIdExpr" value="'^2\.[1]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
       </iso:assert>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q17.1">
-    <iso:rule context="//gn:delsvar[@id='17.1']">
+  <iso:pattern id="q2.1">
+    <iso:rule context="//gn:delsvar[@id='2.1']">
       <iso:extends rule="non-empty-string"/>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q19">
-    <iso:rule context="//gn:svar[@id='19']">
-      <iso:assert test="count(gn:delsvar[@id='19.1']) = 1">
+  <iso:pattern id="q3">
+    <iso:rule context="//gn:svar[@id='3']">
+      <iso:assert test="count(gn:delsvar[@id='3.1']) = 1">
         'Pågående medicinska behandlingar' måste ha ett 'Typ av pågående behandlingar och ansvarig vårdenhet'.
       </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^19\.[1]$'"/>
+      <iso:let name="delsvarsIdExpr" value="'^3\.[1]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
       </iso:assert>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q19.1">
-    <iso:rule context="//gn:delsvar[@id='19.1']">
+  <iso:pattern id="q3.1">
+    <iso:rule context="//gn:delsvar[@id='3.1']">
       <iso:extends rule="non-empty-string"/>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q20">
-    <iso:rule context="//gn:svar[@id='20']">
-      <iso:assert test="count(gn:delsvar[@id='20.1']) = 1">
+  <iso:pattern id="q4">
+    <iso:rule context="//gn:svar[@id='4']">
+      <iso:assert test="count(gn:delsvar[@id='4.1']) = 1">
         'Planerade medicinska behandlingar' måste ha ett 'Typ av planerade behandlingar och ansvarig vårdenhet'.
       </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^20\.[1]$'"/>
+      <iso:let name="delsvarsIdExpr" value="'^4\.[1]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
       </iso:assert>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q20.1">
-    <iso:rule context="//gn:delsvar[@id='20.1']">
+  <iso:pattern id="q4.1">
+    <iso:rule context="//gn:delsvar[@id='4.1']">
       <iso:extends rule="non-empty-string"/>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q25">
-    <iso:rule context="//gn:svar[@id='25']">
-      <iso:assert test="count(gn:delsvar[@id='25.1']) = 1">
+  <iso:pattern id="q5">
+    <iso:rule context="//gn:svar[@id='5']">
+      <iso:assert test="count(gn:delsvar[@id='5.1']) = 1">
         'Övrigt' måste ha ett 'Typ av övriga upplysningar'.
       </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^25\.[1]$'"/>
+      <iso:let name="delsvarsIdExpr" value="'^5\.[1]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
       </iso:assert>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q25.1">
-    <iso:rule context="//gn:delsvar[@id='25.1']">
+  <iso:pattern id="q5.1">
+    <iso:rule context="//gn:delsvar[@id='5.1']">
       <iso:extends rule="non-empty-string"/>
     </iso:rule>
   </iso:pattern>
