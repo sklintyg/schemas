@@ -52,19 +52,31 @@
     </iso:rule>
   </iso:pattern>
 
+
   <iso:pattern id="q1.1">
     <iso:rule context="//gn:delsvar[@id='1.1']">
       <iso:extends rule="boolean"/>
     </iso:rule>
   </iso:pattern>
   <iso:pattern id="q1.2">
-      <iso:rule context="//gn:delsvar[@id='1.2']">
-        <iso:extends rule="non-empty-string"/>
-      </iso:rule>
-    </iso:pattern>
+    <iso:rule context="//gn:delsvar[@id='1.2']">
+      <iso:extends rule="non-empty-string"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q1.1-1.2">
+    <iso:rule context="//gn:delsvar[@id='1.1' and matches(normalize-space(.), '0|false')]">
+      <iso:assert test="count(../gn:delsvar[@id='1.2']) = 0">
+        Om 'Funktionsnedsättning' besvarats med nej kan 'Beskrivning' inte fyllas i.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
 
   <iso:pattern id="q2">
     <iso:rule context="//gn:svar[@id='2']">
+      <iso:assert test="count(gn:delsvar[@id='2.1']) = 1">
+        'Aktivitetsbegränsningar' måste besvaras med Ja eller Nej.
+      </iso:assert>
       <iso:assert test="count(gn:delsvar[@id='2.2']) = 1">
         'Aktivitetsbegränsningar' måste ha ett 'Beskrivning'.
       </iso:assert>
@@ -86,8 +98,19 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q2.1-2.2">
+    <iso:rule context="//gn:delsvar[@id='2.1' and matches(normalize-space(.), '0|false')]">
+      <iso:assert test="count(../gn:delsvar[@id='2.2']) = 0">
+        Om 'Aktivitetsbegränsningar' besvarats med nej kan 'Beskrivning' inte fyllas i.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q3">
     <iso:rule context="//gn:svar[@id='3']">
+      <iso:assert test="count(gn:delsvar[@id='3.1']) = 1">
+        'Utredning och behandling' måste besvaras med Ja eller Nej.
+      </iso:assert>
       <iso:assert test="count(gn:delsvar[@id='3.2']) = 1">
         'Utredning och behandling' måste ha ett 'Beskrivning'.
       </iso:assert>
@@ -106,6 +129,14 @@
   <iso:pattern id="q3.2">
     <iso:rule context="//gn:delsvar[@id='3.2']">
       <iso:extends rule="non-empty-string"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q3.1-3.2">
+    <iso:rule context="//gn:delsvar[@id='3.1' and matches(normalize-space(.), '0|false')]">
+      <iso:assert test="count(../gn:delsvar[@id='3.2']) = 0">
+        Om 'Utredning och behandling' besvarats med nej kan 'Beskrivning' inte fyllas i.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
@@ -132,6 +163,14 @@
   <iso:pattern id="q4.2">
     <iso:rule context="//gn:delsvar[@id='4.2']">
       <iso:extends rule="non-empty-string"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q4.1-4.2">
+    <iso:rule context="//gn:delsvar[@id='4.1' and matches(normalize-space(.), '0|false')]">
+      <iso:assert test="count(../gn:delsvar[@id='4.2']) = 0">
+        Om 'Arbetets påverkan' besvarats med nej kan 'Beskrivning' inte fyllas i.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
