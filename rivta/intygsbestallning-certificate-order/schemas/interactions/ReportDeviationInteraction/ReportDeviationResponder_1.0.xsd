@@ -48,7 +48,7 @@
 
   <xs:complexType name='ReportDeviationResponseType'>
     <xs:sequence>
-      <xs:element name='deviationId' type='core:IIType' minOccurs="1" maxOccurs="1"/>
+      <xs:element name='deviationId' type='core:IIType' minOccurs="0" maxOccurs="1"/>
       <xs:element name="result" type="core:ResultType" minOccurs="1" maxOccurs="1"/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>

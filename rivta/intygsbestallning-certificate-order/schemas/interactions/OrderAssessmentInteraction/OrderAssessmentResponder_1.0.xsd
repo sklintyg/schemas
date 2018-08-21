@@ -46,7 +46,6 @@
       <xs:element name='documentsByPost' type="xs:boolean" minOccurs="0" maxOccurs="1" />
       <xs:element name="purpose" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="plannedActions" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="orderDate" type="core:DateType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="authorityAdministrativeOfficial" type="core:AuthorityAdministrativeOfficialType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="citizen" type="core:CitizenType" minOccurs="1" maxOccurs="1"/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
@@ -55,7 +54,7 @@
   
   <xs:complexType name='OrderAssessmentResponseType'>
     <xs:sequence>
-      <xs:element name="assessmentId" type="core:IIType" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="assessmentId" type="core:IIType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="result" type="core:ResultType" minOccurs="1" maxOccurs="1"/>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>

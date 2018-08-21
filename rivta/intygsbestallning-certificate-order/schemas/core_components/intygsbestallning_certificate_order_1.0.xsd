@@ -260,6 +260,15 @@
           </xs:documentation>
         </xs:annotation>
       </xs:enumeration>
+      <xs:enumeration value="EMAIL_ERROR">
+        <xs:annotation>
+          <xs:documentation xml:lang="sv">
+            Kan användas för att deklarera att beställningen inte
+            kunde läggas på grund av avsaknad av emailadress för
+            leverans. Skall i övrigt hanteras som APPLICATION_ERROR
+          </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
 

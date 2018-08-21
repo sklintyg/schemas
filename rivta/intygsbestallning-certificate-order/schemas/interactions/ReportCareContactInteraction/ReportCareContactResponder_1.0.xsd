@@ -33,7 +33,7 @@
       <xs:element name="assessmentId" type="core:IIType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="assessmentCareContactId" type="core:IIType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="participatingProfession" type="core:CVType" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="interpreterStatus" type="core:CVType" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="interpreterStatus" type="core:CVType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="invitationDate" type="core:DateType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="invitationChannel" type="core:CVType" minOccurs="0" maxOccurs="1"/>
       <xs:element name="time" type="core:TimePeriodType" minOccurs="1" maxOccurs="1"/>
