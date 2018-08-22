@@ -29,10 +29,17 @@
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
-            <xs:enumeration value="ANNAN_MOTTAGARE">
+            <xs:enumeration value="DIREKTMOTTAGARE">
                 <xs:annotation>
                     <xs:documentation xml:lang="sv">
-                        Mottagare som ej är huvudmottagare.
+                        Direktmottagare.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="MOTTAGARE">
+                <xs:annotation>
+                    <xs:documentation xml:lang="sv">
+                        Mottagare som ej är huvudmottagare eller direktmottagare.
                     </xs:documentation>
                 </xs:annotation>
             </xs:enumeration>
