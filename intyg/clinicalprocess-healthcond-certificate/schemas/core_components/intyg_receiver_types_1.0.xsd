@@ -1,0 +1,41 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:riv:clinicalprocess:healthcond:certificate:receiver:types:1"
+           targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:receiver:types:1"
+           xmlns:types='urn:riv:clinicalprocess:healthcond:certificate:types:3'
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           version="1.0">
+
+    <xs:complexType name="CertificateReceiverType">
+        <xs:sequence>
+            <xs:element name="receiverId" type="types:nonEmptyString"/>
+            <xs:element name="receiverName" type="types:nonEmptyString"/>
+            <xs:element name="receiverType" type="CertificateReceiverTypeType"/>
+            <xs:element name="trusted" type="xs:boolean"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="CertificateReceiverTypeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="sv">
+                Enumerationsvärde som anger de mottagartyper som finns.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="HUVUDMOTTAGARE">
+                <xs:annotation>
+                    <xs:documentation xml:lang="sv">
+                        Huvudmottagare av intygstypen.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ANNAN_MOTTAGARE">
+                <xs:annotation>
+                    <xs:documentation xml:lang="sv">
+                        Mottagare som ej är huvudmottagare.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
