@@ -126,43 +126,44 @@
   </iso:pattern>
 
   <iso:pattern id="q3">
-    <iso:rule context="//gn:svar[@id='3']">
-      <iso:assert test="count(gn:delsvar[@id='3.1']) = 1">
-        'Utredning och behandling' måste besvaras med Ja eller Nej.
-      </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^3\.[12]$'"/>
-      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
-        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
+      <iso:rule context="//gn:svar[@id='3']">
+        <iso:assert test="count(gn:delsvar[@id='3.1']) = 1">
+          'Utredning och behandling' måste besvaras med Ja eller Nej.
+        </iso:assert>
+        <iso:let name="delsvarsIdExpr" value="'^3\.[12]$'"/>
+        <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+          Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
+        </iso:assert>
+      </iso:rule>
+    </iso:pattern>
 
-  <iso:pattern id="q3.1">
-    <iso:rule context="//gn:delsvar[@id='3.1']">
-      <iso:extends rule="boolean"/>
-    </iso:rule>
-  </iso:pattern>
-  <iso:pattern id="q3.2">
-    <iso:rule context="//gn:delsvar[@id='3.2']">
-      <iso:extends rule="non-empty-string"/>
-    </iso:rule>
-  </iso:pattern>
+    <iso:pattern id="q3.1">
+      <iso:rule context="//gn:delsvar[@id='3.1']">
+        <iso:extends rule="boolean"/>
+      </iso:rule>
+    </iso:pattern>
+    <iso:pattern id="q3.2">
+      <iso:rule context="//gn:delsvar[@id='3.2']">
+        <iso:extends rule="non-empty-string"/>
+      </iso:rule>
+    </iso:pattern>
 
-  <iso:pattern id="q3.1-3.2-true">
-    <iso:rule context="//gn:delsvar[@id='3.1' and matches(normalize-space(.), '1|true')]">
-      <iso:assert test="count(../gn:delsvar[@id='3.2']) = 1">
-        Om 'Utredning och behandling' besvarats med ja måste 'Beskrivning' anges.
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
+    <iso:pattern id="q3.1-3.2-true">
+      <iso:rule context="//gn:delsvar[@id='3.1' and matches(normalize-space(.), '1|true')]">
+        <iso:assert test="count(../gn:delsvar[@id='3.2']) = 1">
+          Om 'Utredning och behandling' besvarats med ja måste 'Beskrivning' anges.
+        </iso:assert>
+      </iso:rule>
+    </iso:pattern>
 
-  <iso:pattern id="q3.1-3.2-false">
-    <iso:rule context="//gn:delsvar[@id='3.1' and matches(normalize-space(.), '0|false')]">
-      <iso:assert test="count(../gn:delsvar[@id='3.2']) = 0">
-        Om 'Utredning och behandling' besvarats med nej kan 'Beskrivning' inte fyllas i.
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
+    <iso:pattern id="q3.1-3.2-false">
+      <iso:rule context="//gn:delsvar[@id='3.1' and matches(normalize-space(.), '0|false')]">
+        <iso:assert test="count(../gn:delsvar[@id='3.2']) = 0">
+          Om 'Utredning och behandling' besvarats med nej kan 'Beskrivning' inte fyllas i.
+        </iso:assert>
+      </iso:rule>
+    </iso:pattern>
+
 
   <iso:pattern id="q4">
     <iso:rule context="//gn:svar[@id='4']">
