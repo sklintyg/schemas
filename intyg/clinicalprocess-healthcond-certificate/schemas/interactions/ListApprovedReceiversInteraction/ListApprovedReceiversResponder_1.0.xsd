@@ -45,7 +45,6 @@
   <xs:complexType name='ListApprovedReceiversType'>
     <xs:sequence>
       <xs:element name="intygs-id" type="types:IntygId" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="intygsTyp" type="types:TypAvIntyg" minOccurs="1" maxOccurs="1"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
