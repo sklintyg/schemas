@@ -53,7 +53,7 @@
 
     <xs:complexType name='ListPossibleReceiversResponseType'>
         <xs:sequence>
-            <xs:element name="recipient" type="receiver:CertificateReceiverType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="receiverList" type="receiver:CertificateReceiverType" minOccurs="0" maxOccurs="unbounded"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
