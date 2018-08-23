@@ -34,12 +34,10 @@ wsdl2java {
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:ListKnownRecipients:1=se.inera.intyg.clinicalprocess.healthcond.certificate.listknownrecipients.v1",
                        "$projectDir/schemas/interactions/ListKnownRecipientsInteraction/ListKnownRecipientsInteraction_1.0.wsdl"],
 
-          //Vårdens/Invånarens intyg:
+                      // Vårdens/Invånarens intyg:
                       ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                        "-wsdlLocation", "classpath:interactions/ListPossibleReceiversInteraction/ListPossibleReceiversInteraction_1.0.wsdl",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:receiver:types:1=se.riv.clinicalprocess.healthcond.certificate.receiver.types.v1",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:3=se.riv.clinicalprocess.healthcond.certificate.types.v3",
                        "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:ListPossibleReceiversResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.listpossiblereceivers.v1",
@@ -48,9 +46,7 @@ wsdl2java {
 
                       ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                        "-wsdlLocation", "classpath:interactions/ListApprovedReceiversInteraction/ListApprovedReceiversInteraction_1.0.wsdl",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:receiver:types:1=se.riv.clinicalprocess.healthcond.certificate.receiver.types.v1",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:3=se.riv.clinicalprocess.healthcond.certificate.types.v3",
                        "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:ListApprovedReceiversResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.listapprovedreceivers.v1",
@@ -59,12 +55,12 @@ wsdl2java {
 
                       ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                        "-wsdlLocation", "classpath:interactions/RegisterApprovedReceiversInteraction/RegisterApprovedReceiversInteraction_1.0.wsdl",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
+                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:3=se.riv.clinicalprocess.healthcond.certificate.v3",
+                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:3.2=se.riv.clinicalprocess.healthcond.certificate.v32",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:receiver:types:1=se.riv.clinicalprocess.healthcond.certificate.receiver.types.v1",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:3=se.riv.clinicalprocess.healthcond.certificate.types.v3",
                        "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:RegisterApprovedReceiversResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.registerapproved.v1",
+                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:RegisterApprovedReceiversResponder:1=se.inera.intyg.clinicalprocess.healthcond.certificate.registerapprovedreceivers.v1",
                        "-p", "urn:riv:clinicalprocess:healthcond:certificate:RegisterApprovedReceivers:1=se.inera.intyg.clinicalprocess.healthcond.certificate.registerapprovedreceivers.v1",
                        "$projectDir/schemas/interactions/RegisterApprovedReceiversInteraction/RegisterApprovedReceiversInteraction_1.0.wsdl"],
 
