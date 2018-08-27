@@ -15,6 +15,43 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="CertificateReceiverRegistrationType">
+        <xs:sequence>
+            <xs:element name="receiverId" type="types:nonEmptyString"/>
+            <xs:element name="receiverName" type="types:nonEmptyString"/>
+            <xs:element name="receiverType" type="CertificateReceiverTypeType"/>
+            <xs:element name="trusted" type="xs:boolean"/>
+            <xs:element name="approvalStatus" type="ApprovalStatusType"/>
+            <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="ApprovalStatusType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="YES">
+                <xs:annotation>
+                    <xs:documentation xml:lang="sv">
+                        Vården medger att intyget skickas till denna mottgare.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="NO">
+                <xs:annotation>
+                    <xs:documentation xml:lang="sv">
+                        Vården medger ej att intyget skickas till denna mottgare.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="UNDEFINED">
+                <xs:annotation>
+                    <xs:documentation xml:lang="sv">
+                        Vården har inte registrerat någon uppgift om mottagaren är godkänd ännu.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:simpleType name="CertificateReceiverTypeType">
         <xs:annotation>
             <xs:documentation xml:lang="sv">
