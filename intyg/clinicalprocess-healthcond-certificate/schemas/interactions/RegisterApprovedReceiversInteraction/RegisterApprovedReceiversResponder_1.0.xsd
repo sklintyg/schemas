@@ -48,7 +48,7 @@
     <xs:sequence>
       <xs:element name="intyg-id" type="types:IntygId" />
       <xs:element name="typAvIntyg" type="types:TypAvIntyg" />
-      <xs:element name="approvedReceivers" type="tns:ApprovedReceiver" minOccurs="0" maxOccurs="unbounded" />
+      <xs:element name="approvedReceivers" type="tns:ReceiverApprovalStatus" minOccurs="0" maxOccurs="unbounded" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -60,7 +60,7 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="ApprovedReceiver">
+  <xs:complexType name="ReceiverApprovalStatus">
     <xs:sequence>
       <xs:element name="receiverId" type="types:nonEmptyString"></xs:element>
       <xs:element name="approvalStatus" type="receiver:ApprovalStatusType"/>
