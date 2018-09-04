@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright (C) 2018 Inera AB (http://www.inera.se)
+  ~
+  ~ This file is part of sklintyg (https://github.com/sklintyg).
+  ~
+  ~ sklintyg is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ sklintyg is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+
+<wsdl:definitions
+    name='GetRecipientsForCertificateInteraction'
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificateResponder:1'
+    xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificate:1'
+    xmlns:itr='urn:riv:itintegration:registry:1'
+    targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificateResponder:1'>
+  <xs:annotation>
+  </xs:annotation>
+  <wsdl:types>
+    <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificateResponder:1'>
+      <xs:import schemaLocation='./GetRecipientsForCertificateResponder_1.1.xsd' namespace='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificate:1' />
+      <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd' namespace='urn:riv:itintegration:registry:1'/>
+    </xs:schema>
+  </wsdl:types>
+
+  <wsdl:message name='GetRecipientsForCertificateRequest'>
+    <xs:annotation>
+    </xs:annotation>
+      <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'/>
+      <wsdl:part name='parameters' element='tjsr:GetRecipientsForCertificate' />
+  </wsdl:message>
+  <wsdl:message name='GetRecipientsForCertificateResponse'>
+    <wsdl:part name='parameters' element='tjsr:GetRecipientsForCertificateResponse'/>
+  </wsdl:message>
+  <wsdl:portType name='GetRecipientsForCertificateResponderInterface'>
+    <wsdl:operation name='GetRecipientsForCertificate'>
+      <wsdl:input message='tns:GetRecipientsForCertificateRequest' />
+      <wsdl:output message='tns:GetRecipientsForCertificateResponse' />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name='GetRecipientsForCertificateResponderBinding' type='tns:GetRecipientsForCertificateResponderInterface'>
+    <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+    <wsdl:operation name='GetRecipientsForCertificate'>
+      <soap:operation soapAction='urn:riv:clinicalprocess:healthcond:certificate:GetRecipientsForCertificateResponder:1:GetRecipientsForCertificate' style='document' />
+      <wsdl:input>
+        <soap:header use='literal' message='tns:GetRecipientsForCertificateRequest' part='LogicalAddress'/>
+        <soap:body use='literal' parts='parameters'/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use='literal' />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name='GetRecipientsForCertificateResponderService'>
+    <wsdl:port name='GetRecipientsForCertificateResponderPort' binding='tns:GetRecipientsForCertificateResponderBinding'>
+      <soap:address location='http://tempuri.org' />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
