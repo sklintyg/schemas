@@ -43,8 +43,8 @@
 
   <xs:complexType name='GetRecipientsForCertificateType'>
     <xs:sequence>
-      <xs:element name="certificateId" type="xs:string"/>
-      <xs:element name="certificateType" type="xs:string" minOccurs="1" maxOccurs="1" />
+      <xs:element name="certificateId" type="xs:string" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="certificateType" type="xs:string" minOccurs="0" maxOccurs="1" />
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
