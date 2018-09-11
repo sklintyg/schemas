@@ -3,7 +3,7 @@
       xmlns="http://purl.oclc.org/dsdl/schematron"
       xmlns:iso="http://purl.oclc.org/dsdl/schematron"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://purl.oclc.org/dsdl/schematron http://purl.oclc.org/dsdl/schematron"
+      xsi:schemaLocation="http://purl.oclc.org/dsdl/schematron"
       queryBinding='xslt2'
       schemaVersion='ISO19757-3'>
 
