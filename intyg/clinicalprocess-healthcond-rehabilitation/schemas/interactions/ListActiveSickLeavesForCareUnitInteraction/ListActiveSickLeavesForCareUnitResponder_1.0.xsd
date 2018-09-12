@@ -36,7 +36,14 @@
     <xs:sequence>
       <xs:element name='enhets-id' type='types:HsaId' />
       <xs:element name='person-id' type='types:PersonId' minOccurs="0"/>
-      <xs:element name='max-dagar-sedan-avslut' type="xs:unsignedInt" minOccurs="0"/>
+      <xs:element name='max-dagar-sedan-avslut' minOccurs="0">
+         <xs:simpleType>
+           <xs:restriction base="xs:integer">
+           <xs:minInclusive value="0"/>
+           <xs:maxInclusive value="14"/>
+         </xs:restriction>
+       </xs:simpleType>
+      </xs:element>
       <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded' />
     </xs:sequence>
   </xs:complexType>
