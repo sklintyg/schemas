@@ -73,6 +73,7 @@
       <xs:element name="fran-intygs-id" type="types:IntygId"/>
       <xs:element name="till-intygs-id" type="types:IntygId"/>
       <xs:element name="skapad" type="types:TimeStampType"/>
+      <xs:element name="fran-intyg-makulerat" type="xs:boolean"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0"
           maxOccurs="unbounded"/>
     </xs:sequence>
