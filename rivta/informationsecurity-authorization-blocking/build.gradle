@@ -1,0 +1,20 @@
+description = "informationsecurity-authorization-blocking"
+
+group = 'se.riv.informationsecurity.authorization.blocking'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
+
+wsdl2java {
+  wsdlsToGenerate = [  ["-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-XtoString", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                        "-wsdlLocation",
+                        "classpath:interactions/CheckBlocksInteraction/CheckBlocksInteraction_4.0_RIVTABP21.wsdl",
+                        "-p",
+                        "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
+                        "-p",
+                        "urn:riv:informationsecurity:authorization:blocking:CheckBlocksResponder:4=se.riv.informationsecurity.authorization.blocking.CheckBlocksResponder.v4",
+                        "-p",
+                        "urn:riv:informationsecurity:authorization:blocking:CheckBlocks:4:rivtabp21=se.riv.informationsecurity.authorization.blocking.CheckBlocks.v4.rivtabp21",
+                        "-p",
+                        "urn:riv:informationsecurity:authorization:blocking:4=se.riv.informationsecurity.authorization.blocking.v4",
+                        "$projectDir/schemas/interactions/CheckBlocksInteraction/CheckBlocksInteraction_4.0_RIVTABP21.wsdl"],
+                    ]
+}
