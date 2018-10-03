@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "3.0-beta1"
+def buildVersion = "3.0"
 def projectName = "strategicresourcemanagement-persons-person-schemas"
 
 stage('checkout') {
