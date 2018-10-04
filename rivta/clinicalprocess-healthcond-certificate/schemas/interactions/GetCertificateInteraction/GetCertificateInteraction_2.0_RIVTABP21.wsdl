@@ -30,7 +30,7 @@
 	<wsdl:types>
 		<xs:schema
 			targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificate:2:rivtabp21'>
-			<xs:import schemaLocation='GetCertificateResponder_2.0.xsd'
+			<xs:import schemaLocation='GetCertificateResponder_2.1.xsd'
 				namespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateResponder:2' />
 			<xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd'
 				namespace='urn:riv:itintegration:registry:1' />
