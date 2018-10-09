@@ -19,7 +19,7 @@
 
 description = "informationsecurity-authorization-consent"
 
-group = 'se.riv.informationsecurity.authorization.blocking'
+group = 'se.riv.informationsecurity.authorization.consent'
 version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
