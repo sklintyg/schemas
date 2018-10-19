@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+ Licensed to the Apache Software Foundation (ASF) under one
+ or more contributor license agreements. See the NOTICE file
+ distributed with this work for additional information
+ regarding copyright ownership. Inera AB licenses this file
+ to you under the Apache License, Version 2.0 (the
+ "License"); you may not use this file except in compliance
+ with the License. You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing,
+ software distributed under the License is distributed on an
+ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ KIND, either express or implied. See the License for the
+ specific language governing permissions and limitations
+ under the License.
+ -->    
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='urn:riv:informationsecurity:authorization:consent:RegisterExtendedConsentResponder:2'                
+    xmlns:informationsecurityauthorizationconsent='urn:riv:informationsecurity:authorization:consent:2'
+    targetNamespace='urn:riv:informationsecurity:authorization:consent:RegisterExtendedConsentResponder:2'
+    elementFormDefault='qualified'
+    attributeFormDefault='unqualified'
+    version='2.0'>
+
+    <xs:import schemaLocation='../../core_components/informationsecurity_authorization_consent_2.0.xsd' namespace='urn:riv:informationsecurity:authorization:consent:2' />
+
+
+    <xs:element name='RegisterExtendedConsent' type='tns:RegisterExtendedConsentType'/>
+
+    <xs:complexType name='RegisterExtendedConsentType'>
+        <xs:annotation>
+            <xs:documentation>
+                Tjänst som registrerar ett intyg gällande viss patient som ger direktåtkomst till patientens information från andra vårdgivare enligt PDL.
+                Intyget avser patientens aktiva medgivande (samtycke), alternativt nödsituation då HoS personal bedömer att behov av uppgifterna finns för nödvändig vård av patient som inte kan ge aktivt medgivande.
+                Det går även att registrera patientens företrädare.
+                Tjänsten kräver utökad information (metainformation) kring skapande av intyget.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="assertionId" type="informationsecurityauthorizationconsent:Id"/>
+            <xs:element name="assertionType" type="informationsecurityauthorizationconsent:AssertionTypeType"/>
+            <xs:element name="scope" type="informationsecurityauthorizationconsent:ScopeType"/>
+            <xs:element name="patientId" type="informationsecurityauthorizationconsent:IIType"/>
+            <xs:element name="careProviderId" type="informationsecurityauthorizationconsent:HsaId"/>
+            <xs:element name="careUnitId" type="informationsecurityauthorizationconsent:HsaId"/>
+            <xs:element name="employeeId" type="informationsecurityauthorizationconsent:HsaId" minOccurs="0"/>
+            <xs:element name="startDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="endDate" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="representedBy" type="informationsecurityauthorizationconsent:IIType" minOccurs="0"/>
+            <xs:element name="registrationAction" type="informationsecurityauthorizationconsent:ActionType"/>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:element name='RegisterExtendedConsentResponse' type='tns:RegisterExtendedConsentResponseType'/>
+
+    <xs:complexType name='RegisterExtendedConsentResponseType'>
+        <xs:annotation>
+            <xs:documentation>
+                Tjänst som registrerar ett intyg gällande viss patient som ger direktåtkomst till patientens information från andra vårdgivare enligt PDL.
+                Intyget avser patientens aktiva medgivande (samtycke), alternativt nödsituation då HoS personal bedömer att behov av uppgifterna finns för nödvändig vård av patient som inte kan ge aktivt medgivande.
+                Det går även att registrera patientens företrädare.
+                Tjänsten kräver utökad information (metainformation) kring skapande av intyget.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="result" type="informationsecurityauthorizationconsent:ResultType"/>
+            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

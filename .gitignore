@@ -11,3 +11,4 @@ webcert/target
 build
 .gradle
 out
+**/bin

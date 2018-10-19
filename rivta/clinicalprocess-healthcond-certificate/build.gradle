@@ -149,6 +149,7 @@ wsdl2java {
                                        "urn:riv:clinicalprocess:healthcond:certificate:SendCertificateToRecipientResponder:2=se.riv.clinicalprocess.healthcond.certificate.sendCertificateToRecipient.v2",
                                        "$projectDir/schemas/interactions/SendCertificateToRecipientInteraction/SendCertificateToRecipientInteraction_2.0_RIVTABP21.wsdl"],
 
+                      // LCFC 3.0
                       commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb", "-b", "$projectDir/xmldsig-binding.xjb",
                                        "-wsdlLocation",
                                        "classpath:interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_3.0_RIVTABP21.wsdl",
@@ -157,6 +158,17 @@ wsdl2java {
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:3=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v3",
                                        "$projectDir/schemas/interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_3.0_RIVTABP21.wsdl"],
+
+                      // LCFC 4.0
+                      commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb", "-b", "$projectDir/xmldsig-binding.xjb",
+                                       "-wsdlLocation",
+                                       "classpath:interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_4.0_RIVTABP21.wsdl",
+                                       "-p",
+                                       "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizen:4:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v4",
+                                       "-p",
+                                       "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCitizenResponder:4=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCitizen.v4",
+                                       "$projectDir/schemas/interactions/ListCertificatesForCitizenInteraction/ListCertificatesForCitizenInteraction_4.0_RIVTABP21.wsdl"],
+
 
                       commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb", "-b", "$projectDir/xmldsig-binding.xjb",
                                        "-wsdlLocation",

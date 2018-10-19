@@ -29,9 +29,9 @@
   OR CONDITIONS OF ANY KIND, either express or implied. See the License for
   the specific language governing permissions and limitations under the License. -->
 <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'
-    xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateType:1'
+    xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateTypeInfo:1'
     xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-    targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateType:1'
+    targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateTypeInfo:1'
     elementFormDefault='qualified' attributeFormDefault='unqualified'
     version='1.0'>
 
@@ -42,19 +42,20 @@
   <xs:import schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_3.2_ext.xsd"
              namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2" />
 
-  <xs:element name='GetCertificateType' type='tns:GetCertificateTypeType'/>
-  <xs:element name='GetCertificateTypeResponse' type='tns:GetCertificateTypeResponseType'/>
+  <xs:element name='GetCertificateTypeInfo' type='tns:GetCertificateTypeInfoType'/>
+  <xs:element name='GetCertificateTypeInfoResponse' type='tns:GetCertificateTypeInfoResponseType'/>
 
-  <xs:complexType name='GetCertificateTypeType'>
+  <xs:complexType name='GetCertificateTypeInfoType'>
     <xs:sequence>
       <xs:element name='intygs-id' type='xs:string' minOccurs="1" maxOccurs="1"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name='GetCertificateTypeResponseType'>
+  <xs:complexType name='GetCertificateTypeInfoResponseType'>
     <xs:sequence>
       <xs:element name="typ" type="types:TypAvIntyg"/>
+      <xs:element name="typVersion" type="xs:string"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>

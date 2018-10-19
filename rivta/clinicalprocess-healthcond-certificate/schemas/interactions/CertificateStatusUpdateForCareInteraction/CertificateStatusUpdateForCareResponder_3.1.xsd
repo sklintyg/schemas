@@ -17,11 +17,11 @@
  specific language governing permissions and limitations
  under the License.
  -->
- <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3"
 	xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:3"
-	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:3"
+	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:3"
+	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:3"
 	elementFormDefault="qualified" attributeFormDefault="unqualified"
 	version="3.1">
 
@@ -30,43 +30,14 @@
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.2.xsd" />
 
-	<xs:element name="ListCertificatesForCareWithQA" type="tns:ListCertificatesForCareWithQAType" />
-	<xs:element name="ListCertificatesForCareWithQAResponse"
-		type="tns:ListCertificatesForCareWithQAResponseType" />
+	<xs:element name="CertificateStatusUpdateForCare" type="tns:CertificateStatusUpdateForCareType" />
+	<xs:element name="CertificateStatusUpdateForCareResponse"
+		type="tns:CertificateStatusUpdateForCareResponseType" />
 
-	<xs:complexType name="ListCertificatesForCareWithQAType">
-		<xs:sequence>
-			<xs:element name="person-id" type="types:PersonId" />
-			<xs:element name="enhets-id" type="types:HsaId" minOccurs="0"  maxOccurs="unbounded" />
-			<xs:element name="vardgivar-id" type="types:HsaId" minOccurs="0" />
-			<xs:element name="fromTidpunkt" type="types:TimeStampType" minOccurs="0" />
-			<xs:element name="tomTidpunkt" type="types:TimeStampType" minOccurs="0" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="ListCertificatesForCareWithQAResponseType">
-		<xs:sequence>
-			<xs:element name="list" type="tns:List" minOccurs="0" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="List">
-		<xs:sequence>
-			<xs:element name="item" type="tns:ListItem" minOccurs="0"
-				maxOccurs="unbounded" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
-
-	<xs:complexType name="ListItem">
+	<xs:complexType name="CertificateStatusUpdateForCareType">
 		<xs:sequence>
 			<xs:element name="intyg" type="core:Intyg" />
-			<xs:element name="handelser" type="tns:HandelseList" />
+			<xs:element name="handelse" type="core:Handelse" />
 			<xs:element name="skickadeFragor" type="core:Arenden" />
 			<xs:element name="mottagnaFragor" type="core:Arenden" />
 			<xs:element name="ref" type="xs:string" minOccurs="0"/>
@@ -75,10 +46,9 @@
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="HandelseList">
+	<xs:complexType name="CertificateStatusUpdateForCareResponseType">
 		<xs:sequence>
-			<xs:element name="handelse" type="core:Handelse"
-				minOccurs="0"  maxOccurs="unbounded" />
+			<xs:element name="result" type="core:ResultType" />
 			<xs:any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</xs:sequence>

@@ -18,11 +18,11 @@
  under the License.
  -->
  <schema xmlns="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:SendMessageToRecipientResponder:2"
-	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:SendMessageToRecipientResponder:2"
-	xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-	elementFormDefault="qualified" attributeFormDefault="unqualified"
-	version="2.0" xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3">
+	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:RevokeCertificateResponder:2"
+	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:RevokeCertificateResponder:2"
+	xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3" elementFormDefault="qualified"
+	attributeFormDefault="unqualified"
+	version="2.1" xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3">
 
 	<import
 		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd"
@@ -36,30 +36,22 @@
 	<import namespace="http://www.w3.org/2002/06/xmldsig-filter2"
 			schemaLocation="../../core_components/xmldsig-filter2.xsd" />
 
-	<element name="SendMessageToRecipient" type="tns:SendMessageToRecipientType" />
-	<element name="SendMessageToRecipientResponse" type="tns:SendMessageToRecipientResponseType" />
+	<element name="RevokeCertificate" type="tns:RevokeCertificateType" />
+	<element name="RevokeCertificateResponse" type="tns:RevokeCertificateResponseType" />
 
-	<complexType name="SendMessageToRecipientType">
+	<complexType name="RevokeCertificateType">
 		<sequence>
-			<element name="meddelande-id" type="string" />
-			<element name="referens-id" type="string" minOccurs="0"/>
+			<element name="meddelande" type="string" minOccurs="0" />
 			<element name="skickatTidpunkt" type="types:TimeStampType" />
 			<element name="intygs-id" type="types:IntygId" />
 			<element name="patientPerson-id" type="types:PersonId" />
-			<element name="logiskAdressMottagare" type="string" />
-			<element name="amne" type="types:Amneskod"/>
-			<element name="rubrik" type="string" minOccurs="0"/>
-			<element name="meddelande" type="string"/>
-			<element name="paminnelseMeddelande-id" type="string" minOccurs="0"/>
-			<element name="svarPa" type="core:MeddelandeReferens" minOccurs="0"/>
-			<element name="skickatAv" type="core:HosPersonal"/>
-			<element name="sistaDatumForSvar" type="types:DateType" minOccurs="0"/>
+			<element name="skickatAv" type="core:HosPersonal" />
 			<any namespace="##other" processContents="lax" minOccurs="0"
 				maxOccurs="unbounded" />
 		</sequence>
 	</complexType>
 
-	<complexType name="SendMessageToRecipientResponseType">
+	<complexType name="RevokeCertificateResponseType">
 		<sequence>
 			<element name="result" type="core:ResultType" />
 			<any namespace="##other" processContents="lax" minOccurs="0"
