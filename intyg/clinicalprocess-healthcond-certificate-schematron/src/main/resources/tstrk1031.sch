@@ -214,7 +214,7 @@
     </iso:rule>
 
     <iso:rule context="//gn:svar[@id='35.1']">
-      <iso:extends rule="date"/>
+      <iso:extends rule="partial-date"/>
     </iso:rule>
 
   </iso:pattern>
@@ -277,6 +277,7 @@
       </iso:assert>
     </iso:rule>
 
+    <!--R7: 109.5-->
     <iso:rule context="//gn:delsvar[@id='109.5']">
       <iso:extends rule="partial-date"/>
     </iso:rule>
@@ -300,10 +301,10 @@
 
     <!--R4: 109.1, 109.2, 109.4, 109.6-->
     <iso:rule context="//gn:svar[@id='109']">
-      <iso:assert test="count(gn:delsvar[@id='109.1']) = 1 or
-                        count(gn:delsvar[@id='109.2']) = 1 or
-                        count(gn:delsvar[@id='109.4']) = 1 or
-                        count(gn:delsvar[@id='109.6']) = 1">
+      <iso:assert test="(count(gn:delsvar[@id='109.1']) = 1 and matches(normalize-space(gn:delsvar[@id='109.1']), '^true$|^1$')) or
+                        (count(gn:delsvar[@id='109.2']) = 1 and matches(normalize-space(gn:delsvar[@id='109.2']), '^true$|^1$')) or
+                        (count(gn:delsvar[@id='109.4']) = 1 and matches(normalize-space(gn:delsvar[@id='109.4']), '^true$|^1$')) or
+                        (count(gn:delsvar[@id='109.6']) = 1 and matches(normalize-space(gn:delsvar[@id='109.6']), '^true$|^1$'))">
         Minst en av "<value-of select="$svar109_1"/>",
         "<value-of select="$svar109_2"/>",
         "<value-of select="$svar109_4"/>" eller
@@ -313,32 +314,31 @@
     </iso:rule>
 
     <!--R16: 109.2-109.3-->
-    <iso:rule context="//gn:svar[@id='109']">
-      <iso:assert test="count(gn:delsvar[@id='109.2']) = 1 and
-                        count(gn:delsvar[@id='109.3']) = 1">
+    <iso:rule context="//gn:delsvar[@id='109.2']">
+      <iso:assert test="count(gn:delsvar[@id='109.3']) = 1">
         Om frågan "<value-of select="$svar109_2"/>" besvaras ska frågan
         "<value-of select="$svar109_3"/>" visas och vara obligatorisk att besvara.
       </iso:assert>
     </iso:rule>
 
     <!--R5: 109.4, 109.5-->
-    <iso:rule context="//gn:delsvar[@id='109.4']">
+    <iso:rule context="//gn:delsvar[@id='109.4' and matches(normalize-space(.), '^true$|^1$')]">
       <iso:assert test="count(../gn:delsvar[@id='109.5']) = 1">
-        Om "<value-of select="$svar109_4"/>" är besvaras måste även även "<value-of select="$svar109_5"/>" besvaras.
+        Om "<value-of select="$svar109_4"/>" är besvarat måste även även "<value-of select="$svar109_5"/>" besvaras.
       </iso:assert>
     </iso:rule>
 
     <!--R16: 109.2, 109.3-->
     <iso:rule context="//gn:delsvar[@id='109.2']">
       <iso:assert test="count(../gn:delsvar[@id='109.3']) = 1">
-        Om "<value-of select="$svar109_2"/>" är besvaras måste även även "<value-of select="$svar109_3"/>" besvaras.
+        Om "<value-of select="$svar109_2"/>" är besvarat måste även även "<value-of select="$svar109_3"/>" besvaras.
       </iso:assert>
     </iso:rule>
 
     <!--R18: 109.6, 109.7-->
     <iso:rule context="//gn:delsvar[@id='109.6']">
       <iso:assert test="count(../gn:delsvar[@id='109.7']) = 1">
-        Om "<value-of select="$svar109_6"/>" är besvaras måste även även "<value-of select="$svar109_7"/>" besvaras.
+        Om "<value-of select="$svar109_6"/>" är besvarat måste även även "<value-of select="$svar109_7"/>" besvaras.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -497,7 +497,7 @@
       </iso:assert>
 
       <!-- R8: 106.1-106.2-->
-      <iso:assert test="count(../gn:delsvar[@id=106.2]) = 1">
+      <iso:assert test="matches(normalize-space(.), '^true$|^1$') and count(../gn:delsvar[@id=106.2]) = 1">
         Om  "<value-of select="$svar106_1"/>" är besvarat, måste även "<value-of select="$svar106_2"/>" besvaras
       </iso:assert>
     </iso:rule>
@@ -525,7 +525,7 @@
       </iso:assert>
 
       <!--R9: 107.1-107.2-->
-      <iso:assert test="count(../gn:delsvar[@id='107.2']) = 1">
+      <iso:assert test="matches(normalize-space(.), '^true$|^1$') and count(../gn:delsvar[@id='107.2']) = 1">
         Om  "<value-of select="$svar107_1"/>" är besvarat, måste även "<value-of select="$svar107_2"/>" besvaras
       </iso:assert>
     </iso:rule>
@@ -554,7 +554,7 @@
       </iso:assert>
 
       <!--R10: 108.1-108.2-->
-      <iso:assert test="count(../gn:delsvar[@id='108.2']) = 1">
+      <iso:assert test="matches(normalize-space(.), '^true$|^1$') and count(../gn:delsvar[@id='108.2']) = 1">
         Om  "<value-of select="$svar108_1"/>" är besvarat, måste även "<value-of select="$svar108_2"/>" besvaras
       </iso:assert>
     </iso:rule>
@@ -613,7 +613,7 @@
         "<value-of select="$svar8"/>" måste ha ett
         "<value-of select="$svar8_1"/>",
         "<value-of select="$svar8_2"/>" och
-        "<value-of select="$svar8_3"/>",
+        "<value-of select="$svar8_3"/>"
       </iso:assert>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
@@ -621,27 +621,27 @@
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='8.1']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='8.2']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='8.3']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='8.4']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='8.5']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='8.6']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
 
   </iso:pattern>
@@ -735,7 +735,7 @@
   </iso:pattern>
 
   <iso:pattern id="R6-36.1-37.1-38.1-100.1-101.1-102.1-105.1-106.1-107.1-108.1">
-    <iso:rule context="//gn:delsvar[@id='109.4']">
+    <iso:rule context="//gn:delsvar[@id='109.4' and matches(normalize-space(.), '^true$|^1$')]">
       <iso:assert test="count(../../gn:svar[@id='36']/gn:delsvar[@id='36.1']) = 1 and
                         count(../../gn:svar[@id='37']/gn:delsvar[@id='37.1']) = 1 and
                         count(../../gn:svar[@id='38']/gn:delsvar[@id='38.1']) = 1 and
@@ -762,11 +762,13 @@
     </iso:rule>
   </iso:pattern>
 
+  <!--R12-->
   <iso:pattern id="R12-103.1-104.1-8">
-    <iso:rule context="//gn:svar[@id='103']/gn:delsvar[@id='103.1']">
-      <iso:assert test="(matches(normalize-space(.), 'true|1') or matches(normalize-space(../../gn:svar[@id=104]/gn:delsvar[@id='104.1']), 'false|0')) and
-                        (count(../../gn:svar[@id='8']) = 1)">
-        Om "<value-of select="$svar103_1"/>" har värdet true, eller
+    <iso:rule context="//gn:delsvar[@id='103.1' and ((matches(normalize-space(.), '^false|^0$')
+                      and (../../gn:svar[@id='104']/gn:delsvar[@id='104.1' and matches(normalize-space(.), '^false|^0$')])))]">
+
+      <iso:assert test="count(../../gn:svar[@id='8']) = 1">
+        Om "<value-of select="$svar103_1"/>" har värdet false, eller
         om "<value-of select="$svar104_1"/>" har värdet false,
         måste även "<value-of select="$svar8"/>" besvaras.
       </iso:assert>
@@ -775,10 +777,10 @@
 
   <iso:pattern id="R13-R14-R15-1.1-8.1-8.2-8.4-8.5-8.6">
 
-    <!--R13-->
+    <!--R13: 1.1-8.3-8.4-8.5-8.6-->
     <iso:rule context="//gn:svar[@id='1'
-                                and matches(normalize-space(gn:delsvar[@id=1.1]/tp:cv/tp:code), '^IAV1[1-7]$')
-                                and abs(../gn:svar[@id=1]/gn:delsvar[@id='8.3']) lt 0.5]">
+                                and matches(normalize-space(gn:delsvar[@id='1.1']/tp:cv/tp:code), '^IAV1[1-7]$')
+                                and abs(../gn:svar[@id='8']/gn:delsvar[@id='8.3']) &lt; 0.5]">
       <iso:assert test="count(../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1 and
                         count(../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1">
 
@@ -788,11 +790,11 @@
       </iso:assert>
     </iso:rule>
 
-    <!--R14-->
+    <!--R14: 1.1-8.1-8.2-8.4-8.5-8.6-->
     <iso:rule context="//gn:svar[@id='1'
-                                and matches(normalize-space(gn:delsvar[@id=1.1]/tp:cv/tp:code), '^IAV1[1-9]$')
-                                and abs(../gn:svar[@id=1]/gn:delsvar[@id='8.1']) lt 0.8
-                                and abs(../gn:svar[@id=1]/gn:delsvar[@id='8.2']) lt 0.8]">
+                                and matches(normalize-space(gn:delsvar[@id='1.1']/tp:cv/tp:code), '^IAV[1-9]$')
+                                and abs(../gn:svar[@id='8']/gn:delsvar[@id='8.1']) &lt; 0.8
+                                and abs(../gn:svar[@id='8']/gn:delsvar[@id='8.2']) &lt; 0.8]">
       <iso:assert test="count(../gn:svar[@id='8']/gn:delsvar[@id='8.4']) = 1 and
                         count(../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1 and
                         count(../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1">
@@ -807,9 +809,9 @@
 
     <!--R15: 1.1-8.1-8.2-8.4-8.5-8.6-->
     <iso:rule context="//gn:svar[@id='1'
-                                 and matches(normalize-space(gn:delsvar[@id=1.1]/tp:cv/tp:code), '^IAV1[1-9]$')
-                                 and abs(../gn:svar[@id=1]/gn:delsvar[@id='8.1']) lt 0.1
-                                 and abs(../gn:svar[@id=1]/gn:delsvar[@id='8.2']) lt 0.1]">
+                                 and matches(normalize-space(gn:delsvar[@id='1.1']/tp:cv/tp:code), '^IAV1[1-9]$')
+                                 and abs(../gn:svar[@id='8']/gn:delsvar[@id='8.1']) &lt; 0.1
+                                 and abs(../gn:svar[@id='8']/gn:delsvar[@id='8.2']) &lt; 0.1]">
       <iso:assert test="count(../gn:svar[@id='8']/gn:delsvar[@id='8.4']) = 1 and
                         count(../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1 and
                         count(../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1">
@@ -822,8 +824,9 @@
     </iso:rule>
   </iso:pattern>
 
+  <!--R17-->
   <iso:pattern id="R17-109.3-101.1-102.1-38.1-36.1-105.1-106.1-107.1-108.1">
-    <iso:rule context="//gn:delsvar[@id=109.3]">
+    <iso:rule context="//gn:delsvar[@id='109.3'] ">
       <iso:assert test="count(../../gn:svar[@id='36']/gn:delsvar[@id='36.1']) = 1 and
                         count(../../gn:svar[@id='37']/gn:delsvar[@id='37.1']) = 1 and
                         count(../../gn:svar[@id='38']/gn:delsvar[@id='38.1']) = 1 and
@@ -893,6 +896,14 @@
     <iso:rule id="decimal" abstract="true">
       <iso:assert test="count(*) = 0">Decimal-värde får inte vara inbäddat i något element.</iso:assert>
       <iso:assert test=". castable as xs:decimal">Decimalvärde</iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="decimal-value-less-equal-2-pattern">
+    <iso:rule id="decimal-le-2" abstract="true">
+      <iso:assert test="count(*) = 0">Decimal-värde får inte vara inbäddat i något element.</iso:assert>
+      <iso:assert test=". castable as xs:decimal">Decimalvärde</iso:assert>
+      <iso:assert test="abs(.) &lt;= 2.0">Decimal-värde får inte vara över 2.0</iso:assert>
     </iso:rule>
   </iso:pattern>
 
