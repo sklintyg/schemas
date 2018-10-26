@@ -519,7 +519,8 @@
       </iso:assert>
 
       <!-- R8: 106.1-106.2-->
-      <iso:assert test="matches(normalize-space(.), '^true$|^1$') and count(../gn:delsvar[@id=106.2]) = 1">
+      <iso:assert test="not(matches(normalize-space(.), '^true$|^1$')) or
+                        matches(normalize-space(.), '^true$|^1$') and count(../gn:delsvar[@id=106.2]) = 1">
         Om "<value-of select="$svar106_1"/>" är besvarat, måste även "<value-of select="$svar106_2"/>" besvaras
       </iso:assert>
     </iso:rule>
@@ -549,7 +550,8 @@
       </iso:assert>
 
       <!--R9: 107.1-107.2-->
-      <iso:assert test="matches(normalize-space(.), '^true$|^1$') and count(../gn:delsvar[@id='107.2']) = 1">
+      <iso:assert test="not(matches(normalize-space(.), '^true$|^1$')) or
+                        matches(normalize-space(.), '^true$|^1$') and count(../gn:delsvar[@id='107.2']) = 1">
         Om "<value-of select="$svar107_1"/>" är besvarat, måste även "<value-of select="$svar107_2"/>" besvaras
       </iso:assert>
     </iso:rule>
@@ -580,7 +582,8 @@
       </iso:assert>
 
       <!--R10: 108.1-108.2-->
-      <iso:assert test="matches(normalize-space(.), '^true$|^1$') and count(../gn:delsvar[@id='108.2']) = 1">
+      <iso:assert test="not(matches(normalize-space(.), '^true$|^1$')) or
+                        matches(normalize-space(.), '^true$|^1$') and count(../gn:delsvar[@id='108.2']) = 1">
         Om "<value-of select="$svar108_1"/>" är besvarat, måste även "<value-of select="$svar108_2"/>" besvaras
       </iso:assert>
     </iso:rule>
