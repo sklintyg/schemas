@@ -4,17 +4,34 @@ group = 'se.inera.intyg.clinicalprocess.healthcond.rehabilitation'
 version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
-  wsdlsToGenerate = [ ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
-                       "-wsdlLocation",
-                       "classpath:interactions/ListActiveSickLeavesForCareUnitInteraction/ListActiveSickLeavesForCareUnitInteraction_1.0_RIVTABP21.wsdl",
-                       "-p",
-                       "urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForCareUnit:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforcareunit.v1",
-                       "-p",
-                       "urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForCareUnitResponder:1=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforcareunit.v1",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1",
-                       "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:2=se.riv.clinicalprocess.healthcond.certificate.types.v2",
-                       "-p", "urn:riv:clinicalprocess:healthcond:rehabilitation:1=se.riv.clinicalprocess.healthcond.rehabilitation.v1",
-                       "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
-                       "$projectDir/schemas/interactions/ListActiveSickLeavesForCareUnitInteraction/ListActiveSickLeavesForCareUnitInteraction_1.0_RIVTABP21.wsdl"] ]
+    def commonOptions = [
+        "-p", "urn:riv:clinicalprocess:healthcond:certificate:1=se.riv.clinicalprocess.healthcond.certificate.v1",
+        "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:1=se.riv.clinicalprocess.healthcond.certificate.types.v1",
+        "-p", "urn:riv:clinicalprocess:healthcond:certificate:types:2=se.riv.clinicalprocess.healthcond.certificate.types.v2",
+        "-p", "urn:riv:clinicalprocess:healthcond:rehabilitation:1=se.riv.clinicalprocess.healthcond.rehabilitation.v1",
+        "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1"
+    ]
+
+    wsdlsToGenerate = [
+        commonOptions + [
+            "-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
+            "-wsdlLocation",
+            "classpath:interactions/ListActiveSickLeavesForCareUnitInteraction/ListActiveSickLeavesForCareUnitInteraction_1.0_RIVTABP21.wsdl",
+            "-p",
+            "urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForCareUnit:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforcareunit.v1",
+            "-p",
+            "urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForCareUnitResponder:1=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforcareunit.v1",
+            "$projectDir/schemas/interactions/ListActiveSickLeavesForCareUnitInteraction/ListActiveSickLeavesForCareUnitInteraction_1.0_RIVTABP21.wsdl"
+        ],
+        commonOptions + [
+          "-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
+          "-wsdlLocation",
+          "classpath:interactions/ListActiveSickLeavesForPersonInteraction/ListActiveSickLeavesForPersonInteraction_1.0_RIVTABP21.wsdl",
+          "-p",
+          "urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForPerson:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforperson.v1",
+          "-p",
+          "urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForPersonResponder:1=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforperson.v1",
+          "$projectDir/schemas/interactions/ListActiveSickLeavesForPersonInteraction/ListActiveSickLeavesForPersonInteraction_1.0_RIVTABP21.wsdl"
+        ]
+    ]
 }

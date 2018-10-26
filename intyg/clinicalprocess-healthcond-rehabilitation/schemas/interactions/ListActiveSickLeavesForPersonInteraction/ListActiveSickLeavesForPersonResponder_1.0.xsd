@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+  ~ Copyright (C) 2018 Inera AB (http://www.inera.se)
+  ~
+  ~ This file is part of sklintyg (https://github.com/sklintyg).
+  ~
+  ~ sklintyg is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ sklintyg is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:tns='urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForPersonResponder:1'
+    xmlns:core='urn:riv:clinicalprocess:healthcond:rehabilitation:1'
+    xmlns:types='urn:riv:clinicalprocess:healthcond:certificate:types:2'
+    targetNamespace='urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForPersonResponder:1'
+    elementFormDefault='qualified'
+    attributeFormDefault='unqualified'
+    version='1.0'>
+
+  <xs:import namespace='urn:riv:clinicalprocess:healthcond:rehabilitation:1' schemaLocation='../../core_components/clinicalprocess_healthcond_rehabilitation_1.0.xsd'/>
+  <xs:import namespace='urn:riv:clinicalprocess:healthcond:certificate:types:2' schemaLocation='../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd'/>
+
+  <xs:element name='ListActiveSickLeavesForPerson' type='tns:ListActiveSickLeavesForPersonType'/>
+  <xs:element name='ListActiveSickLeavesForPersonResponse' type='tns:ListActiveSickLeavesForPersonResponseType'/>
+
+  <xs:complexType name='ListActiveSickLeavesForPersonType'>
+    <xs:sequence>
+      <xs:element name='person-id' type='types:PersonId'/>
+      <xs:element name='max-dagar-sedan-avslut' minOccurs='0'>
+         <xs:simpleType>
+           <xs:restriction base='xs:integer'>
+           <xs:minInclusive value='0'/>
+           <xs:maxInclusive value='14'/>
+         </xs:restriction>
+       </xs:simpleType>
+      </xs:element>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded'/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name='ListActiveSickLeavesForPersonResponseType'>
+    <xs:sequence>
+      <xs:element name='vardgivare' type='core:Vardgivare'/>
+      <xs:element name='intygsLista' type='core:IntygsLista'/>
+      <xs:element name='result' type='tns:ResultType'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded'/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name='ResultType'>
+    <xs:sequence>
+      <xs:element name='resultCode' type='tns:ResultCodeEnum'/>
+      <xs:element name='resultMessage' type='xs:string' minOccurs='0'/>
+      <xs:any namespace='##other' processContents='lax' minOccurs='0' maxOccurs='unbounded'/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name='ResultCodeEnum'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='OK'/>
+      <xs:enumeration value='ERROR'/>
+      <xs:enumeration value='INFO'/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
