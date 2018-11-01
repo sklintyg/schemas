@@ -4,7 +4,7 @@
     queryBinding='xslt2' schemaVersion='ISO19757-3'>
 
   <iso:title>Schematron file for "Läkarintyg om arbetsförmåga – sjuklöneperiod AG1-14".</iso:title>
-
+qq
   <iso:ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
   <iso:ns prefix="rg" uri="urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificateResponder:3"/>
   <iso:ns prefix="gn" uri="urn:riv:clinicalprocess:healthcond:certificate:3"/>
@@ -241,7 +241,7 @@
       <iso:assert test="count(gn:delsvar[@id='9.1']) = 1">
         'Kontakt med arbetsgivaren' måste ha ett 'Kontakt med arbetsgivaren önskas'.
       </iso:assert>
-      <iso:assert test="count(gn:delsvar[@id='9.2']) = 1">
+      <iso:assert test="count(gn:delsvar[@id='9.2']) le 1">
         'Kontakt med arbetsgivaren' får ha högst ett 'Kontakt vem och varför'.
       </iso:assert>
       <iso:let name="delsvarsIdExpr" value="'^9\.[12]$'"/>
