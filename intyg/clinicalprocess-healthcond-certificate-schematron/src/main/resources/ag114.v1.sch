@@ -4,7 +4,7 @@
     queryBinding='xslt2' schemaVersion='ISO19757-3'>
 
   <iso:title>Schematron file for "Läkarintyg om arbetsförmåga – sjuklöneperiod AG1-14".</iso:title>
-qq
+
   <iso:ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
   <iso:ns prefix="rg" uri="urn:riv:clinicalprocess:healthcond:certificate:RegisterCertificateResponder:3"/>
   <iso:ns prefix="gn" uri="urn:riv:clinicalprocess:healthcond:certificate:3"/>
@@ -21,8 +21,8 @@ qq
       <iso:assert test="count(gn:svar[@id='3']) = 1">
         Ett 'AG1-14' måste innehålla 1 'Önskar förmedla diagnoser'.
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='4']) le 1">
-        Ett 'AG1-14' får innehålla max 1 'Diagnos'.
+      <iso:assert test="count(gn:svar[@id='4']) le 3">
+        Ett 'AG1-14' får innehålla max 3 'Diagnos'.
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='5']) = 1">
         Ett 'AG1-14' måste innehålla 1 'På vilket sätt nedsatt arbetsförmåga'.
@@ -102,7 +102,7 @@ qq
 
   <iso:pattern id="q4-R14">
     <iso:rule context="//gn:svar[@id='3']/gn:delsvar[@id='3.1' and matches(normalize-space(.), 'true|1')]">
-      <iso:assert test="count(../../gn:svar[@id='4']) = 1">
+      <iso:assert test="count(../../gn:svar[@id='4']) ge 1">
         Om 'Önskar förmedla diagnos (FRG 3.1)' besvaras med 'Ja' är frågan 'Typ av diagnos (FRG 4)' obligatorisk att besvara.
       </iso:assert>
     </iso:rule>
