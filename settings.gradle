@@ -18,7 +18,6 @@ include ':intyg-clinicalprocess-healthcond-rehabilitation-schemas'
 include ':intyg-clinicalprocess-healthcond-srs-schemas'
 include ':intyg-infrastructure-directory-privatepractitioner-schemas'
 include ':intyg-infrastructure-directory-privatepractitioner-terms-schemas'
-include ':intyg-insuranceprocess-healthreporting-schemas'
 include ':intyg-transportstyrelsen-schemas'
 include ':clinicalprocess-healthcond-certificate-schemas'
 include ':ehr-logstore-schemas'
@@ -44,7 +43,6 @@ project(':intyg-clinicalprocess-healthcond-rehabilitation-schemas').projectDir =
 project(':intyg-clinicalprocess-healthcond-srs-schemas').projectDir = "$rootDir/intyg/clinicalprocess-healthcond-srs" as File
 project(':intyg-infrastructure-directory-privatepractitioner-schemas').projectDir = "$rootDir/intyg/infrastructure-directory-privatepractitioner" as File
 project(':intyg-infrastructure-directory-privatepractitioner-terms-schemas').projectDir = "$rootDir/intyg/infrastructure-directory-privatepractitioner-terms" as File
-project(':intyg-insuranceprocess-healthreporting-schemas').projectDir = "$rootDir/intyg/insuranceprocess-healthreporting" as File
 project(':intyg-transportstyrelsen-schemas').projectDir = "$rootDir/intyg/transportstyrelsen" as File
 project(':clinicalprocess-healthcond-certificate-schemas').projectDir = "$rootDir/rivta/clinicalprocess-healthcond-certificate" as File
 project(':ehr-logstore-schemas').projectDir = "$rootDir/rivta/ehr-logstore" as File
