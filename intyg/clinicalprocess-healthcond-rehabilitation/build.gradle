@@ -26,12 +26,12 @@ wsdl2java {
         commonOptions + [
           "-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
           "-wsdlLocation",
-          "classpath:interactions/ListActiveSickLeavesForPersonInteraction/ListActiveSickLeavesForPersonInteraction_1.0_RIVTABP21.wsdl",
+          "classpath:interactions/ListSickLeavesForPersonInteraction/ListSickLeavesForPersonInteraction_1.0_RIVTABP21.wsdl",
           "-p",
-          "urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForPerson:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforperson.v1",
+          "urn:riv:clinicalprocess:healthcond:rehabilitation:ListSickLeavesForPerson:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.ListSickLeavesforperson.v1",
           "-p",
-          "urn:riv:clinicalprocess:healthcond:rehabilitation:ListActiveSickLeavesForPersonResponder:1=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.listactivesickleavesforperson.v1",
-          "$projectDir/schemas/interactions/ListActiveSickLeavesForPersonInteraction/ListActiveSickLeavesForPersonInteraction_1.0_RIVTABP21.wsdl"
+          "urn:riv:clinicalprocess:healthcond:rehabilitation:ListSickLeavesForPersonResponder:1=se.inera.intyg.clinicalprocess.healthcond.rehabilitation.ListSickLeavesforperson.v1",
+          "$projectDir/schemas/interactions/ListSickLeavesForPersonInteraction/ListSickLeavesForPersonInteraction_1.0_RIVTABP21.wsdl"
         ]
     ]
 }
