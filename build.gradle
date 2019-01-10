@@ -10,7 +10,7 @@ allprojects {
 
     ext {
         guavaVersion = "20.0"
-        jacksonVersion = "2.8.1"
+        jacksonVersion = "2.9.7"
         logbackVersion = "1.0.11"
         // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
         errorproneExclude = ".*-schemas\$"
