@@ -21,6 +21,9 @@
       <iso:assert test="count(gn:svar[@id='29']) le 1">
         Ett 'AG7404' får ha högst ett 'Nuvarande arbete'
       </iso:assert>
+      <iso:assert test="count(gn:svar[@id='100']/gn:delsvar[@id='100.1']) = 1">
+               Ett 'AG7404' måste ha ett 'Önskar förmedla diagnos'
+       </iso:assert>
       <iso:let name="onskarformedlaDiagnos" value="normalize-space(gn:svar[@id='100']/gn:delsvar[@id='100.1'])"/>
       <iso:assert test="count(gn:svar[@id='6']) = 0 or matches($onskarformedlaDiagnos, '1|true')">
          Ett 'AG7404' måste ha Diagnos angivet om 'Önskar förmedla diagnos' är besvarad med Ja
@@ -73,14 +76,9 @@
       <iso:assert test="count(gn:svar[@id='28']) ge 1 or count(gn:svar[@id='27']) = 1">
         Ett 'AG7404' måste antingen ha 'Typ av sysselsättning' eller 'Smittbärarpenning'
       </iso:assert>
-
-      <iso:let name="onskarformedlaFunk" value="normalize-space(gn:svar[@id='101']/gn:delsvar[@id='101.1'])"/>
-
-      <iso:assert test="count(gn:svar[@id='27']) ge 1 or (count(gn:svar[@id='35']) = 0 or matches($onskarformedlaFunk, '1|true'))">
-        Ett 'AG7404' får ej ha 'Funktionsnedsättning' om 'Önskar förmedla funktionsnedsättning' besvarats med nej
+      <iso:assert test="count(gn:svar[@id='101']/gn:delsvar[@id='101.1']) = 1 or count(gn:svar[@id='27']) = 1">
+        Ett 'AG7404' måste antingen ha 'Önskar förmedla funktionsnedsättning' eller 'Smittbärarpenning'
       </iso:assert>
-
-
       <iso:assert test="count(gn:svar[@id='17']) = 1 or count(gn:svar[@id='27']) = 1">
         Ett 'AG7404' måste antingen ha 'Aktivitetsbegränsningar' eller 'Smittbärarpenning'
       </iso:assert>
@@ -251,43 +249,52 @@
     </iso:rule>
   </iso:pattern>
 
- <iso:pattern id="q100.1">
+  <iso:pattern id="q100.1">
     <iso:rule context="//gn:delsvar[@id='100.1']">
       <iso:extends rule="boolean"/>
-    </iso:rule>
-
-    <iso:rule context="//gn:delsvar[@id='100.1']">
       <iso:assert test="matches(normalize-space(.), '^true$|^1$|^false$|^0$')">
         'Önskar förmedla diagnos' måste ha ett svar av typen boolean
       </iso:assert>
-
-
-      <iso:assert test="matches(normalize-space(.), '^true$|^1$') and count(//gn:svar[@id='6']) lt 1">
-        Om 'Önskar förmedla diagnos' är besvarat med ja, måste diagnoser besvaras
-      </iso:assert>
-
-
-
     </iso:rule>
   </iso:pattern>
+  <iso:pattern id="q100.1-true">
+      <iso:rule context="//gn:delsvar[@id='100.1' and matches(normalize-space(.), '1|true')]">
+        <iso:assert test="count(//gn:svar[@id='6']) = 1">
+          Om 'Önskar förmedla diagnos' är besvarat med ja, måste diagnoser besvaras
+        </iso:assert>
+      </iso:rule>
+   </iso:pattern>
+   <iso:pattern id="q100.1-false">
+     <iso:rule context="//gn:delsvar[@id='100.1' and matches(normalize-space(.), '0|false')]">
+       <iso:assert test="count(//gn:svar[@id='6']) = 0">
+         Om 'Önskar förmedla diagnos' är besvarat med nej, får ej diagnoser besvaras
+       </iso:assert>
+     </iso:rule>
+   </iso:pattern>
 
-    <iso:pattern id="q101.1">
-          <iso:rule context="//gn:delsvar[@id='101.1']">
-            <iso:extends rule="boolean"/>
-          </iso:rule>
 
-        <iso:rule context="//gn:delsvar[@id='101.1']">
-          <iso:assert test="matches(normalize-space(.), '^true$|^1$|^false$|^0$')">
-            'Önskar förmedla funktionsnedsättning' måste ha ett svar av typen boolean
-          </iso:assert>
-
-          <!--R33-->
-          <iso:assert test="matches(normalize-space(.), '^true$|^1$') and count(../../../../gn:delsvar[@id='35.1']) lt 1">
-            Om 'Önskar förmedla funktionsnedsättning' är besvarat med  ja, måste funktionsnedsättning besvaras
-          </iso:assert>
-
-        </iso:rule>
-    </iso:pattern>
+   <iso:pattern id="q101.1">
+     <iso:rule context="//gn:delsvar[@id='101.1']">
+       <iso:extends rule="boolean"/>
+       <iso:assert test="matches(normalize-space(.), '^true$|^1$|^false$|^0$')">
+         'Önskar förmedla funktionsnedsättning' måste ha ett svar av typen boolean
+       </iso:assert>
+     </iso:rule>
+   </iso:pattern>
+  <iso:pattern id="q101.1-true">
+      <iso:rule context="//gn:delsvar[@id='101.1' and matches(normalize-space(.), '1|true')]">
+        <iso:assert test="count(//gn:delsvar[@id='35.1']) = 1">
+          Om 'Önskar förmedla funktionsnedsättning' är besvarat med ja, måste funktionsnedsättning besvaras
+        </iso:assert>
+      </iso:rule>
+   </iso:pattern>
+   <iso:pattern id="q101.1-false">
+     <iso:rule context="//gn:delsvar[@id='101.1' and matches(normalize-space(.), '0|false')]">
+       <iso:assert test="count(//gn:delsvar[@id='35.1']) = 0">
+         Om 'Önskar förmedla funktionsnedsättning' är besvarat med nej, får ej funktionsnedsättning besvaras
+       </iso:assert>
+     </iso:rule>
+   </iso:pattern>
 
 
   <iso:pattern id="q6">
