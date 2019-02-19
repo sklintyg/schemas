@@ -160,7 +160,7 @@
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='51.3']">
-      <iso:extends rule="partial-date"/>
+      <iso:extends rule="partial-date-year"/>
     </iso:rule>
   </iso:pattern>
 
@@ -186,7 +186,7 @@
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='52.2']">
-      <iso:extends rule="partial-date"/>
+      <iso:extends rule="partial-date-year"/>
     </iso:rule>
   </iso:pattern>
 
@@ -311,7 +311,7 @@
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='59.1']">
-      <iso:extends rule="date"/>
+      <iso:extends rule="partial-date"/>
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='59.2']">
@@ -345,6 +345,19 @@
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
         <value-of select="$delsvarsIdExpr"/>
         ".
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='61.1' and string(.) castable as xs:boolean]">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='61.1']">
+      <iso:extends rule="cv"/>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^2.16.840.1.113883.5.1008$')">
+        'codeSystem' måste vara '2.16.840.1.113883.5.1008'.
+      </iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^NI$')">
+        'code' kan endast vara NI.
       </iso:assert>
     </iso:rule>
 
@@ -443,6 +456,33 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="R10">
+    <iso:rule context="//gn:delsvar[@id='51.3']">
+      <iso:let name="currYear" value="year-from-date(current-date())"/>
+      <iso:assert test="number(tp:partialDate/tp:value) le $currYear">
+        Årtal i delsvar 'Årtal för diagnos' måste vara innevarande år eller tidigare.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R11">
+    <iso:rule context="//gn:delsvar[@id='59.1']">
+      <iso:let name="currDate" value="current-date()"/>
+      <iso:assert test="xs:date(tp:partialDate/tp:value) le $currDate">
+        Datum i delsvar 'Tidpunkt då läkemedelsbehandling avslutades' får inte vara senare än idag.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R14">
+    <iso:rule context="//gn:delsvar[@id='52.2']">
+      <iso:let name="currYear" value="year-from-date(current-date())"/>
+      <iso:assert test="number(tp:partialDate/tp:value) le $currYear">
+        Årtal i delsvar 'Årtal för diagnoser' måste vara innevarande år eller tidigare.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="cv-pattern">
     <iso:rule id="cv" abstract="true">
       <iso:assert test="count(tp:cv) = 1">Ett värde av typen CV måste ha ett cv-element</iso:assert>
@@ -455,16 +495,16 @@
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="date-pattern">
-    <iso:rule id="date" abstract="true">
-      <iso:assert test="count(*) = 0">Datum får inte vara inbäddat i något element.</iso:assert>
-      <iso:assert test=". castable as xs:date">Värdet måste vara ett giltigt datum.</iso:assert>
-      <iso:assert test="matches(., '^\d{4}-\d{2}-\d{2}')">Datumet måste uttryckas som YYYY-MM-DD.</iso:assert>
+  <iso:pattern id="partial-date-pattern">
+    <iso:rule id="partial-date" abstract="true">
+      <iso:assert test="tp:partialDate/tp:value/count(*) = 0">Datum får inte vara inbäddat i något element.</iso:assert>
+      <iso:assert test="tp:partialDate/tp:value castable as xs:date">Värdet måste vara ett giltigt datum.</iso:assert>
+      <iso:assert test="matches(tp:partialDate/tp:value, '^\d{4}-\d{2}-\d{2}')">Datumet måste uttryckas som YYYY-MM-DD.</iso:assert>
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="partial-date-pattern">
-    <iso:rule id="partial-date" abstract="true">
+  <iso:pattern id="partial-date-year-pattern">
+    <iso:rule id="partial-date-year" abstract="true">
       <iso:assert test="matches(tp:partialDate/tp:value, '^\d{4}$')">Datumet måste uttryckas som YYYY.</iso:assert>
     </iso:rule>
   </iso:pattern>
