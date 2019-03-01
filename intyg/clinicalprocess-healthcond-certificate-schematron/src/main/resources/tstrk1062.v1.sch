@@ -311,7 +311,7 @@
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='59.1']">
-      <iso:extends rule="partial-date"/>
+      <iso:extends rule="non-empty-string"/>
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='59.2']">
@@ -461,15 +461,6 @@
       <iso:let name="currYear" value="year-from-date(current-date())"/>
       <iso:assert test="number(tp:partialDate/tp:value) le $currYear">
         Årtal i delsvar 'Årtal för diagnos' måste vara innevarande år eller tidigare.
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="R11">
-    <iso:rule context="//gn:delsvar[@id='59.1']">
-      <iso:let name="currDate" value="current-date()"/>
-      <iso:assert test="xs:date(tp:partialDate/tp:value) le $currDate">
-        Datum i delsvar 'Tidpunkt då läkemedelsbehandling avslutades' får inte vara senare än idag.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
