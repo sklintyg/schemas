@@ -332,10 +332,10 @@
   </iso:pattern>
 
   <iso:pattern id="q8-R35">
-    <iso:rule context="//gn:delsvar[(@id='8.1' and number(.) &lt; 0.1) or (number(../gn:delsvar[@id='8.2']) &lt; 0.1)]">
-      <iso:assert test="
-        count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) ge 1
-        and count(../gn:delsvar[@id='8.4']) = 1
+    <iso:rule context="//gn:delsvar[((@id='8.1' and number(.) &lt; 0.1) or (number(../gn:delsvar[@id='8.2']) &lt; 0.1))
+    and
+    count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) ge 1]">
+      <iso:assert test="count(../gn:delsvar[@id='8.4']) = 1
         and count(../gn:delsvar[@id='8.5']) = 1
         and count(../gn:delsvar[@id='8.6']) = 1">
         Om DFR 1.1 besvarats med något av valen 'C1, C1E, C, CE, D1, D1E, D, DE eller Taxi'
@@ -347,9 +347,13 @@
   </iso:pattern>
 
   <iso:pattern id="q8-R34">
-    <iso:rule context="//gn:delsvar[(@id='8.1' and number(.) &lt; 0.8 and number(.) &gt;= 0.1) and (number(../gn:delsvar[@id='8.2']) &lt; 0.8 and number(../gn:delsvar[@id='8.2']) &gt;= 0.1)]">
-      <iso:assert test="count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) ge 1
-        and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.4']) = 1
+    <iso:rule context="//gn:delsvar[
+    (@id='8.1' and number(.) &lt; 0.8 and number(.) &gt;= 0.1)
+    and
+    (number(../gn:delsvar[@id='8.2']) &lt; 0.8 and number(../gn:delsvar[@id='8.2']) &gt;= 0.1)
+    and
+    (count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) &gt;= 1)]">
+      <iso:assert test="count(../../gn:svar[@id='8']/gn:delsvar[@id='8.4']) = 1
         and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
         and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1">
         Om DFR 1.1 besvarats med något av valen 'C1, C1E, C, CE, D1, D1E, D, DE eller Taxi'

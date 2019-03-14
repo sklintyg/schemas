@@ -102,8 +102,8 @@
     <xs:sequence>
       <xs:element name="code" type="xs:string"/>
       <xs:element name="codeSystem" type="xs:string"/>
+      <xs:element minOccurs="0" maxOccurs="1" name="codeSystemVersion" type="xs:string"/>
       <xs:element minOccurs="0" name="codeSystemName" type="xs:string"/>
-      <xs:element minOccurs="0" name="codeSystemVersion" type="xs:string"/>
       <xs:element minOccurs="0" name="displayName" type="xs:string"/>
       <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
     </xs:sequence>
