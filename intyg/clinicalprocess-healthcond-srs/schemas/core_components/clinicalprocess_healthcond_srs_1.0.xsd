@@ -70,7 +70,7 @@
       <xs:element name="bildadress" type="xs:anyURI" minOccurs="0"/>
       <xs:element name="andringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
       <xs:element name="statistikstatus" type="tns:statistikstatus"/>
-      <xs:element name="data" type="tns:statistikdata" minOccurs="0"/>
+      <xs:element name="data" type="tns:statistikdata" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
