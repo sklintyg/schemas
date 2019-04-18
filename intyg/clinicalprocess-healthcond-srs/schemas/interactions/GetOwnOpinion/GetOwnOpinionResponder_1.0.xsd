@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:SetUserReviewResponder:1"
+           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinionResponder:1"
            xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
-           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:SetUserReviewResponder:1"
+           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinionResponder:1"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
            version="1.0">
@@ -10,31 +10,24 @@
     <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
                schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
 
-    <xs:element name="SetUserReviewRequest" type="tns:SetUserReviewRequestType"/>
-    <xs:element name="SetUserReviewResponse" type="tns:SetUserReviewResponseType"/>
+    <xs:element name="GetOwnOpinionRequest" type="tns:GetOwnOpinionRequestType"/>
+    <xs:element name="GetOwnOpinionResponse" type="tns:GetOwnOpinionResponseType"/>
 
-    <xs:complexType name="SetUserReviewRequestType">
+    <xs:complexType name="GetOwnOpinionRequestType">
         <xs:sequence>
             <xs:element name="vardgivare-id" type="types:HsaId"/>
+            <xs:element name="vardenhet-id" type="types:HsaId"/>
             <xs:element name="intyg-id" type="types:IntygId"/>
-            <xs:element name="egen-bedomning-risk" type="tns:EgenBedomningRiskType" />
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="SetUserReviewResponseType">
+    <xs:complexType name="GetOwnOpinionResponseType">
         <xs:sequence>
+            <xs:element name="egen-bedomning-risk" type="types:EgenBedomningRiskType" />
             <xs:element name="resultCode" type="types:ResultCodeEnum"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
-    
-    <xs:simpleType name="EgenBedomningRiskType">
-        <xs:restriction base="xs:string">
-            <xs:enumeration value="HOGRE"/>
-            <xs:enumeration value="KORREKT"/>
-            <xs:enumeration value="LAGRE"/>
-        </xs:restriction>
-    </xs:simpleType>
 
 </xs:schema>
