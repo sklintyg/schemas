@@ -27,7 +27,7 @@ import com.google.common.io.BaseEncoding;
 public final class HashUtility {
     public static final String EMPTY = "EMPTY";
 
-    static HashFunction hf = Hashing.sha256();
+    private static HashFunction hf = Hashing.sha256();
 
     private HashUtility() {
     }
