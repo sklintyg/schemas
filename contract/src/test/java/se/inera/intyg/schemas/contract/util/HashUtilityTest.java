@@ -18,6 +18,14 @@
  */
 package se.inera.intyg.schemas.contract.util;
 
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -42,5 +50,31 @@ public class HashUtilityTest {
         String payload = "";
         String hashedPayload = HashUtility.hash(payload);
         Assert.assertEquals(HashUtility.EMPTY, hashedPayload);
+    }
+
+    @Test
+    public void threadSafeTest() {
+
+        final int num = 10;
+
+        Map<String, String> map = Stream.generate(UUID::randomUUID)
+                .limit(num)
+                .map(UUID::toString)
+                .collect(Collectors.toMap(k -> k, k -> HashUtility.hash(k)));
+
+        ExecutorService es = Executors.newFixedThreadPool(num);
+
+        for (Map.Entry<String, String> e : map.entrySet()) {
+            final AtomicBoolean rc = new AtomicBoolean(true);
+            for (int i = 0; i < 10; i ++) {
+                es.execute(() -> {
+                    final String h = HashUtility.hash(e.getKey());
+                    if (!h.equals(e.getValue())) {
+                        rc.set(false);
+                    }
+                });
+                Assert.assertEquals(true, rc.get());
+            }
+        }
     }
 }
