@@ -66,7 +66,7 @@ public class HashUtilityTest {
 
         for (Map.Entry<String, String> e : map.entrySet()) {
             final AtomicBoolean rc = new AtomicBoolean(true);
-            for (int i = 0; i < 10; i ++) {
+            for (int i = 0; i < num; i ++) {
                 es.execute(() -> {
                     final String h = HashUtility.hash(e.getKey());
                     if (!h.equals(e.getValue())) {
