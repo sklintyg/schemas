@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "2.1.7"
+def buildVersion = "2.1.8"
 def projectName = "schemas-contract"
 
 stage('checkout') {
