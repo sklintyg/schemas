@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:1"
+           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:2"
            xmlns:srs="urn:riv:clinicalprocess:healthcond:srs:types:1"
            xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
-           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:1"
+           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:2"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
-           version="1.0">
+           version="2.0">
 
     <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
         schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
@@ -83,10 +83,14 @@
         <xs:sequence>
             <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
             <xs:element name="inkommandediagnos" type="types:diagnos"/>
+            <xs:element name="prevalens" type="xs:double" minOccurs="0"/>
             <xs:element name="sannolikhet-overgransvarde" type="xs:double" minOccurs="0"/>
             <xs:element name="forklaringsinformation" type="xs:string" minOccurs="0"/>
             <xs:element name="risksignal" type="tns:risksignal"/>
             <xs:element name="diagnosprediktionstatus" type="tns:diagnosprediktionstatus"/>
+            <xs:element name="lakarbedomning-risk" type="types:EgenBedomningRiskType" minOccurs="0" /> <!-- Används vid hämtning av historiska prediktionsberäkningar -->
+            <xs:element name="prediktionsfaktorer" type="tns:Prediktionsfaktorer" minOccurs="0" /> <!-- Används vid hämtning av historiska prediktionsberäkningar -->
+            <xs:element name="berakningstidpunkt" type="types:TimeStampType" minOccurs="0" /> <!-- Används vid hämtning av historiska prediktionsberäkningar -->
         </xs:sequence>
     </xs:complexType>
 

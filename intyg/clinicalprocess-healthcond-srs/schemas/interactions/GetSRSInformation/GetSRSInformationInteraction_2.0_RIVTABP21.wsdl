@@ -2,13 +2,13 @@
 <wsdl:definitions name='GetSRSInformationInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
                   xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
                   xmlns:xs='http://www.w3.org/2001/XMLSchema'
-                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:1'
-                  xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformation:1:rivtabp21'
-                  targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformation:1:rivtabp21'>
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:2'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformation:2:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformation:2:rivtabp21'>
     <wsdl:types>
-        <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformation:1:rivtabp21'>
-            <xs:import schemaLocation='GetSRSInformationResponder_1.0.xsd'
-                       namespace='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:1'/>
+        <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformation:2:rivtabp21'>
+            <xs:import schemaLocation='GetSRSInformationResponder_2.0.xsd'
+                       namespace='urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:2'/>
         </xs:schema>
     </wsdl:types>
 

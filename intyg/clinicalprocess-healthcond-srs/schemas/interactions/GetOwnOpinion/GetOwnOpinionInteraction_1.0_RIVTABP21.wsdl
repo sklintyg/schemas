@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions name='GetOwnOpinionInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+                  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+                  xmlns:xs='http://www.w3.org/2001/XMLSchema'
+                  xmlns:tjsr='urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinionResponder:1'
+                  xmlns:tns='urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinion:1:rivtabp21'
+                  targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinion:1:rivtabp21'>
+    <wsdl:types>
+        <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinion:1:rivtabp21'>
+            <xs:import schemaLocation='GetOwnOpinionResponder_1.0.xsd'
+                       namespace='urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinionResponder:1'/>
+        </xs:schema>
+    </wsdl:types>
+
+    <wsdl:message name='GetOwnOpinionRequest'>
+        <wsdl:part name='parameters' element='tjsr:GetOwnOpinionRequest'/>
+    </wsdl:message>
+
+    <wsdl:message name='GetOwnOpinionResponse'>
+        <wsdl:part name='parameters' element='tjsr:GetOwnOpinionResponse'/>
+    </wsdl:message>
+
+    <wsdl:portType name='GetOwnOpinionResponderInterface'>
+        <wsdl:operation name='GetOwnOpinion'>
+            <wsdl:input message='tns:GetOwnOpinionRequest'/>
+            <wsdl:output message='tns:GetOwnOpinionResponse'/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name='GetOwnOpinionResponderBinding' type='tns:GetOwnOpinionResponderInterface'>
+        <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http'/>
+        <wsdl:operation name='GetOwnOpinion'>
+            <soap:operation
+                    soapAction='urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinionResponder:1:GetOwnOpinion'
+                    style='document'/>
+            <wsdl:input>
+                <soap:header use='literal' message='tns:GetOwnOpinionRequest' part='LogicalAddress'/>
+                <soap:body use='literal' parts='parameters'/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use='literal'/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name='GetOwnOpinionResponderService'>
+        <wsdl:port name='GetOwnOpinionResponderPort' binding='tns:GetOwnOpinionResponderBinding'>
+            <soap:address location='http://tempuri.org'/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
+

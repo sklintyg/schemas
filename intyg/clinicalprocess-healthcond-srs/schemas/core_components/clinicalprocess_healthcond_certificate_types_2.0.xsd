@@ -336,4 +336,13 @@
 	<xs:element name="timestamp" type="TimeStampType" />
 	<xs:element name="date" type="DateType" />
 
+	<!-- Används i SetOwnOpinion och GetOwnOpinion -->
+	<xs:simpleType name="EgenBedomningRiskType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="HOGRE"/>
+			<xs:enumeration value="KORREKT"/>
+			<xs:enumeration value="LAGRE"/>
+		</xs:restriction>
+	</xs:simpleType>
+
 </xs:schema>

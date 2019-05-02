@@ -70,6 +70,16 @@
       <xs:element name="bildadress" type="xs:anyURI" minOccurs="0"/>
       <xs:element name="andringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
       <xs:element name="statistikstatus" type="tns:statistikstatus"/>
+      <xs:element name="data" type="tns:statistikdata" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="statistikdata">
+    <xs:sequence>
+      <xs:element name="dagintervall_min" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="dagintervall_max_exkl" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="individer" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
+      <xs:element name="individer_ackumulerat" type="xs:positiveInteger" minOccurs="1" maxOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
 
