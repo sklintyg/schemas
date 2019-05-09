@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!-- 
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
@@ -23,9 +23,9 @@
     targetNamespace='urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:3'
     elementFormDefault='qualified'
     attributeFormDefault='unqualified'
-    version='3.0'>
+    version='3.1'>
 
-    <xs:import schemaLocation='../../core_components/strategicresourcemanagement_persons_person_3.0.xsd' namespace='urn:riv:strategicresourcemanagement:persons:person:3' />
+    <xs:import schemaLocation='../../core_components/strategicresourcemanagement_persons_person_3.1.xsd' namespace='urn:riv:strategicresourcemanagement:persons:person:3' />
 
 
     <xs:element name='GetPersonsForProfile' type='tns:GetPersonsForProfileType'/>
