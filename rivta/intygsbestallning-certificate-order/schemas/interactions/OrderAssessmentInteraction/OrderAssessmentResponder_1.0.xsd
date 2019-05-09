@@ -36,14 +36,7 @@
   
   <xs:complexType name='OrderAssessmentType'>
     <xs:sequence>
-      <xs:element name='assessmentId' type='core:IIType' minOccurs="0" maxOccurs="1" />
       <xs:element name='careUnitId' type='core:IIType' minOccurs="1" maxOccurs="1"/>
-      <xs:element name='certificateType' type='core:CVType' minOccurs="1" maxOccurs="1"/>
-      <xs:element name='needForInterpreter' type='xs:boolean' minOccurs="0" maxOccurs="1" />
-      <xs:element name='interpreterLanguage' type='core:CVType' minOccurs="0" maxOccurs="1" />
-      <xs:element name='comment' type='xs:string' minOccurs="0" maxOccurs="1" />
-      <xs:element name='lastDateForCertificateReceival' type='core:DateType' minOccurs="0" maxOccurs="1" />
-      <xs:element name='documentsByPost' type="xs:boolean" minOccurs="0" maxOccurs="1" />
       <xs:element name="purpose" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="plannedActions" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="orderFormType" type="core:CVType"  minOccurs="0" maxOccurs="1"/>
