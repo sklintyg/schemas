@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright (C) 2019 Inera AB (http://www.inera.se)
+  ~
+  ~ This file is part of sklintyg (https://github.com/sklintyg).
+  ~
+  ~ sklintyg is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ sklintyg is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+  <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' 
+    xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsResponder:1' 
+    xmlns:core='urn:riv:clinicalprocess:healthcond:certificate:3'
+    xmlns:types='urn:riv:clinicalprocess:healthcond:certificate:types:3'
+    targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsResponder:1' 
+    elementFormDefault='qualified' 
+    attributeFormDefault='unqualified' version='1.0'>
+  
+  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_3.2.xsd"/>
+  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_types_3.2.xsd"/>
+  
+  <xs:element name='GetCertificateAdditions' type='tns:GetCertificateAdditionsType' />
+  <xs:element name='GetCertificateAdditionsResponse' type='tns:GetCertificateAdditionsResponseType' />
+  
+  <xs:complexType name='GetCertificateAdditionsType'>
+    <xs:sequence>
+      <xs:element name='intygs-id' type="types:IntygId" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name='GetCertificateAdditionsResponseType'>
+    <xs:sequence>
+      <xs:element name="additions" type="tns:IntygAdditionsType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="result" type="core:ResultCodeType"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="IntygAdditionsType">
+    <xs:sequence>
+      <xs:element name="intygs-id" type="types:IntygId"/>
+      <xs:element name="addition" type="tns:AdditionType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AdditionType">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="status" type="tns:StatusType"/>
+      <xs:element name="skapad" type="types:TimeStampType"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Besvarad"/>
+      <xs:enumeration value="Obesvarad"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
