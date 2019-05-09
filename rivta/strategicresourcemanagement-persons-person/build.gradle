@@ -13,13 +13,13 @@ wsdl2java {
 
   wsdlsToGenerate = [ commonOptions + ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
        "-wsdlLocation",
-       "classpath:interactions/GetPersonsForProfileInteraction/GetPersonsForProfileInteraction_3.0_RIVTABP21.wsdl",
+       "classpath:interactions/GetPersonsForProfileInteraction/GetPersonsForProfileInteraction_3.1_RIVTABP21.wsdl",
        "-p",
        "urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileResponder:3=se.riv.strategicresourcemanagement.persons.person.getpersonsforprofileresponder.v3",
        "-p",
        "urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfileInitiator:3=se.riv.strategicresourcemanagement.persons.person.getpersonsforprofileinitiator.v3",
        "-p",
        "urn:riv:strategicresourcemanagement:persons:person:GetPersonsForProfile:3:rivtabp21=se.riv.strategicresourcemanagement.persons.person.getpersonsforprofile.v3.rivtabp21",
-       "$projectDir/schemas/interactions/GetPersonsForProfileInteraction/GetPersonsForProfileInteraction_3.0_RIVTABP21.wsdl"]
+       "$projectDir/schemas/interactions/GetPersonsForProfileInteraction/GetPersonsForProfileInteraction_3.1_RIVTABP21.wsdl"]
     ]
 }

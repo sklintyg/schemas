@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <!-- 
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
@@ -17,20 +17,22 @@
  specific language governing permissions and limitations
  under the License.
  -->    
-<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' 
-    xmlns:tns='urn:riv:strategicresourcemanagement:persons:person:3'
+<xs:schema xmlns:tns='urn:riv:strategicresourcemanagement:persons:person:3'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:m1='urn:riv:strategicresourcemanagement:persons:person:3.1'
     targetNamespace='urn:riv:strategicresourcemanagement:persons:person:3'
 
     elementFormDefault='qualified'
     attributeFormDefault='unqualified' 
-    version='3.0'>
+    version='3.1'>
 
     <xs:annotation>
         <xs:documentation>
         </xs:documentation>
     </xs:annotation>
 
-
+    <xs:import namespace="urn:riv:strategicresourcemanagement:persons:person:3.1" 
+        schemaLocation="strategicresourcemanagement_persons_person_ext_3.1.xsd"/>
 
 
 
@@ -489,7 +491,7 @@
             <xs:element name="rank" type="xs:int" minOccurs="0"/>
             <xs:element name="comment" type="xs:string" minOccurs="0"/>
             <xs:element name="period" type="tns:DatePeriodType" minOccurs="0"/>
-            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+            <xs:element ref="m1:digitalNotification" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -555,7 +557,8 @@
             <xs:element name="updatePersonActor" type="tns:ActorType" minOccurs="0"/>
             <xs:element name="updatePersonContactInformationActor" type="tns:ActorType" minOccurs="0"/>
             <xs:element name="attachment" type="tns:MultimediaType" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+            <xs:element ref="m1:optoutPaperNotification" minOccurs="0"/>
+            <xs:element ref="m1:protectedPopulationRecord" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -884,7 +887,7 @@
         <xs:sequence>
             <xs:element name="deregistrationReasonCode" type="tns:CodedValue" minOccurs="0"/>
             <xs:element name="deregistrationDate" type="tns:PartialDateType" minOccurs="0"/>
-            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+            <xs:element ref="m1:foundDeadAtDate" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     
@@ -986,7 +989,8 @@
             <xs:element name="contactPerson" type="tns:ContactPersonType" minOccurs="0" maxOccurs="unbounded"/>
             <xs:element name="protectedPersonIndicator" type="xs:boolean"/>
             <xs:element name="updatePersonContactInformationActor" type="tns:ActorType" minOccurs="0"/>
-            <xs:any maxOccurs="unbounded" minOccurs="0" namespace="##other" processContents="lax"/>
+            <xs:element ref="m1:optoutPaperNotification" minOccurs="0"/>
+            <xs:element ref="m1:protectedPopulationRecord" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
