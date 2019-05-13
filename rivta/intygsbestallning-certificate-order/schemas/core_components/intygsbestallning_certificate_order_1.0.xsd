@@ -26,9 +26,6 @@
   attributeFormDefault="unqualified" 
   version="1.0">
   
-  <xs:import namespace="urn:riv-application:intygsbestallning:certificate:order:enum:1"
-    schemaLocation="intygsbestallning_certificate_order_enum_1.0.xsd"/>  
-  
   <xs:complexType name="AddressType">
     <xs:sequence>
       <xs:element name="postalAddress" type="xs:string" minOccurs="0" maxOccurs="1"/>
@@ -41,8 +38,7 @@
   <xs:complexType name="AuthorityAdministrativeOfficialType">
     <xs:sequence>
       <xs:element name="fullName" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="phoneNumber" type="xs:string" minOccurs="1" maxOccurs="1"/>
-      <xs:element name="email" type="xs:string" minOccurs="0" maxOccurs="1"/>
+      <xs:element name="phoneNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="authority" type="tns:CVType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="officeName" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="officeCostCenter" type="xs:string" minOccurs="0" maxOccurs="1"/>

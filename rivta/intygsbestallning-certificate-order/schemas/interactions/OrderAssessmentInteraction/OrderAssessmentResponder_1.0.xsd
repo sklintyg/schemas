@@ -39,7 +39,7 @@
       <xs:element name='careUnitId' type='core:IIType' minOccurs="1" maxOccurs="1"/>
       <xs:element name="purpose" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="plannedActions" type="xs:string" minOccurs="0" maxOccurs="1"/>
-      <xs:element name="orderFormType" type="core:CVType"  minOccurs="0" maxOccurs="1"/>
+      <xs:element name="orderFormType" type="core:CVType"  minOccurs="1" maxOccurs="1"/>
       <xs:element name="caseReference" type="xs:string" minOccurs="0" maxOccurs="1"/>
       <xs:element name="authorityAdministrativeOfficial" type="core:AuthorityAdministrativeOfficialType" minOccurs="1" maxOccurs="1"/>
       <xs:element name="citizen" type="core:CitizenType" minOccurs="1" maxOccurs="1"/>
