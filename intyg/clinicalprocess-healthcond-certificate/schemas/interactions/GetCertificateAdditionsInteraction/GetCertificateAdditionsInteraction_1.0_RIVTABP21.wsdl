@@ -17,12 +17,19 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
-<wsdl:definitions name='GetCertificateAdditionsInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsResponder:1' xmlns:tjsi='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsInitiator:1' xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditions:1:rivtabp21' targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditions:1:rivtabp21' xmlns:itr='urn:riv:itintegration:registry:1'>
+<wsdl:definitions name='GetCertificateAdditionsInteraction'
+    xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+    xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+    xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsResponder:1'
+    xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditions:1:rivtabp21'
+    targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditions:1:rivtabp21'
+    xmlns:itr='urn:riv:itintegration:registry:1'>
   <wsdl:documentation>
 		Tjänsteinteraktionens namn: GetCertificateAdditionsInteraction
-		Beskrivning: 
+		Beskrivning:
 		  Hämta kompletteringar knutna till ett viss intyg
-		Revisioner: 
+		Revisioner:
 		Tjänstedomän: clinicalprocess:healthcond:certificate
 		Tjänsteinteraktionstyp: Fråga-Svar
 		WS-profil: RIVTABP21
@@ -35,7 +42,7 @@
     </xs:schema>
   </wsdl:types>
   <wsdl:message name='GetCertificateAdditionsRequest'>
-    <wsdl:part name='LogicalAddress' element='itr:LogicalAddress' /> 
+    <wsdl:part name='LogicalAddress' element='itr:LogicalAddress' />
     <wsdl:part name='parameters' element='tjsr:GetCertificateAdditions' />
   </wsdl:message>
   <wsdl:message name='GetCertificateAdditionsResponse'>
