@@ -17,20 +17,21 @@
   ~ You should have received a copy of the GNU General Public License
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
-  <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' 
-    xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsResponder:1' 
+  <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'
+    xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsResponder:1'
     xmlns:core='urn:riv:clinicalprocess:healthcond:certificate:3'
     xmlns:types='urn:riv:clinicalprocess:healthcond:certificate:types:3'
-    targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsResponder:1' 
-    elementFormDefault='qualified' 
+    targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsResponder:1'
+    elementFormDefault='qualified'
     attributeFormDefault='unqualified' version='1.0'>
-  
+
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_3.2.xsd"/>
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_types_3.2.xsd"/>
-  
+  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_3.2_ext.xsd"/>
+
   <xs:element name='GetCertificateAdditions' type='tns:GetCertificateAdditionsType' />
   <xs:element name='GetCertificateAdditionsResponse' type='tns:GetCertificateAdditionsResponseType' />
-  
+
   <xs:complexType name='GetCertificateAdditionsType'>
     <xs:sequence>
       <xs:element name='intygs-id' type="types:IntygId" maxOccurs="unbounded"/>
