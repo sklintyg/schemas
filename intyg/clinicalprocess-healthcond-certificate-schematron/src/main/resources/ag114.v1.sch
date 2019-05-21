@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <iso:schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:iso="http://purl.oclc.org/dsdl/schematron"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://purl.oclc.org/dsdl/schematron"
-            queryBinding='xslt2' schemaVersion='ISO19757-3'>
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://purl.oclc.org/dsdl/schematron"
+    queryBinding='xslt2' schemaVersion='ISO19757-3'>
 
   <iso:title>Schematron file for "Läkarintyg om arbetsförmåga – sjuklöneperiod AG1-14".</iso:title>
 
@@ -214,8 +214,9 @@
 
   <iso:pattern id="q7.1">
     <iso:rule context="//gn:delsvar[@id='7.1']">
-      <iso:assert test="matches(normalize-space(.), '^0$|^[1-9]$|^[1-9][0-9]$|^100$')">
-        'Sjukskrivningsgrad' måste besvaras med ett värde mellan 0 och 100%.
+      <iso:extends rule="pq"/>
+      <iso:assert test="matches(tp:pq/tp:value, '^0\.0$|^[1-9]\.0$|^[1-9][0-9]\.0$|^100\.0$')">
+        'Sjukskrivningsgrad' måste besvaras med ett värde mellan 0.0 och 100.0%. Inga tiondelar får anges.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -301,6 +302,16 @@
       <iso:assert test="count(tp:cv/tp:code) = 1">code är obligatoriskt</iso:assert>
       <iso:assert test="tp:cv/tp:code/count(*) = 0">'code' får inte vara inbäddat i något element.</iso:assert>
       <iso:assert test="count(tp:cv/tp:displayName) le 1">högst ett displayName kan anges</iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="pq-pattern">
+    <iso:rule id="pq" abstract="true">
+      <iso:assert test="count(tp:pq) = 1">Ett värde av typen PQ måste ha ett pq-element</iso:assert>
+      <iso:assert test="count(tp:pq/tp:value) = 1">value är obligatoriskt</iso:assert>
+      <iso:assert test="tp:pq/tp:value/count(*) = 0">'value' får inte vara inbäddat i något element.</iso:assert>
+      <iso:assert test="count(tp:pq/tp:unit) = 1">unit är obligatoriskt</iso:assert>
+      <iso:assert test="tp:pq/tp:unit/count(*) = 0">'unit' får inte vara inbäddat i något element.</iso:assert>
     </iso:rule>
   </iso:pattern>
 
