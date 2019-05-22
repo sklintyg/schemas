@@ -18,6 +18,7 @@
             <xs:element name="vardgivare-id" type="types:HsaId"/>
             <xs:element name="vardenhet-id" type="types:HsaId"/>
             <xs:element name="intyg-id" type="types:IntygId"/>
+            <xs:element name="diagnos" type="types:diagnos"/>
             <xs:element name="egen-bedomning-risk" type="types:EgenBedomningRiskType" />
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
