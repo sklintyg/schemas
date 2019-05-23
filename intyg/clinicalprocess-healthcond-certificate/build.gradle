@@ -1,7 +1,7 @@
 description = "Intyg Schemas (Clinicalprocess Healthreporting Certificate)"
 
 group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'
-version = System.properties['buildVersion'] ?: '0.3-SNAPSHOT'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
   wsdlsToGenerate = [
