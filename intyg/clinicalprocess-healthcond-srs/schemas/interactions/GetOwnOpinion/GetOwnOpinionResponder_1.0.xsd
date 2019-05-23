@@ -17,6 +17,7 @@
         <xs:sequence>
             <xs:element name="vardgivare-id" type="types:HsaId"/>
             <xs:element name="vardenhet-id" type="types:HsaId"/>
+            <xs:element name="diagnos" type="types:diagnos"/>
             <xs:element name="intyg-id" type="types:IntygId"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>

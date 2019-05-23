@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <iso:schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:iso="http://purl.oclc.org/dsdl/schematron"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://purl.oclc.org/dsdl/schematron"
-    queryBinding='xslt2' schemaVersion='ISO19757-3'>
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://purl.oclc.org/dsdl/schematron"
+            queryBinding='xslt2' schemaVersion='ISO19757-3'>
 
   <iso:title>Schematron file for SKL AG7804 "Läkarintyg om arbetsförmåga - arbetsgivaren".</iso:title>
 
@@ -13,80 +13,80 @@
   <iso:pattern id="intyg">
     <iso:rule context="//rg:intyg">
       <iso:assert test="count(gn:svar[@id='1']) le 4">
-        Ett 'AG7404' får ha högst 4 'Grund för medicinskt underlag'
+        Ett 'AG7804' får ha högst 4 'Grund för medicinskt underlag'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='28']) le 4">
-        Ett 'AG7404' får ha högst 4 'Typ av sysselsättning'
+        Ett 'AG7804' får ha högst 4 'Typ av sysselsättning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='29']) le 1">
-        Ett 'AG7404' får ha högst ett 'Nuvarande arbete'
+        Ett 'AG7804' får ha högst ett 'Nuvarande arbete'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='100']/gn:delsvar[@id='100.1']) = 1">
-               Ett 'AG7404' måste ha ett 'Önskar förmedla diagnos'
-       </iso:assert>
+        Ett 'AG7804' måste ha ett 'Önskar förmedla diagnos'
+      </iso:assert>
       <iso:let name="onskarformedlaDiagnos" value="normalize-space(gn:svar[@id='100']/gn:delsvar[@id='100.1'])"/>
       <iso:assert test="count(gn:svar[@id='6']) = 0 or matches($onskarformedlaDiagnos, '1|true')">
-         Ett 'AG7404' måste ha Diagnos angivet om 'Önskar förmedla diagnos' är besvarad med Ja
+        Ett 'AG7804' måste ha Diagnos angivet om 'Önskar förmedla diagnos' är besvarad med Ja
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='35']) le 1">
-        Ett 'AG7404' får ha högst ett 'Funktionsnedsättning'
+        Ett 'AG7804' får ha högst ett 'Funktionsnedsättning'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='17']) le 1">
-        Ett 'AG7404' får ha högst ett 'Aktivitetsbegränsningar'
+      <iso:assert test="count(gn:svar[@id='17']) = 1">
+        Ett 'AG7804' måste ha ett 'Aktivitetsbegränsningar'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='19']) le 1">
-        Ett 'AG7404' får ha högst ett 'Pågående medicinska behandlingar'
+        Ett 'AG7804' får ha högst ett 'Pågående medicinska behandlingar'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='20']) le 1">
-        Ett 'AG7404' får ha högst ett 'Planerade medicinska behandlingar'
+        Ett 'AG7804' får ha högst ett 'Planerade medicinska behandlingar'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='32']) ge 1 and count(gn:svar[@id='32']) le 4">
-        Ett 'AG7404' måste ha mellan 1 och 4 'Behov av sjukskrivning'
+        Ett 'AG7804' måste ha mellan 1 och 4 'Behov av sjukskrivning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='37']) le 1">
-        Ett 'AG7404' får ha högst ett 'Försäkringsmedicinskt beslutsstöd'
+        Ett 'AG7804' får ha högst ett 'Försäkringsmedicinskt beslutsstöd'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='33']) le 1">
-        Ett 'AG7404' får ha högst ett 'Arbetstidsförläggning'
+        Ett 'AG7804' får ha högst ett 'Arbetstidsförläggning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='34']) le 1">
-        Ett 'AG7404' får ha högst ett 'Arbetsresor'
+        Ett 'AG7804' får ha högst ett 'Arbetsresor'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='39']) le 1">
-        Ett 'AG7404' får ha högst ett 'Prognos'
+        Ett 'AG7804' får ha högst ett 'Prognos'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='40']) le 10">
-        Ett 'AG7404' får ha högst 10 'Arbetslivsinriktade åtgärder'
+      <iso:assert test="count(gn:svar[@id='40']) ge 1 and count(gn:svar[@id='40']) le 8">
+        Ett 'AG7804' måste ha mellan 1 och 8 'Arbetslivsinriktade åtgärder'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='44']) le 1">
-        Ett 'AG7404' får ha högst ett 'Arbetslivsinriktade åtgärder aktuellt'
+        Ett 'AG7804' får ha högst ett 'Arbetslivsinriktade åtgärder aktuellt'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='25']) le 1">
-        Ett 'AG7404' får ha högst ett 'Övrigt'
+        Ett 'AG7804' får ha högst ett 'Övrigt'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='103']) le 1">
-        Ett 'AG7404' får ha högst ett 'Kontakt önskas'
+        Ett 'AG7804' får ha högst ett 'Kontakt önskas'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='27']) le 1">
-        Ett 'AG7404' får ha högst ett 'Smittbärarpenning'
+        Ett 'AG7804' får ha högst ett 'Smittbärarpenning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='1']) ge 1 or count(gn:svar[@id='27']) = 1">
-        Ett 'AG7404' måste antingen ha 'Grund för medicinskt underlag' eller 'Smittbärarpenning'
+        Ett 'AG7804' måste antingen ha 'Grund för medicinskt underlag' eller 'Smittbärarpenning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='28']) ge 1 or count(gn:svar[@id='27']) = 1">
-        Ett 'AG7404' måste antingen ha 'Typ av sysselsättning' eller 'Smittbärarpenning'
+        Ett 'AG7804' måste antingen ha 'Typ av sysselsättning' eller 'Smittbärarpenning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='101']/gn:delsvar[@id='101.1']) = 1 or count(gn:svar[@id='27']) = 1">
-        Ett 'AG7404' måste antingen ha 'Önskar förmedla funktionsnedsättning' eller 'Smittbärarpenning'
+        Ett 'AG7804' måste antingen ha 'Önskar förmedla funktionsnedsättning' eller 'Smittbärarpenning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='17']) = 1 or count(gn:svar[@id='27']) = 1">
-        Ett 'AG7404' måste antingen ha 'Aktivitetsbegränsningar' eller 'Smittbärarpenning'
+        Ett 'AG7804' måste antingen ha 'Aktivitetsbegränsningar' eller 'Smittbärarpenning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='39']) = 1 or count(gn:svar[@id='27']) = 1">
-        Ett 'AG7404' måste antingen ha 'Prognos' eller 'Smittbärarpenning'
+        Ett 'AG7804' måste antingen ha 'Prognos' eller 'Smittbärarpenning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='40']) ge 1 or count(gn:svar[@id='27']) = 1">
-        Ett 'AG7404' måste antingen ha 'Arbetslivsinriktade åtgärder' eller 'Smittbärarpenning'
+        Ett 'AG7804' måste antingen ha 'Arbetslivsinriktade åtgärder' eller 'Smittbärarpenning'
       </iso:assert>
       <iso:let name="svarsIdExpr" value="'^([16]|1[79]|2[056789]|3[234579]|4[04]|10[013])$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
@@ -168,19 +168,19 @@
     <iso:rule context="//gn:delsvar[@id='27.1']">
       <iso:extends rule="boolean"/>
       <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='1']) ge 1">
-        Ett 'AG7404' måste ange minst en 'Grund för medicinskt underlag' om 'Om smittbärarpenning' inte är 'true'.
+        Ett 'AG7804' måste ange minst en 'Grund för medicinskt underlag' om 'Om smittbärarpenning' inte är 'true'.
       </iso:assert>
       <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='28']) ge 1">
-        Ett 'AG7404' måste ange minst en 'Typ av sysselsättning' om 'Om smittbärarpenning' inte är 'true'.
+        Ett 'AG7804' måste ange minst en 'Typ av sysselsättning' om 'Om smittbärarpenning' inte är 'true'.
       </iso:assert>
       <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='17']) = 1">
-        Ett 'AG7404' måste ange 'Aktivitetsbegränsningar' om 'Om smittbärarpenning' inte är 'true'.
+        Ett 'AG7804' måste ange 'Aktivitetsbegränsningar' om 'Om smittbärarpenning' inte är 'true'.
       </iso:assert>
       <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='39']) = 1">
-        Ett 'AG7404' måste ange 'Prognos' om 'Om smittbärarpenning' inte är 'true'.
+        Ett 'AG7804' måste ange 'Prognos' om 'Om smittbärarpenning' inte är 'true'.
       </iso:assert>
       <iso:assert test="matches(normalize-space(.), '1|true') or count(//gn:svar[@id='40']) ge 1">
-        Ett 'AG7404' måste ange minst en 'Arbetslivsinriktade åtgärder' om 'Om smittbärarpenning' inte är 'true'.
+        Ett 'AG7804' måste ange minst en 'Arbetslivsinriktade åtgärder' om 'Om smittbärarpenning' inte är 'true'.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -258,43 +258,43 @@
     </iso:rule>
   </iso:pattern>
   <iso:pattern id="q100.1-true">
-      <iso:rule context="//gn:delsvar[@id='100.1' and matches(normalize-space(.), '1|true')]">
-        <iso:assert test="count(//gn:svar[@id='6']) = 1">
-          Om 'Önskar förmedla diagnos' är besvarat med ja, måste diagnoser besvaras
-        </iso:assert>
-      </iso:rule>
-   </iso:pattern>
-   <iso:pattern id="q100.1-false">
-     <iso:rule context="//gn:delsvar[@id='100.1' and matches(normalize-space(.), '0|false')]">
-       <iso:assert test="count(//gn:svar[@id='6']) = 0">
-         Om 'Önskar förmedla diagnos' är besvarat med nej, får ej diagnoser besvaras
-       </iso:assert>
-     </iso:rule>
-   </iso:pattern>
+    <iso:rule context="//gn:delsvar[@id='100.1' and matches(normalize-space(.), '1|true')]">
+      <iso:assert test="count(//gn:svar[@id='6']) = 1">
+        Om 'Önskar förmedla diagnos' är besvarat med ja, måste diagnoser besvaras
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+  <iso:pattern id="q100.1-false">
+    <iso:rule context="//gn:delsvar[@id='100.1' and matches(normalize-space(.), '0|false')]">
+      <iso:assert test="count(//gn:svar[@id='6']) = 0">
+        Om 'Önskar förmedla diagnos' är besvarat med nej, får ej diagnoser besvaras
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
 
 
-   <iso:pattern id="q101.1">
-     <iso:rule context="//gn:delsvar[@id='101.1']">
-       <iso:extends rule="boolean"/>
-       <iso:assert test="matches(normalize-space(.), '^true$|^1$|^false$|^0$')">
-         'Önskar förmedla funktionsnedsättning' måste ha ett svar av typen boolean
-       </iso:assert>
-     </iso:rule>
-   </iso:pattern>
+  <iso:pattern id="q101.1">
+    <iso:rule context="//gn:delsvar[@id='101.1']">
+      <iso:extends rule="boolean"/>
+      <iso:assert test="matches(normalize-space(.), '^true$|^1$|^false$|^0$')">
+        'Önskar förmedla funktionsnedsättning' måste ha ett svar av typen boolean
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
   <iso:pattern id="q101.1-true">
-      <iso:rule context="//gn:delsvar[@id='101.1' and matches(normalize-space(.), '1|true')]">
-        <iso:assert test="count(//gn:delsvar[@id='35.1']) = 1">
-          Om 'Önskar förmedla funktionsnedsättning' är besvarat med ja, måste funktionsnedsättning besvaras
-        </iso:assert>
-      </iso:rule>
-   </iso:pattern>
-   <iso:pattern id="q101.1-false">
-     <iso:rule context="//gn:delsvar[@id='101.1' and matches(normalize-space(.), '0|false')]">
-       <iso:assert test="count(//gn:delsvar[@id='35.1']) = 0">
-         Om 'Önskar förmedla funktionsnedsättning' är besvarat med nej, får ej funktionsnedsättning besvaras
-       </iso:assert>
-     </iso:rule>
-   </iso:pattern>
+    <iso:rule context="//gn:delsvar[@id='101.1' and matches(normalize-space(.), '1|true')]">
+      <iso:assert test="count(//gn:delsvar[@id='35.1']) = 1">
+        Om 'Önskar förmedla funktionsnedsättning' är besvarat med ja, måste funktionsnedsättning besvaras
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+  <iso:pattern id="q101.1-false">
+    <iso:rule context="//gn:delsvar[@id='101.1' and matches(normalize-space(.), '0|false')]">
+      <iso:assert test="count(//gn:delsvar[@id='35.1']) = 0">
+        Om 'Önskar förmedla funktionsnedsättning' är besvarat med nej, får ej funktionsnedsättning besvaras
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
 
 
   <iso:pattern id="q6">
@@ -330,7 +330,7 @@
         positioner måste anges.
       </iso:assert>
       <iso:assert test="string-length(normalize-space(tp:cv/tp:code)) le 5">
-      Diagnoskod får inte vara längre än 5 tecken.
+        Diagnoskod får inte vara längre än 5 tecken.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -353,7 +353,7 @@
         positioner måste anges.
       </iso:assert>
       <iso:assert test="string-length(normalize-space(tp:cv/tp:code)) le 5">
-      Diagnoskod får inte vara längre än 5 tecken.
+        Diagnoskod får inte vara längre än 5 tecken.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -376,7 +376,7 @@
         positioner måste anges.
       </iso:assert>
       <iso:assert test="string-length(normalize-space(tp:cv/tp:code)) le 5">
-      Diagnoskod får inte vara längre än 5 tecken.
+        Diagnoskod får inte vara längre än 5 tecken.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -509,7 +509,7 @@
   <iso:pattern id="q32.1-R22">
     <iso:rule context="//gn:svar[@id='32']">
       <iso:assert test="not(preceding-sibling::gn:svar[@id='32']/gn:delsvar[@id='32.1']/tp:cv/tp:code/normalize-space() = normalize-space(gn:delsvar['32.1']/tp:cv/tp:code))">
-	'Sjukskrivningsnivå' (DFR 32.1) får besvaras med flera olika koder (KV_FKMU_0003) men varje kod får bara förekomma en gång.
+        'Sjukskrivningsnivå' (DFR 32.1) får besvaras med flera olika koder (KV_FKMU_0003) men varje kod får bara förekomma en gång.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -531,7 +531,7 @@
   <iso:pattern id="q32.1-33.1-R26" >
     <iso:rule context="//gn:svar[@id='33']">
       <iso:assert test="count(../gn:svar[@id='32']/gn:delsvar[@id='32.1']/tp:cv/tp:code[matches(normalize-space(.), '^(TRE_FJARDEDEL|HALFTEN|EN_FJARDEDEL)$')]) ge 1">
-	'Om arbetstidsförläggning' (DFR 33.1) ska endast besvaras om 'Sjukskrivningsnivå' (DFR 32.1) är besvarad med kod EN_FJARDEDEL, HALFTEN eller TRE_FJARDEDEL (KV_FKMU_0003).
+        'Om arbetstidsförläggning' (DFR 33.1) ska endast besvaras om 'Sjukskrivningsnivå' (DFR 32.1) är besvarad med kod EN_FJARDEDEL, HALFTEN eller TRE_FJARDEDEL (KV_FKMU_0003).
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -650,7 +650,7 @@
   <iso:pattern id="q39.1-39.3">
     <iso:rule context="//gn:delsvar[@id='39.1']/tp:cv/tp:code[normalize-space(.) = 'ATER_X_ANTAL_DGR']">
       <iso:assert test="../../../gn:delsvar[@id='39.3']">
-      Om 'Beskrivning prognos' är ATER_X_ANTAL_DGR så måste 'Patienten kommer med stor sannolikhet att återgå helt i nuvarande sysselsättning efter x antal dagar' anges.
+        Om 'Beskrivning prognos' är ATER_X_ANTAL_DGR så måste 'Patienten kommer med stor sannolikhet att återgå helt i nuvarande sysselsättning efter x antal dagar' anges.
       </iso:assert>
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='39.1']/tp:cv/tp:code[normalize-space(.) != 'ATER_X_ANTAL_DGR']">
@@ -694,7 +694,7 @@
   <iso:pattern id="q40.1-R29">
     <iso:rule context="//gn:svar[@id='40']">
       <iso:assert test="not(preceding-sibling::gn:svar[@id='40']/gn:delsvar[@id='40.1']/tp:cv/tp:code/normalize-space() = normalize-space(gn:delsvar['40.1']/tp:cv/tp:code))">
-	'Val av arbetslivsinriktade åtgärder' (DFR 40.1) får besvaras med flera olika koder (KV_FKMU_0004) men varje kod får bara förekomma en gång.
+        'Val av arbetslivsinriktade åtgärder' (DFR 40.1) får besvaras med flera olika koder (KV_FKMU_0004) men varje kod får bara förekomma en gång.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
