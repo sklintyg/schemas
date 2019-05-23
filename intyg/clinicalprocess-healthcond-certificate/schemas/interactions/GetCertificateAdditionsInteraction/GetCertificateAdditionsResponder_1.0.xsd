@@ -29,7 +29,6 @@
 
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_3.2.xsd"/>
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_types_3.2.xsd"/>
-  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_3.2_ext.xsd"/>
 
   <xs:element name='GetCertificateAdditions' type='tns:GetCertificateAdditionsType' />
   <xs:element name='GetCertificateAdditionsResponse' type='tns:GetCertificateAdditionsResponseType' />
