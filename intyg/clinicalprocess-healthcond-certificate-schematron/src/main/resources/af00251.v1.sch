@@ -101,6 +101,9 @@
         <iso:assert test="number(tp:pq/tp:value) ge 1 and number(tp:pq/tp:value) le 39">
           "Omfatting deltid" måste anges i timmar mellan 1 och 39.
         </iso:assert>
+        <iso:assert test="matches(normalize-space(tp:pq/tp:unit), 'hour')">
+          "Omfatting deltid" måste anges i enhet "hour".
+        </iso:assert>
       </iso:rule>
     </iso:pattern>
 
@@ -146,6 +149,9 @@
        <iso:extends rule="pq"/>
        <iso:assert test="number(tp:pq/tp:value) ge 1 and number(tp:pq/tp:value) le 100">
          "Sjukfrånvaronivå" måste anges i % mellan 1 och 100.
+       </iso:assert>
+       <iso:assert test="matches(normalize-space(tp:pq/tp:unit), '%')">
+         "Sjukfrånvaronivå" måste anges i enhet "%".
        </iso:assert>
      </iso:rule>
    </iso:pattern>
