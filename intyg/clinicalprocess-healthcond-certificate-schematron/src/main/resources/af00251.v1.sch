@@ -84,17 +84,28 @@
         <iso:rule context="//gn:delsvar[@id='2.2']">
           <iso:assert test="tp:cv/tp:codeSystem = 'kv-omfattning-arbetsmarknadspolitiskt-program'">'codeSystem' måste vara 'kv-omfattning-arbetsmarknadspolitiskt-program'.</iso:assert>
           <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(HELTID|DELTID|OKAND)$')">
-            'Typ av grund för MU' kan ha ett av värdena Heltid (40 timmar/vecka), Deltid, Okänd.
+            "Programmets omfattning" kan ha ett av värdena Heltid (40 timmar/vecka), Deltid, Okänd.
           </iso:assert>
         </iso:rule>
       </iso:pattern>
 
-      <iso:pattern id="q2.3">
-              <iso:rule context="//gn:delsvar[@id='2.3']">
-                <iso:assert test="../gn:delsvar[@id='2.2']/tp:cv/tp:code = 'DELTID'" />
-                <iso:assert test="number(.) ge 1 and number(.) le 39" />
-        </iso:rule>
-      </iso:pattern>
+    <iso:pattern id="q2.3">
+      <iso:rule context="//gn:delsvar[@id='2.2' and matches(normalize-space(tp:cv/tp:code), 'DELTID')]">
+      <iso:let name="countValue" value="count(../gn:delsvar[@id='2.3'])"/>
+        <iso:assert test="count(../gn:delsvar[@id='2.3']) = 1">
+          Om "Programmets omfattning" har besvarats med "Deltid" måste "Omfatting deltid" fyllas i.
+        </iso:assert>
+      </iso:rule>
+      <iso:rule context="//gn:delsvar[@id='2.3']">
+        <iso:extends rule="pq"/>
+        <iso:assert test="number(tp:pq/tp:value) ge 1 and number(tp:pq/tp:value) le 39">
+          "Omfatting deltid" måste anges i timmar mellan 1 och 39.
+        </iso:assert>
+        <iso:assert test="matches(normalize-space(tp:pq/tp:unit), 'hour')">
+          "Omfatting deltid" måste anges i enhet "hour".
+        </iso:assert>
+      </iso:rule>
+    </iso:pattern>
 
     <!-- Kategori 5 - Förhinder -->
     <iso:pattern id="q5.1">
@@ -124,10 +135,6 @@
 
      <iso:pattern id="q6">
      <iso:rule context="//gn:svar[@id='6']">
-        <iso:assert test="number(gn:delsvar[@id='6.1']) ge 1 and number(gn:delsvar[@id='6.1']) le 100">
-            Sjukfrånvaro måste anges i % mellan 1 och 100.
-        </iso:assert>
-
         <iso:assert test="count(gn:delsvar[@id='6.2']) = 1">'Sjukskrivning' måste ha en 'period'.</iso:assert>
           <iso:let name="cstart" value="normalize-space(gn:delsvar[@id='6.2']/tp:datePeriod/tp:start)"/>
           <iso:let name="cend" value="normalize-space(gn:delsvar[@id='6.2']/tp:datePeriod/tp:end)"/>
@@ -137,6 +144,17 @@
     </iso:rule>
    </iso:pattern>
 
+   <iso:pattern id="q6.1">
+     <iso:rule context="//gn:delsvar[@id='6.1']">
+       <iso:extends rule="pq"/>
+       <iso:assert test="number(tp:pq/tp:value) ge 1 and number(tp:pq/tp:value) le 100">
+         "Sjukfrånvaronivå" måste anges i % mellan 1 och 100.
+       </iso:assert>
+       <iso:assert test="matches(normalize-space(tp:pq/tp:unit), '%')">
+         "Sjukfrånvaronivå" måste anges i enhet "%".
+       </iso:assert>
+     </iso:rule>
+   </iso:pattern>
 
     <!-- Kategori 7 - Begränsning sjukfrånvaro -->
      <iso:pattern id="q7">
@@ -204,6 +222,16 @@
     <iso:rule id="boolean" abstract="true">
       <iso:assert test="count(*) = 0">Booleskt värde får inte vara inbäddat i något element.</iso:assert>
       <iso:assert test=". castable as xs:boolean">Kan bara vara 'true/1' eller 'false/0'</iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="pq-pattern">
+    <iso:rule id="pq" abstract="true">
+      <iso:assert test="count(tp:pq) = 1">Ett värde av typen PQ måste ha ett pq-element</iso:assert>
+      <iso:assert test="count(tp:pq/tp:value) = 1">value är obligatoriskt</iso:assert>
+      <iso:assert test="tp:pq/tp:value/count(*) = 0">'value' får inte vara inbäddat i något element.</iso:assert>
+      <iso:assert test="count(tp:pq/tp:unit) = 1">unit är obligatoriskt</iso:assert>
+      <iso:assert test="tp:pq/tp:unit/count(*) = 0">'unit' får inte vara inbäddat i något element.</iso:assert>
     </iso:rule>
   </iso:pattern>
 
