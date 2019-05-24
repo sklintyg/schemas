@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "1.0.0-RC8"
+def buildVersion = "1.0.0-RELEASE"
 def projectName = "intygsbestallning-certificate-order-schemas"
 
 stage('checkout') {
