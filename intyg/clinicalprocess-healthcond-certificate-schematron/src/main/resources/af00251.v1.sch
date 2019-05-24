@@ -101,8 +101,8 @@
         <iso:assert test="number(tp:pq/tp:value) ge 1 and number(tp:pq/tp:value) le 39">
           "Omfatting deltid" måste anges i timmar mellan 1 och 39.
         </iso:assert>
-        <iso:assert test="matches(normalize-space(tp:pq/tp:unit), 'hour')">
-          "Omfatting deltid" måste anges i enhet "hour".
+        <iso:assert test="matches(normalize-space(tp:pq/tp:unit), 'h')">
+          "Omfatting deltid" måste anges i enhet "h".
         </iso:assert>
       </iso:rule>
     </iso:pattern>
