@@ -31,8 +31,8 @@
       <iso:assert test="count(gn:svar[@id='35']) le 1">
         Ett 'AG7804' får ha högst ett 'Funktionsnedsättning'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='17']) = 1">
-        Ett 'AG7804' måste ha ett 'Aktivitetsbegränsningar'
+      <iso:assert test="count(gn:svar[@id='17']) = 1 or count(gn:svar[@id='27']) = 1">
+        Ett 'AG7804' måste ha ett 'Aktivitetsbegränsningar' eller 'Smittbärarpenning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='19']) le 1">
         Ett 'AG7804' får ha högst ett 'Pågående medicinska behandlingar'
@@ -55,8 +55,8 @@
       <iso:assert test="count(gn:svar[@id='39']) le 1">
         Ett 'AG7804' får ha högst ett 'Prognos'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='40']) ge 1 and count(gn:svar[@id='40']) le 8">
-        Ett 'AG7804' måste ha mellan 1 och 8 'Arbetslivsinriktade åtgärder'
+      <iso:assert test="(count(gn:svar[@id='40']) ge 1 and count(gn:svar[@id='40']) le 8) or count(gn:svar[@id='27']) = 1">
+        Ett 'AG7804' måste ha mellan 1 och 8 'Arbetslivsinriktade åtgärder' eller 'Smittbärarpenning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='44']) le 1">
         Ett 'AG7804' får ha högst ett 'Arbetslivsinriktade åtgärder aktuellt'
