@@ -57,7 +57,7 @@ wsdl2java {
 
                       commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
-                                       "classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_3.0_RIVTABP21.wsdl",
+                                       "classpath:interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_3.2_RIVTABP21.wsdl",
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:3=se.riv.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v3",
                                        //"-p",
@@ -65,7 +65,7 @@ wsdl2java {
 
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCare:3:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.certificatestatusupdateforcareresponder.v3",
-                                       "$projectDir/schemas/interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_3.0_RIVTABP21.wsdl"],
+                                       "$projectDir/schemas/interactions/CertificateStatusUpdateForCareInteraction/CertificateStatusUpdateForCareInteraction_3.2_RIVTABP21.wsdl"],
 
                       commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
