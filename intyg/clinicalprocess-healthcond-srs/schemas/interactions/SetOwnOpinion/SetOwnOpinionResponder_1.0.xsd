@@ -2,6 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:SetOwnOpinionResponder:1"
            xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
+           xmlns:srs="urn:riv:clinicalprocess:healthcond:srs:types:1"
            targetNamespace="urn:riv:clinicalprocess:healthcond:srs:SetOwnOpinionResponder:1"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
@@ -9,6 +10,8 @@
 
     <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
                schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
+    <xs:import namespace="urn:riv:clinicalprocess:healthcond:srs:types:1"
+        schemaLocation="../../core_components/clinicalprocess_healthcond_srs_1.0.xsd"/>
 
     <xs:element name="SetOwnOpinionRequest" type="tns:SetOwnOpinionRequestType"/>
     <xs:element name="SetOwnOpinionResponse" type="tns:SetOwnOpinionResponseType"/>
@@ -19,7 +22,7 @@
             <xs:element name="vardenhet-id" type="types:HsaId"/>
             <xs:element name="intyg-id" type="types:IntygId"/>
             <xs:element name="diagnos" type="types:diagnos"/>
-            <xs:element name="egen-bedomning-risk" type="types:EgenBedomningRiskType" />
+            <xs:element name="egen-bedomning-risk" type="srs:EgenBedomningRiskType" />
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>

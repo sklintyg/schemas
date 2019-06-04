@@ -59,16 +59,14 @@
 
   <xs:complexType name="statistik">
     <xs:sequence>
-      <xs:element name="statistikbild" type="tns:statistikbild" maxOccurs="unbounded"/>
+      <xs:element name="diagnosstatistik" type="tns:diagnosstatistik" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="statistikbild">
+  <xs:complexType name="diagnosstatistik">
     <xs:sequence>
       <xs:element name="diagnos" type="types:diagnos" minOccurs="0"/>
       <xs:element name="inkommandediagnos" type="types:diagnos"/>
-      <xs:element name="bildadress" type="xs:anyURI" minOccurs="0"/>
-      <xs:element name="andringstidpunkt" type="types:TimeStampType" minOccurs="0"/>
       <xs:element name="statistikstatus" type="tns:statistikstatus"/>
       <xs:element name="data" type="tns:statistikdata" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
@@ -107,6 +105,14 @@
     </xs:restriction>
   </xs:simpleType>
 
+  <xs:simpleType name="EgenBedomningRiskType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HOGRE"/>
+      <xs:enumeration value="KORREKT"/>
+      <xs:enumeration value="LAGRE"/>
+      <xs:enumeration value="KAN_EJ_BEDOMA"/>
+    </xs:restriction>
+  </xs:simpleType>
 
 
 </xs:schema>

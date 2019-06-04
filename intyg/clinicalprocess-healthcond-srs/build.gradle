@@ -110,21 +110,10 @@ wsdl2java {
                         "-p", "urn:riv:clinicalprocess:healthcond:srs:1=se.riv.clinicalprocess.healthcond.srs.v1",
                         "-p",
                         "urn:riv:clinicalprocess:healthcond:certificate:types:2=se.riv.clinicalprocess.healthcond.certificate.types.v2",
+                        "-p",
+                        "urn:riv:clinicalprocess:healthcond:srs:types:1=se.inera.intyg.clinicalprocess.healthcond.srs.types.v1",
                         "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
                         "$projectDir/schemas/interactions/SetOwnOpinion/SetOwnOpinionInteraction_1.0_RIVTABP21.wsdl"],
-
-                       ["-xjc", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding2.xjb",
-                        "-wsdlLocation",
-                        "classpath:interactions/GetOwnOpinion/GetOwnOpinion_1.0_RIVTABP21.wsdl",
-                        "-p",
-                        "urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinion:1:rivtabp21=se.inera.intyg.clinicalprocess.healthcond.srs.getownopinion.v1",
-                        "-p",
-                        "urn:riv:clinicalprocess:healthcond:srs:GetOwnOpinionResponder:1=se.inera.intyg.clinicalprocess.healthcond.srs.getownopinion.v1",
-                        "-p", "urn:riv:clinicalprocess:healthcond:srs:1=se.riv.clinicalprocess.healthcond.srs.v1",
-                        "-p",
-                        "urn:riv:clinicalprocess:healthcond:certificate:types:2=se.riv.clinicalprocess.healthcond.certificate.types.v2",
-                        "-p", "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
-                        "$projectDir/schemas/interactions/GetOwnOpinion/GetOwnOpinionInteraction_1.0_RIVTABP21.wsdl"],
 
                        ]
 
