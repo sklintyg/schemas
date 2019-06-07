@@ -96,6 +96,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="OBS"/>
       <xs:enumeration value="REK"/>
+      <xs:enumeration value="EXT"/>
     </xs:restriction>
   </xs:simpleType>
 
