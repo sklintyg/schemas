@@ -76,8 +76,8 @@
       <iso:assert test="count(gn:svar[@id='28']) ge 1 or count(gn:svar[@id='27']) = 1">
         Ett 'AG7804' måste antingen ha 'Typ av sysselsättning' eller 'Smittbärarpenning'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='101']/gn:delsvar[@id='101.1']) = 1 or count(gn:svar[@id='27']) = 1">
-        Ett 'AG7804' måste antingen ha 'Önskar förmedla funktionsnedsättning' eller 'Smittbärarpenning'
+      <iso:assert test="count(gn:svar[@id='35']/gn:delsvar[@id='35.1']) = 1 or count(gn:svar[@id='27']) = 1">
+        Ett 'AG7804' måste antingen ha 'Funktionsnedsättning' eller 'Smittbärarpenning'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='17']) = 1 or count(gn:svar[@id='27']) = 1">
         Ett 'AG7804' måste antingen ha 'Aktivitetsbegränsningar' eller 'Smittbärarpenning'
@@ -271,31 +271,6 @@
       </iso:assert>
     </iso:rule>
   </iso:pattern>
-
-
-  <iso:pattern id="q101.1">
-    <iso:rule context="//gn:delsvar[@id='101.1']">
-      <iso:extends rule="boolean"/>
-      <iso:assert test="matches(normalize-space(.), '^true$|^1$|^false$|^0$')">
-        'Önskar förmedla funktionsnedsättning' måste ha ett svar av typen boolean
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
-  <iso:pattern id="q101.1-true">
-    <iso:rule context="//gn:delsvar[@id='101.1' and matches(normalize-space(.), '1|true')]">
-      <iso:assert test="count(//gn:delsvar[@id='35.1']) = 1">
-        Om 'Önskar förmedla funktionsnedsättning' är besvarat med ja, måste funktionsnedsättning besvaras
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
-  <iso:pattern id="q101.1-false">
-    <iso:rule context="//gn:delsvar[@id='101.1' and matches(normalize-space(.), '0|false')]">
-      <iso:assert test="count(//gn:delsvar[@id='35.1']) = 0">
-        Om 'Önskar förmedla funktionsnedsättning' är besvarat med nej, får ej funktionsnedsättning besvaras
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
-
 
   <iso:pattern id="q6">
     <iso:rule context="//gn:svar[@id='6']">
