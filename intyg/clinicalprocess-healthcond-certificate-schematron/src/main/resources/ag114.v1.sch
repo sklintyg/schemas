@@ -12,6 +12,9 @@
 
   <iso:pattern id="intyg">
     <iso:rule context="//rg:intyg">
+     <iso:assert test="count(gn:svar[@id='10']) le 4">
+        Ett 'AG1-14' får ha högst 4 'Grund för medicinskt underlag'
+      </iso:assert>
       <iso:assert test="count(gn:svar[@id='1']) = 1">
         Ett 'AG1-14' måste innehålla 1 'Sysselsättning'.
       </iso:assert>
@@ -38,6 +41,63 @@
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='9']) le 1">
         Ett 'AG1-14' får innehålla max 1 'Kontakt med arbetsgivaren'.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q10">
+    <iso:rule context="//gn:svar[@id='10']">
+      <iso:assert test="count(gn:instans) = 1">
+        'Grund för medicinskt underlag (MU)' måste ha ett instansnummer.
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='10.1']) = 1">
+        'Grund för medicinskt underlag (MU)' måste ha ett 'Typ av grund för MU'.
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='10.2']) = 1">
+        'Grund för medicinskt underlag (MU)' måste ha ett 'Datum som grund för MU'.
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='10.3']) le 1">
+        'Grund för medicinskt underlag (MU)' får ha högst ett 'Vilken annan grund finns för MU'.
+      </iso:assert>
+      <iso:assert test="not(preceding-sibling::gn:svar[@id='10']/gn:delsvar[@id='10.1']/tp:cv/tp:code/normalize-space() = normalize-space(gn:delsvar[@id='10.1']/tp:cv/tp:code))">
+        Samma 'Typ av grund för MU' kan inte användas flera gånger i samma 'MU'.
+      </iso:assert>
+      <iso:let name="delsvarsIdExpr" value="'^10\.[123]$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q10.1">
+    <iso:rule context="//gn:delsvar[@id='10.1']">
+      <iso:extends rule="cv"/>
+      <iso:assert test="tp:cv/tp:codeSystem = 'KV_FKMU_0001'">'codeSystem' måste vara 'KV_FKMU_0001'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(UNDERSOKNING|TELEFONKONTAKT|JOURNALUPPGIFTER|ANNAT)$')">
+        'Typ av grund för MU' kan ha ett av värdena UNDERSOKNING, TELEFONKONTAKT, JOURNALUPPGIFTER, ANNAT.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q10.2">
+    <iso:rule context="//gn:delsvar[@id='10.2']">
+      <iso:extends rule="date"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q10.3">
+    <iso:rule context="//gn:delsvar[@id='10.3']">
+      <iso:extends rule="non-empty-string"/>
+      <iso:assert test="count(../gn:delsvar[@id='10.1']/tp:cv/tp:code[normalize-space(.) != 'ANNAT']) = 0">
+        Om 'Typ av grund för MU' inte är 'Annat' så får 'Vilken annan grund finns för MU' inte anges.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q10.1-10.3">
+    <iso:rule context="//gn:delsvar[@id='10.1']/tp:cv/tp:code[normalize-space(.) = 'ANNAT']">
+      <iso:assert test="../../../gn:delsvar[@id='10.3']">
+        Om 'Typ av grund för MU' är 'Annat' så måste 'Vilken annan grund finns för MU' anges.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
