@@ -29,6 +29,7 @@ include ':itintegration-monitoring-schemas'
 include ':population-residentmaster-schemas'
 include ':strategicresourcemanagement-persons-person-schemas'
 include ':intygsbestallning-certificate-order-schemas'
+include ':informationsecurity-auditing-log-schemas'
 include ':informationsecurity-authorization-blocking-schemas'
 include ':informationsecurity-authorization-consent-schemas'
 
@@ -54,5 +55,7 @@ project(':itintegration-monitoring-schemas').projectDir = "$rootDir/rivta/itinte
 project(':population-residentmaster-schemas').projectDir = "$rootDir/rivta/population-residentmaster" as File
 project(':strategicresourcemanagement-persons-person-schemas').projectDir = "$rootDir/rivta/strategicresourcemanagement-persons-person" as File
 project(':intygsbestallning-certificate-order-schemas').projectDir = "$rootDir/rivta/intygsbestallning-certificate-order" as File
+project(':informationsecurity-auditing-log-schemas').projectDir = "$rootDir/rivta/informationsecurity-auditing-log" as File
 project(':informationsecurity-authorization-blocking-schemas').projectDir = "$rootDir/rivta/informationsecurity-authorization-blocking" as File
 project(':informationsecurity-authorization-consent-schemas').projectDir = "$rootDir/rivta/informationsecurity-authorization-consent" as File
+
