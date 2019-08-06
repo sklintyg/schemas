@@ -1,0 +1,39 @@
+/*
+ * Copyright (C) 2019 Inera AB (http://www.inera.se)
+ *
+ * This file is part of sklintyg (https://github.com/sklintyg).
+ *
+ * sklintyg is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * sklintyg is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+description = "informationsecurity-auditing-log"
+
+group = 'se.riv.informationsecurity.auditing.log'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
+
+wsdl2java {
+  wsdlsToGenerate = [  ["-xjc", "-xjc-XhashCode", "-xjc-Xequals", "-xjc-XtoString", "-xjc-Xinheritance", "-b", "$rootDir/support/src/main/resources/bindings/general-binding.xjb",
+                        "-wsdlLocation",
+                        "classpath:interactions/StoreLogInteraction/StoreLogInteraction_2.0_RIVTABP21.wsdl",
+                        "-p",
+                        "urn:riv:itintegration:registry:1=se.riv.itintegration.registry.v1",
+                        "-p",
+                        "urn:riv:informationsecurity:auditing:log:StoreLogResponder:2=se.riv.informationsecurity.auditing.log.StoreLogResponder.v2",
+                        "-p",
+                        "urn:riv:informationsecurity:auditing:log:StoreLog:2:rivtabp21=se.riv.informationsecurity.auditing.log.StoreLog.v2.rivtabp21",
+                        "-p",
+                        "urn:riv:informationsecurity:auditing:log:2=se.riv.informationsecurity.auditing.log.v2",
+                        "$projectDir/schemas/interactions/StoreLogInteraction/StoreLogInteraction_2.0_RIVTABP21.wsdl"],
+                    ]
+}

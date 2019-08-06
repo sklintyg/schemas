@@ -10,7 +10,12 @@ Intyg Schemas byggs med hjälp av Maven enligt följande:
 $ git clone https://github.com/sklintyg/schemas.git
 
 $ cd schemas
-$ mvn install
+$ ./gradlew clean build
+```
+
+För att publisera till lokalt Maven-repo används
+```
+$ ./gradlew install
 ```
 
 ### Stöd för namespace prefixes
