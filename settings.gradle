@@ -26,7 +26,6 @@ include ':infrastructure-directory-employee-schemas'
 include ':infrastructure-directory-organization-schemas'
 include ':insuranceprocess-healthreporting-schemas'
 include ':itintegration-monitoring-schemas'
-include ':population-residentmaster-schemas'
 include ':strategicresourcemanagement-persons-person-schemas'
 include ':intygsbestallning-certificate-order-schemas'
 include ':informationsecurity-auditing-log-schemas'
@@ -52,7 +51,6 @@ project(':infrastructure-directory-employee-schemas').projectDir = "$rootDir/riv
 project(':infrastructure-directory-organization-schemas').projectDir = "$rootDir/rivta/infrastructure-directory-organization" as File
 project(':insuranceprocess-healthreporting-schemas').projectDir = "$rootDir/rivta/insuranceprocess-healthreporting" as File
 project(':itintegration-monitoring-schemas').projectDir = "$rootDir/rivta/itintegration-monitoring" as File
-project(':population-residentmaster-schemas').projectDir = "$rootDir/rivta/population-residentmaster" as File
 project(':strategicresourcemanagement-persons-person-schemas').projectDir = "$rootDir/rivta/strategicresourcemanagement-persons-person" as File
 project(':intygsbestallning-certificate-order-schemas').projectDir = "$rootDir/rivta/intygsbestallning-certificate-order" as File
 project(':informationsecurity-auditing-log-schemas').projectDir = "$rootDir/rivta/informationsecurity-auditing-log" as File
