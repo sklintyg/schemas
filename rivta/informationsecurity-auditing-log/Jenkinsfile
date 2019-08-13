@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "2.0"
+def buildVersion = "2.0.1"
 def projectName = "informationsecurity-auditing-log-schemas"
 
 stage('checkout') {
