@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "4.0"
+def buildVersion = "4.0.1"
 def projectName = "informationsecurity-authorization-blocking-schemas"
 
 stage('checkout') {

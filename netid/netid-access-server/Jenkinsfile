@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "1.0.0"
+def buildVersion = "1.0.1"
 def projectName = "netid-access-server-schemas"
 
 stage('checkout') {

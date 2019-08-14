@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "1.0.0.4"
+def buildVersion = "1.0.0.5"
 def projectName = "itintegration-monitoring-schemas"
 
 stage('checkout') {

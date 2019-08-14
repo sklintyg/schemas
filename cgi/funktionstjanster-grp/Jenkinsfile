@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "1.0.4"
+def buildVersion = "1.0.6"
 def projectName = "funktionstjanster-grp-schemas"
 
 stage('checkout') {
