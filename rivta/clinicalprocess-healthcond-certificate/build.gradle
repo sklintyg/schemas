@@ -15,6 +15,8 @@ wsdl2java {
                        "-p",
                        "urn:riv:clinicalprocess:healthcond:certificate:3.2=se.riv.clinicalprocess.healthcond.certificate.v32",
                        "-p",
+                       "urn:riv:clinicalprocess:healthcond:certificate:3.3=se.riv.clinicalprocess.healthcond.certificate.v33",
+                       "-p",
                        "urn:riv:clinicalprocess:healthcond:certificate:types:3=se.riv.clinicalprocess.healthcond.certificate.types.v3",
                       ]
 
@@ -69,12 +71,12 @@ wsdl2java {
 
                       commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                                        "-wsdlLocation",
-                                       "classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_3.1_RIVTABP21.wsdl",
+                                       "classpath:interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_3.3_RIVTABP21.wsdl",
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificateResponder:3=se.riv.clinicalprocess.healthcond.certificate.createdraftcertificateresponder.v3",
                                        "-p",
                                        "urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificate:3:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.createdraftcertificateresponder.v3",
-                                       "$projectDir/schemas/interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_3.1_RIVTABP21.wsdl"],
+                                       "$projectDir/schemas/interactions/CreateDraftCertificateInteraction/CreateDraftCertificateInteraction_3.3_RIVTABP21.wsdl"],
 
                       commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",  "-b", "$projectDir/xmldsig-binding.xjb",
                                        "-wsdlLocation",

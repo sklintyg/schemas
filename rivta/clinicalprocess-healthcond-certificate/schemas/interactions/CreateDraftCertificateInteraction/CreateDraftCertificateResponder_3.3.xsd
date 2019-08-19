@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!--
+<!-- 
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
@@ -21,15 +21,21 @@
 	xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificateResponder:3'
 	xmlns:core='urn:riv:clinicalprocess:healthcond:certificate:3'
 	xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
-
+	xmlns:m3="urn:riv:clinicalprocess:healthcond:certificate:3.3"
 	targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificateResponder:3'
 	elementFormDefault='qualified' attributeFormDefault='unqualified'
-	version='3.2'>
-	<xs:import
-		schemaLocation='../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd'
+	version='3.3'>
+  
+	<xs:import schemaLocation='../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd'
 		namespace='urn:riv:clinicalprocess:healthcond:certificate:3' />
+	
+	<!-- No new types in 3.3, so we still use 3.2 -->
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.2.xsd" />
+	
+	<!-- NEW IN 3.3 -->
+	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.3" 
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.3_ext.xsd" />
 
 	<xs:element name='CreateDraftCertificate' type='tns:CreateDraftCertificateType' />
 	<xs:element name='CreateDraftCertificateResponse' type='tns:CreateDraftCertificateResponseType' />
@@ -57,9 +63,8 @@
 			<xs:element name="typAvIntyg" type="types:TypAvIntyg" />
 			<xs:element name="patient" type="core:Patient" />
 			<xs:element name="skapadAv" type="tns:HosPersonal" />
-			<xs:element name="ref" type="xs:string" minOccurs="0" />
-			<xs:any namespace="##other" processContents="lax" minOccurs="0"
-				maxOccurs="unbounded" />
+			<xs:element name="ref" type="xs:string" minOccurs="0" /> <!-- addition in 3.1 -->
+			<xs:element ref="m3:forifyllnad" minOccurs="0"/> <!-- addition in 3.3 -->
 		</xs:sequence>
 	</xs:complexType>
 
