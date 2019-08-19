@@ -24,6 +24,9 @@
 		Revisioner:
 		2015-09-30: Version 2.0, johan.zetterstrom@callistaenterprise.se
 		2017-03-29: Version 3.0, peter.hernfalk@callistaenterprise.se
+		2018-02-28: Version 3.1, peter.hernfalk@callistaenterprise.se
+		2018-06-13: Version 3.2, peter.hernfalk@callistaenterprise.se
+		2018-12-20: Version 3.3, christian.hilmersson@inera.se
 		Tjänstedomän: clinicalprocess:healthcond:certificate
 		Tjänsteinteraktionstyp: Fråga-Svar
 		WS-profil: RIVTABP21
@@ -33,7 +36,7 @@
 	<wsdl:types>
 		<xs:schema
 			targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificate:3:rivtabp21'>
-			<xs:import schemaLocation='CreateDraftCertificateResponder_3.2.xsd'
+			<xs:import schemaLocation='CreateDraftCertificateResponder_3.3.xsd'
 				namespace='urn:riv:clinicalprocess:healthcond:certificate:CreateDraftCertificateResponder:3' />
 			<xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd'
 				namespace='urn:riv:itintegration:registry:1' />
