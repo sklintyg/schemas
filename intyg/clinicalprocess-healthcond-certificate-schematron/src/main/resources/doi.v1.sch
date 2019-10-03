@@ -244,7 +244,7 @@
   <iso:pattern id="q8.3">
     <iso:rule context="//gn:delsvar[@id='8.3']">
       <iso:extends rule="cv"/>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(v3 Code System NullFlavor|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för ICD-10-SE eller 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(2.16.840.1.113883.5.1008|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för SNOMED-CT eller 'v3 Code System NullFlavor'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(90734009|424124008|NI)$')">
         Code kan ha ett av värdena 90734009, 424124008, NI.
       </iso:assert>
@@ -291,7 +291,7 @@
   <iso:pattern id="q9.3">
     <iso:rule context="//gn:delsvar[@id='9.3']">
       <iso:extends rule="cv"/>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(v3 Code System NullFlavor|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för ICD-10-SE eller 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(2.16.840.1.113883.5.1008|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för SNOMED-CT eller 'v3 Code System NullFlavor'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(90734009|424124008|NI)$')">
         Code kan ha ett av värdena 90734009, 424124008, NI.
       </iso:assert>
@@ -340,7 +340,7 @@
   <iso:pattern id="q10.3">
     <iso:rule context="//gn:delsvar[@id='10.3']">
       <iso:extends rule="cv"/>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(v3 Code System NullFlavor|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för ICD-10-SE eller 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(2.16.840.1.113883.5.1008|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för SNOMED-CT eller 'v3 Code System NullFlavor'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(90734009|424124008|NI)$')">
         Code kan ha ett av värdena 90734009, 424124008, NI.
       </iso:assert>
