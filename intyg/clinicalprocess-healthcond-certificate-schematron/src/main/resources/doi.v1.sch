@@ -371,7 +371,7 @@
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='11.1']">
       <iso:extends rule="cv"/>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^v3 Code System NullFlavor$')">'codeSystem' måste vara 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^2.16.840.1.113883.5.1008$')">För CV-typ svar måste 'codeSystem' vara '2.16.840.1.113883.5.1008' (v3 Code System NullFlavor).</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^NI$')">
         Code kan endast vara NI.
       </iso:assert>
