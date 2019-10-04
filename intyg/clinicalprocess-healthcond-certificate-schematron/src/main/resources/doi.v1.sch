@@ -391,12 +391,12 @@
   </iso:pattern>
 
   <iso:pattern id="q11.2-11.1">
-    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '1|true'))]">
+    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '^(1|true)$'))]">
       <iso:assert test="not(//gn:delsvar[@id='11.2'])">
         'Datum operation' får inte finnas om 'Om operation inom fyra veckor' är false eller NI
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '1|true')]">
+    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '^(1|true)$')]">
       <iso:assert test="count(//gn:delsvar[@id='11.2']) = 1">
         'Datum operation' måste finnas om 'Om operation inom fyra veckor' är true
       </iso:assert>
@@ -404,12 +404,12 @@
   </iso:pattern>
 
   <iso:pattern id="q11.3">
-    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '1|true'))]">
+    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '^(1|true)$'))]">
       <iso:assert test="not(//gn:delsvar[@id='11.3'])">
         'Anledning operation' får inte finnas om 'Om operation inom fyra veckor' är false eller NI
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '1|true')]">
+    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '^(1|true)$')]">
       <iso:assert test="count(//gn:delsvar[@id='11.3']) = 1">
         'Anledning operation' måste finnas om 'Om operation inom fyra veckor' är true
       </iso:assert>
