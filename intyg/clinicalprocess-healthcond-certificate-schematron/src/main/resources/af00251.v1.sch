@@ -82,7 +82,7 @@
     <!-- Kategori 2 - Arbetsmarknadspolitiskt program -->
     <iso:pattern id="q2.2">
         <iso:rule context="//gn:delsvar[@id='2.2']">
-          <iso:assert test="tp:cv/tp:codeSystem = 'kv-omfattning-arbetsmarknadspolitiskt-program'">'codeSystem' måste vara 'kv-omfattning-arbetsmarknadspolitiskt-program'.</iso:assert>
+          <iso:assert test="tp:cv/tp:codeSystem = '1.2.752.129.5.1.2'">codeSystem måste vara '1.2.752.129.5.1.2' (kv-omfattning-arbetsmarknadspolitiskt-program).</iso:assert>
           <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(HELTID|DELTID|OKAND)$')">
             "Programmets omfattning" kan ha ett av värdena Heltid (40 timmar/vecka), Deltid, Okänd.
           </iso:assert>
@@ -177,7 +177,7 @@
     <iso:pattern id="q8.1">
       <iso:rule context="//gn:delsvar[@id='8.1']">
         <iso:extends rule="cv"/>
-        <iso:assert test="tp:cv/tp:codeSystem = 'kv-prognos-återgång-arbetsmarknadspolitiskt-program'">'codeSystem' måste vara 'kv-prognos-återgång-arbetsmarknadspolitiskt-program'.</iso:assert>
+        <iso:assert test="tp:cv/tp:codeSystem = '1.2.752.129.5.1.3'">codeSystem måste vara '1.2.752.129.5.1.3' (kv-prognos-återgång-arbetsmarknadspolitiskt-program)</iso:assert>
         <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(ATERGA_UTAN_ANPASSNING|ATERGA_MED_ANPASSNING|KAN_EJ_ATERGA|EJ_MOJLIGT_AVGORA)$')">
           Svaret måste vara ett av värdena ATERGA_UTAN_ANPASSNING, ATERGA_MED_ANPASSNING, KAN_EJ_ATERGA, EJ_MOJLIGT_AVGORA.
         </iso:assert>

@@ -244,7 +244,7 @@
   <iso:pattern id="q8.3">
     <iso:rule context="//gn:delsvar[@id='8.3']">
       <iso:extends rule="cv"/>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(v3 Code System NullFlavor|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för ICD-10-SE eller 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(2.16.840.1.113883.5.1008|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för SNOMED-CT eller 'v3 Code System NullFlavor'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(90734009|424124008|NI)$')">
         Code kan ha ett av värdena 90734009, 424124008, NI.
       </iso:assert>
@@ -291,7 +291,7 @@
   <iso:pattern id="q9.3">
     <iso:rule context="//gn:delsvar[@id='9.3']">
       <iso:extends rule="cv"/>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(v3 Code System NullFlavor|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för ICD-10-SE eller 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(2.16.840.1.113883.5.1008|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för SNOMED-CT eller 'v3 Code System NullFlavor'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(90734009|424124008|NI)$')">
         Code kan ha ett av värdena 90734009, 424124008, NI.
       </iso:assert>
@@ -340,7 +340,7 @@
   <iso:pattern id="q10.3">
     <iso:rule context="//gn:delsvar[@id='10.3']">
       <iso:extends rule="cv"/>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(v3 Code System NullFlavor|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för ICD-10-SE eller 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^(2.16.840.1.113883.5.1008|1.2.752.116.2.1.1.1)$')">'codeSystem' måste vara antingen OID för SNOMED-CT eller 'v3 Code System NullFlavor'.</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^(90734009|424124008|NI)$')">
         Code kan ha ett av värdena 90734009, 424124008, NI.
       </iso:assert>
@@ -371,7 +371,7 @@
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='11.1']">
       <iso:extends rule="cv"/>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^v3 Code System NullFlavor$')">'codeSystem' måste vara 'v3 Code System NullFlavor'.</iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:codeSystem), '^2.16.840.1.113883.5.1008$')">För CV-typ svar måste 'codeSystem' vara '2.16.840.1.113883.5.1008' (v3 Code System NullFlavor).</iso:assert>
       <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^NI$')">
         Code kan endast vara NI.
       </iso:assert>
@@ -391,12 +391,12 @@
   </iso:pattern>
 
   <iso:pattern id="q11.2-11.1">
-    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '1|true'))]">
+    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '^(1|true)$'))]">
       <iso:assert test="not(//gn:delsvar[@id='11.2'])">
         'Datum operation' får inte finnas om 'Om operation inom fyra veckor' är false eller NI
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '1|true')]">
+    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '^(1|true)$')]">
       <iso:assert test="count(//gn:delsvar[@id='11.2']) = 1">
         'Datum operation' måste finnas om 'Om operation inom fyra veckor' är true
       </iso:assert>
@@ -404,12 +404,12 @@
   </iso:pattern>
 
   <iso:pattern id="q11.3">
-    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '1|true'))]">
+    <iso:rule context="//gn:delsvar[@id='11.1' and not(matches(normalize-space(.), '^(1|true)$'))]">
       <iso:assert test="not(//gn:delsvar[@id='11.3'])">
         'Anledning operation' får inte finnas om 'Om operation inom fyra veckor' är false eller NI
       </iso:assert>
     </iso:rule>
-    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '1|true')]">
+    <iso:rule context="//gn:delsvar[@id='11.1' and matches(normalize-space(.), '^(1|true)$')]">
       <iso:assert test="count(//gn:delsvar[@id='11.3']) = 1">
         'Anledning operation' måste finnas om 'Om operation inom fyra veckor' är true
       </iso:assert>
