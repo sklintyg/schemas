@@ -10,7 +10,8 @@
 	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
 	the specific language governing permissions and limitations under the License. -->
 <wsdl:definitions name='ListCertificatesForCareWithQAInteraction'
-	xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
+	xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/'
+	xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/'
 	xmlns:xs='http://www.w3.org/2001/XMLSchema'
 	xmlns:tjsr='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:3'
 	xmlns:tns='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQA:3:rivtabp21'
@@ -26,7 +27,9 @@
 		2014-08-20: Utkast Version 1.0, mats.ekhammar@callistaenterprise.se
 		2015-09-30 Version 2.0, johan.zetterstrom@callistaenterprise.se
 		2017-03-29: Version 3.0, peter.hernfalk@callistaenterprise.se
-		2017-05-01: Version 3.1, peter.hernfalk@callistaenterprise.se
+		2017-05-08: Version 3.1, peter.hernfalk@callistaenterprise.se
+		2018-06-14: Version 3.2, peter.hernfalk@callistaenterprise.se
+		2020-01-09: Version 3.3, peter.hernfalk@callistaenterprise.se
 		Tjänstedomän: clinicalprocess:healthcond:certificate
 		Tjänsteinteraktionstyp: Fråga-svar
 		WS-profil: RIVTABP21
@@ -35,7 +38,7 @@
 	<wsdl:types>
 		<xs:schema
 			targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQA:3:rivtabp21'>
-			<xs:import schemaLocation='ListCertificatesForCareWithQAResponder_3.2.xsd'
+			<xs:import schemaLocation='ListCertificatesForCareWithQAResponder_3.3.xsd'
 				namespace='urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:3' />
 			<xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd'
 				namespace='urn:riv:itintegration:registry:1' />

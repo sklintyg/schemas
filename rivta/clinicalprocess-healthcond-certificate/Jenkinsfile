@@ -1,6 +1,6 @@
 #!groovy
 
-def buildVersion = "4.0.4"
+def buildVersion = "4.0.5"
 def projectName = "clinicalprocess-healthcond-certificate-schemas"
 
 stage('checkout') {
