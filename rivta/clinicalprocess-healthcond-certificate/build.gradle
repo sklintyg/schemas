@@ -1,7 +1,7 @@
 description = "clinicalprocess-healthcond-certificate-schemas"
 
 group = 'se.riv.clinicalprocess.healthcond.certificate'
-version = System.properties['buildVersion'] ?: '4.0.5'
+version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 wsdl2java {
     def commonOptions = ["-p",
@@ -189,13 +189,11 @@ wsdl2java {
                              "urn:riv:clinicalprocess:healthcond:certificate:ListSickLeavesForCareResponder:1=se.riv.clinicalprocess.healthcond.certificate.listsickleavesforcare.v1",
                              "$projectDir/schemas/interactions/ListSickLeavesForCareInteraction/ListSickLeavesForCareInteraction_1.0_RIVTABP21.wsdl"],
 
-            commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
+            commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb", "-b", "$projectDir/xmldsig-binding.xjb",
                              "-wsdlLocation",
                              "classpath:interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_3.3_RIVTABP21.wsdl",
                              "-p",
                              "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQA:3:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCareWithQA.v3",
-                             //"-p",
-                             //"urn:riv:clinicalprocess:healthcond:certificate:3.2=se.riv.clinicalprocess.healthcond.certificate.registerCertificate.v32",
                              "-p",
                              "urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:3=se.riv.clinicalprocess.healthcond.certificate.listCertificatesForCareWithQA.v3",
                              "$projectDir/schemas/interactions/ListCertificatesForCareWithQAInteraction/ListCertificatesForCareWithQAInteraction_3.3_RIVTABP21.wsdl"],
