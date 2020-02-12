@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
+<!-- 
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements. See the NOTICE file
  distributed with this work for additional information
@@ -23,21 +23,20 @@
 	xmlns:tns="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:3"
 	targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:ListCertificatesForCareWithQAResponder:3"
 	elementFormDefault="qualified" attributeFormDefault="unqualified"
-	version="3.2">
+	version="3.3">
 
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3"
-		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd" />
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.3.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.2.xsd" />
 
 	<xs:element name="ListCertificatesForCareWithQA" type="tns:ListCertificatesForCareWithQAType" />
-	<xs:element name="ListCertificatesForCareWithQAResponse"
-		type="tns:ListCertificatesForCareWithQAResponseType" />
+	<xs:element name="ListCertificatesForCareWithQAResponse" type="tns:ListCertificatesForCareWithQAResponseType" />
 
 	<xs:complexType name="ListCertificatesForCareWithQAType">
 		<xs:sequence>
 			<xs:element name="person-id" type="types:PersonId" />
-			<xs:element name="enhets-id" type="types:HsaId" minOccurs="0"  maxOccurs="unbounded" />
+			<xs:element name="enhets-id" type="types:HsaId" minOccurs="0" maxOccurs="unbounded" />
 			<xs:element name="vardgivar-id" type="types:HsaId" minOccurs="0" />
 			<xs:element name="fromTidpunkt" type="types:TimeStampType" minOccurs="0" />
 			<xs:element name="tomTidpunkt" type="types:TimeStampType" minOccurs="0" />
