@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:2"
+           xmlns:tns="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:3"
            xmlns:srs="urn:riv:clinicalprocess:healthcond:srs:types:1"
            xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:2"
-           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:2"
+           targetNamespace="urn:riv:clinicalprocess:healthcond:srs:GetSRSInformationResponder:3"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
-           version="2.0">
+           version="3.0">
 
     <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:2"
         schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_2.0.xsd"/>
@@ -105,6 +105,7 @@
 
     <xs:complexType name="Prediktionsfaktorer">
         <xs:sequence>
+            <xs:element name="sjukskrivningsdag" type="xs:int" minOccurs="0" maxOccurs="1"/> <!-- Den dag i sjukskrivningen för vilken prediktion görs, normalt görs första beräkning vid sjukskrivningsdag 15 -->
             <xs:element name="postnummer" type="xs:string"/>
             <xs:element name="fragasvar" type="tns:FragaSvar" maxOccurs="unbounded"/>
         </xs:sequence>
