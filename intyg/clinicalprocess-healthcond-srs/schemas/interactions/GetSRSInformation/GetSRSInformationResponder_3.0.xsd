@@ -42,11 +42,26 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="diagnosintyg">
+        <xs:sequence>
+            <xs:element name="diagnos" type="types:diagnos"/>
+            <xs:element name="intyg-id" type="types:IntygId" />
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="individ">
         <xs:sequence>
             <xs:element name="person-id" type="types:PersonIdExtension"/>
-            <xs:element name="diagnos" type="types:diagnos" maxOccurs="unbounded"/>
-            <xs:element name="intyg-id" type="types:IntygId"/>
+            <!--
+                 The first diagnosintyg is the current certificate and current main diagnosis.
+                 If prediktion=true in utdatafilter this first entry is the one that will be used for calculating a new prediction,
+                 If prediktion=false in utdatafilter we will try to find an earlier prediction on this first certificate and diagnosis instead.
+                 The second diagnosintyg is a cert with relation FRLNG from the first and the diagnosis to find earlier predictions for, if such certificate-diagnosis combination exists,
+                 The third diagnosintyg is a cert with relation FRLNG from the second and the diagnosis to find earlier predictions for, if such certificate-diagnosis combination exists
+
+                 I.e. The first is an extension of the second which is an extension of the third.
+            -->
+            <xs:element name="diagnosintyg" type="tns:diagnosintyg" minOccurs="1" maxOccurs="3"/>
         </xs:sequence>
     </xs:complexType>
 
@@ -91,6 +106,7 @@
             <xs:element name="lakarbedomning-risk" type="srs:EgenBedomningRiskType" minOccurs="0" /> <!-- Används vid hämtning av historiska prediktionsberäkningar -->
             <xs:element name="prediktionsfaktorer" type="tns:Prediktionsfaktorer" minOccurs="0" /> <!-- Används vid hämtning av historiska prediktionsberäkningar -->
             <xs:element name="berakningstidpunkt" type="types:TimeStampType" minOccurs="0" /> <!-- Används vid hämtning av historiska prediktionsberäkningar -->
+            <xs:element name="intyg-id" type="types:IntygId" />
         </xs:sequence>
     </xs:complexType>
 
