@@ -16,6 +16,7 @@
     <xs:complexType name="GetPredictionQuestionsRequestType">
         <xs:sequence>
             <xs:element name="diagnos"  type="types:diagnos"/>
+            <xs:element name="prediktionsmodellversion" type="xs:string" minOccurs="0"/>
             <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
@@ -35,6 +36,7 @@
             <xs:element name="hjalptext" type="xs:string" />
             <xs:element name="prioritet" type="xs:positiveInteger"/>
             <xs:element name="svarsalternativ" type="tns:svarsalternativ" maxOccurs="unbounded"/>
+            <xs:element name="prediktionsmodellversion" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
 
