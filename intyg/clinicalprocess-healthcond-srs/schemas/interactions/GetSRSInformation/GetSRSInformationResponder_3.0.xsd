@@ -107,6 +107,8 @@
             <xs:element name="prediktionsfaktorer" type="tns:Prediktionsfaktorer" minOccurs="0" /> <!-- Används vid hämtning av historiska prediktionsberäkningar -->
             <xs:element name="berakningstidpunkt" type="types:TimeStampType" minOccurs="0" /> <!-- Används vid hämtning av historiska prediktionsberäkningar -->
             <xs:element name="intyg-id" type="types:IntygId" />
+            <xs:element name="sjukskrivningsdag" type="xs:int" minOccurs="0" maxOccurs="1"/> <!-- Den dag i sjukskrivningen för vilken prediktionen gjordes -->
+            <xs:element name="prediktionsmodellversion" type="xs:string" minOccurs="0" />
         </xs:sequence>
     </xs:complexType>
 
