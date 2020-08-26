@@ -25,7 +25,7 @@
     targetNamespace='urn:riv:clinicalprocess:healthcond:certificate:GetCertificateAdditionsResponder:1'
     elementFormDefault='qualified'
     attributeFormDefault='unqualified'
-    version='1.0'>
+    version='1.1'>
 
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_3.2.xsd"/>
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="../../core_components/intyg_clinicalprocess_healthcond_certificate_types_3.2.xsd"/>
@@ -60,6 +60,7 @@
       <xs:element name="id" type="xs:string"/>
       <xs:element name="status" type="tns:StatusType"/>
       <xs:element name="skapad" type="types:TimeStampType"/>
+      <xs:element name="amne" type="tns:AmneType"/>
       <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
     </xs:sequence>
   </xs:complexType>
@@ -68,6 +69,16 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="Besvarad"/>
       <xs:enumeration value="Obesvarad"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="AmneType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="KOMPLT"/>
+      <xs:enumeration value="AVSTMN"/>
+      <xs:enumeration value="KONTKT"/>
+      <xs:enumeration value="PAMINN"/>
+      <xs:enumeration value="OVRIGT"/>
     </xs:restriction>
   </xs:simpleType>
 
