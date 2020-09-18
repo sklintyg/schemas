@@ -42,9 +42,10 @@ public final class XmlValidator {
 
     public ValidateXmlResponse validate(String inputXml) throws Exception {
         SchematronOutputType valResult = validateSchematron(new StreamSource(new StringReader(inputXml)));
-        if (!SVRLHelper.getAllFailedAssertions(valResult).isEmpty()) {
+        var allFailedAssertions = SVRLHelper.getAllFailedAssertions(valResult);
+        if (!allFailedAssertions.isEmpty()) {
             List<String> errorMsgs = new ArrayList<>();
-            SVRLHelper.getAllFailedAssertions(valResult)
+            allFailedAssertions
                 .forEach(fra -> errorMsgs.add(String.format("TEST: %s, MSG: %s", fra.getTest(), fra.getText())));
             return new ValidateXmlResponse(ValidationStatus.INVALID, errorMsgs);
         } else {

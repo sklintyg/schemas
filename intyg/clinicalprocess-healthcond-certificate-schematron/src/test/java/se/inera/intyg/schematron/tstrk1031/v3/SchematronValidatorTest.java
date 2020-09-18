@@ -27,7 +27,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.List;
 import java.util.stream.Collectors;
 import org.junit.Test;
 import se.inera.intyg.schematron.validation.ValidateXmlResponse;
@@ -186,9 +185,9 @@ public class SchematronValidatorTest {
     }
 
     private void expectValidationErrors(String xmlFile, int expectedNoOfError) throws Exception {
-        String inputXml = getResourceFileAsString(xmlFile);
-        ValidateXmlResponse response = xmlValidator.validate(inputXml);
-        final List<String> validationErrors = response.getValidationErrors();
+        var xmlToValidate = getResourceFileAsString(xmlFile);
+        var validationResponse = xmlValidator.validate(xmlToValidate);
+        var validationErrors = validationResponse.getValidationErrors();
 
         assertFalse(String.join("\n", validationErrors), validationErrors.isEmpty());
         assertEquals(expectedNoOfError, validationErrors.size());

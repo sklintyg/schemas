@@ -36,10 +36,6 @@ public class ValidateXmlResponse {
         this.validationErrors = new ArrayList<>(validationErrors);
     }
 
-    public boolean hasErrorMessages() {
-        return !this.validationErrors.isEmpty();
-    }
-
     public List<String> getValidationErrors() {
         return Collections.unmodifiableList(validationErrors);
     }
