@@ -266,16 +266,7 @@
 
   <iso:pattern id="q8">
     <iso:rule context="//gn:svar[@id='8']">
-      <iso:assert test="count(gn:delsvar[@id='8.1']) = 1">
-        Ett 'Synskärpa (svar)' måste ha ett delsvar '8.1' (höger öga utan korrektion)
-      </iso:assert>
-      <iso:assert test="count(gn:delsvar[@id='8.2']) = 1">
-        Ett 'Synskärpa (svar)' måste ha ett delsvar '8.2' (vänster öga utan korrektion)
-      </iso:assert>
-      <iso:assert test="count(gn:delsvar[@id='8.3']) = 1">
-        Ett 'Synskärpa (svar)' måste ha ett delsvar '8.3' (binokulärt utan korrektion)
-      </iso:assert>
-      <iso:let name="delsvarsIdExpr" value="'^8\.[1-8]$'"/>
+      <iso:let name="delsvarsIdExpr" value="'^8\.[1-9]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "<value-of select="$delsvarsIdExpr"/>".
       </iso:assert>
@@ -284,82 +275,131 @@
 
   <iso:pattern id="q8.1">
     <iso:rule context="//gn:delsvar[@id='8.1']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="boolean"/>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q8.2">
     <iso:rule context="//gn:delsvar[@id='8.2']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q8.3">
     <iso:rule context="//gn:delsvar[@id='8.3']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q8.4">
     <iso:rule context="//gn:delsvar[@id='8.4']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q8.5">
     <iso:rule context="//gn:delsvar[@id='8.5']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q8.6">
     <iso:rule context="//gn:delsvar[@id='8.6']">
-      <iso:extends rule="decimal"/>
+      <iso:extends rule="decimal-le-2"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q8.7">
+    <iso:rule context="//gn:delsvar[@id='8.7']">
+      <iso:extends rule="decimal-le-2"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q8.8">
+    <iso:rule context="//gn:delsvar[@id='8.8']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q8.9">
+    <iso:rule context="//gn:delsvar[@id='8.9']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="decimal-value-less-equal-2-pattern">
+    <iso:rule id="decimal-le-2" abstract="true">
+      <iso:assert test="count(*) = 0">Decimal-värde får inte vara inbäddat i något element.</iso:assert>
+      <iso:assert test=". castable as xs:decimal">Decimalvärde</iso:assert>
+      <iso:assert test="abs(.) &lt;= 2.0">Decimal-värde får inte vara över 2.0</iso:assert>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q8-R33">
-    <iso:rule context="//gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), 'IAV10') and (number(../../gn:svar[@id='8']/gn:delsvar[@id='8.3']) &lt; 0.5)]">
+    <iso:rule context="//gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), 'IAV10') and (number(../../gn:svar[@id='8']/gn:delsvar[@id='8.4']) &lt; 0.5)]">
       <iso:assert test="
-      count(../../gn:svar[@id='8']/gn:delsvar[@id='8.4']) = 1
-      and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
-      and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1">
+      count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
+      and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1
+      and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.7']) = 1">
         Om frågan 'Intyget avser behörighet (Delsvar 1.1)' besvarats med 'Annat'
-        OCH frågan 'Binokulärt utan korrektion (Delsvar 8.3)' har besvarats med ett värde som är mindre än 0,5
-        är (DFR 8.4), (DFR 8.5) och (DFR 8.6) obligatoriska att besvara.
+        OCH frågan 'Binokulärt utan korrektion (Delsvar 8.4)' har besvarats med ett värde som är mindre än 0,5
+        är (DFR 8.5), (DFR 8.6) och (DFR 8.7) obligatoriska att besvara.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q8-R35">
-    <iso:rule context="//gn:delsvar[((@id='8.1' and number(.) &lt; 0.1) or (number(../gn:delsvar[@id='8.2']) &lt; 0.1))
+    <iso:rule context="//gn:delsvar[((@id='8.2' and number(.) &lt; 0.1) or (number(../gn:delsvar[@id='8.3']) &lt; 0.1))
     and
     count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) ge 1]">
-      <iso:assert test="count(../gn:delsvar[@id='8.4']) = 1
-        and count(../gn:delsvar[@id='8.5']) = 1
-        and count(../gn:delsvar[@id='8.6']) = 1">
+      <iso:assert test="count(../gn:delsvar[@id='8.5']) = 1
+        and count(../gn:delsvar[@id='8.6']) = 1
+        and count(../gn:delsvar[@id='8.7']) = 1">
         Om DFR 1.1 besvarats med något av valen 'C1, C1E, C, CE, D1, D1E, D, DE eller Taxi'
-        OCH frågan DFR 8.1 har besvarats med ett värde som är mindre än 0,1
-        ELLER frågan DFR 8.2 har besvarats med ett värde som är mindre än 0,1
-        är DFR 8.4, DFR 8.5 och DFR 8.6 obligatoriska att besvara.
+        OCH frågan DFR 8.2 har besvarats med ett värde som är mindre än 0,1
+        ELLER frågan DFR 8.3 har besvarats med ett värde som är mindre än 0,1
+        är DFR 8.5, DFR 8.6 och DFR 8.7 obligatoriska att besvara.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q8-R34">
     <iso:rule context="//gn:delsvar[
-    (@id='8.1' and number(.) &lt; 0.8 and number(.) &gt;= 0.1)
+    (@id='8.2' and number(.) &lt; 0.8 and number(.) &gt;= 0.1)
     and
-    (number(../gn:delsvar[@id='8.2']) &lt; 0.8 and number(../gn:delsvar[@id='8.2']) &gt;= 0.1)
+    (number(../gn:delsvar[@id='8.3']) &lt; 0.8 and number(../gn:delsvar[@id='8.3']) &gt;= 0.1)
     and
     (count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) &gt;= 1)]">
-      <iso:assert test="count(../../gn:svar[@id='8']/gn:delsvar[@id='8.4']) = 1
-        and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
-        and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1">
+      <iso:assert test="count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
+        and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1
+        and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.7']) = 1">
         Om DFR 1.1 besvarats med något av valen 'C1, C1E, C, CE, D1, D1E, D, DE eller Taxi'
-        OCH frågan DFR 8.1 har besvarats med ett värde som är mindre än 0,8
         OCH frågan DFR 8.2 har besvarats med ett värde som är mindre än 0,8
-        är DFR 8.4, DFR 8.5 och DFR 8.6 obligatoriska att besvara.
+        OCH frågan DFR 8.3 har besvarats med ett värde som är mindre än 0,8
+        är DFR 8.5, DFR 8.6 och DFR 8.7 obligatoriska att besvara.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q8-R37">
+    <iso:rule context="//gn:delsvar[@id=8.1 and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(//gn:delsvar[@id=8.2]) = 0
+                       and count(//gn:delsvar[@id=8.3]) = 0
+                       and count(//gn:delsvar[@id=8.4]) = 0
+                       and count(//gn:delsvar[@id=8.5]) = 0
+                       and count(//gn:delsvar[@id=8.6]) = 0
+                       and count(//gn:delsvar[@id=8.7]) = 0">
+        Om rutan ”Uppgifter om synskärpa skickas separat” fylls i behöver inte uppgifter om synskärpa fyllas i.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:svar[@id=8 and (count(gn:delsvar[@id=8.1]) = 0 or matches(gn:delsvar[@id=8.1], 'false|0'))]">
+      <iso:assert test="count(gn:delsvar[@id=8.2]) = 1
+                       or count(gn:delsvar[@id=8.3]) = 1
+                       or count(gn:delsvar[@id=8.4]) = 1
+                       or count(gn:delsvar[@id=8.5]) = 1
+                       or count(gn:delsvar[@id=8.6]) = 1
+                       or count(gn:delsvar[@id=8.7]) = 1">
+        Om uppgift om synskärpa utan korrektion fylls i, i enlighet med satta valideringsregler,  behöver inte rutan ”intyg skickas separat” fyllas i.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
