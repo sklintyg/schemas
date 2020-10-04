@@ -168,6 +168,9 @@
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='18.2']">
       <iso:extends rule="non-empty-string"/>
+      <iso:assert test="string-length(normalize-space(text())) le 53">
+        'Beskrivning annan diabetes' får inte överskrida 53 tecken.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
