@@ -856,18 +856,27 @@
   <iso:pattern id="q30.2">
     <iso:rule context="//gn:delsvar[@id='30.2']">
       <iso:extends rule="non-empty-string"/>
+      <iso:assert test="string-length(normalize-space(text())) le 40">
+        'Tidpunkt för vård på sjukhus eller kontakt med läkare' får inte överskrida 40 tecken.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q30.3">
     <iso:rule context="//gn:delsvar[@id='30.3']">
       <iso:extends rule="non-empty-string"/>
+      <iso:assert test="string-length(normalize-space(text())) le 40">
+        'Plats för vård på sjukhus eller kontakt med läkare' får inte överskrida 40 tecken.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="q30.4">
     <iso:rule context="//gn:delsvar[@id='30.4']">
       <iso:extends rule="non-empty-string"/>
+      <iso:assert test="string-length(normalize-space(text())) le 50">
+        'Orsak för vård på sjukhus eller kontakt med läkare' får inte överskrida 50 tecken.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 
