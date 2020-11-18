@@ -77,6 +77,14 @@ public class SchematronValidatorTest {
     }
 
     @Test
+    public void passOnRule4() throws Exception {
+        expectValid("tstrk1031/v3/pass-R4_1.xml");
+        expectValid("tstrk1031/v3/pass-R4_2.xml");
+        expectValid("tstrk1031/v3/pass-R4_3.xml");
+        expectValid("tstrk1031/v3/pass-R4_5.xml");
+    }
+
+    @Test
     public void failOnRule5() throws Exception {
         expectValidationErrors("tstrk1031/v3/fail-R5.xml", 1);
     }
@@ -99,14 +107,30 @@ public class SchematronValidatorTest {
     }
 
     @Test
+    public void passOnRule8() throws Exception {
+        expectValid("tstrk1031/v3/pass-R8.xml");
+    }
+
+    @Test
     public void failOnRule9() throws Exception {
         expectValidationErrors("tstrk1031/v3/fail-R9.xml", 1);
+    }
+
+    @Test
+    public void passOnRule9() throws Exception {
+        expectValid("tstrk1031/v3/pass-R9.xml");
     }
 
     @Test
     public void failOnRule10() throws Exception {
         expectValidationErrors("tstrk1031/v3/fail-R10.xml", 1);
     }
+
+    @Test
+    public void passOnRule10() throws Exception {
+        expectValid("tstrk1031/v3/pass-R10.xml");
+    }
+
 
     @Test
     public void failOnRule12() throws Exception {
@@ -182,6 +206,14 @@ public class SchematronValidatorTest {
     public void failOnRule26() throws Exception {
         expectValidationErrors("tstrk1031/v3/fail-R26_1.xml", 1);
         expectValidationErrors("tstrk1031/v3/fail-R26_2.xml", 1);
+    }
+
+    private void expectValid(String xmlFile) throws Exception {
+        var xmlToValidate = getResourceFileAsString(xmlFile);
+        var validationResponse = xmlValidator.validate(xmlToValidate);
+        var validationErrors = validationResponse.getValidationErrors();
+
+        assertEquals(0, validationErrors.size());
     }
 
     private void expectValidationErrors(String xmlFile, int expectedNoOfError) throws Exception {

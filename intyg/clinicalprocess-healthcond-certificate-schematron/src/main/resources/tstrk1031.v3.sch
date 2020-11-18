@@ -580,7 +580,7 @@
       <iso:assert test="count(gn:delsvar[@id=109.1 and matches(normalize-space(.), 'true|1')]) = 1 or
                         count(gn:delsvar[@id=109.2 and matches(normalize-space(.), 'true|1')]) = 1 or
                         count(gn:delsvar[@id=109.3 and matches(normalize-space(.), 'true|1')]) = 1 or
-                        count(gn:delsvar[@id=109.4 and matches(normalize-space(.), 'true|1')]) = 1">
+                        count(gn:delsvar[@id=109.5 and matches(normalize-space(.), 'true|1')]) = 1">
         Minst en av frågorna 'Kostbehandling' (DFR 109.1), 'Tablettbehandling' (DFR 109.2), 'Insulinbehandling' (DFR 109.3), 'Annan behandling' (DFR 109.5) måste besvaras.
       </iso:assert>
     </iso:rule>
@@ -613,24 +613,24 @@
   </iso:pattern>
 
   <iso:pattern id="R8">
-    <iso:rule context="//gn:svar[@id='106']">
-      <iso:assert test="count(gn:delsvar[@id=106.1 and matches(normalize-space(.), 'true|1')]) = 1 and count(gn:delsvar[@id=106.2]) = 1">
+    <iso:rule context="//gn:delsvar[@id='106.1' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(//gn:delsvar[@id=106.2]) = 1">
         Om 'Förekomst av återkommande allvarlig hypoglykemi under det senaste året' (DFR 106.1) besvaras med 'Ja' ska 'Senaste tidpunkt för återkommande allvarlig hypoglykemi' (DFR 106.2) vara obligatorisk att besvara.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="R9">
-    <iso:rule context="//gn:svar[@id='107']">
-      <iso:assert test="count(gn:delsvar[@id=107.1 and matches(normalize-space(.), 'true|1')]) = 1 and count(gn:delsvar[@id=107.2]) = 1">
+    <iso:rule context="//gn:delsvar[@id='107.1' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(//gn:delsvar[@id=107.2]) = 1">
         Om 'Förekomst av återkommande allvarlig hypoglykemi i vaket tillstånd under de senaste tre månaderna' (DFR 107.1) besvaras med 'Ja' ska 'Senaste tidpunkt för återkommande allvarlig hypoglykemi i vaket tillstånd' (DFR 107.2) vara obligatorisk att besvara.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
 
   <iso:pattern id="R10">
-    <iso:rule context="//gn:svar[@id='108']">
-      <iso:assert test="count(gn:delsvar[@id=108.1 and matches(normalize-space(.), 'true|1')]) = 1 and count(gn:delsvar[@id=108.2]) = 1">
+    <iso:rule context="//gn:delsvar[@id='108.1' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(//gn:delsvar[@id=108.2]) = 1">
         Om 'Förekomst av allvarlig hypoglykemi i trafiken under det senaste året ' (DFR 108.1) besvaras med 'Ja' ska 'Senaste tidpunkt för allvarlig hypoglykemi i trafiken' (DFR 108.2) vara obligatorisk att besvara.
       </iso:assert>
     </iso:rule>
