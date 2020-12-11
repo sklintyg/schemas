@@ -649,9 +649,9 @@
   </iso:pattern>
 
   <iso:pattern id="R13">
-    <iso:rule context="//gn:delsvar[@id='8.4' and number(.) &lt; 0.5]">
-      <iso:assert test="count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV1[1-7]$')]) &gt;= 1
-                          and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
+    <iso:rule context="//gn:delsvar[@id='8.4' and number(.) &lt; 0.5
+                          and (count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV1[1-7]$')]) &gt;= 1)]">
+      <iso:assert test="count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
                           and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1
                           and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.7']) = 1">
         Om frågan "Intyget avser behörighet (Delsvar)" (DFR 1.1) besvarats med något av valen "AM, A1, A2, A, B, BE eller Traktor"
@@ -663,9 +663,10 @@
   </iso:pattern>
 
   <iso:pattern id="R14">
-    <iso:rule context="//gn:delsvar[@id='8.2' and number(.) &lt; 0.8 and (number(../gn:delsvar[@id='8.3']) &lt; 0.8)]">
-      <iso:assert test="count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) &gt;= 1
-                          and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
+    <iso:rule context="//gn:delsvar[@id='8.2' and number(.) &lt; 0.8
+                          and (number(../gn:delsvar[@id='8.3']) &lt; 0.8)
+                          and (count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) &gt;= 1)]">
+      <iso:assert test="count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
                           and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1
                           and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.7']) = 1">
 
@@ -680,9 +681,9 @@
   </iso:pattern>
 
   <iso:pattern id="R15">
-    <iso:rule context="//gn:delsvar[@id='8.2' and number(.) &lt; 0.1 or (number(../gn:delsvar[@id='8.3']) &lt; 0.1)]">
-      <iso:assert test="count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) &gt;= 1
-                          and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
+    <iso:rule context="//gn:delsvar[@id='8.2' and (number(.) &lt; 0.1 or (number(../gn:delsvar[@id='8.3']) &lt; 0.1))
+                          and (count(../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(./tp:cv/tp:code), '^IAV[1-9]$')]) &gt;= 1)]">
+      <iso:assert test="count(../../gn:svar[@id='8']/gn:delsvar[@id='8.5']) = 1
                           and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.6']) = 1
                           and count(../../gn:svar[@id='8']/gn:delsvar[@id='8.7']) = 1">
 
