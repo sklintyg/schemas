@@ -122,6 +122,21 @@ public class SchematronValidatorTest {
     }
 
     @Test
+    public void passOnRule13() throws Exception {
+        expectValid("tstrk1031/v3/pass-R13.xml");
+    }
+
+    @Test
+    public void passOnRule14() throws Exception {
+        expectValid("tstrk1031/v3/pass-R14.xml");
+    }
+
+    @Test
+    public void passOnRule15() throws Exception {
+        expectValid("tstrk1031/v3/pass-R15.xml");
+    }
+
+    @Test
     public void failOnRule10() throws Exception {
         expectValidationErrors("tstrk1031/v3/fail-R10.xml", 1);
     }
@@ -130,7 +145,6 @@ public class SchematronValidatorTest {
     public void passOnRule10() throws Exception {
         expectValid("tstrk1031/v3/pass-R10.xml");
     }
-
 
     @Test
     public void failOnRule12() throws Exception {
