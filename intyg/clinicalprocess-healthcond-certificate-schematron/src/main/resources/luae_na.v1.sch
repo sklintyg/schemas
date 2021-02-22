@@ -40,7 +40,7 @@
         Ett 'MU' får ha högst ett 'Funktionsnedsättning för intellektuell funktion'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='9']) le 1">
-        Ett 'MU' får ha högst ett 'Funktionsnedsättning för kommunikation och social interaktion'
+        Ett 'MU' får ha högst ett 'Funktionsnedsättning övergripande psykosociala funktioner'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='10']) le 1">
         Ett 'MU' får ha högst ett 'Funktionsnedsättning för uppmärksamhet och koncentration'
@@ -457,7 +457,7 @@
   <iso:pattern id="q9">
     <iso:rule context="//gn:svar[@id='9']">
       <iso:assert test="count(gn:delsvar[@id='9.1']) = 1">
-        'Funktionsnedsättning för kommunikation och social interaktion' måste ha ett 'Beskrivning'.
+        'Funktionsnedsättning övergripande psykosociala funktioner' måste ha ett 'Beskrivning'.
       </iso:assert>
       <iso:let name="delsvarsIdExpr" value="'^9\.[1]$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
