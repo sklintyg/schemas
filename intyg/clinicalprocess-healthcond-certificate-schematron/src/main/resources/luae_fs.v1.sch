@@ -13,7 +13,7 @@
   <iso:pattern id="intyg">
     <iso:rule context="//rg:intyg">
       <iso:assert test="count(gn:svar[@id='1']) ge 1 and count(gn:svar[@id='1']) le 4">
-        Ett 'MU' måste ha mellan 1 och 4 'Grund för medicinskt underlag'
+        Ett 'MU' måste ha mellan 1 och 4 'Grund för MU'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='2']) = 1">
         Ett 'MU' måste ha ett 'Kännedom om patienten'
@@ -50,16 +50,16 @@
   <iso:pattern id="q1">
     <iso:rule context="//gn:svar[@id='1']">
       <iso:assert test="count(gn:instans) = 1">
-        'Grund för medicinskt underlag (MU)' måste ha ett instansnummer.
+        'Grund för MU' måste ha ett instansnummer.
       </iso:assert>
       <iso:assert test="count(gn:delsvar[@id='1.1']) = 1">
-        'Grund för medicinskt underlag (MU)' måste ha ett 'Typ av grund för MU'.
+        'Grund för MU' måste ha ett 'Typ av grund för MU'.
       </iso:assert>
       <iso:assert test="count(gn:delsvar[@id='1.2']) = 1">
-        'Grund för medicinskt underlag (MU)' måste ha ett 'Datum som grund för MU'.
+        'Grund för MU' måste ha ett 'Datum som grund för MU'.
       </iso:assert>
       <iso:assert test="count(gn:delsvar[@id='1.3']) le 1">
-        'Grund för medicinskt underlag (MU)' får ha högst ett 'Vilken annan grund finns för MU'.
+        'Grund för MU' får ha högst ett 'Vilken annan grund finns för MU'.
       </iso:assert>
       <iso:assert test="not(preceding-sibling::gn:svar[@id='1']/gn:delsvar[@id='1.1']/tp:cv/tp:code/normalize-space() = normalize-space(gn:delsvar[@id='1.1']/tp:cv/tp:code))">
         Samma 'Typ av grund för MU' kan inte användas flera gånger i samma 'MU'.
