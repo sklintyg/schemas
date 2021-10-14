@@ -68,7 +68,7 @@
         Ett 'MU' får ha högst ett 'Lämplig att inneha behörighet med hänsyn till aktuella körningar och arbetsformer'
       </iso:assert>
 
-      <iso:let name="svarsIdExpr" value="'^[128]$|18$|3[23457]$|4[15]$|10[036789]$|110$'"/>
+      <iso:let name="svarsIdExpr" value="'^[128]$|18$|3[23457]$|4[15]$|10[036789]$|110$|207$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
