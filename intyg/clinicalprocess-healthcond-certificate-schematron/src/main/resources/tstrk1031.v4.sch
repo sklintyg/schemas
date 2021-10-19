@@ -26,6 +26,9 @@
         <!-- Either 18.1 or 18.2 must be set -->
         Ett 'MU' måste ha en 'Typ av diabetes'
       </iso:assert>
+      <iso:assert test="count(gn:svar[@id='207']) = 1">
+        Ett 'MU' måste ha en 'Medicinering för sin diabetes'
+      </iso:assert>
       <iso:assert test="count(gn:svar[@id='109']) = 1">
         Ett 'MU' måste ha minst en 'Behandling för diabetes'
       </iso:assert>
@@ -162,8 +165,8 @@
       <iso:assert test="tp:cv/tp:codeSystem = '1.2.752.116.1.1.1.1.3'">
         'codeSystem' måste vara '1.2.752.116.1.1.1.1.3'.
       </iso:assert>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^E1[01]$')">
-        'Typ av diabetes' kan ha ett av värdena E10 eller E11.
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^E10$|^E11$|^E109$')">
+        'Typ av diabetes' kan ha ett av värdena E10, E11 eller E109.
       </iso:assert>
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='18.2']">
@@ -171,6 +174,24 @@
       <iso:assert test="string-length(normalize-space(text())) le 53">
         'Beskrivning annan diabetes' får inte överskrida 53 tecken.
       </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q207">
+    <iso:rule context="//gn:svar[@id='207']">
+      <iso:let name="delsvarsIdExpr" value="'^207\.1$'"/>
+      <iso:assert test="count(gn:delsvar[@id=207.1]) le 1">
+        'Medicinering för sin diabetes' måste ha ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='207.1']">
+      <iso:extends rule="boolean"/>
     </iso:rule>
   </iso:pattern>
 
