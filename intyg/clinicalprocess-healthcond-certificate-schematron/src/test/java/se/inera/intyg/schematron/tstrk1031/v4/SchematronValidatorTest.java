@@ -222,6 +222,11 @@ public class SchematronValidatorTest {
         expectValidationErrors("tstrk1031/v4/fail-R26_2.xml", 1);
     }
 
+    @Test
+    public void failOnRule32() throws Exception {
+        expectValidationErrors("tstrk1031/v4/fail-R32.xml", 1);
+    }
+
     private void expectValid(String xmlFile) throws Exception {
         var xmlToValidate = getResourceFileAsString(xmlFile);
         var validationResponse = xmlValidator.validate(xmlToValidate);

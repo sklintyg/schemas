@@ -27,7 +27,7 @@
         Ett 'MU' måste ha en 'Typ av diabetes'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='207']) = 1">
-        Ett 'MU' måste ha en 'Medicinering för sin diabetes'
+        Ett 'MU' måste ha en 'Medicinering för diabetes'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='109']) = 1">
         Ett 'MU' måste ha minst en 'Behandling för diabetes'
@@ -71,7 +71,7 @@
         Ett 'MU' får ha högst ett 'Lämplig att inneha behörighet med hänsyn till aktuella körningar och arbetsformer'
       </iso:assert>
 
-      <iso:let name="svarsIdExpr" value="'^[128]$|18$|3[23457]$|4[15]$|10[036789]$|110$|207$'"/>
+      <iso:let name="svarsIdExpr" value="'^[128]$|18$|3[23457]$|4[15]$|10[036789]$|110$|20[78]$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
@@ -181,7 +181,7 @@
     <iso:rule context="//gn:svar[@id='207']">
       <iso:let name="delsvarsIdExpr" value="'^207\.1$'"/>
       <iso:assert test="count(gn:delsvar[@id=207.1]) le 1">
-        'Medicinering för sin diabetes' måste ha ett delsvar
+        'Medicinering för diabetes' måste ha ett delsvar
       </iso:assert>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
@@ -191,6 +191,24 @@
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='207.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q208">
+    <iso:rule context="//gn:svar[@id='208']">
+      <iso:let name="delsvarsIdExpr" value="'^208\.1$'"/>
+      <iso:assert test="count(gn:delsvar[@id=208.1]) le 1">
+        'Medicinering medför risk för hypoglykemi' måste ha ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='208.1']">
       <iso:extends rule="boolean"/>
     </iso:rule>
   </iso:pattern>
@@ -848,6 +866,14 @@
                          or count(gn:delsvar[@id=8.6]) = 1
                          or count(gn:delsvar[@id=8.7]) = 1">
         Om uppgift om synskärpa utan korrektion fylls i, i enlighet med satta valideringsregler,  behöver inte rutan ”intyg skickas separat” fyllas i.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R32">
+    <iso:rule context="//gn:delsvar[@id=207.1 and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(//gn:delsvar[@id='208.1']) = 1">
+        Om 'Medicinering för diabetes' (DFR 207.1) besvaras med 'Ja' måste 'Medicinering medför risk för hypoglykemi' (DFR 208.1) ha ett värde.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
