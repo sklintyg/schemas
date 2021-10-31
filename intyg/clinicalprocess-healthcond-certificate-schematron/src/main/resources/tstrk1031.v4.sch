@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <iso:schema
-      xmlns="http://purl.oclc.org/dsdl/schematron"
-      xmlns:iso="http://purl.oclc.org/dsdl/schematron"
-      queryBinding='xslt2'
-      schemaVersion='ISO19757-3'>
+    xmlns="http://purl.oclc.org/dsdl/schematron"
+    xmlns:iso="http://purl.oclc.org/dsdl/schematron"
+    queryBinding='xslt2'
+    schemaVersion='ISO19757-3'>
 
   <iso:title>Schematron file for "Läkarintyg diabetes avseende lämpligheten att inneha körkort m.m." - Version 4.</iso:title>
 
@@ -13,12 +13,18 @@
   <iso:ns prefix="tp" uri="urn:riv:clinicalprocess:healthcond:certificate:types:3"/>
   <iso:pattern id="intyg">
     <iso:rule context="//rg:intyg">
+
+      <!-- Category 1 - Intyget avser -->
       <iso:assert test="count(gn:svar[@id='1']) ge 1 and count(gn:svar[@id='1']) le 16">
         Ett 'MU' måste ha mellan 1 och 16 'Intyget avser behörighet'
       </iso:assert>
+
+      <!-- Category 2 - Identitet -->
       <iso:assert test="count(gn:svar[@id='2']) = 1">
         Ett 'MU' måste ha en 'Identitet styrkt genom'
       </iso:assert>
+
+      <!-- Category 3 - Allmänt -->
       <iso:assert test="count(gn:svar[@id='35']) = 1">
         Ett 'MU' måste ha en 'År då diabetesdiagnosen ställdes'
       </iso:assert>
@@ -29,30 +35,76 @@
       <iso:assert test="count(gn:svar[@id='207']) = 1">
         Ett 'MU' måste ha en 'Medicinering för diabetes'
       </iso:assert>
+      <iso:assert test="count(gn:svar[@id='208']) le 1">
+        Ett 'MU' måste ha en 'Medicinering för diabetes'
+      </iso:assert>
+
       <iso:assert test="count(gn:svar[@id='109']) = 1">
         Ett 'MU' måste ha minst en 'Behandling för diabetes'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='41']) le 1">
-        Ett 'MU' får ha högst ett 'Behandling för diabetes'
+
+      <!-- *************************************************************************  -->
+
+      <!-- Category 4 - Hypoglykemi -->
+      <iso:assert test="count(gn:svar[@id='200']) le 1">
+        Ett 'MU' får ha högst en 'Kontroll över sitt sjukdomstillstånd'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='37']) le 1">
-        Ett 'MU' får ha högst ett 'Förekomst av hypoglykemier med tecken på nedsatt hjärnfunktion som kan innebära en trafiksäkerhetsrisk '
+
+      <iso:assert test="count(gn:svar[@id='201']) le 1">
+        Ett 'MU' får ha högst en 'Förstår patienten riskerna med hypoglykemi'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='100']) le 1">
-        Ett 'MU' får ha högst ett 'Diabetessjukdomen är under kontroll avseende hypoglykemi'
-      </iso:assert>
+
       <iso:assert test="count(gn:svar[@id='110']) le 1">
-        Ett 'MU' får ha högst ett 'Har förmåga att känna varningstecken'
+        Ett 'MU' får ha högst en 'Har förmåga att känna varningstecken'
       </iso:assert>
+
+      <iso:assert test="count(gn:svar[@id='202']) le 1">
+        Ett 'MU' får ha högst en 'Har patienten möjlighet att vidta adekvata åtgärder'
+      </iso:assert>
+
       <iso:assert test="count(gn:svar[@id='106']) le 1">
-        Ett 'MU' får ha högst ett 'Återkommande allvarlig hypoglykemi under det senaste året'
+        Ett 'MU' får ha högst en 'Har patienten möjlighet att vidta adekvata åtgärder'
       </iso:assert>
+
       <iso:assert test="count(gn:svar[@id='107']) le 1">
-        Ett 'MU' får ha högst ett 'Återkommande allvarlig hypoglykemi i vaket tillstånd under de senaste tre månaderna'
+        Ett 'MU' får ha högst en 'Förekomst av återkommande allvarlig hypoglykemi i vaket tillstånd under den senaste tolvmånadersperioden'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='108']) le 1">
-        Ett 'MU' får ha högst ett 'Allvarlig hypoglykemi i trafiken under det senaste året'
+
+      <iso:assert test="count(gn:svar[@id='203']) le 1">
+        Ett 'MU' får ha högst en 'Har patienten haft allvarlig hypoglykemi under de senaste tolv månaderna'
       </iso:assert>
+
+      <iso:assert test="count(gn:svar[@id='204']) le 1">
+        Ett 'MU' får ha högst en 'Genomför patienten regelbundna blodsockerkontroller minst två gånger om dagen och i samband med körning'
+      </iso:assert>
+
+
+      <!-- *************************************************************************  -->
+  <!--
+        <iso:assert test="count(gn:svar[@id='41']) le 1">
+          Ett 'MU' får ha högst ett 'Behandling för diabetes'
+        </iso:assert>
+
+        <iso:assert test="count(gn:svar[@id='37']) le 1">
+          Ett 'MU' får ha högst ett 'Förekomst av hypoglykemier med tecken på nedsatt hjärnfunktion som kan innebära en trafiksäkerhetsrisk '
+        </iso:assert>
+        <iso:assert test="count(gn:svar[@id='100']) le 1">
+          Ett 'MU' får ha högst ett 'Diabetessjukdomen är under kontroll avseende hypoglykemi'
+        </iso:assert>
+
+
+        <iso:assert test="count(gn:svar[@id='106']) le 1">
+          Ett 'MU' får ha högst ett 'Återkommande allvarlig hypoglykemi under det senaste året'
+        </iso:assert>
+        <iso:assert test="count(gn:svar[@id='107']) le 1">
+          Ett 'MU' får ha högst ett 'Återkommande allvarlig hypoglykemi i vaket tillstånd under de senaste tre månaderna'
+        </iso:assert>
+        <iso:assert test="count(gn:svar[@id='108']) le 1">
+          Ett 'MU' får ha högst ett 'Allvarlig hypoglykemi i trafiken under det senaste året'
+        </iso:assert>
+-->
+
+
       <iso:assert test="count(gn:svar[@id='103']) = 1">
         Ett 'MU' måste ha ett 'Proliferativ retinopati, genomgången laserbehandling av retinopati,
         signifikant makulaödem, annan ögonsjukdom eller ögonbottenfoto som ger misstanke
@@ -61,22 +113,313 @@
       <iso:assert test="count(gn:svar[@id='8']) le 1">
         Ett 'MU' får ha högst ett 'Synskärpa'
       </iso:assert>
+
+      <!-- Category 6 - Övrigt -->
       <iso:assert test="count(gn:svar[@id='32']) le 1">
         Ett 'MU' får ha högst ett 'Övriga kommentarer'
       </iso:assert>
+
+      <!-- Category 7 - Bedömning -->
       <iso:assert test="count(gn:svar[@id='33']) ge 1 and count(gn:svar[@id='1']) le 16">
         Ett 'MU' måste ha mellan 1 och 16 'Uppfyller krav för behörighet'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='45']) le 1">
         Ett 'MU' får ha högst ett 'Lämplig att inneha behörighet med hänsyn till aktuella körningar och arbetsformer'
       </iso:assert>
-
-      <iso:let name="svarsIdExpr" value="'^[128]$|18$|3[23457]$|4[15]$|10[036789]$|110$|20[78]$'"/>
+      1, 2, 35, 18, 207, 208, 109,.., 103, 8, 32, 33, 45, 34
+      <!--<iso:let name="svarsIdExpr" value="'^[128]$|18$|3[23457]$|4[15]$|10[036789]$|110$|20[78]$'"/>-->
+      <!--<iso:let name="svarsIdExpr" value="'^1$|2$|205$|35$|18$|207$|208$|200$|201$|110$|202$|106$|107$|203$|204$|206$|34$|33$|32$'"/>-->
+      <iso:let name="svarsIdExpr" value="'^1$|2$|35$|18$|207$|208$|109$|200$|201$|110$|202$|106$|107$|203$|204$|103$|8$|32$|33$|45$|34$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
     </iso:rule>
   </iso:pattern>
+
+  <!-- *************************************************************************  -->
+
+  <iso:pattern id="q200">
+    <iso:rule context="//gn:svar[@id='200']">
+      <iso:let name="delsvarsIdExpr" value="'^200\.1$|^200\.2$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='200.1']) = 1">
+        'Kontroll över sitt sjukdomstillstånd' måste ha ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='200.2']) le 1">
+        'Varför har patienten inte kontroll' får ha högst ett delsvar
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='200.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='200.2']">
+      <iso:extends rule="non-empty-string"/>
+      <iso:assert test="string-length(normalize-space(text())) le 53">
+        'Varför har patienten inte kontroll' får inte överskrida 53 tecken.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q201">
+    <iso:rule context="//gn:svar[@id='201']">
+      <iso:let name="delsvarsIdExpr" value="'^201\.1$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='201.1']) = 1">
+        'Förstår patienten riskerna med hypoglykemi' måste ha ett delsvar
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='201.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q110">
+    <iso:rule context="//gn:svar[@id='110']">
+      <iso:let name="delsvarsIdExpr" value="'^110\.1$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='110.1']) = 1">
+        'Har förmåga att känna varningstecken' måste ha ett delsvar
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='110.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q202">
+    <iso:rule context="//gn:svar[@id='202']">
+      <iso:let name="delsvarsIdExpr" value="'^202\.1$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='202.1']) = 1">
+        'Har patienten möjlighet att vidta adekvata åtgärder' måste ha ett delsvar
+      </iso:assert>
+
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='202.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q106">
+    <iso:rule context="//gn:svar[@id='106']">
+      <iso:let name="delsvarsIdExpr" value="'^106\.1$|106\.2$|106\.3$|106\.5$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='106.1']) = 1">
+        'Förekomst av återkommande allvarlig hypoglykemi under det senaste året' måste ha ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='106.2']) le 1">
+        'Senaste tidpunkt för återkommande allvarlig hypoglykemi' får ha högst ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='106.3']) le 1">
+        'Kontrolleras sjukdomen regelbundet' får ha högst ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='106.5']) le 1">
+        'Utgör tillståndet någon trafiksäkerhetsrisk' får ha högst ett delsvar
+      </iso:assert>
+
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='106.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='106.2']">
+      <iso:extends rule="partial-date"/> <!-- R20 for valid dates is already implemented below in R20-R21-R22 -->
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='106.3']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='106.5']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q107">
+    <iso:rule context="//gn:svar[@id='107']">
+      <iso:let name="delsvarsIdExpr" value="'^107\.1$|107\.3$|107\.5$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='107.1']) = 1">
+        'Förekomst av återkommande allvarlig hypoglykemi i vaket tillstånd under den senaste tolvmånadersperioden' måste ha ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='107.3']) le 1">
+        'Har den senaste allvarliga hypoglykemin inträffat under de senaste tre månaderna' får ha högst ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='107.5']) le 1">
+        'Senaste tidpunkt för allvarliga hypoglykemin inträffad under de senaste tre månaderna ' får ha högst ett delsvar
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='107.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='107.3']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='107.5']">
+      <iso:extends rule="partial-date"/> <!-- R21 for valid dates is already implemented below in R20-R21-R22 -->
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q203">
+    <iso:rule context="//gn:svar[@id='203']">
+      <iso:let name="delsvarsIdExpr" value="'^203\.1$|203\.2$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='203.1']) = 1">
+        'Har patienten haft allvarlig hypoglykemi under de senaste tolv månaderna' måste ha ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='203.2']) le 1">
+        'Senast inträffade allvarlig hypoglykemi (under de senaste tolv månaderna)' får ha högst ett delsvar
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='203.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='203.2']">
+      <iso:extends rule="partial-date"/> <!-- R22 for valid dates is already implemented below in id=R20-R21-R22 -->
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q204">
+    <iso:rule context="//gn:svar[@id='204']">
+      <iso:let name="delsvarsIdExpr" value="'^204\.1$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='204.1']) = 1">
+        'Genomför patienten regelbundna blodsockerkontroller minst två gånger om dagen och i samband med körning' måste ha ett delsvar
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='204.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R8">
+    <iso:rule context="//gn:delsvar[@id='106.1' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(../gn:delsvar[@id='106.2']) = 1">
+        Om 'Förekomst av återkommande allvarlig hypoglykemi under det senaste året' (DFR 106.1) besvaras med 'Ja' ska 'Senaste tidpunkt för återkommande allvarlig hypoglykemi' (DFR 106.2) vara obligatorisk att besvara.
+      </iso:assert>
+      <iso:assert test="count(../gn:delsvar[@id='106.3']) = 1">
+        Om 'Förekomst av återkommande allvarlig hypoglykemi under det senaste året' (DFR 106.1) besvaras med 'Ja' ska 'Kontrolleras sjukdomen regelbundet' (DFR 106.3) vara obligatorisk att besvara.
+      </iso:assert>
+      <iso:assert test="count(../gn:delsvar[@id='106.5']) = 1">
+        Om 'Förekomst av återkommande allvarlig hypoglykemi under det senaste året' (DFR 106.1) besvaras med 'Ja' ska 'Utgör tillståndet någon trafiksäkerhetsrisk' (DFR 106.5) vara obligatorisk att besvara.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R9">
+    <iso:rule context="//gn:delsvar[@id='107.1' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(../gn:delsvar[@id='107.3']) = 1">
+        Om 'Förekomst av  återkommande allvarlig hypoglykemi i vaket tillstånd under den senaste tolvmånadersperioden' (DFR 107.1) besvaras
+        med 'Ja' ska 'Har den senaste allvarliga hypoglykemin inträffat under de senaste tre månaderna' (DFR 107.3) vara obligatorisk att besvara.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R27">
+    <iso:rule context="//gn:delsvar[@id='200.1' and matches(normalize-space(.), 'false|0')]">
+      <iso:assert test="count(../gn:delsvar[@id='200.2']) = 1">
+        Om 'Kontroll över sitt sjukdomstillstånd' (DFR 201.1) besvaras med 'Nej' ska 'Varför inte Kontroll över sitt sjukdomstillstånd' (DFR 200.2) vara obligatorisk att besvara.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='200.1' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(../gn:delsvar[@id='200.2']) = 0">
+        Om 'Kontroll över sitt sjukdomstillstånd' (DFR 201.1) besvaras med 'Ja' ska 'Varför inte Kontroll över sitt sjukdomstillstånd' (DFR 200.2) inte vara besvarad.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R28">
+    <iso:rule context="//gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code), '^IAV[1-9]$')]">
+    <!--<iso:rule context="//gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code), '^VAR[1-9]$')]">-->
+      <iso:assert test="count(../../gn:svar[@id='203']/gn:delsvar[@id='203.1']) = 1">
+        Om 'Intyget avser behörighet' har något av värdena VAR1 - VAR9, måste även 'Har patienten haft allvarlig hypoglykemi under de senaste tolv månaderna' besvaras.
+      </iso:assert>
+      <iso:assert test="count(../../gn:svar[@id='204']/gn:delsvar[@id='204.1']) = 1">
+        Om 'Intyget avser behörighet' har något av värdena VAR1 - VAR9, måste även 'Genomför patienten regelbundna blodsockerkontroller minst två gånger om dagen och i samband med körning' besvaras.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R30">
+    <iso:rule context="//gn:delsvar[@id='208.1' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(../../gn:svar[@id='200']/gn:delsvar[@id='200.1']) = 1">
+        Om 'Medicinering medför risk för hypoglykemi' (DFR 208.1) besvaras med 'Ja' är 'Kontroll över sitt sjukdomstillstånd' (DFR 200.1) obligatorisk att besvara.
+      </iso:assert>
+      <iso:assert test="count(../../gn:svar[@id='201']/gn:delsvar[@id='201.1']) = 1">
+        Om 'Medicinering medför risk för hypoglykemi' (DFR 208.1) besvaras med 'Ja' är 'Förstår patienten riskerna med hypoglykemi' (DFR 201.1) obligatorisk att besvara.
+      </iso:assert>
+      <iso:assert test="count(../../gn:svar[@id='110']/gn:delsvar[@id='110.1']) = 1">
+        Om 'Medicinering medför risk för hypoglykemi' (DFR 208.1) besvaras med 'Ja' är 'Har förmåga att känna varningstecken' (DFR 110.1) obligatorisk att besvara.
+      </iso:assert>
+      <iso:assert test="count(../../gn:svar[@id='202']/gn:delsvar[@id='202.1']) = 1">
+        Om 'Medicinering medför risk för hypoglykemi' (DFR 208.1) besvaras med 'Ja' är 'Har patienten möjlighet att vidta adekvata åtgärder' (DFR 202.1) obligatorisk att besvara.
+      </iso:assert>
+      <iso:assert test="count(../../gn:svar[@id='106']/gn:delsvar[@id='106.1']) = 1">
+        Om 'Medicinering medför risk för hypoglykemi' (DFR 208.1) besvaras med 'Ja' är 'Förekomst av återkommande allvarlig hypoglykemi under det senaste året' (DFR 106.1) obligatorisk att besvara.
+      </iso:assert>
+      <iso:assert test="count(../../gn:svar[@id='107']/gn:delsvar[@id='107.1']) = 1">
+        Om 'Medicinering medför risk för hypoglykemi' (DFR 208.1) besvaras med 'Ja' är 'Förekomst av återkommande allvarlig hypoglykemi i vaket tillstånd under den senaste tolvmånadersperioden' (DFR 107.1) obligatorisk att besvara.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R33">
+    <iso:rule context="//gn:delsvar[@id='107.3' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(../gn:delsvar[@id='107.5']) = 1">
+        Om 'Har den senaste allvarliga hypoglykemin inträffat under de senaste tre månaderna' (DFR 107.3) besvaras
+        med 'Ja' ska 'Senaste tidpunkt för allvarliga hypoglykemin inträffad under de senaste tre månaderna' (DFR 107.5) vara obligatorisk att besvara.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R34">
+    <iso:rule context="//gn:delsvar[@id='203.1' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(../gn:delsvar[@id='203.2']) = 1">
+        Om 'Har patienten haft allvarlig hypoglykemi under de senaste tolv månaderna' (DFR 203.1) besvaras
+        med 'Ja' ska 'Senast inträffade allvarlig hypoglykemi (under de senaste tolv månaderna)' (DFR 203.2) vara obligatorisk att besvara.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+
+  <!-- *************************************************************************  -->
 
   <iso:pattern id="q1">
     <iso:rule context="//gn:svar[@id='1']">
@@ -213,6 +556,8 @@
     </iso:rule>
   </iso:pattern>
 
+
+
   <iso:pattern id="q109">
     <iso:rule context="//gn:svar[@id='109']">
       <iso:let name="delsvarsIdExpr" value="'^109\.1$|^109\.2$|^109\.3$|^109\.4$|^109\.5$|^109\.6$|^109\.7$'"/>
@@ -269,7 +614,7 @@
       <iso:extends rule="boolean"/>
     </iso:rule>
   </iso:pattern>
-
+<!--
   <iso:pattern id="q41">
     <iso:rule context="//gn:svar[@id='41']">
       <iso:let name="delsvarsIdExpr" value="'^41\.1$'"/>
@@ -323,25 +668,10 @@
       <iso:extends rule="boolean"/>
     </iso:rule>
   </iso:pattern>
+-->
 
-  <iso:pattern id="q110">
-    <iso:rule context="//gn:svar[@id='110']">
-      <iso:let name="delsvarsIdExpr" value="'^110\.1$'"/>
-      <iso:assert test="count(gn:delsvar[@id='110.1']) = 1">
-        'Har förmåga att känna varningstecken' måste ha ett delsvar
-      </iso:assert>
-      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
-        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
-        <value-of select="$delsvarsIdExpr"/>
-        ".
-      </iso:assert>
-    </iso:rule>
 
-    <iso:rule context="//gn:delsvar[@id='110.1']">
-      <iso:extends rule="boolean"/>
-    </iso:rule>
-  </iso:pattern>
-
+<!--
   <iso:pattern id="q106">
     <iso:rule context="//gn:svar[@id='106']">
       <iso:let name="delsvarsIdExpr" value="'^106\.1$|^106\.2$'"/>
@@ -389,7 +719,8 @@
       <iso:extends rule="partial-date"/>
     </iso:rule>
   </iso:pattern>
-
+-->
+<!--
   <iso:pattern id="q108">
     <iso:rule context="//gn:svar[@id='108']">
       <iso:let name="delsvarsIdExpr" value="'^108\.1$|^108\.2$'"/>
@@ -413,7 +744,7 @@
       <iso:extends rule="partial-date"/>
     </iso:rule>
   </iso:pattern>
-
+-->
   <iso:pattern id="q103">
     <iso:rule context="//gn:svar[@id='103']">
       <iso:let name="delsvarsIdExpr" value="'^103\.1$'"/>
@@ -624,7 +955,7 @@
       </iso:assert>
     </iso:rule>
   </iso:pattern>
-
+<!--
   <iso:pattern id="R5-R6">
     <iso:rule context="//gn:delsvar[@id='109.3' and matches(normalize-space(.), 'true|1')]">
       <iso:assert test="count(//gn:delsvar[@id=109.4]) = 1">
@@ -650,7 +981,8 @@
       </iso:assert>
     </iso:rule>
   </iso:pattern>
-
+-->
+<!--
   <iso:pattern id="R8">
     <iso:rule context="//gn:delsvar[@id='106.1' and matches(normalize-space(.), 'true|1')]">
       <iso:assert test="count(//gn:delsvar[@id=106.2]) = 1">
@@ -674,7 +1006,7 @@
       </iso:assert>
     </iso:rule>
   </iso:pattern>
-
+-->
   <!-- R11 shows alert message in GUI -->
 
   <iso:pattern id="R12">
@@ -759,7 +1091,7 @@
       </iso:assert>
     </iso:rule>
   </iso:pattern>
-
+<!--
   <iso:pattern id="R17">
     <iso:rule context="//gn:delsvar[@id=109.7 and matches(normalize-space(.), 'true|1')]">
       <iso:assert test="count(../../gn:svar[@id='41']) = 1
@@ -770,7 +1102,7 @@
       </iso:assert>
     </iso:rule>
   </iso:pattern>
-
+-->
   <iso:pattern id="R18">
     <iso:rule context="//gn:delsvar[@id=109.5 and matches(normalize-space(.), 'true|1')]">
       <iso:assert test="count(../gn:delsvar[@id=109.6]) = 1">
@@ -788,6 +1120,7 @@
     <iso:let name="birthDay" value="if (substring($personId,7,2) lt '60') then substring($personId,7,2) else xs:string(xs:integer(substring($personId,7,2)) - 60)" />
     <iso:let name="birthDate" value="xs:date(string-join((substring($personId,1,4),substring($personId,5,2),$birthDay), '-'))"/>
 
+    <!-- R20 -->
     <iso:rule context="//gn:delsvar[@id='106.2']">
       <iso:let name="dateValue" value="xs:date(tp:partialDate/tp:value)"/>
       <iso:assert test="$dateValue le $currDate">
@@ -798,23 +1131,25 @@
       </iso:assert>
     </iso:rule>
 
-    <iso:rule context="//gn:delsvar[@id='107.2']">
+    <!-- R21 -->
+    <iso:rule context="//gn:delsvar[@id='107.5']">
       <iso:let name="dateValue" value="xs:date(tp:partialDate/tp:value)"/>
       <iso:assert test="$dateValue le $currDate">
-        Datum som anges i delfråga 'DFR 107.2' får inte vara senare än dagens datum.
+        Datum som anges i delfråga 'DFR 107.5' får inte vara senare än dagens datum.
       </iso:assert>
       <iso:assert test="$birthDate le $dateValue">
-        Datum i delsvar delfråga 'DFR 107.2' måste vara ett datum som inte är tidigare än det datum patienten är född.
+        Datum i delsvar delfråga 'DFR 107.5' måste vara ett datum som inte är tidigare än det datum patienten är född.
       </iso:assert>
     </iso:rule>
 
-    <iso:rule context="//gn:delsvar[@id='108.2']">
+    <!-- R22 -->
+    <iso:rule context="//gn:delsvar[@id='203.2']">
       <iso:let name="dateValue" value="xs:date(tp:partialDate/tp:value)"/>
       <iso:assert test="$dateValue le $currDate">
-        Datum som anges i delfråga 'DFR 108.2' får inte vara senare än dagens datum.
+        Datum som anges i delfråga 'DFR 203.2' får inte vara senare än dagens datum.
       </iso:assert>
       <iso:assert test="$birthDate le $dateValue">
-        Datum i delsvar delfråga 'DFR 108.2' måste vara ett datum som inte är tidigare än det datum patienten är född.
+        Datum i delsvar delfråga 'DFR 203.2' måste vara ett datum som inte är tidigare än det datum patienten är född.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -828,7 +1163,7 @@
       </iso:assert>
     </iso:rule>
   </iso:pattern>
-
+<!--
   <iso:pattern id="R25">
     <iso:rule context="//gn:delsvar[@id='37.1' and matches(normalize-space(.), 'true|1')]">
       <iso:assert test="count(../../gn:svar[@id='100']) = 1
@@ -846,7 +1181,7 @@
       </iso:assert>
     </iso:rule>
   </iso:pattern>
-
+-->
   <iso:pattern id="R26">
     <iso:rule context="//gn:delsvar[@id=8.1 and matches(normalize-space(.), 'true|1')]">
       <iso:assert test="count(//gn:delsvar[@id=8.2]) = 0

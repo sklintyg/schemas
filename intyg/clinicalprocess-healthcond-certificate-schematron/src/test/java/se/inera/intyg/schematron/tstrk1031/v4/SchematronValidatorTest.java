@@ -88,22 +88,16 @@ public class SchematronValidatorTest {
     public void failOnRule5() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R5.xml", 1);
     }
-
-    @Test
-    public void failOnRule6() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R6_1.xml", 1);
-        expectValidationErrors("tstrk1031/v4/fail-R6_2.xml", 1);
-    }
-
+/*
     @Test
     public void failOnRule7() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R7_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R7_2.xml", 1);
     }
-
+*/
     @Test
     public void failOnRule8() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R8.xml", 1);
+        expectValidationErrors("tstrk1031/v4/fail-R8.xml", 3);
     }
 
     @Test
@@ -137,16 +131,6 @@ public class SchematronValidatorTest {
     }
 
     @Test
-    public void failOnRule10() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R10.xml", 1);
-    }
-
-    @Test
-    public void passOnRule10() throws Exception {
-        expectValid("tstrk1031/v4/pass-R10.xml");
-    }
-
-    @Test
     public void failOnRule12() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R12.xml", 1);
     }
@@ -171,11 +155,6 @@ public class SchematronValidatorTest {
     public void failOnRule16() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R16_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R16_2.xml", 1);
-    }
-
-    @Test
-    public void failOnRule17() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R17.xml", 1);
     }
 
     @Test
@@ -212,19 +191,40 @@ public class SchematronValidatorTest {
     }
 
     @Test
-    public void failOnRule25() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R25.xml", 1);
-    }
-
-    @Test
     public void failOnRule26() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R26_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R26_2.xml", 1);
     }
 
     @Test
+    public void failOnRule27() throws Exception {
+        expectValidationErrors("tstrk1031/v4/fail-R27-1.xml", 1);
+        expectValidationErrors("tstrk1031/v4/fail-R27-2.xml", 1);
+    }
+
+    @Test
+    public void failOnRule28() throws Exception {
+        expectValidationErrors("tstrk1031/v4/fail-R28.xml", 2);
+    }
+
+    @Test
+    public void failOnRule30() throws Exception {
+        expectValidationErrors("tstrk1031/v4/fail-R30.xml", 6);
+    }
+
+    @Test
     public void failOnRule32() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R32.xml", 1);
+    }
+
+    @Test
+    public void failOnRule33() throws Exception {
+        expectValidationErrors("tstrk1031/v4/fail-R33.xml", 1);
+    }
+
+    @Test
+    public void failOnRule34() throws Exception {
+        expectValidationErrors("tstrk1031/v4/fail-R34.xml", 1);
     }
 
     private void expectValid(String xmlFile) throws Exception {

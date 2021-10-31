@@ -109,6 +109,12 @@
 		<svar id="109">
 			<delsvar id="109.1">true</delsvar>
 		</svar>
+		<svar id="203">
+			<delsvar id="203.1">false</delsvar>
+		</svar>
+		<svar id="204">
+			<delsvar id="204.1">true</delsvar>
+		</svar>
 		<svar id="103">
 			<delsvar id="103.1">true</delsvar>
 		</svar>
