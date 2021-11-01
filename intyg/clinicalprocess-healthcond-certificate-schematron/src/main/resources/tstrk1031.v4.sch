@@ -25,6 +25,9 @@
       </iso:assert>
 
       <!-- Category 3 - Allmänt -->
+      <iso:assert test="count(gn:svar[@id='205']) = 1">
+        Ett 'MU' måste ha en 'Patienten följs avseende sin diabetessjukdom'
+      </iso:assert>
       <iso:assert test="count(gn:svar[@id='35']) = 1">
         Ett 'MU' måste ha en 'År då diabetesdiagnosen ställdes'
       </iso:assert>
@@ -90,7 +93,7 @@
       </iso:assert>
 
       <!--<iso:let name="svarsIdExpr" value="'^1$|2$|205$|35$|18$|207$|208$|200$|201$|110$|202$|106$|107$|203$|204$|206$|34$|33$|32$'"/>-->
-      <iso:let name="svarsIdExpr" value="'^1$|2$|35$|18$|207$|208$|109$|200$|201$|110$|202$|106$|107$|203$|204$|32$|33$|45$|34$'"/>
+      <iso:let name="svarsIdExpr" value="'^1$|2$|205$|35$|18$|207$|208$|109$|200$|201$|110$|202$|106$|107$|203$|204$|32$|33$|45$|34$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
