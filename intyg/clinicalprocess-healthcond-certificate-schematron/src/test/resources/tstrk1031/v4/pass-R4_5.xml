@@ -111,12 +111,6 @@
 			<delsvar id="109.6">Annan behandling</delsvar>
 			<delsvar id="109.7">false</delsvar>
 		</svar>
-		<svar id="103">
-			<delsvar id="103.1">true</delsvar>
-		</svar>
-		<svar id="8">
-			<delsvar id="8.1">true</delsvar>
-		</svar>
 		<svar id="33">
 			<instans>1</instans>
 			<delsvar id="33.1">

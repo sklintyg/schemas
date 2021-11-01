@@ -116,42 +116,6 @@ public class SchematronValidatorTest {
     }
 
     @Test
-    public void passOnRule13() throws Exception {
-        expectValid("tstrk1031/v4/pass-R13.xml");
-    }
-
-    @Test
-    public void passOnRule14() throws Exception {
-        expectValid("tstrk1031/v4/pass-R14.xml");
-    }
-
-    @Test
-    public void passOnRule15() throws Exception {
-        expectValid("tstrk1031/v4/pass-R15.xml");
-    }
-
-    @Test
-    public void failOnRule12() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R12.xml", 1);
-    }
-
-    @Test
-    public void failOnRule13() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R13.xml", 1);
-    }
-
-    @Test
-    public void failOnRule14() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R14.xml", 1);
-    }
-
-    @Test
-    public void failOnRule15() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R15_1.xml", 1);
-        expectValidationErrors("tstrk1031/v4/fail-R15_2.xml", 1);
-    }
-
-    @Test
     public void failOnRule16() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R16_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R16_2.xml", 1);
@@ -160,11 +124,6 @@ public class SchematronValidatorTest {
     @Test
     public void failOnRule18() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R18.xml", 1);
-    }
-
-    @Test
-    public void failOnRule19() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R19.xml", 6);
     }
 
     @Test
@@ -188,12 +147,6 @@ public class SchematronValidatorTest {
     @Test
     public void failOnRule23Rule24() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R23-R24.xml", 1);
-    }
-
-    @Test
-    public void failOnRule26() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R26_1.xml", 1);
-        expectValidationErrors("tstrk1031/v4/fail-R26_2.xml", 1);
     }
 
     @Test
