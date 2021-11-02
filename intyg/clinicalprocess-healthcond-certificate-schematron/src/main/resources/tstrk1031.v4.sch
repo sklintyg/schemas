@@ -50,50 +50,46 @@
       <iso:assert test="count(gn:svar[@id='200']) le 1">
         Ett 'MU' får ha högst en 'Kontroll över sitt sjukdomstillstånd'
       </iso:assert>
-
       <iso:assert test="count(gn:svar[@id='201']) le 1">
         Ett 'MU' får ha högst en 'Förstår patienten riskerna med hypoglykemi'
       </iso:assert>
-
       <iso:assert test="count(gn:svar[@id='110']) le 1">
         Ett 'MU' får ha högst en 'Har förmåga att känna varningstecken'
       </iso:assert>
-
       <iso:assert test="count(gn:svar[@id='202']) le 1">
         Ett 'MU' får ha högst en 'Har patienten möjlighet att vidta adekvata åtgärder'
       </iso:assert>
-
       <iso:assert test="count(gn:svar[@id='106']) le 1">
         Ett 'MU' får ha högst en 'Har patienten möjlighet att vidta adekvata åtgärder'
       </iso:assert>
-
       <iso:assert test="count(gn:svar[@id='107']) le 1">
         Ett 'MU' får ha högst en 'Förekomst av återkommande allvarlig hypoglykemi i vaket tillstånd under den senaste tolvmånadersperioden'
       </iso:assert>
-
       <iso:assert test="count(gn:svar[@id='203']) le 1">
         Ett 'MU' får ha högst en 'Har patienten haft allvarlig hypoglykemi under de senaste tolv månaderna'
       </iso:assert>
-
       <iso:assert test="count(gn:svar[@id='204']) le 1">
         Ett 'MU' får ha högst en 'Genomför patienten regelbundna blodsockerkontroller minst två gånger om dagen och i samband med körning'
       </iso:assert>
 
       <!-- Category 6 - Övrigt -->
-      <iso:assert test="count(gn:svar[@id='32']) le 1">
-        Ett 'MU' får ha högst ett 'Övriga kommentarer'
+      <iso:assert test="count(gn:svar[@id='206']) = 1">
+        Ett 'MU' måste ha en 'Komplikationer till följd av sjukdomen'
+      </iso:assert>
+      <iso:assert test="count(gn:svar[@id='34']) le 1">
+        Ett 'MU' får ha högst ett 'Bör undersökas av specialistläkare'
       </iso:assert>
 
       <!-- Category 7 - Bedömning -->
       <iso:assert test="count(gn:svar[@id='33']) ge 1 and count(gn:svar[@id='1']) le 16">
         Ett 'MU' måste ha mellan 1 och 16 'Uppfyller krav för behörighet'
       </iso:assert>
-      <iso:assert test="count(gn:svar[@id='45']) le 1">
-        Ett 'MU' får ha högst ett 'Lämplig att inneha behörighet med hänsyn till aktuella körningar och arbetsformer'
+      <iso:assert test="count(gn:svar[@id='32']) le 1">
+        Ett 'MU' får ha högst ett 'Övriga kommentarer'
       </iso:assert>
 
       <!--<iso:let name="svarsIdExpr" value="'^1$|2$|205$|35$|18$|207$|208$|200$|201$|110$|202$|106$|107$|203$|204$|206$|34$|33$|32$'"/>-->
-      <iso:let name="svarsIdExpr" value="'^1$|2$|205$|35$|18$|207$|208$|109$|200$|201$|110$|202$|106$|107$|203$|204$|32$|33$|45$|34$'"/>
+      <iso:let name="svarsIdExpr" value="'^1$|2$|205$|35$|18$|207$|208$|109$|200$|201$|110$|202$|106$|107$|203$|204$|206$|34$|33$|32$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
@@ -396,7 +392,6 @@
       <iso:assert test="count(gn:delsvar[@id='106.5']) le 1">
         'Utgör tillståndet någon trafiksäkerhetsrisk' får ha högst ett delsvar
       </iso:assert>
-
     </iso:rule>
 
     <iso:rule context="//gn:delsvar[@id='106.1']">
@@ -485,24 +480,50 @@
     </iso:rule>
   </iso:pattern>
 
-
-  <iso:pattern id="q32">
-    <iso:rule context="//gn:svar[@id='32']">
-      <iso:let name="delsvarsIdExpr" value="'^32\.1$'"/>
-      <iso:assert test="count(gn:delsvar[@id='32.1']) = 1">
-        'Övriga kommentarer' måste ha ett delsvar
-      </iso:assert>
+  <iso:pattern id="q206">
+    <iso:rule context="//gn:svar[@id='206']">
+      <iso:let name="delsvarsIdExpr" value="'^206\.1$|^206\.2$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
         <value-of select="$delsvarsIdExpr"/>
         ".
       </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='206.1']) = 1">
+        'Komplikationer till följd av sjukdomen' måste ha ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='206.2']) le 1">
+        'Komplikationer anges' får ha högst ett delsvar
+      </iso:assert>
     </iso:rule>
 
-    <iso:rule context="//gn:delsvar[@id='32.1']">
+    <iso:rule context="//gn:delsvar[@id='206.1']">
+      <iso:extends rule="boolean"/>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='206.2']">
       <iso:extends rule="non-empty-string"/>
       <iso:assert test="string-length(normalize-space(text())) le 189">
-        'Övriga kommentarer' får inte överskrida 189 tecken.
+        'Komplikationer anges' får inte överskrida 189 tecken.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="q34">
+    <iso:rule context="//gn:svar[@id='34']">
+      <iso:let name="delsvarsIdExpr" value="'^34\.1$'"/>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[@id='34.1']) = 1">
+        'Bör undersökas av specialistläkare' måste ha ett delsvar
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='34.1']">
+      <iso:extends rule="non-empty-string"/>
+      <iso:assert test="string-length(normalize-space(text())) le 71">
+        'Bör undersökas av specialistläkare' Får inte överskrida 71 tecken.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -531,56 +552,31 @@
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="q45">
-    <iso:rule context="//gn:svar[@id='45']">
-      <iso:let name="delsvarsIdExpr" value="'^45\.1$'"/>
-      <iso:assert test="count(gn:delsvar[@id='45.1']) = 1">
-        'Lämplig att inneha behörighet med hänsyn till aktuella körningar och arbetsformer' måste ha ett delsvar
-      </iso:assert>
+  <iso:pattern id="q32">
+    <iso:rule context="//gn:svar[@id='32']">
+      <iso:let name="delsvarsIdExpr" value="'^32\.1$'"/>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
         Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
         <value-of select="$delsvarsIdExpr"/>
         ".
       </iso:assert>
-    </iso:rule>
-
-    <iso:rule context="//gn:delsvar[@id='45.1']">
-      <iso:extends rule="boolean"/>
-    </iso:rule>
-  </iso:pattern>
-
-  <iso:pattern id="q34">
-    <iso:rule context="//gn:svar[@id='34']">
-      <iso:let name="delsvarsIdExpr" value="'^34\.1$'"/>
-      <iso:assert test="count(gn:delsvar[@id='34.1']) = 1">
-        'Bör undersökas av specialistläkare' måste ha ett delsvar
-      </iso:assert>
-      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
-        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
-        <value-of select="$delsvarsIdExpr"/>
-        ".
+      <iso:assert test="count(gn:delsvar[@id='32.1']) = 1">
+        'Övriga kommentarer' måste ha ett delsvar
       </iso:assert>
     </iso:rule>
 
-    <iso:rule context="//gn:delsvar[@id='34.1']">
+    <iso:rule context="//gn:delsvar[@id='32.1']">
       <iso:extends rule="non-empty-string"/>
-      <iso:assert test="string-length(normalize-space(text())) le 71">
-        'Bör undersökas av specialistläkare' Får inte överskrida 71 tecken.
+      <iso:assert test="string-length(normalize-space(text())) le 189">
+        'Övriga kommentarer' får inte överskrida 189 tecken.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
+
 
   <!--#####
 # Rules #
 ######-->
-
-  <iso:pattern id="R1">
-    <iso:rule context="//gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code), '^IAV[1-9]$')]">
-      <iso:assert test="count(../../gn:svar[@id='45']/gn:delsvar[@id='45.1']) = 1">
-        Om 'Intyget avser behörighet' har något av värdena IAV1 - IAV9, måste även 'Lämplig att inneha behörighet med hänsyn till aktuella körningar och arbetsformer' besvaras.
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
 
   <iso:pattern id="R2">
     <iso:rule context="//gn:delsvar[@id='35.1']">
@@ -769,6 +765,14 @@
       </iso:assert>
       <iso:assert test="count(../../gn:svar[@id='204']/gn:delsvar[@id='204.1']) = 1">
         Om 'Intyget avser behörighet' har något av värdena VAR1 - VAR9, måste även 'Genomför patienten regelbundna blodsockerkontroller minst två gånger om dagen och i samband med körning' besvaras.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R29">
+    <iso:rule context="//gn:delsvar[@id='206.1' and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(../gn:delsvar[@id='206.2']) = 1">
+        Om 'Komplikationer till följd av sjukdomen' (DFR 206.1) besvaras med 'Ja' ska 'Komplikationer anges' (DFR 206.2) vara obligatorisk att besvara.
       </iso:assert>
     </iso:rule>
   </iso:pattern>

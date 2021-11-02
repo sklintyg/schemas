@@ -138,6 +138,9 @@
     <svar id="109">
       <delsvar id="109.1">true</delsvar>
     </svar>
+    <svar id="206">
+      <delsvar id="206.1">false</delsvar>
+    </svar>
     <svar id="33">
       <instans>1</instans>
       <delsvar id="33.1">
@@ -147,9 +150,6 @@
           <ns3:displayName>Kan inte ta ställning</ns3:displayName>
         </ns3:cv>
       </delsvar>
-    </svar>
-    <svar id="45">
-      <delsvar id="45.1">false</delsvar>
     </svar>
   </ns2:intyg>
 </ns2:RegisterCertificate>

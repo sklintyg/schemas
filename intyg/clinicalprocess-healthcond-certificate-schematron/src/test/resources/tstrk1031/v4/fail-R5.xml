@@ -118,11 +118,8 @@
 		<svar id="109">
 			<delsvar id="109.3">true</delsvar>
 		</svar>
-		<svar id="41">
-			<delsvar id="41.1">true</delsvar>
-		</svar>
-		<svar id="37">
-			<delsvar id="37.1">false</delsvar>
+		<svar id="206">
+			<delsvar id="206.1">false</delsvar>
 		</svar>
 		<svar id="33">
 			<instans>1</instans>
