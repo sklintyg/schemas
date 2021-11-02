@@ -115,15 +115,6 @@
 		<svar id="207">
 			<delsvar id="207.1">false</delsvar>
 		</svar>
-		<svar id="109">
-			<delsvar id="109.1">true</delsvar>
-			<delsvar id="109.4">
-				<ns3:partialDate>
-					<ns3:format>YYYY</ns3:format>
-					<ns3:value>2999</ns3:value>
-				</ns3:partialDate>
-			</delsvar>
-		</svar>
 		<svar id="33">
 			<instans>1</instans>
 			<delsvar id="33.1">

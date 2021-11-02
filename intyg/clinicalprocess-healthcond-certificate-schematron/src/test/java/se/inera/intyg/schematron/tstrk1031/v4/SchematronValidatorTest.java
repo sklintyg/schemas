@@ -81,13 +81,8 @@ public class SchematronValidatorTest {
         expectValid("tstrk1031/v4/pass-R4_1.xml");
         expectValid("tstrk1031/v4/pass-R4_2.xml");
         expectValid("tstrk1031/v4/pass-R4_3.xml");
-        expectValid("tstrk1031/v4/pass-R4_5.xml");
     }
 
-    @Test
-    public void failOnRule5() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R5.xml", 1);
-    }
 /*
     @Test
     public void failOnRule7() throws Exception {
@@ -113,12 +108,6 @@ public class SchematronValidatorTest {
     @Test
     public void passOnRule9() throws Exception {
         expectValid("tstrk1031/v4/pass-R9.xml");
-    }
-
-    @Test
-    public void failOnRule16() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R16_1.xml", 1);
-        expectValidationErrors("tstrk1031/v4/fail-R16_2.xml", 1);
     }
 
     @Test

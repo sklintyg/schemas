@@ -42,10 +42,6 @@
         Ett 'MU' måste ha en 'Medicinering för diabetes'
       </iso:assert>
 
-      <iso:assert test="count(gn:svar[@id='109']) = 1">
-        Ett 'MU' måste ha minst en 'Behandling för diabetes'
-      </iso:assert>
-
       <!-- Category 4 - Hypoglykemi -->
       <iso:assert test="count(gn:svar[@id='200']) le 1">
         Ett 'MU' får ha högst en 'Kontroll över sitt sjukdomstillstånd'
@@ -93,7 +89,7 @@
       </iso:assert>
 
       <!--<iso:let name="svarsIdExpr" value="'^1$|2$|205$|35$|18$|207$|208$|200$|201$|110$|202$|106$|107$|203$|204$|206$|34$|33$|32$'"/>-->
-      <iso:let name="svarsIdExpr" value="'^1$|2$|205$|35$|18$|207$|208$|109$|200$|201$|110$|202$|106$|107$|203$|204$|32$|33$|45$|34$'"/>
+      <iso:let name="svarsIdExpr" value="'^1$|2$|205$|35$|18$|207$|208$|209$|210$|200$|201$|110$|202$|106$|107$|203$|204$|32$|33$|45$|34$'"/>
       <iso:assert test="count(gn:svar[not(matches(@id, $svarsIdExpr))]) = 0">
         Oväntat svars-id. Svars-id:n måste matcha "<value-of select="$svarsIdExpr"/>".
       </iso:assert>
@@ -615,12 +611,11 @@
   </iso:pattern>
 
   <iso:pattern id="R4">
-    <iso:rule context="//gn:svar[@id='109']">
-      <iso:assert test="count(gn:delsvar[@id=109.1 and matches(normalize-space(.), 'true|1')]) = 1 or
-                        count(gn:delsvar[@id=109.2 and matches(normalize-space(.), 'true|1')]) = 1 or
-                        count(gn:delsvar[@id=109.3 and matches(normalize-space(.), 'true|1')]) = 1 or
-                        count(gn:delsvar[@id=109.5 and matches(normalize-space(.), 'true|1')]) = 1">
-        Minst en av frågorna 'Kostbehandling' (DFR 109.1), 'Tablettbehandling' (DFR 109.2), 'Insulinbehandling' (DFR 109.3), 'Annan behandling' (DFR 109.5) måste besvaras.
+    <iso:rule context="//gn:svar[@id='209']">
+      <iso:assert test="count(gn:delsvar[@id=209.1 and matches(normalize-space(.), 'true|1')]) = 1 or
+                        count(gn:delsvar[@id=209.2 and matches(normalize-space(.), 'true|1')]) = 1 or
+                        count(gn:delsvar[@id=209.3 and matches(normalize-space(.), 'true|1')]) = 1">
+        Minst en av frågorna 'Insulin' (DFR 209.1), 'Tabletter' (DFR 209.2), 'Annan' (DFR 209.3) måste besvaras.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
@@ -675,24 +670,10 @@
     </iso:rule>
   </iso:pattern>
 
-
-  <iso:pattern id="R16">
-    <iso:rule context="//gn:delsvar[@id=109.2 and matches(normalize-space(.), 'true|1')]">
-      <iso:assert test="count(//gn:delsvar[@id=109.7]) = 1">
-        Om frågan "Tablettbehandling (Delsvar)" (DFR 109.2) ELLER frågan "Annan behandling (Delsvar)" (DFR 109.5) besvaras ska frågan  "Behandling ger risk för hypoglykemi (Delsvar)" (DFR 109.7) vara obligatorisk att besvara.
-      </iso:assert>
-    </iso:rule>
-    <iso:rule context="//gn:delsvar[@id=109.5 and matches(normalize-space(.), 'true|1')]">
-      <iso:assert test="count(//gn:delsvar[@id=109.7]) = 1">
-        Om frågan "Tablettbehandling (Delsvar)" (DFR 109.2) ELLER frågan "Annan behandling (Delsvar)" (DFR 109.5) besvaras ska frågan  "Behandling ger risk för hypoglykemi (Delsvar)" (DFR 109.7) vara obligatorisk att besvara.
-      </iso:assert>
-    </iso:rule>
-  </iso:pattern>
-
   <iso:pattern id="R18">
-    <iso:rule context="//gn:delsvar[@id=109.5 and matches(normalize-space(.), 'true|1')]">
-      <iso:assert test="count(../gn:delsvar[@id=109.6]) = 1">
-        Om frågan "Annan behandling (Delsvar)" (DFR 109.5) besvaras ska frågan  "Annan behandling beskrivning (Delsvar)" (DFR 109.6) vara obligatorisk att besvara.
+    <iso:rule context="//gn:delsvar[@id=209.3 and matches(normalize-space(.), 'true|1')]">
+      <iso:assert test="count(../gn:delsvar[@id=209.4]) = 1">
+        Om frågan "Behandling annan (Delsvar)" (DFR 209.3) besvaras ska frågan  "Ange vilken (Delsvar)" (DFR 209.4) vara obligatorisk att besvara.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
