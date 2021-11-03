@@ -104,6 +104,12 @@ public class SchematronValidatorTest {
     }
 
     @Test
+    public void failOnRule19() throws Exception {
+        expectValidationErrors("tstrk1031/v4/fail-R19_1.xml", 1);
+        expectValidationErrors("tstrk1031/v4/fail-R19_2.xml", 1);
+    }
+
+    @Test
     public void failOnRule20() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R20_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R20_2.xml", 1);

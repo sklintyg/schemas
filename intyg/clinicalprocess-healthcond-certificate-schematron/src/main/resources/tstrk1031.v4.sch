@@ -673,12 +673,23 @@
     </iso:rule>
   </iso:pattern>
 
-  <iso:pattern id="R20-R21-R22">
+  <iso:pattern id="R19-R20-R21-R22">
     <iso:let name="currDate" value="xs:date(current-date())"/>
     <iso:let name="personId" value="//gn:person-id/tp:extension" />
     <!-- Handle samordningsnummer -->
     <iso:let name="birthDay" value="if (substring($personId,7,2) lt '60') then substring($personId,7,2) else xs:string(xs:integer(substring($personId,7,2)) - 60)" />
     <iso:let name="birthDate" value="xs:date(string-join((substring($personId,1,4),substring($personId,5,2),$birthDay), '-'))"/>
+
+    <!-- R19 -->
+    <iso:rule context="//gn:delsvar[@id='210.1']">
+      <iso:let name="dateValue" value="xs:date(tp:partialDate/tp:value)"/>
+      <iso:assert test="$dateValue le $currDate">
+        Datum som anges i delfråga 'DFR 210.1' får inte vara senare än dagens datum.
+      </iso:assert>
+      <iso:assert test="$birthDate le $dateValue">
+        Datum i delsvar delfråga 'DFR 210.1' måste vara ett datum som inte är tidigare än det datum patienten är född.
+      </iso:assert>
+    </iso:rule>
 
     <!-- R20 -->
     <iso:rule context="//gn:delsvar[@id='106.2']">
