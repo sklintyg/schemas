@@ -113,16 +113,32 @@
 			</delsvar>
 		</svar>
 		<svar id="207">
-			<delsvar id="207.1">false</delsvar>
+			<delsvar id="207.1">true</delsvar>
 		</svar>
-		<svar id="109">
-			<delsvar id="109.3">true</delsvar>
-			<delsvar id="109.4">
-				<ns3:partialDate>
-					<ns3:format>YYYY</ns3:format>
-					<ns3:value>2018</ns3:value>
-				</ns3:partialDate>
-			</delsvar>
+		<svar id="208">
+			<delsvar id="208.1">true</delsvar>
+		</svar>
+		<svar id="209">
+			<delsvar id="209.3">true</delsvar>
+			<delsvar id="209.4">Annan behandling</delsvar>
+		</svar>
+		<svar id="200">
+			<delsvar id="200.1">true</delsvar>
+		</svar>
+		<svar id="201">
+			<delsvar id="201.1">false</delsvar>
+		</svar>
+		<svar id="110">
+			<delsvar id="110.1">false</delsvar>
+		</svar>
+		<svar id="202">
+			<delsvar id="202.1">false</delsvar>
+		</svar>
+		<svar id="106">
+			<delsvar id="106.1">false</delsvar>
+		</svar>
+		<svar id="107">
+			<delsvar id="107.1">false</delsvar>
 		</svar>
 		<svar id="206">
 			<delsvar id="206.1">false</delsvar>
