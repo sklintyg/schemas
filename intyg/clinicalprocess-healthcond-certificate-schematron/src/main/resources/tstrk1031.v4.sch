@@ -167,8 +167,8 @@
   <iso:pattern id="q18">
     <iso:rule context="//gn:svar[@id='18']">
       <iso:let name="delsvarsIdExpr" value="'^18\.1$|^18\.2$'"/>
-      <iso:assert test="count(gn:delsvar[@id=18.1]) le 1">
-        'Typ av diabetes' får ha högst ett delsvar
+      <iso:assert test="count(gn:delsvar[@id=18.1]) = 1">
+        'Typ av diabetes' måste ha ett delsvar
       </iso:assert>
       <iso:assert test="count(gn:delsvar[@id=18.2]) le 1">
         'Beskrivning annan diabetes' får ha högst ett delsvar
@@ -185,8 +185,8 @@
       <iso:assert test="tp:cv/tp:codeSystem = '1.2.752.116.1.1.1.1.3'">
         'codeSystem' måste vara '1.2.752.116.1.1.1.1.3'.
       </iso:assert>
-      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^E10$|^E11$|^E109$')">
-        'Typ av diabetes' kan ha ett av värdena E10, E11 eller E109.
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^E10$|^E11$|^E109$|^E13$')">
+        'Typ av diabetes' kan ha ett av värdena E10, E11, E109 eller E13.
       </iso:assert>
     </iso:rule>
     <iso:rule context="//gn:delsvar[@id='18.2']">
@@ -593,18 +593,8 @@
   </iso:pattern>
 
   <iso:pattern id="R3">
-    <iso:rule context="//gn:delsvar[@id='18.1']">
-      <iso:assert test="count(../gn:delsvar[@id=18.2]) = 0">
-        Om 'Typ av diabetes' (DFR 18.1) besvaras med 'Annan' ska 'Beskrivning annan diabetes' (DFR 18.2) vara obligatorisk att besvara.
-      </iso:assert>
-    </iso:rule>
-    <iso:rule context="//gn:svar[@id='18.2']">
-      <iso:assert test="count(../gn:delsvar[@id=18.1]) = 0">
-        Om 'Beskrivning annan diabetes' (DFR 18.2) är besvarad  skall 'Typ av diabetes' (DFR 18.1) inte ha något värde.
-      </iso:assert>
-    </iso:rule>
-    <iso:rule context="//gn:svar[@id='18' and count(gn:delsvar[@id=18.1]) = 0]">
-      <iso:assert test="count(gn:delsvar[@id=18.2]) = 1">
+    <iso:rule context="//gn:delsvar[@id='18.1' and matches(normalize-space(tp:cv/tp:code), '^E13$')]">
+      <iso:assert test="count(../gn:delsvar[@id=18.2]) = 1">
         Om 'Typ av diabetes' (DFR 18.1) besvaras med 'Annan' ska 'Beskrivning annan diabetes' (DFR 18.2) vara obligatorisk att besvara.
       </iso:assert>
     </iso:rule>
@@ -790,6 +780,54 @@
       <iso:assert test="count(../gn:delsvar[@id='203.2']) = 1">
         Om 'Har patienten haft allvarlig hypoglykemi under de senaste tolv månaderna' (DFR 203.1) besvaras
         med 'Ja' ska 'Senast inträffade allvarlig hypoglykemi (under de senaste tolv månaderna)' (DFR 203.2) vara obligatorisk att besvara.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
+  <iso:pattern id="R35">
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(tp:cv/tp:code), '^VAR9$')]">
+      <iso:assert test="../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code),'^VAR9$')]">
+        Vald behörighet överensstämmer inte med vilken behörighet intyget avser.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(tp:cv/tp:code), '^VAR8$')]">
+      <iso:assert test="../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code),'^VAR8$')]">
+        Vald behörighet överensstämmer inte med vilken behörighet intyget avser.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(tp:cv/tp:code), '^VAR7$')]">
+      <iso:assert test="../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code),'^VAR7$')]">
+        Vald behörighet överensstämmer inte med vilken behörighet intyget avser.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(tp:cv/tp:code), '^VAR6$')]">
+      <iso:assert test="../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code),'^VAR6$')]">
+        Vald behörighet överensstämmer inte med vilken behörighet intyget avser.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(tp:cv/tp:code), '^VAR5$')]">
+      <iso:assert test="../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code),'^VAR5$')]">
+        Vald behörighet överensstämmer inte med vilken behörighet intyget avser.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(tp:cv/tp:code), '^VAR4$')]">
+      <iso:assert test="../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code),'^VAR4$')]">
+        Vald behörighet överensstämmer inte med vilken behörighet intyget avser.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(tp:cv/tp:code), '^VAR3$')]">
+      <iso:assert test="../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code),'^VAR3$')]">
+        Vald behörighet överensstämmer inte med vilken behörighet intyget avser.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(tp:cv/tp:code), '^VAR2$')]">
+      <iso:assert test="../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code),'^VAR2$')]">
+        Vald behörighet överensstämmer inte med vilken behörighet intyget avser.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:delsvar[@id='33.1' and matches(normalize-space(tp:cv/tp:code), '^VAR1$')]">
+      <iso:assert test="../../gn:svar[@id='1']/gn:delsvar[@id='1.1' and matches(normalize-space(tp:cv/tp:code),'^VAR1$')]">
+        Vald behörighet överensstämmer inte med vilken behörighet intyget avser.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
