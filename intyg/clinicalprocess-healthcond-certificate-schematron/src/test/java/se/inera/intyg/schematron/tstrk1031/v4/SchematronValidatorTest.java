@@ -201,7 +201,7 @@ public class SchematronValidatorTest {
 
     @Test
     public void failOnRule30() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R30.xml", 6);
+        expectValidationErrors("tstrk1031/v4/fail-R30.xml", 8);
     }
 
     @Test

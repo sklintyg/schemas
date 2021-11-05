@@ -764,6 +764,12 @@
       <iso:assert test="count(../../gn:svar[@id='107']/gn:delsvar[@id='107.1']) = 1">
         Om 'Medicinering medför risk för hypoglykemi' (DFR 208.1) besvaras med 'Ja' är 'Förekomst av återkommande allvarlig hypoglykemi i vaket tillstånd under den senaste tolvmånadersperioden' (DFR 107.1) obligatorisk att besvara.
       </iso:assert>
+      <iso:assert test="count(../../gn:svar[@id='209']) = 1">
+        Om 'Medicinering medför risk för hypoglykemi' (DFR 208.1) besvaras med 'Ja' är 'Vilken behandling har patienten' (FRG 209) obligatorisk att besvara.
+      </iso:assert>
+      <iso:assert test="count(../../gn:svar[@id='210']/gn:delsvar[@id='210.1']) = 1">
+        Om 'Medicinering medför risk för hypoglykemi' (DFR 208.1) besvaras med 'Ja' är 'Ange när patienten började medicineringen' (DFR 210.1) obligatorisk att besvara.
+      </iso:assert>
     </iso:rule>
   </iso:pattern>
 

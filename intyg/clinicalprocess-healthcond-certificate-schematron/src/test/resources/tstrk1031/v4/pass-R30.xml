@@ -138,6 +138,12 @@
     <svar id="208">
       <delsvar id="208.1">true</delsvar>
     </svar>
+    <svar id="209">
+      <delsvar id="209.1">true</delsvar>
+      <delsvar id="209.2">true</delsvar>
+      <delsvar id="209.3">true</delsvar>
+      <delsvar id="209.4">Annan behandling</delsvar>
+    </svar>
     <svar id="210">
       <delsvar id="210.1">
         <ns3:partialDate>
