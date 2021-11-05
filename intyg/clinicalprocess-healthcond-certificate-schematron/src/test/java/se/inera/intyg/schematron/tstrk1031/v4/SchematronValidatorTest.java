@@ -68,7 +68,8 @@ public class SchematronValidatorTest {
 
     @Test
     public void failOnRule3() throws Exception {
-        expectValidationErrors("tstrk1031/v4/fail-R3.xml", 1);
+        expectValidationErrors("tstrk1031/v4/fail-R3_1.xml", 1);
+        expectValidationErrors("tstrk1031/v4/fail-R3_2.xml", 2);
     }
 
     @Test
