@@ -83,7 +83,7 @@
       </iso:assert>
 
       <!-- Category 7 - Bedömning -->
-      <iso:assert test="count(gn:svar[@id='33']) ge 1 and count(gn:svar[@id='1']) le 16">
+      <iso:assert test="count(gn:svar[@id='33']) ge 1 and count(gn:svar[@id='33']) le 16">
         Ett 'MU' måste ha mellan 1 och 16 'Uppfyller krav för behörighet'
       </iso:assert>
       <iso:assert test="count(gn:svar[@id='32']) le 1">
@@ -196,10 +196,34 @@
     </iso:rule>
   </iso:pattern>
 
+  <iso:pattern id="q205">
+    <iso:rule context="//gn:svar[@id='205']">
+      <iso:let name="delsvarsIdExpr" value="'^205\.1$'"/>
+      <iso:assert test="count(gn:delsvar[@id=205.1]) = 1">
+        'Patienten följs avseende sin diabetessjukdom' måste ha ett delsvar
+      </iso:assert>
+      <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
+        Oväntat delsvars-id i delsvar till svar "<value-of select="@id"/>". Delsvars-id:n måste matcha "
+        <value-of select="$delsvarsIdExpr"/>
+        ".
+      </iso:assert>
+    </iso:rule>
+
+    <iso:rule context="//gn:delsvar[@id='205.1']">
+      <iso:extends rule="cv"/>
+      <iso:assert test="tp:cv/tp:codeSystem = '1.2.752.129.5.1.28'">
+        'codeSystem' måste vara '1.2.752.129.5.1.28'.
+      </iso:assert>
+      <iso:assert test="matches(normalize-space(tp:cv/tp:code), '^VN1$|^VN2$')">
+        'Patienten följs avseende sin diabetessjukdom' kan ha ett av värdena VN1 eller VN2.
+      </iso:assert>
+    </iso:rule>
+  </iso:pattern>
+
   <iso:pattern id="q207">
     <iso:rule context="//gn:svar[@id='207']">
       <iso:let name="delsvarsIdExpr" value="'^207\.1$'"/>
-      <iso:assert test="count(gn:delsvar[@id=207.1]) le 1">
+      <iso:assert test="count(gn:delsvar[@id=207.1]) = 1">
         'Medicinering för diabetes' måste ha ett delsvar
       </iso:assert>
       <iso:assert test="count(gn:delsvar[not(matches(@id, $delsvarsIdExpr))]) = 0">
@@ -592,19 +616,14 @@
   </iso:pattern>
 
   <iso:pattern id="R3">
-    <iso:rule context="//gn:delsvar[@id='18.1']">
-      <iso:assert test="count(../gn:delsvar[@id=18.2]) = 0">
-        Om 'Typ av diabetes' (DFR 18.1) besvaras med 'Annan' ska 'Beskrivning annan diabetes' (DFR 18.2) vara obligatorisk att besvara.
-      </iso:assert>
-    </iso:rule>
-    <iso:rule context="//gn:svar[@id='18.2']">
-      <iso:assert test="count(../gn:delsvar[@id=18.1]) = 0">
-        Om 'Beskrivning annan diabetes' (DFR 18.2) är besvarad  skall 'Typ av diabetes' (DFR 18.1) inte ha något värde.
-      </iso:assert>
-    </iso:rule>
     <iso:rule context="//gn:svar[@id='18' and count(gn:delsvar[@id=18.1]) = 0]">
       <iso:assert test="count(gn:delsvar[@id=18.2]) = 1">
         Om 'Typ av diabetes' (DFR 18.1) besvaras med 'Annan' ska 'Beskrivning annan diabetes' (DFR 18.2) vara obligatorisk att besvara.
+      </iso:assert>
+    </iso:rule>
+    <iso:rule context="//gn:svar[@id='18' and count(gn:delsvar[@id=18.1]) = 1]">
+      <iso:assert test="count(gn:delsvar[@id=18.2]) = 0">
+        Om 'Typ av diabetes' (DFR 18.1) besvaras med 'Typ 1', 'Typ 2' eller 'LADA', ska 'Beskrivning annan diabetes' (DFR 18.2) inte ha något värde.
       </iso:assert>
     </iso:rule>
   </iso:pattern>
