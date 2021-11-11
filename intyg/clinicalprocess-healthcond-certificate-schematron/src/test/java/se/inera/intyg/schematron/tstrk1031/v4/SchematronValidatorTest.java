@@ -74,7 +74,8 @@ public class SchematronValidatorTest {
 
     @Test
     public void passOnRule3() throws Exception {
-        expectValid("tstrk1031/v4/pass-R3.xml");
+        expectValid("tstrk1031/v4/pass-R3_1.xml");
+        expectValid("tstrk1031/v4/pass-R3_2.xml");
     }
 
     @Test
