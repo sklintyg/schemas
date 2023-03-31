@@ -2,6 +2,7 @@ plugins {
     id "se.inera.intyg.plugin.common" version "3.2.4" apply false
     id "io.spring.dependency-management" version "1.0.13.RELEASE" apply false
     id "com.yupzip.wsdl2java" version "2.3.2" apply false
+    id 'maven-publish' apply false
 }
 
 allprojects {
@@ -24,9 +25,6 @@ allprojects {
 
     sourceCompatibility = 11
     targetCompatibility = 11
-
-    sourceSets.main.java.srcDirs += "build/generatedSource/java"
-    sourceSets.main.resources.srcDirs += file("schemas")
 
     dependencyManagement {
         imports {
@@ -58,6 +56,9 @@ allprojects {
 
     if (project.name.endsWith("-schemas")) {
         apply plugin: 'com.yupzip.wsdl2java'
+
+        sourceSets.main.java.srcDirs += "build/generatedSource/java"
+        sourceSets.main.resources.srcDirs += file("schemas")
 
         wsdl2java {
             wsdlDir = file('schemas')
