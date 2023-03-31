@@ -25,6 +25,9 @@ allprojects {
     sourceCompatibility = 11
     targetCompatibility = 11
 
+    def jenkinsProperties = new Properties()
+    file("Jenkins.properties").withInputStream { jenkinsProperties.load(it) }
+
     dependencyManagement {
         imports {
             mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
@@ -97,12 +100,21 @@ allprojects {
         }
     }
 
-    publishing.repositories.maven {
-        url = uri("http://172.21.0.1:3737/repository/maven-releases/")
-        //url = uri("https://nexus.drift.inera.se/repository/maven-releases/")
-        credentials {
-            username = System.properties['ineraNexusUsername']
-            password = System.properties['ineraNexusPassword']
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                groupId = group
+                artifactId = jenkinsProperties.getProeprty('artifact.name')
+                version = jenkinsProperties.getProeprty('artifact.version')
+            }
+            repositories.maven {
+                url = uri("http://172.21.0.1:3737/repository/maven-releases/")
+                //url = uri("https://nexus.drift.inera.se/repository/maven-releases/")
+                credentials {
+                    username = System.properties['ineraNexusUsername']
+                    password = System.properties['ineraNexusPassword']
+                }
+            }
         }
     }
 
