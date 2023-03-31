@@ -2,7 +2,6 @@ plugins {
     id "se.inera.intyg.plugin.common" version "3.2.4" apply false
     id "io.spring.dependency-management" version "1.0.13.RELEASE" apply false
     id "com.yupzip.wsdl2java" version "2.3.2" apply false
-    id 'maven-publish' apply false
 }
 
 allprojects {
@@ -115,6 +114,11 @@ allprojects {
 
     test {
         useJUnitPlatform()
+    }
+
+    task install {
+        description("Publishes artifact to local maven repository.")
+        dependsOn(publishToMavenLocal)
     }
 
     task tagRelease(type: TagReleaseTask)
