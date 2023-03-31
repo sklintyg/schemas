@@ -104,8 +104,8 @@ allprojects {
         publications {
             mavenJava(MavenPublication) {
                 groupId = group
-                artifactId = jenkinsProperties.getProeprty('artifact.name')
-                version = jenkinsProperties.getProeprty('artifact.version')
+                artifactId = jenkinsProperties.getProperty('artifact.name')
+                version = jenkinsProperties.getProperty('artifact.version')
             }
             repositories.maven {
                 url = uri("http://172.21.0.1:3737/repository/maven-releases/")
