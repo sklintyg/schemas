@@ -113,22 +113,18 @@ allprojects {
         }
     }
 
-    /*uploadArchives.repositories.mavenDeployer {
-        repository(url: "http://172.21.0.1:3737/repository/maven-releases/") {
-            authentication(userName: System.properties['ineraNexusUsername'], password: System.properties['ineraNexusPassword'])
-        }
-    }*/
+    tasks.register('tagRelease', TagReleaseTask)
+}
 
+subprojects {
     test {
         useJUnitPlatform()
     }
 
-    task install {
+    tasks.register('install') {
         description("Publishes artifact to local maven repository.")
-        dependsOn(publishToMavenLocal)
+        dependsOn(publishMavenPublicationToMavenLocal)
     }
-
-    task tagRelease(type: TagReleaseTask)
 }
 
 configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
