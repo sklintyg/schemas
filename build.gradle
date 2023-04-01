@@ -4,7 +4,7 @@ plugins {
     id "com.yupzip.wsdl2java" version "2.3.2" apply false
 }
 
-allprojects {
+subprojects {
     apply plugin: "io.spring.dependency-management"
     apply plugin: 'se.inera.intyg.plugin.common'
     apply plugin: 'maven-publish'
@@ -113,10 +113,6 @@ allprojects {
         }
     }
 
-    tasks.register('tagRelease', TagReleaseTask)
-}
-
-subprojects {
     test {
         useJUnitPlatform()
     }
@@ -125,6 +121,8 @@ subprojects {
         description("Publishes artifact to local maven repository.")
         dependsOn(publishMavenPublicationToMavenLocal)
     }
+
+    tasks.register('tagRelease', TagReleaseTask)
 }
 
 configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
