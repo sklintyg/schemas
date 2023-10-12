@@ -1,49 +1,54 @@
 plugins {
-    id "se.inera.intyg.plugin.common" version "3.2.4" apply false
-    id "io.spring.dependency-management" version "1.0.13.RELEASE" apply false
-    id "com.yupzip.wsdl2java" version "2.3.2" apply false
+    id "se.inera.intyg.plugin.common" version "3.2.8" apply false
+    id "io.spring.dependency-management" version "1.1.3" apply false
+    id "com.yupzip.wsdl2java" version "3.0.0" apply false
 }
 
-subprojects {
+allprojects {
     apply plugin: "io.spring.dependency-management"
-    apply plugin: 'se.inera.intyg.plugin.common'
     apply plugin: 'maven-publish'
 
     ext {
-        cxfVersion = "3.5.5"
-        guavaVersion = "31.1-jre"
+        schemasSupportVersion = "2.1.5"
+
+        cxfVersion = "3.6.2"
+        cxfPluginVersion = "4.0.0"
+        glassfishJaxbRuntimeVersion = "4.0.3"
+        guavaVersion = "32.1.3-jre"
+        jakartaActivationVersion = "2.0.1"
+        jakartaXmlBindVersion = "4.0.1"
         jaxb2Version = "0.13.1"
-        jaxbImplVersion = "2.3.6"
+        jaxbImplVersion = "2.3.8"
         jaxb2NamespacePrefixVersion = "1.3"
-        phSchematronVersion = "5.6.5"
+        phSchematronVersion = "7.1.2"
+
+        springbootMavenBomVersion = "2.7.16"
+
         // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
         errorproneExclude = ".*-schemas\$"
-
-        springbootMavenBomVersion = "2.7.6"
     }
 
-    sourceCompatibility = 11
-    targetCompatibility = 11
-
     dependencyManagement {
+        // Below line is a workaround necessitated by the dependency management plugin version 1.1.1 to at least 1.1.3.
+        // https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/365
+        applyMavenExclusions = false
+
         imports {
             mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
         }
     }
+}
+
+subprojects {
+    apply plugin: 'se.inera.intyg.plugin.common'
+
+    sourceCompatibility = 11
+    targetCompatibility = 11
 
     dependencies {
         implementation "org.apache.cxf:cxf-rt-frontend-jaxws:${cxfVersion}"
         implementation "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
         implementation "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
-        implementation "org.jvnet.jaxb2_commons:jaxb2-namespace-prefix:${jaxb2NamespacePrefixVersion}"
-
-        // These dependencies are added automatically by plugin com.yupzip.wsdl2java (https://github.com/yupzip/wsdl2java)
-        // but are kept for now to minimize risk.
-        implementation "javax.xml.bind:jaxb-api:2.3.1"
-        implementation "javax.xml.ws:jaxws-api:2.3.1"
-        implementation "org.glassfish.jaxb:jaxb-runtime:2.3.2"
-        implementation "org.glassfish.main.javaee-api:javax.jws:3.1.2.2"
-        implementation "com.sun.xml.messaging.saaj:saaj-impl:1.5.1"
 
         testImplementation "junit:junit"
         testImplementation "org.mockito:mockito-junit-jupiter"
@@ -63,6 +68,7 @@ subprojects {
             wsdlDir = file('schemas')
             generatedWsdlDir = file("build/generatedSource/java")
             cxfVersion = project.getProperties().get("cxfVersion")
+            cxfPluginVersion = "4.0.0"
         }
 
         dependencies {
@@ -70,14 +76,6 @@ subprojects {
             wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics:${jaxb2Version}"
             wsdl2java "org.jvnet.jaxb2_commons:jaxb2-namespace-prefix:${jaxb2NamespacePrefixVersion}"
             wsdl2java "com.sun.xml.bind:jaxb-impl:${jaxbImplVersion}"
-
-            // These dependencies are added automatically by plugin com.yupzip.wsdl2java (https://github.com/yupzip/wsdl2java)
-            // but are kept for now to minimize risk.
-            wsdl2java "javax.xml.bind:jaxb-api:2.3.1"
-            wsdl2java "javax.xml.ws:jaxws-api:2.3.1"
-            wsdl2java "org.glassfish.jaxb:jaxb-runtime:2.3.2"
-            wsdl2java "org.glassfish.main.javaee-api:javax.jws:3.1.2.2"
-            wsdl2java "com.sun.xml.messaging.saaj:saaj-impl:1.5.1"
         }
     }
 
@@ -104,8 +102,7 @@ subprojects {
             }
         }
         repositories.maven {
-            url = uri("http://172.21.0.1:3737/repository/maven-releases/")
-            //url = uri("https://nexus.drift.inera.se/repository/maven-releases/")
+            url = uri("https://nexus.drift.inera.se/repository/maven-releases/")
             credentials {
                 username = System.properties['ineraNexusUsername']
                 password = System.properties['ineraNexusPassword']
@@ -127,6 +124,6 @@ subprojects {
 
 configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
     dependencies {
-        implementation "se.inera.intyg.schemas:schemas-support:2.1.5"
+        implementation "se.inera.intyg.schemas:schemas-support:${schemasSupportVersion}"
     }
 }

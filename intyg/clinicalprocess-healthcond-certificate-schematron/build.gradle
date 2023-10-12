@@ -4,9 +4,10 @@ version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'
 
 dependencies {
-    testImplementation ("com.helger:ph-schematron:${phSchematronVersion}") {
-        exclude group: "com.helger", module: "ph-jaxb-pom"
-    }
+    testImplementation "com.helger.schematron:ph-schematron-xslt:${phSchematronVersion}"
+    testImplementation "jakarta.xml.bind:jakarta.xml.bind-api:${jakartaXmlBindVersion}"
+    testRuntimeOnly "org.glassfish.jaxb:jaxb-runtime:${glassfishJaxbRuntimeVersion}"
+    testRuntimeOnly "com.sun.activation:jakarta.activation:${jakartaActivationVersion}"
 }
 
 compileJava.options.encoding = 'UTF-8'
