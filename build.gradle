@@ -7,14 +7,15 @@ plugins {
 allprojects {
     apply plugin: "io.spring.dependency-management"
     apply plugin: 'maven-publish'
+    apply plugin: 'java-library'
 
     ext {
-        schemasSupportVersion = "2.1.5"
+        schemasSupportVersion = "0.1.1"
 
         cxfVersion = "3.6.2"
         cxfPluginVersion = "4.0.0"
         glassfishJaxbRuntimeVersion = "4.0.3"
-        guavaVersion = "32.1.3-jre"
+        guavaVersion = "32.0.1-jre"
         jakartaActivationVersion = "2.0.1"
         jakartaXmlBindVersion = "4.0.1"
         jaxb2Version = "0.13.1"
@@ -26,16 +27,6 @@ allprojects {
 
         // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
         errorproneExclude = ".*-schemas\$"
-    }
-
-    dependencyManagement {
-        // Below line is a workaround necessitated by the dependency management plugin version 1.1.1 to at least 1.1.3.
-        // https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/365
-        applyMavenExclusions = false
-
-        imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
-        }
     }
 }
 
@@ -56,6 +47,16 @@ subprojects {
         testImplementation "org.junit.jupiter:junit-jupiter-api"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
         testRuntimeOnly "org.junit.vintage:junit-vintage-engine"
+    }
+
+    dependencyManagement {
+        // Below line is a workaround necessitated by the dependency management plugin version 1.1.1 to at least 1.1.3.
+        // https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/365
+        applyMavenExclusions = false
+
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
+        }
     }
 
     if (project.name.endsWith("-schemas")) {
@@ -86,6 +87,7 @@ subprojects {
     }
 
     repositories {
+        maven { url "http://localhost:37373/repository/it-public/" }
         maven { url "https://nexus.drift.inera.se/repository/it-public/" }
         mavenCentral {
             content {
