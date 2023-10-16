@@ -10,7 +10,7 @@ allprojects {
     apply plugin: 'java-library'
 
     ext {
-        schemasSupportVersion = "0.1.1"
+        schemasSupportVersion = "2.1.5.0"
 
         cxfVersion = "3.6.2"
         cxfPluginVersion = "4.0.0"
@@ -69,7 +69,7 @@ subprojects {
             wsdlDir = file('schemas')
             generatedWsdlDir = file("build/generatedSource/java")
             cxfVersion = project.getProperties().get("cxfVersion")
-            cxfPluginVersion = "4.0.0"
+            cxfPluginVersion = project.getProperties().get("cxfPluginVersion")
         }
 
         dependencies {
