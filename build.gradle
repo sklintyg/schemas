@@ -1,19 +1,83 @@
 plugins {
-    id "se.inera.intyg.plugin.common" version "3.1.3" apply false
-    id "no.nils.wsdl2java" version "0.10" apply false
+    id "se.inera.intyg.plugin.common" version "3.2.8" apply false
+    id "io.spring.dependency-management" version "1.1.3" apply false
+    id "com.yupzip.wsdl2java" version "3.0.0" apply false
 }
 
 allprojects {
-    apply plugin: 'se.inera.intyg.plugin.common'
-    apply plugin: 'no.nils.wsdl2java'
-    apply plugin: 'maven'
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: 'maven-publish'
+    apply plugin: 'java-library'
 
     ext {
-        guavaVersion = "20.0"
-        jacksonVersion = "2.9.7"
-        logbackVersion = "1.0.11"
+        schemasSupportVersion = "2.1.5.1"
+
+        cxfVersion = "3.6.2"
+        cxfPluginVersion = "4.0.0"
+        glassfishJaxbRuntimeVersion = "4.0.3"
+        guavaVersion = "32.0.1-jre"
+        jakartaActivationVersion = "2.0.1"
+        jakartaXmlBindVersion = "4.0.1"
+        jaxb2Version = "0.13.1"
+        jaxbImplVersion = "2.3.8"
+        jaxb2NamespacePrefixVersion = "1.3"
+        phSchematronVersion = "7.1.2"
+
+        springbootMavenBomVersion = "2.7.16"
+
         // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
         errorproneExclude = ".*-schemas\$"
+    }
+}
+
+subprojects {
+    apply plugin: 'se.inera.intyg.plugin.common'
+
+    sourceCompatibility = 11
+    targetCompatibility = 11
+
+    dependencies {
+        implementation "org.apache.cxf:cxf-rt-frontend-jaxws:${cxfVersion}"
+        implementation "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
+        implementation "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
+
+        testImplementation "junit:junit"
+        testImplementation "org.mockito:mockito-junit-jupiter"
+        testImplementation "org.mockito:mockito-core"
+        testImplementation "org.junit.jupiter:junit-jupiter-api"
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
+        testRuntimeOnly "org.junit.vintage:junit-vintage-engine"
+    }
+
+    dependencyManagement {
+        // Below line is a workaround necessitated by the dependency management plugin version 1.1.1 to at least 1.1.3.
+        // https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/365
+        applyMavenExclusions = false
+
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
+        }
+    }
+
+    if (project.name.endsWith("-schemas")) {
+        apply plugin: 'com.yupzip.wsdl2java'
+
+        sourceSets.main.java.srcDirs += "build/generatedSource/java"
+        sourceSets.main.resources.srcDirs += file("schemas")
+
+        wsdl2java {
+            wsdlDir = file('schemas')
+            generatedWsdlDir = file("build/generatedSource/java")
+            cxfVersion = project.getProperties().get("cxfVersion")
+            cxfPluginVersion = project.getProperties().get("cxfPluginVersion")
+        }
+
+        dependencies {
+            wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
+            wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics:${jaxb2Version}"
+            wsdl2java "org.jvnet.jaxb2_commons:jaxb2-namespace-prefix:${jaxb2NamespacePrefixVersion}"
+            wsdl2java "com.sun.xml.bind:jaxb-impl:${jaxbImplVersion}"
+        }
     }
 
     if (project.hasProperty("codeQuality")) {
@@ -24,7 +88,7 @@ allprojects {
 
     repositories {
         maven { url "https://nexus.drift.inera.se/repository/it-public/" }
-        jcenter {
+        mavenCentral {
             content {
                 // this repository contains everything BUT artifacts with group starting with "se.inera"
                 excludeGroupByRegex "se\\.inera.*"
@@ -32,55 +96,35 @@ allprojects {
         }
     }
 
-    dependencies {
-        def jaxb2Version = "1.11.1"
-        def cxfVersion = "3.2.4"
-
-        compile "org.apache.cxf:cxf-rt-frontend-jaxws:${cxfVersion}"
-        compile "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
-        compile "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
-        compile "org.jvnet.jaxb2_commons:jaxb2-namespace-prefix:1.3"
-        compile "javax.xml.bind:jaxb-api:2.3.1"
-        compile "javax.xml.ws:jaxws-api:2.3.1"
-        compile "org.glassfish.jaxb:jaxb-runtime:2.3.2"
-        compile "org.glassfish.main.javaee-api:javax.jws:3.1.2.2"
-        compile "com.sun.xml.messaging.saaj:saaj-impl:1.5.1"
-
-
-        testCompile "junit:junit:4.+"
-
-        wsdl2java "javax.xml.bind:jaxb-api:2.3.1"
-        wsdl2java "javax.xml.ws:jaxws-api:2.3.1"
-        wsdl2java "org.glassfish.jaxb:jaxb-runtime:2.3.2"
-        wsdl2java "org.glassfish.main.javaee-api:javax.jws:3.1.2.2"
-        wsdl2java "com.sun.xml.messaging.saaj:saaj-impl:1.5.1"
-        wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
-        wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics:${jaxb2Version}"
-        wsdl2java "org.jvnet.jaxb2_commons:jaxb2-namespace-prefix:1.3"
-    }
-
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
-    // Include schemas in jar file
-    sourceSets.main.resources.srcDirs += file("schemas")
-
-    wsdl2java {
-        generatedWsdlDir = file("build/generatedSource/java")
-        wsdlDir = file("schemas")
-    }
-
-    task tagRelease(type: TagReleaseTask)
-
-    uploadArchives.repositories.mavenDeployer {
-        repository(url: "https://nexus.drift.inera.se/repository/maven-releases/") {
-            authentication(userName: System.properties['ineraNexusUsername'], password: System.properties['ineraNexusPassword'])
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                from components.java
+            }
+        }
+        repositories.maven {
+            url = uri("https://nexus.drift.inera.se/repository/maven-releases/")
+            credentials {
+                username = System.properties['ineraNexusUsername']
+                password = System.properties['ineraNexusPassword']
+            }
         }
     }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    tasks.register('install') {
+        description("Publishes artifact to local maven repository.")
+        dependsOn(publishMavenPublicationToMavenLocal)
+    }
+
+    tasks.register('tagRelease', TagReleaseTask)
 }
 
 configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
     dependencies {
-        compile "se.inera.intyg.schemas:schemas-support:2.1.5"
+        implementation "se.inera.intyg.schemas:schemas-support:${schemasSupportVersion}"
     }
 }

@@ -18,9 +18,9 @@
  */
 package se.inera.intyg.schematron.validation;
 
+import com.helger.schematron.sch.SchematronResourceSCH;
 import com.helger.schematron.svrl.SVRLHelper;
 import com.helger.schematron.svrl.jaxb.SchematronOutputType;
-import com.helger.schematron.xslt.SchematronResourceSCH;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ import javax.xml.transform.stream.StreamSource;
 
 public final class XmlValidator {
 
-    private SchematronResourceSCH schematronResource;
+    private final SchematronResourceSCH schematronResource;
 
     public XmlValidator(String location) {
         //AbstractSchematronXSLTBasedResource

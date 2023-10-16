@@ -4,15 +4,10 @@ version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'
 
 dependencies {
-    testCompile ("com.helger:ph-schematron:5.5.0") {
-        exclude group: "com.helger", module: "ph-jaxb-pom"
-    }
-
-    testCompile "junit:junit:4.+"
-    testCompile "org.mockito:mockito-core:2.27.0"
+    testImplementation "com.helger.schematron:ph-schematron-xslt:${phSchematronVersion}"
+    testImplementation "jakarta.xml.bind:jakarta.xml.bind-api:${jakartaXmlBindVersion}"
+    testRuntimeOnly "org.glassfish.jaxb:jaxb-runtime:${glassfishJaxbRuntimeVersion}"
+    testRuntimeOnly "com.sun.activation:jakarta.activation:${jakartaActivationVersion}"
 }
 
 compileJava.options.encoding = 'UTF-8'
-
-sourceCompatibility = 11
-targetCompatibility = 11
