@@ -21,6 +21,8 @@
 			schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
 			schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2_ext.xsd" />
+	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.4"
+			schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.4_ext.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.2.xsd" />
 	<xs:import namespace="http://www.w3.org/2000/09/xmldsig#"
