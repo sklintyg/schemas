@@ -3,14 +3,12 @@
 		xmlns="urn:riv:clinicalprocess:healthcond:certificate:3"
 		xmlns:types="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 		xmlns:m1="urn:riv:clinicalprocess:healthcond:certificate:3.2"
-		xmlns:m2="urn:riv:clinicalprocess:healthcond:certificate:3.4"
 		targetNamespace="urn:riv:clinicalprocess:healthcond:certificate:3"
 		elementFormDefault="qualified" attributeFormDefault="unqualified"
 		version="3.2">
 
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="clinicalprocess_healthcond_certificate_types_3.2.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2" schemaLocation="clinicalprocess_healthcond_certificate_3.2_ext.xsd" />
-	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.4" schemaLocation="clinicalprocess_healthcond_certificate_3.4_ext.xsd" />
 
 	<xs:complexType name="Intyg">
 		<xs:annotation>
@@ -292,7 +290,8 @@
 			<xs:element name="tidpunkt" type="types:TimeStampMedMillisekunder" />
 			<xs:element name="amne" type="types:Amneskod"  minOccurs="0"/>
 			<xs:element name="sistaDatumForSvar" type="types:DateType"  minOccurs="0"/>
-			<xs:element ref="m2:hanteratAv" minOccurs="0" />
+			<xs:any namespace="##other" processContents="lax" minOccurs="0"
+					maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 
