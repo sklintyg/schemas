@@ -26,7 +26,7 @@
     attributeFormDefault='unqualified'
     version='1.0'>
 
-  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3" schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd"/>
+  <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3" schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.3.xsd"/>
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3" schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.2.xsd"/>
   <xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3.2"
       schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2_ext.xsd" />

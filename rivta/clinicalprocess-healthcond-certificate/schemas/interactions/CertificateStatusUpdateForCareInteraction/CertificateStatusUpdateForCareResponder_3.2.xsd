@@ -27,7 +27,7 @@
 	version="3.2">
 
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:3"
-	    schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd" />
+	    schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.3.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 	    schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.2.xsd" />
 	<xs:import namespace="urn:riv:clinicalprocess:healthcond:certificate:CertificateStatusUpdateForCareResponder:3.2"

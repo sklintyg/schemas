@@ -17,7 +17,7 @@
 	version="2.1" xmlns:core="urn:riv:clinicalprocess:healthcond:certificate:3">
 
 	<import
-		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.2.xsd"
+		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_3.3.xsd"
 		namespace="urn:riv:clinicalprocess:healthcond:certificate:3" />
 	<import namespace="urn:riv:clinicalprocess:healthcond:certificate:types:3"
 		schemaLocation="../../core_components/clinicalprocess_healthcond_certificate_types_3.2.xsd" />
