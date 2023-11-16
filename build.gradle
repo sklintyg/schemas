@@ -19,7 +19,6 @@ ext {
     jakartaActivationVersion = "2.0.1"
     jaxb2Version = "3.0.0"
     jaxb2NamespacePrefixVersion = "2.0"
-    jaxbImplVersion = "4.0.1"
     phSchematronVersion = "7.1.2"
     xmlWsRtVersion = "4.0.2"
 
@@ -113,6 +112,7 @@ allprojects {
     }
 
     repositories {
+        mavenLocal()
         maven { url "https://nexus.drift.inera.se/repository/it-public/" }
         mavenCentral {
             content {
@@ -136,9 +136,8 @@ allprojects {
         }
     }
 
-    test {
-        useJUnitPlatform()
-    }
+    test { useJUnitPlatform() }
+    test.mustRunAfter(jar)
 }
 
 configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
