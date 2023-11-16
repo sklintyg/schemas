@@ -1,45 +1,56 @@
+import se.inera.intyg.IntygPluginKt
+
+import java.nio.file.Files
+import java.nio.file.Paths
+
 plugins {
-    id "se.inera.intyg.plugin.common" version "3.2.8" apply false
+    id "se.inera.intyg.plugin.common" version "3.3.1" apply false
     id "io.spring.dependency-management" version "1.1.3" apply false
     id "com.yupzip.wsdl2java" version "3.0.0" apply false
+    id 'test-report-aggregation'
+}
+
+ext {
+    schemasSupportVersion = "2.1.5.1"
+
+    cxfPluginVersion = "4.0.0"
+    cxfVersion = "4.0.3"
+    guavaVersion = "32.1.3-jre"
+    jakartaActivationVersion = "2.0.1"
+    jaxb2Version = "3.0.0"
+    jaxb2NamespacePrefixVersion = "2.0"
+    jaxbImplVersion = "4.0.1"
+    phSchematronVersion = "7.1.2"
+    xmlWsRtVersion = "4.0.2"
+
+    springbootMavenBomVersion = "3.1.5"
+
+    // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
+    // Should check this one out -> -XepDisableWarningsInGeneratedCode
+    errorproneExclude = ".*-schemas\$"
 }
 
 allprojects {
+    apply plugin: 'se.inera.intyg.plugin.common'
     apply plugin: "io.spring.dependency-management"
     apply plugin: 'maven-publish'
     apply plugin: 'java-library'
 
-    ext {
-        schemasSupportVersion = "2.1.5.1"
-
-        cxfVersion = "3.6.2"
-        cxfPluginVersion = "4.0.0"
-        glassfishJaxbRuntimeVersion = "4.0.3"
-        guavaVersion = "32.0.1-jre"
-        jakartaActivationVersion = "2.0.1"
-        jakartaXmlBindVersion = "4.0.1"
-        jaxb2Version = "0.13.1"
-        jaxbImplVersion = "2.3.8"
-        jaxb2NamespacePrefixVersion = "1.3"
-        phSchematronVersion = "7.1.2"
-
-        springbootMavenBomVersion = "2.7.16"
-
-        // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
-        errorproneExclude = ".*-schemas\$"
-    }
-}
-
-subprojects {
-    apply plugin: 'se.inera.intyg.plugin.common'
-
+    version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
+    group = 'se.inera.intyg.schemas'
     sourceCompatibility = 11
     targetCompatibility = 11
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
+        }
+    }
 
     dependencies {
         implementation "org.apache.cxf:cxf-rt-frontend-jaxws:${cxfVersion}"
         implementation "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
-        implementation "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
+        implementation "codes.rafael.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
 
         testImplementation "junit:junit"
         testImplementation "org.mockito:mockito-junit-jupiter"
@@ -49,16 +60,6 @@ subprojects {
         testRuntimeOnly "org.junit.vintage:junit-vintage-engine"
     }
 
-    dependencyManagement {
-        // Below line is a workaround necessitated by the dependency management plugin version 1.1.1 to at least 1.1.3.
-        // https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/365
-        applyMavenExclusions = false
-
-        imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
-        }
-    }
-
     if (project.name.endsWith("-schemas")) {
         apply plugin: 'com.yupzip.wsdl2java'
 
@@ -66,31 +67,55 @@ subprojects {
         sourceSets.main.resources.srcDirs += file("schemas")
 
         wsdl2java {
-            wsdlDir = file('schemas')
-            generatedWsdlDir = file("build/generatedSource/java")
-            cxfVersion = project.getProperties().get("cxfVersion")
             cxfPluginVersion = project.getProperties().get("cxfPluginVersion")
+            cxfVersion = project.getProperties().get("cxfVersion")
+            generatedWsdlDir = file("build/generatedSource/java")
+            includeJava8XmlDependencies = false
+            wsdlDir = file('schemas')
         }
 
         dependencies {
-            wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
-            wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics:${jaxb2Version}"
+            wsdl2java "codes.rafael.jaxb2_commons:jaxb2-basics:${jaxb2Version}"
+            wsdl2java "codes.rafael.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
+            wsdl2java "com.sun.xml.bind:jaxb-impl"
+            wsdl2java "com.sun.xml.ws:rt:${xmlWsRtVersion}"
+            wsdl2java "jakarta.xml.ws:jakarta.xml.ws-api"
+            wsdl2java "org.apache.cxf.xjc-utils:cxf-xjc-runtime:${cxfPluginVersion}"
             wsdl2java "org.jvnet.jaxb2_commons:jaxb2-namespace-prefix:${jaxb2NamespacePrefixVersion}"
-            wsdl2java "com.sun.xml.bind:jaxb-impl:${jaxbImplVersion}"
+        }
+
+        if (project.hasProperty("codeQuality")) {
+            licenseMain.mustRunAfter(wsdl2javaTask)
         }
     }
 
-    if (project.hasProperty("codeQuality")) {
-        license {
-            exclude "**/*.java" // Exclude all.
+    tasks.register('install') {
+        description("Publishes artifact to local maven repository.")
+        dependsOn(publishMavenPublicationToMavenLocal)
+    }
+
+    tasks.register('tagRelease', TagReleaseTask)
+
+    if (project.hasProperty('codeQuality')) {
+        tasks.register('spotbugsIncludesAndExcludes') {
+            dependsOn ":unzipBuildTools"
+            def spotbugsToolDir = "${rootProject.layout.buildDirectory.get().asFile}/build-tools/spotbugs"
+            spotbugsMain {
+                includeFilter.set(file("${spotbugsToolDir}/spotbugsIncludeFilter.xml"))
+                excludeFilter.set(file("${spotbugsToolDir}/spotbugsExcludeFilter.xml"))
+            }
         }
+
+        license { exclude "**/*.java" }
+        spotbugsMain.dependsOn('spotbugsIncludesAndExcludes')
+        spotbugsTest.enabled(false)
+        dependencies { spotbugsSlf4j "org.slf4j:slf4j-simple" }
     }
 
     repositories {
         maven { url "https://nexus.drift.inera.se/repository/it-public/" }
         mavenCentral {
             content {
-                // this repository contains everything BUT artifacts with group starting with "se.inera"
                 excludeGroupByRegex "se\\.inera.*"
             }
         }
@@ -114,13 +139,6 @@ subprojects {
     test {
         useJUnitPlatform()
     }
-
-    tasks.register('install') {
-        description("Publishes artifact to local maven repository.")
-        dependsOn(publishMavenPublicationToMavenLocal)
-    }
-
-    tasks.register('tagRelease', TagReleaseTask)
 }
 
 configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
@@ -128,3 +146,31 @@ configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-c
         implementation "se.inera.intyg.schemas:schemas-support:${schemasSupportVersion}"
     }
 }
+
+subprojects.collect {subproject -> subproject.name }.each { subprojectName ->
+    dependencies { testReportAggregation project(":${subprojectName}") }
+}
+
+tasks.register('unzipBuildTools', Copy) {
+    into "${rootProject.layout.buildDirectory.get().asFile}/build-tools/"
+    from { zipTree(rootProject.buildscript.configurations.classpath.find { it.name.contains("se.inera.intyg.plugin.common") })
+            .matching { include "/spotbugs/**", "/git_hooks/**" }
+    }
+}
+
+tasks.register('applyGitHooks') {
+    dependsOn unzipBuildTools
+    doLast {
+        def repository = IntygPluginKt.findGitRepository(project.rootProject.projectDir)
+        def gitHooksDir = "${rootProject.layout.buildDirectory.get().asFile}/build-tools/git_hooks"
+        def commitMsg = file("${gitHooksDir}/commit-msg")
+        def preCommit = file("${gitHooksDir}/pre-commit")
+        def toDir = Paths.get(repository.directory.path, "hooks")
+
+        if (!Files.exists(toDir)) { Files.createDirectory(toDir) }
+        IntygPluginKt.copyFile(commitMsg, toDir)
+        IntygPluginKt.copyFile(preCommit, toDir)
+    }
+}
+
+compileJava.dependsOn(applyGitHooks)

@@ -5,9 +5,9 @@ group = 'se.inera.intyg.clinicalprocess.healthcond.certificate'
 
 dependencies {
     testImplementation "com.helger.schematron:ph-schematron-xslt:${phSchematronVersion}"
-    testImplementation "jakarta.xml.bind:jakarta.xml.bind-api:${jakartaXmlBindVersion}"
-    testRuntimeOnly "org.glassfish.jaxb:jaxb-runtime:${glassfishJaxbRuntimeVersion}"
+    testImplementation "jakarta.xml.bind:jakarta.xml.bind-api"
     testRuntimeOnly "com.sun.activation:jakarta.activation:${jakartaActivationVersion}"
+    testRuntimeOnly "org.glassfish.jaxb:jaxb-runtime"
 }
 
 compileJava.options.encoding = 'UTF-8'
