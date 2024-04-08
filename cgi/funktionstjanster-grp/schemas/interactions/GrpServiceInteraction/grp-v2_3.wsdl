@@ -1,4 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?><!--
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
   ~ Copyright (C) 2024 Inera AB (http://www.inera.se)
   ~
   ~ This file is part of sklintyg (https://github.com/sklintyg).
@@ -37,10 +38,10 @@
   </wsp:Policy>
   <types>
     <xsd:schema>
-      <xsd:import namespace="http://mobilityguard.com/grp/service/v2.3/" schemaLocation="https://grpt.funktionstjanster.se:443/grp/v2.3?xsd=1"/>
+      <xsd:import namespace="http://mobilityguard.com/grp/service/v2.3/" schemaLocation="grp-v2_3-xsd1.xsd"/>
     </xsd:schema>
     <xsd:schema>
-      <xsd:import namespace="http://mobilityguard.com/grp/service/v2.0/" schemaLocation="https://grpt.funktionstjanster.se:443/grp/v2.3?xsd=2"/>
+      <xsd:import namespace="http://mobilityguard.com/grp/service/v2.0/" schemaLocation="grp-v2_3-xsd2.xsd"/>
     </xsd:schema>
   </types>
   <message name="Cancel">
@@ -191,9 +192,4 @@
       </fault>
     </operation>
   </binding>
-  <service name="GrpService">
-    <port name="GrpServiceServletPort" binding="tns:GrpServiceServletPortBinding">
-      <soap12:address location="https://grpt.funktionstjanster.se:443/grp/v2.3"/>
-    </port>
-  </service>
 </definitions>
