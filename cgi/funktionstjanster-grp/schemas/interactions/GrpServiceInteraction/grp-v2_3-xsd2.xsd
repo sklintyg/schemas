@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+  ~ Copyright (C) 2024 Inera AB (http://www.inera.se)
+  ~
+  ~ This file is part of sklintyg (https://github.com/sklintyg).
+  ~
+  ~ sklintyg is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ sklintyg is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.3.0 svn-revision#3528ea595bd29309f69172d231bbce272d21035c. -->
+<xs:schema xmlns:tns="http://mobilityguard.com/grp/service/v2.0/"
+    xmlns:ns1="http://mobilityguard.com/grp/service/v2.3/"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    version="1.0"
+    targetNamespace="http://mobilityguard.com/grp/service/v2.0/">
+
+  <xs:import namespace="http://mobilityguard.com/grp/service/v2.3/" schemaLocation="grp-v2_3-xsd1.xsd"/>
+
+  <xs:element name="AuthenticateRequest" type="tns:AuthenticateRequestType"/>
+
+  <xs:element name="AuthenticateResponse" type="tns:OrderResponseType"/>
+
+  <xs:element name="CancelRequest" type="tns:CancelRequestType"/>
+
+  <xs:element name="CancelResponse" type="tns:CancelResponseType"/>
+
+  <xs:element name="CollectRequest" type="tns:CollectRequestType"/>
+
+  <xs:element name="CollectResponse" type="tns:CollectResponseType"/>
+
+  <xs:element name="DisplayNameRequest" type="tns:DisplayNameRequestType"/>
+
+  <xs:element name="DisplayNameResponse" type="tns:DisplayNameResponseType"/>
+
+  <xs:element name="GrpFault" type="tns:GrpFault"/>
+
+  <xs:element name="SignRequest" type="tns:SignRequestType"/>
+
+  <xs:element name="SignResponse" type="tns:OrderResponseType"/>
+
+  <xs:element name="StatusRequest" type="tns:StatusRequestType"/>
+
+  <xs:element name="StatusResponse" type="tns:StatusResponseType"/>
+
+  <xs:complexType name="Property">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GrpFault">
+    <xs:complexContent>
+      <xs:extension base="ns1:exception">
+        <xs:sequence>
+          <xs:element name="faultInfo" type="tns:GrpFaultType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="GrpFaultType">
+    <xs:sequence>
+      <xs:element name="faultStatus" type="tns:FaultStatusType"/>
+      <xs:element name="detailedDescription" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DisplayNameRequestType">
+    <xs:sequence>
+      <xs:element name="policy" type="xs:string"/>
+      <xs:element name="provider" type="xs:string"/>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="OrderResponseType">
+    <xs:sequence>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+      <xs:element name="orderRef" type="xs:string"/>
+      <xs:element name="AutoStartToken" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StatusRequestType">
+    <xs:sequence>
+      <xs:element name="policy" type="xs:string"/>
+      <xs:element name="provider" type="xs:string"/>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="SignRequestType">
+    <xs:sequence>
+      <xs:element name="policy" type="xs:string"/>
+      <xs:element name="provider" type="xs:string"/>
+      <xs:element name="rpDisplayName" type="xs:string"/>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+      <xs:element name="subjectIdentifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="userVisibleData" type="xs:string"/>
+      <xs:element name="userNonVisibleData" type="xs:string" minOccurs="0"/>
+      <xs:element name="endUserInfo" type="tns:EndUserInfoType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="requirementAlternatives" type="tns:RequirementAlternativesType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="EndUserInfoType">
+    <xs:sequence>
+      <xs:element name="type" type="xs:string"/>
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RequirementAlternativesType">
+    <xs:sequence>
+      <xs:element name="requirement" type="tns:RequirementType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="RequirementType">
+    <xs:sequence>
+      <xs:element name="condition" type="tns:ConditionType" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ConditionType">
+    <xs:sequence>
+      <xs:element name="key" type="xs:string"/>
+      <xs:element name="value" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="StatusResponseType">
+    <xs:sequence>
+      <xs:element name="transactionId" type="xs:string"/>
+      <xs:element name="status" type="tns:StatusType"/>
+      <xs:element name="infoText" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CollectRequestType">
+    <xs:sequence>
+      <xs:element name="policy" type="xs:string"/>
+      <xs:element name="provider" type="xs:string"/>
+      <xs:element name="rpDisplayName" type="xs:string"/>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+      <xs:element name="orderRef" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CollectResponseType">
+    <xs:sequence>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+      <xs:element name="progressStatus" type="tns:ProgressStatusType"/>
+      <xs:element name="userInfo" type="tns:UserInfoType" minOccurs="0"/>
+      <xs:element name="validationInfo" type="tns:ValidationInfoType" minOccurs="0"/>
+      <xs:element name="attributes" type="tns:Property" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="UserInfoType">
+    <xs:sequence>
+      <xs:element name="subjectIdentifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="subjectIdentifierType" type="xs:string"/>
+      <xs:element name="displayName" type="xs:string" minOccurs="0"/>
+      <xs:element name="givenName" type="xs:string" minOccurs="0"/>
+      <xs:element name="sn" type="xs:string" minOccurs="0"/>
+      <xs:element name="ipAddress" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ValidationInfoType">
+    <xs:sequence>
+      <xs:element name="signature" type="xs:string" minOccurs="0"/>
+      <xs:element name="signatureFormat" type="xs:string" minOccurs="0"/>
+      <xs:element name="ocspResponse" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DisplayNameResponseType">
+    <xs:sequence>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+      <xs:element name="displayNames" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AuthenticateRequestType">
+    <xs:sequence>
+      <xs:element name="policy" type="xs:string"/>
+      <xs:element name="provider" type="xs:string"/>
+      <xs:element name="rpDisplayName" type="xs:string"/>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+      <xs:element name="subjectIdentifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="endUserInfo" type="tns:EndUserInfoType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="requirementAlternatives" type="tns:RequirementAlternativesType" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CancelRequestType">
+    <xs:sequence>
+      <xs:element name="policy" type="xs:string"/>
+      <xs:element name="provider" type="xs:string"/>
+      <xs:element name="rpDisplayName" type="xs:string"/>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+      <xs:element name="orderRef" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CancelResponseType">
+    <xs:sequence>
+      <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="FaultStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INVALID_PARAMETERS"/>
+      <xs:enumeration value="ACCESS_DENIED_RP"/>
+      <xs:enumeration value="RETRY"/>
+      <xs:enumeration value="INTERNAL_ERROR"/>
+      <xs:enumeration value="ALREADY_COLLECTED"/>
+      <xs:enumeration value="EXPIRED_TRANSACTION"/>
+      <xs:enumeration value="TIMEOUT"/>
+      <xs:enumeration value="USER_CANCEL"/>
+      <xs:enumeration value="CLIENT_ERR"/>
+      <xs:enumeration value="CERTIFICATE_ERR"/>
+      <xs:enumeration value="CANCELLED"/>
+      <xs:enumeration value="START_FAILED"/>
+      <xs:enumeration value="ALREADY_IN_PROGRESS"/>
+      <xs:enumeration value="REQ_PRECOND"/>
+      <xs:enumeration value="REQ_ERROR"/>
+      <xs:enumeration value="REQ_BLOCKED"/>
+      <xs:enumeration value="SIGN_VALIDATION_FAILED"/>
+      <xs:enumeration value="TIME_BLOCKED"/>
+      <xs:enumeration value="UNKNOWN_USER"/>
+      <xs:enumeration value="INVALID_DEVICESW"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="StatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OK"/>
+      <xs:enumeration value="UNKNOWN"/>
+      <xs:enumeration value="NOT_AVAILABLE"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ProgressStatusType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="COMPLETE"/>
+      <xs:enumeration value="USER_SIGN"/>
+      <xs:enumeration value="OUTSTANDING_TRANSACTION"/>
+      <xs:enumeration value="NO_CLIENT"/>
+      <xs:enumeration value="USER_REQ"/>
+      <xs:enumeration value="STARTED"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
