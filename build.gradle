@@ -1,10 +1,7 @@
-import se.inera.intyg.IntygPluginKt
-
 import java.nio.file.Files
 import java.nio.file.Paths
 
 plugins {
-    id "se.inera.intyg.plugin.common" version "3.3.2-SNAPSHOT" apply false
     id "io.spring.dependency-management" version "1.1.3" apply false
     id "com.yupzip.wsdl2java" version "3.0.0" apply false
     id 'test-report-aggregation'
@@ -30,7 +27,6 @@ ext {
 }
 
 allprojects {
-    apply plugin: 'se.inera.intyg.plugin.common'
     apply plugin: "io.spring.dependency-management"
     apply plugin: 'maven-publish'
     apply plugin: 'java-library'
@@ -93,8 +89,6 @@ allprojects {
         dependsOn(publishMavenPublicationToMavenLocal)
     }
 
-    tasks.register('tagRelease', TagReleaseTask)
-
     if (project.hasProperty('codeQuality')) {
         tasks.register('spotbugsIncludesAndExcludes') {
             dependsOn ":unzipBuildTools"
@@ -149,27 +143,3 @@ configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-c
 subprojects.collect {subproject -> subproject.name }.each { subprojectName ->
     dependencies { testReportAggregation project(":${subprojectName}") }
 }
-
-tasks.register('unzipBuildTools', Copy) {
-    into "${rootProject.layout.buildDirectory.get().asFile}/build-tools/"
-    from { zipTree(rootProject.buildscript.configurations.classpath.find { it.name.contains("se.inera.intyg.plugin.common") })
-            .matching { include "/spotbugs/**", "/git_hooks/**" }
-    }
-}
-
-tasks.register('applyGitHooks') {
-    dependsOn unzipBuildTools
-    doLast {
-        def repository = IntygPluginKt.findGitRepository(project.rootProject.projectDir)
-        def gitHooksDir = "${rootProject.layout.buildDirectory.get().asFile}/build-tools/git_hooks"
-        def commitMsg = file("${gitHooksDir}/commit-msg")
-        def preCommit = file("${gitHooksDir}/pre-commit")
-        def toDir = Paths.get(repository.directory.path, "hooks")
-
-        if (!Files.exists(toDir)) { Files.createDirectory(toDir) }
-        IntygPluginKt.copyFile(commitMsg, toDir)
-        IntygPluginKt.copyFile(preCommit, toDir)
-    }
-}
-
-compileJava.dependsOn(applyGitHooks)
