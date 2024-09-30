@@ -11,7 +11,7 @@ ext {
     schemasSupportVersion = "0-SNAPSHOT"
 
     cxfPluginVersion = "4.0.0"
-    cxfVersion = "4.0.3"
+    cxfVersion = "4.0.5"
     guavaVersion = "32.1.3-jre"
     jakartaActivationVersion = "2.0.1"
     jaxb2Version = "3.0.0"
