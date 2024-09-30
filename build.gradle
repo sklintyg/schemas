@@ -30,8 +30,8 @@ allprojects {
 
     version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
     group = 'se.inera.intyg.schemas'
-    sourceCompatibility = 17
-    targetCompatibility = 17
+    sourceCompatibility = 21
+    targetCompatibility = 21
 
     dependencyManagement {
         imports {
