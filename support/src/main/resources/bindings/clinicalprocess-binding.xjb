@@ -17,12 +17,12 @@
   ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<jaxb:bindings xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+<jaxb:bindings xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb"
   xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:c="urn:riv:clinicalprocess:healthcond:certificate:types:1"
   jaxb:extensionBindingPrefixes="xjc"
-  jaxb:version="2.1">
+  jaxb:version="3.0">
 
   <jaxb:globalBindings collectionType="java.util.ArrayList" generateValueClass="true">
     <xjc:javaType name="java.time.LocalDate" xmlType="c:Datum" adapter="se.inera.intyg.schemas.support.adapter.xml.IsoDateXmlAdapter" />

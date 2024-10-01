@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Inera AB (http://www.inera.se)
+ * Copyright (C) 2023 Inera AB (http://www.inera.se)
  *
  * This file is part of sklintyg (https://github.com/sklintyg).
  *
@@ -18,6 +18,7 @@
  */
 package se.inera.intyg.schemas.support.adapter;
 
+import jakarta.xml.bind.DatatypeConverter;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 
@@ -29,8 +30,8 @@ import java.time.format.DateTimeFormatter;
 public final class LocalDateTimeWithMillisAdapter {
     private static final ZoneId TIMEZONE = ZoneId.of("Europe/Stockholm");
     private static final String ISO_DATETIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS";
-    private static final String XSD_DATE_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}([+-].*|Z)";
-    private static final String XSD_DATETIME_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.?[0-9]*([+-].*|Z)";
+    private static final String XSD_DATE_TIMEZONE_REGEXP = "\\d{4}-\\d{2}-\\d{2}([+-].*|Z)";
+    private static final String XSD_DATETIME_TIMEZONE_REGEXP = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.?\\d*([+-].*|Z)";
 
     private LocalDateTimeWithMillisAdapter() {
     }
@@ -45,7 +46,7 @@ public final class LocalDateTimeWithMillisAdapter {
         // Hence if the date contains an explicit TimeZone, use DatatypeConverter to do the parsing,
         // otherwise use LocalDateTime's parsing.
         if (dateTimeString.matches(XSD_DATETIME_TIMEZONE_REGEXP) || dateTimeString.matches(XSD_DATE_TIMEZONE_REGEXP)) {
-            return LocalDateTime.from(javax.xml.bind.DatatypeConverter.parseDateTime(dateTimeString).toInstant().atZone(TIMEZONE));
+            return LocalDateTime.from(DatatypeConverter.parseDateTime(dateTimeString).toInstant().atZone(TIMEZONE));
         } else {
             return LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(ISO_DATETIME_PATTERN));
         }

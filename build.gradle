@@ -1,45 +1,56 @@
 plugins {
-    id "se.inera.intyg.plugin.common" version "3.2.8" apply false
-    id "io.spring.dependency-management" version "1.1.3" apply false
+    id "io.spring.dependency-management" version "1.1.6" apply false
     id "com.yupzip.wsdl2java" version "3.0.0" apply false
+    id 'test-report-aggregation'
+    id 'org.sonarqube' version '4.4.1.3373'
+    id "org.owasp.dependencycheck" version "10.0.4"
+    id 'jacoco'
+}
+
+ext {
+    schemasSupportVersion = "2.1.5.2"
+
+    cxfPluginVersion = "4.0.0"
+    cxfVersion = "4.0.5"
+    guavaVersion = "32.1.3-jre"
+    jakartaActivationVersion = "2.0.1"
+    jaxb2Version = "3.0.0"
+    jaxb2NamespacePrefixVersion = "2.0"
+    phSchematronVersion = "7.1.2"
+    xmlWsRtVersion = "4.0.2"
+
+    springbootMavenBomVersion = "3.3.4"
+
+    // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
+    // Should check this one out -> -XepDisableWarningsInGeneratedCode
+    errorproneExclude = ".*-schemas\$"
+
+    nvdMirror = 'https://vulnz-nvd-mirror-devtest.intyg.nordicmedtest.se'
 }
 
 allprojects {
     apply plugin: "io.spring.dependency-management"
     apply plugin: 'maven-publish'
     apply plugin: 'java-library'
+    apply plugin: 'jacoco'
+    apply plugin: 'org.sonarqube'
+    apply plugin: 'org.owasp.dependencycheck'
 
-    ext {
-        schemasSupportVersion = "2.1.5.1"
+    version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
+    group = 'se.inera.intyg.schemas'
+    sourceCompatibility = 21
+    targetCompatibility = 21
 
-        cxfVersion = "3.6.2"
-        cxfPluginVersion = "4.0.0"
-        glassfishJaxbRuntimeVersion = "4.0.3"
-        guavaVersion = "32.0.1-jre"
-        jakartaActivationVersion = "2.0.1"
-        jakartaXmlBindVersion = "4.0.1"
-        jaxb2Version = "0.13.1"
-        jaxbImplVersion = "2.3.8"
-        jaxb2NamespacePrefixVersion = "1.3"
-        phSchematronVersion = "7.1.2"
-
-        springbootMavenBomVersion = "2.7.16"
-
-        // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
-        errorproneExclude = ".*-schemas\$"
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
+        }
     }
-}
-
-subprojects {
-    apply plugin: 'se.inera.intyg.plugin.common'
-
-    sourceCompatibility = 11
-    targetCompatibility = 11
 
     dependencies {
         implementation "org.apache.cxf:cxf-rt-frontend-jaxws:${cxfVersion}"
         implementation "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
-        implementation "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
+        implementation "codes.rafael.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
 
         testImplementation "junit:junit"
         testImplementation "org.mockito:mockito-junit-jupiter"
@@ -49,16 +60,6 @@ subprojects {
         testRuntimeOnly "org.junit.vintage:junit-vintage-engine"
     }
 
-    dependencyManagement {
-        // Below line is a workaround necessitated by the dependency management plugin version 1.1.1 to at least 1.1.3.
-        // https://github.com/spring-gradle-plugins/dependency-management-plugin/issues/365
-        applyMavenExclusions = false
-
-        imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
-        }
-    }
-
     if (project.name.endsWith("-schemas")) {
         apply plugin: 'com.yupzip.wsdl2java'
 
@@ -66,32 +67,34 @@ subprojects {
         sourceSets.main.resources.srcDirs += file("schemas")
 
         wsdl2java {
-            wsdlDir = file('schemas')
-            generatedWsdlDir = file("build/generatedSource/java")
-            cxfVersion = project.getProperties().get("cxfVersion")
             cxfPluginVersion = project.getProperties().get("cxfPluginVersion")
+            cxfVersion = project.getProperties().get("cxfVersion")
+            generatedWsdlDir = file("build/generatedSource/java")
+            includeJava8XmlDependencies = false
+            wsdlDir = file('schemas')
         }
 
         dependencies {
-            wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
-            wsdl2java "org.jvnet.jaxb2_commons:jaxb2-basics:${jaxb2Version}"
+            wsdl2java "codes.rafael.jaxb2_commons:jaxb2-basics:${jaxb2Version}"
+            wsdl2java "codes.rafael.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
+            wsdl2java "com.sun.xml.bind:jaxb-impl"
+            wsdl2java "com.sun.xml.ws:rt:${xmlWsRtVersion}"
+            wsdl2java "jakarta.xml.ws:jakarta.xml.ws-api"
+            wsdl2java "org.apache.cxf.xjc-utils:cxf-xjc-runtime:${cxfPluginVersion}"
             wsdl2java "org.jvnet.jaxb2_commons:jaxb2-namespace-prefix:${jaxb2NamespacePrefixVersion}"
-            wsdl2java "com.sun.xml.bind:jaxb-impl:${jaxbImplVersion}"
-            wsdl2java "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
         }
     }
 
-    if (project.hasProperty("codeQuality")) {
-        license {
-            exclude "**/*.java" // Exclude all.
-        }
+    tasks.register('install') {
+        description("Publishes artifact to local maven repository.")
+        dependsOn(publishMavenPublicationToMavenLocal)
     }
 
     repositories {
+        mavenLocal()
         maven { url "https://nexus.drift.inera.se/repository/it-public/" }
         mavenCentral {
             content {
-                // this repository contains everything BUT artifacts with group starting with "se.inera"
                 excludeGroupByRegex "se\\.inera.*"
             }
         }
@@ -112,20 +115,57 @@ subprojects {
         }
     }
 
-    test {
-        useJUnitPlatform()
-    }
+    test { useJUnitPlatform() }
+    test.mustRunAfter(jar)
 
-    tasks.register('install') {
-        description("Publishes artifact to local maven repository.")
-        dependsOn(publishMavenPublicationToMavenLocal)
-    }
+    jacocoTestReport {
+        dependsOn test
 
-    tasks.register('tagRelease', TagReleaseTask)
+        reports {
+            xml.required = true
+            html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+        }
+
+        afterEvaluate {
+            classDirectories.setFrom(files(classDirectories.files.collect {
+                fileTree(dir: it, exclude: [
+                        "**/testability/**",
+                        "**/integrationtest/**"
+                ])
+            }))
+        }
+    }
 }
 
 configure(subprojects.findAll { !['support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name) }) {
     dependencies {
         implementation "se.inera.intyg.schemas:schemas-support:${schemasSupportVersion}"
+    }
+}
+
+subprojects.collect {subproject -> subproject.name }.each { subprojectName ->
+    dependencies { testReportAggregation project(":${subprojectName}") }
+}
+
+sonar {
+    properties {
+        property "sonar.projectKey", "intyg-schemas"
+        property "sonar.projectName", "intyg-schemas"
+        property "sonar.dependencyCheck.htmlReportPath", layout.buildDirectory.file("reports/dependency-check-report.html")
+        property "sonar.dependencyCheck.htmlReportPath", layout.buildDirectory.file("reports/dependency-check-report.json")
+    }
+}
+
+dependencyCheck {
+    formats = List.of("HTML", "JSON")
+    nvd {
+        datafeedUrl = "${nvdMirror}"
+    }
+}
+
+reporting {
+    dependencies {
+        testReportAggregation project(':schemas-support')
+        testReportAggregation project(':schemas-contract')
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 Inera AB (http://www.inera.se)
+ * Copyright (C) 2023 Inera AB (http://www.inera.se)
  *
  * This file is part of sklintyg (https://github.com/sklintyg).
  *
@@ -18,7 +18,10 @@
  */
 package se.inera.intyg.schemas.support.adapter;
 
-import java.time.*;
+import jakarta.xml.bind.DatatypeConverter;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
@@ -36,8 +39,8 @@ public final class LocalDateAdapter {
     private static final String ISO_DATETIME_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
     private static final DateTimeFormatter ISO_DATETIME_FORMATTER = new DateTimeFormatterBuilder().appendPattern(ISO_DATETIME_PATTERN)
             .appendFraction(ChronoField.NANO_OF_SECOND, 0, 9, true).toFormatter();
-    private static final String XSD_DATE_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}([+-].*|Z)";
-    private static final String XSD_DATETIME_TIMEZONE_REGEXP = "[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\\.?[0-9]*([+-].*|Z)";
+    private static final String XSD_DATE_TIMEZONE_REGEXP = "\\d{4}-\\d{2}-\\d{2}([+-].*|Z)";
+    private static final String XSD_DATETIME_TIMEZONE_REGEXP = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.?\\d*([+-].*|Z)";
     // CHECKSTYLE:ON MagicNumber
 
     private LocalDateAdapter() {
@@ -53,7 +56,7 @@ public final class LocalDateAdapter {
         // Hence if the date contains an explicit TimeZone, use DatatypeConverter to do the parsing,
         // otherwise use LocalDate's parsing.
         if (dateString.matches(XSD_DATE_TIMEZONE_REGEXP) || dateString.matches(XSD_DATETIME_TIMEZONE_REGEXP)) {
-            return LocalDate.from(javax.xml.bind.DatatypeConverter.parseDate(dateString).toInstant().atZone(TIMEZONE));
+            return LocalDate.from(DatatypeConverter.parseDate(dateString).toInstant().atZone(TIMEZONE));
         } else {
             return LocalDate.parse(dateString.substring(0, ISO_DATE_PATTERN.length()));
         }
@@ -69,7 +72,7 @@ public final class LocalDateAdapter {
         // Hence if the date contains an explicit TimeZone, use DatatypeConverter to do the parsing,
         // otherwise use LocalDateTime's parsing.
         if (dateTimeString.matches(XSD_DATETIME_TIMEZONE_REGEXP) || dateTimeString.matches(XSD_DATE_TIMEZONE_REGEXP)) {
-            return LocalDateTime.from(javax.xml.bind.DatatypeConverter.parseDateTime(dateTimeString).toInstant().atZone(TIMEZONE));
+            return LocalDateTime.from(DatatypeConverter.parseDateTime(dateTimeString).toInstant().atZone(TIMEZONE));
         } else if (dateTimeString.contains("T")) {
             return LocalDateTime.parse(dateTimeString, ISO_DATETIME_FORMATTER);
         } else {
