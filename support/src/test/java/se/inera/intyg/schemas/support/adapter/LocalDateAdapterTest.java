@@ -18,16 +18,16 @@
  */
 package se.inera.intyg.schemas.support.adapter;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.time.*;
 import java.util.TimeZone;
 
-import javax.xml.datatype.DatatypeConfigurationException;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import org.junit.*;
-
-public final class LocalDateAdapterTest {
+final class LocalDateAdapterTest {
 
     private static final String DATE_TIME_STRING_WITH_TIME_ZONE = "2012-11-13T11:55:50-01:00";
     private static final String DATE_TIME_STRING_WITH_MILLIS_AND_TIME_ZONE = "2012-11-13T11:55:50.12-01:00";
@@ -41,7 +41,6 @@ public final class LocalDateAdapterTest {
 
     private static final ZoneId TIME_ZONE = ZoneId.of("Europe/Stockholm");
     private static final LocalDate LOCAL_DATE = LocalDate.of(2012, 11, 13).atStartOfDay(TIME_ZONE).toLocalDate();
-            // (2012, 11, 13);
 
     private static final LocalDateTime LOCAL_DATE_TIME = ZonedDateTime.of(2012, 11, 13, 13, 55, 50, 0, TIME_ZONE).toLocalDateTime();
     private static final LocalDateTime LOCAL_DATE_TIME_WITH_MILLIS = LOCAL_DATE_TIME.plusNanos(120_000_000);
@@ -55,166 +54,166 @@ public final class LocalDateAdapterTest {
 
     private static TimeZone systemTimeZone;
 
-    @BeforeClass
-    public static void setGMTTimeZone() {
+    @BeforeAll
+    static void setGMTTimeZone() {
         systemTimeZone = TimeZone.getDefault();
-        TimeZone GMT = TimeZone.getTimeZone("GMT");
-        TimeZone.setDefault(GMT);
+        TimeZone gmt = TimeZone.getTimeZone("GMT");
+        TimeZone.setDefault(gmt);
     }
 
-    @AfterClass
-    public static void restoreTimeZone() {
+    @AfterAll
+    static void restoreTimeZone() {
         TimeZone.setDefault(systemTimeZone);
     }
 
     @Test
-    public void testParseDateTime() {
+    void testParseDateTime() {
         LocalDateTime date = LocalDateAdapter.parseDateTime(DATE_TIME_STRING);
         assertEquals(LOCAL_DATE_TIME, date);
     }
 
     @Test
-    public void testParseDateTimeWithMillis() {
+    void testParseDateTimeWithMillis() {
         LocalDateTime date = LocalDateAdapter.parseDateTime(DATE_TIME_STRING_WITH_MILLIS);
         assertEquals(LOCAL_DATE_TIME_WITH_MILLIS, date);
     }
 
     @Test
-    public void testParseDateTimeWithTimeZone() {
+    void testParseDateTimeWithTimeZone() {
         LocalDateTime date = LocalDateAdapter.parseDateTime(DATE_TIME_STRING_WITH_TIME_ZONE);
         assertEquals(LOCAL_DATE_TIME, date);
     }
 
     @Test
-    public void testParseDateTimeWithMillisAndTimeZone() {
+    void testParseDateTimeWithMillisAndTimeZone() {
         LocalDateTime date = LocalDateAdapter.parseDateTime(DATE_TIME_STRING_WITH_MILLIS_AND_TIME_ZONE);
         assertEquals(LOCAL_DATE_TIME_WITH_MILLIS, date);
     }
 
     @Test
-    public void testParseDateTimeWithZ() {
+    void testParseDateTimeWithZ() {
         LocalDateTime date = LocalDateAdapter.parseDateTime(DATE_TIME_STRING_WITH_Z);
         assertEquals(LOCAL_DATE_TIME, date);
     }
 
     @Test
-    public void testParseDateTimeWithMillisAndZ() {
+    void testParseDateTimeWithMillisAndZ() {
         LocalDateTime date = LocalDateAdapter.parseDateTime(DATE_TIME_STRING_WITH_MILLIS_AND_Z);
         assertEquals(LOCAL_DATE_TIME_WITH_MILLIS, date);
     }
 
     @Test
-    public void testParseDateTimeWithOnlyDate() {
+    void testParseDateTimeWithOnlyDate() {
         LocalDateTime date = LocalDateAdapter.parseDateTime(DATE_STRING);
         assertEquals(LOCAL_DATE_TIME_START_OF_DAY_STRING, date);
     }
 
     @Test
-    public void testParseDateTimeWithOnlyDateAndTimeZone() {
+    void testParseDateTimeWithOnlyDateAndTimeZone() {
         LocalDateTime date = LocalDateAdapter.parseDateTime(DATE_STRING_WITH_TIME_ZONE);
         assertEquals(LOCAL_DATE_TIME_START_OF_DAY_STRING.plusHours(2), date);
     }
 
     @Test
-    public void testParseDateTimeWithOnlyDateAndZ() {
+    void testParseDateTimeWithOnlyDateAndZ() {
         LocalDateTime date = LocalDateAdapter.parseDateTime(DATE_STRING_WITH_Z);
         assertEquals(LOCAL_DATE_TIME_START_OF_DAY_STRING.plusHours(1), date);
     }
 
     @Test
-    public void testParseDate() throws DatatypeConfigurationException {
+    void testParseDate() {
         LocalDate date = LocalDateAdapter.parseDate(DATE_STRING);
         assertEquals(LOCAL_DATE, date);
     }
 
     @Test
-    public void testParseDateWithTimeZone() throws DatatypeConfigurationException {
+    void testParseDateWithTimeZone() {
         LocalDate date = LocalDateAdapter.parseDate(DATE_STRING_WITH_TIME_ZONE);
         assertEquals(LOCAL_DATE, date);
     }
 
     @Test
-    public void testParseDateWithZ() throws DatatypeConfigurationException {
+    void testParseDateWithZ() {
         LocalDate date = LocalDateAdapter.parseDate(DATE_STRING_WITH_Z);
         assertEquals(LOCAL_DATE, date);
     }
 
     @Test
-    public void testParseDateWithDateTime() throws DatatypeConfigurationException {
+    void testParseDateWithDateTime() {
         LocalDate date = LocalDateAdapter.parseDate(DATE_TIME_STRING);
         assertEquals(LOCAL_DATE, date);
     }
 
     @Test
-    public void testParseDateWithDateTimeWithMillis() throws DatatypeConfigurationException {
+    void testParseDateWithDateTimeWithMillis() {
         LocalDate date = LocalDateAdapter.parseDate(DATE_TIME_STRING_WITH_MILLIS);
         assertEquals(LOCAL_DATE, date);
     }
 
     @Test
-    public void testParseDateWithDateTimeWithZ() throws DatatypeConfigurationException {
+    void testParseDateWithDateTimeWithZ() {
         LocalDate date = LocalDateAdapter.parseDate(DATE_TIME_STRING_WITH_Z);
         assertEquals(LOCAL_DATE, date);
     }
 
     @Test
-    public void testParseDateWithDateTimeWithMillisAndZ() throws DatatypeConfigurationException {
+    void testParseDateWithDateTimeWithMillisAndZ() {
         LocalDate date = LocalDateAdapter.parseDate(DATE_TIME_STRING_WITH_MILLIS_AND_Z);
         assertEquals(LOCAL_DATE, date);
     }
 
     @Test
-    public void testParseDateWithDateTimeWithTimeZone() throws DatatypeConfigurationException {
+    void testParseDateWithDateTimeWithTimeZone() {
         LocalDate date = LocalDateAdapter.parseDate(DATE_TIME_STRING_WITH_TIME_ZONE);
         assertEquals(LOCAL_DATE, date);
     }
 
     @Test
-    public void testParseDateWithDateTimeWithMillisAndTimeZone() throws DatatypeConfigurationException {
+    void testParseDateWithDateTimeWithMillisAndTimeZone() {
         LocalDate date = LocalDateAdapter.parseDate(DATE_TIME_STRING_WITH_MILLIS_AND_TIME_ZONE);
         assertEquals(LOCAL_DATE, date);
     }
 
     @Test
-    public void testPrintDate() {
+    void testPrintDate() {
         String dateString = LocalDateAdapter.printDate(LOCAL_DATE);
         assertEquals(DATE_STRING, dateString);
     }
 
     @Test
-    public void testPrintDateTime() {
+    void testPrintDateTime() {
         String dateString = LocalDateAdapter.printDateTime(LOCAL_DATE_TIME);
         assertEquals(DATE_TIME_STRING, dateString);
     }
 
     @Test
-    public void testPrintDateTimeWithFractions() {
-        LocalDateTime time = LocalDateTime.of(2015, 01, 01, 10, 10, 10, 123);
+    void testPrintDateTimeWithFractions() {
+        LocalDateTime time = LocalDateTime.of(2015, 1, 1, 10, 10, 10, 123);
         String dateString = LocalDateAdapter.printDateTime(time);
         assertEquals("2015-01-01T10:10:10", dateString);
     }
 
 
     @Test
-    public void testParseIsoDate() {
+    void testParseIsoDate() {
         LocalDate date = LocalDateAdapter.parseIsoDate(ISO_DATE_STRING);
         assertEquals(ISO_DATE, date);
     }
 
     @Test
-    public void testParseIsoDateTime() {
+    void testParseIsoDateTime() {
         LocalDateTime date = LocalDateAdapter.parseIsoDateTime(ISO_DATE_TIME_STRING);
         assertEquals(ISO_DATE_TIME, date);
     }
 
     @Test
-    public void testPrintIsoDate() {
+    void testPrintIsoDate() {
         String dateString = LocalDateAdapter.printDate(LOCAL_DATE);
         assertEquals(ISO_DATE_STRING, dateString);
     }
 
     @Test
-    public void testPrintIsoDateTime() {
+    void testPrintIsoDateTime() {
         String dateString = LocalDateAdapter.printDateTime(LOCAL_DATE_TIME);
         assertEquals(ISO_DATE_TIME_STRING, dateString);
     }
