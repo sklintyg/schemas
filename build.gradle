@@ -9,7 +9,7 @@ plugins {
 }
 
 ext {
-    schemasSupportVersion = "0-SNAPSHOT"
+    schemasSupportVersion = "2.2.0.1"
 
     cxfPluginVersion = "4.1.2"
     cxfVersion = "4.1.4"
