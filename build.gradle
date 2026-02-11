@@ -1,5 +1,4 @@
 plugins {
-    id "io.spring.dependency-management" version "1.1.7" apply false
     id "com.yupzip.wsdl2java" version "3.0.0" apply false
     id 'test-report-aggregation'
     id 'org.sonarqube' version '7.2.2.6593'
@@ -30,7 +29,6 @@ ext {
 }
 
 allprojects {
-    apply plugin: "io.spring.dependency-management"
     apply plugin: 'maven-publish'
     apply plugin: 'java-library'
     apply plugin: 'jacoco'
@@ -46,13 +44,9 @@ allprojects {
         }
     }
 
-    dependencyManagement {
-        imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootVersion}"
-        }
-    }
-
     dependencies {
+        implementation platform("org.springframework.boot:spring-boot-dependencies:${springbootVersion}")
+
         implementation "org.apache.cxf:cxf-rt-frontend-jaxws:${cxfVersion}"
         implementation "org.apache.cxf:cxf-rt-transports-http:${cxfVersion}"
         implementation "codes.rafael.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
@@ -80,6 +74,7 @@ allprojects {
         }
 
         dependencies {
+            wsdl2java platform("org.springframework.boot:spring-boot-dependencies:${springbootVersion}")
             wsdl2java "codes.rafael.jaxb2_commons:jaxb2-basics:${jaxb2Version}"
             wsdl2java "codes.rafael.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
             wsdl2java "com.sun.xml.bind:jaxb-impl"
