@@ -18,21 +18,22 @@
  */
 package se.inera.intyg.schematron.tstrk1031.v4;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.helger.commons.debug.GlobalDebug;
+import com.helger.base.debug.GlobalDebug;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 import java.util.stream.Collectors;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.inera.intyg.schematron.validation.ValidateXmlResponse;
 import se.inera.intyg.schematron.validation.XmlValidator;
 
-public class SchematronValidatorTest {
+class SchematronValidatorTest {
 
     private static final XmlValidator xmlValidator = new XmlValidator("tstrk1031.v4.sch");
 
@@ -42,212 +43,212 @@ public class SchematronValidatorTest {
     }
 
     @Test
-    public void validMinimalXmlPassesTest() throws Exception {
+    void validMinimalXmlPassesTest() throws Exception {
         String inputXml = getResourceFileAsString("tstrk1031/v4/pass-minimal.xml");
         ValidateXmlResponse response = xmlValidator.validate(inputXml);
-        assertTrue(response.getValidationErrors().stream().collect(Collectors.joining("\n")), response.getValidationErrors().isEmpty());
+        assertTrue(response.getValidationErrors().isEmpty(), String.join("\n", response.getValidationErrors()));
     }
 
     @Test
-    public void validCompleteXmlPassesTest() throws Exception {
+    void validCompleteXmlPassesTest() throws Exception {
         String inputXml = getResourceFileAsString("tstrk1031/v4/pass-complete.xml");
         ValidateXmlResponse response = xmlValidator.validate(inputXml);
-        assertTrue(response.getValidationErrors().stream().collect(Collectors.joining("\n")), response.getValidationErrors().isEmpty());
+        assertTrue(response.getValidationErrors().isEmpty(), String.join("\n", response.getValidationErrors()));
     }
 
     @Test
-    public void failOnRule2() throws Exception {
+    void failOnRule2() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R2_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R2_2.xml", 1);
     }
 
     @Test
-    public void passOnRule2() throws Exception {
+    void passOnRule2() throws Exception {
         expectValid("tstrk1031/v4/pass-R2.xml");
     }
 
     @Test
-    public void failOnRule3() throws Exception {
+    void failOnRule3() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R3_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R3_2.xml", 2);
     }
 
     @Test
-    public void passOnRule3() throws Exception {
+    void passOnRule3() throws Exception {
         expectValid("tstrk1031/v4/pass-R3_1.xml");
         expectValid("tstrk1031/v4/pass-R3_2.xml");
     }
 
     @Test
-    public void failOnRule4() throws Exception {
+    void failOnRule4() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R4.xml", 1);
     }
 
     @Test
-    public void passOnRule4() throws Exception {
+    void passOnRule4() throws Exception {
         expectValid("tstrk1031/v4/pass-R4_1.xml");
         expectValid("tstrk1031/v4/pass-R4_2.xml");
         expectValid("tstrk1031/v4/pass-R4_3.xml");
     }
 
     @Test
-    public void failOnRule8() throws Exception {
+    void failOnRule8() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R8.xml", 3);
     }
 
     @Test
-    public void passOnRule8() throws Exception {
+    void passOnRule8() throws Exception {
         expectValid("tstrk1031/v4/pass-R8.xml");
     }
 
     @Test
-    public void failOnRule9() throws Exception {
+    void failOnRule9() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R9.xml", 1);
     }
 
     @Test
-    public void passOnRule9() throws Exception {
+    void passOnRule9() throws Exception {
         expectValid("tstrk1031/v4/pass-R9.xml");
     }
 
     @Test
-    public void failOnRule18() throws Exception {
+    void failOnRule18() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R18.xml", 1);
     }
 
     @Test
-    public void passOnRule18() throws Exception {
+    void passOnRule18() throws Exception {
         expectValid("tstrk1031/v4/pass-R18.xml");
     }
 
     @Test
-    public void failOnRule19() throws Exception {
+    void failOnRule19() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R19_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R19_2.xml", 1);
     }
 
     @Test
-    public void passOnRule19() throws Exception {
+    void passOnRule19() throws Exception {
         expectValid("tstrk1031/v4/pass-R19.xml");
     }
 
     @Test
-    public void failOnRule20() throws Exception {
+    void failOnRule20() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R20_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R20_2.xml", 1);
     }
 
     @Test
-    public void passOnRule20() throws Exception {
+    void passOnRule20() throws Exception {
         expectValid("tstrk1031/v4/pass-R20.xml");
     }
 
     @Test
-    public void failOnRule21() throws Exception {
+    void failOnRule21() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R21_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R21_2.xml", 1);
     }
 
     @Test
-    public void passOnRule21() throws Exception {
+    void passOnRule21() throws Exception {
         expectValid("tstrk1031/v4/pass-R21.xml");
     }
 
     @Test
-    public void failOnRule22() throws Exception {
+    void failOnRule22() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R22_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R22_2.xml", 1);
     }
 
     @Test
-    public void passOnRule22() throws Exception {
+    void passOnRule22() throws Exception {
         expectValid("tstrk1031/v4/pass-R22.xml");
     }
 
     @Test
-    public void failOnRule23Rule24() throws Exception {
+    void failOnRule23Rule24() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R23-R24.xml", 1);
     }
 
     @Test
-    public void failOnRule27() throws Exception {
+    void failOnRule27() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R27-1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R27-2.xml", 1);
     }
 
     @Test
-    public void passOnRule27() throws Exception {
+    void passOnRule27() throws Exception {
         expectValid("tstrk1031/v4/pass-R27.xml");
     }
 
     @Test
-    public void failOnRule28() throws Exception {
+    void failOnRule28() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R28.xml", 2);
     }
 
     @Test
-    public void passOnRule28() throws Exception {
+    void passOnRule28() throws Exception {
         expectValid("tstrk1031/v4/pass-R28.xml");
     }
 
     @Test
-    public void failOnRule29() throws Exception {
+    void failOnRule29() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R29.xml", 1);
     }
 
     @Test
-    public void passOnRule29() throws Exception {
+    void passOnRule29() throws Exception {
         expectValid("tstrk1031/v4/pass-R29.xml");
     }
 
     @Test
-    public void failOnRule30() throws Exception {
+    void failOnRule30() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R30.xml", 8);
     }
 
     @Test
-    public void passOnRule30() throws Exception {
+    void passOnRule30() throws Exception {
         expectValid("tstrk1031/v4/pass-R30.xml");
     }
 
     @Test
-    public void failOnRule32() throws Exception {
+    void failOnRule32() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R32.xml", 1);
     }
 
     @Test
-    public void passOnRule32() throws Exception {
+    void passOnRule32() throws Exception {
         expectValid("tstrk1031/v4/pass-R32.xml");
     }
 
     @Test
-    public void failOnRule33() throws Exception {
+    void failOnRule33() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R33.xml", 1);
     }
 
     @Test
-    public void passOnRule33() throws Exception {
+    void passOnRule33() throws Exception {
         expectValid("tstrk1031/v4/pass-R33.xml");
     }
 
     @Test
-    public void failOnRule34() throws Exception {
+    void failOnRule34() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R34.xml", 1);
     }
 
     @Test
-    public void passOnRule34() throws Exception {
+    void passOnRule34() throws Exception {
         expectValid("tstrk1031/v4/pass-R34.xml");
     }
 
     @Test
-    public void failOnRule35() throws Exception {
+    void failOnRule35() throws Exception {
         expectValidationErrors("tstrk1031/v4/fail-R35_1.xml", 1);
         expectValidationErrors("tstrk1031/v4/fail-R35_2.xml", 2);
     }
 
     @Test
-    public void passOnRule35() throws Exception {
+    void passOnRule35() throws Exception {
         expectValid("tstrk1031/v4/pass-R35_1.xml");
         expectValid("tstrk1031/v4/pass-R35_2.xml");
     }
@@ -265,13 +266,13 @@ public class SchematronValidatorTest {
         var validationResponse = xmlValidator.validate(xmlToValidate);
         var validationErrors = validationResponse.getValidationErrors();
 
-        assertFalse(String.join("\n", validationErrors), validationErrors.isEmpty());
+        assertFalse(validationErrors.isEmpty(), String.join("\n", validationErrors));
         assertEquals(expectedNoOfError, validationErrors.size());
     }
 
     private String getResourceFileAsString(String href) throws Exception {
 
-        try (InputStream is = Thread.currentThread().getContextClassLoader().getResource(href).openStream()) {
+        try (InputStream is = Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource(href)).openStream()) {
             if (is == null) {
                 return null;
             }

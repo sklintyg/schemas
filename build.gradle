@@ -9,18 +9,18 @@ plugins {
 }
 
 ext {
-    schemasSupportVersion = "2.1.5.2"
+    schemasSupportVersion = "2.2.0.1"
 
-    cxfPluginVersion = "4.0.0"
-    cxfVersion = "4.0.5"
-    guavaVersion = "32.1.3-jre"
+    cxfPluginVersion = "4.1.2"
+    cxfVersion = "4.1.4"
+    guavaVersion = "33.5.0-jre"
     jakartaActivationVersion = "2.0.1"
     jaxb2Version = "3.0.0"
     jaxb2NamespacePrefixVersion = "2.0"
-    phSchematronVersion = "7.1.2"
-    xmlWsRtVersion = "4.0.2"
+    jaxsWsVersion = "4.0.3"
+    schematronVersion = "9.1.1"
 
-    springbootMavenBomVersion = "3.3.4"
+    springbootVersion = "3.5.10"
 
     // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
     // Should check this one out -> -XepDisableWarningsInGeneratedCode
@@ -39,12 +39,16 @@ allprojects {
 
     version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
     group = 'se.inera.intyg.schemas'
-    sourceCompatibility = 21
-    targetCompatibility = 21
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
 
     dependencyManagement {
         imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootMavenBomVersion}"
+            mavenBom "org.springframework.boot:spring-boot-dependencies:${springbootVersion}"
         }
     }
 
@@ -79,7 +83,7 @@ allprojects {
             wsdl2java "codes.rafael.jaxb2_commons:jaxb2-basics:${jaxb2Version}"
             wsdl2java "codes.rafael.jaxb2_commons:jaxb2-basics-runtime:${jaxb2Version}"
             wsdl2java "com.sun.xml.bind:jaxb-impl"
-            wsdl2java "com.sun.xml.ws:rt:${xmlWsRtVersion}"
+            wsdl2java "com.sun.xml.ws:rt:${jaxsWsVersion}"
             wsdl2java "jakarta.xml.ws:jakarta.xml.ws-api"
             wsdl2java "org.apache.cxf.xjc-utils:cxf-xjc-runtime:${cxfPluginVersion}"
             wsdl2java "org.jvnet.jaxb2_commons:jaxb2-namespace-prefix:${jaxb2NamespacePrefixVersion}"
