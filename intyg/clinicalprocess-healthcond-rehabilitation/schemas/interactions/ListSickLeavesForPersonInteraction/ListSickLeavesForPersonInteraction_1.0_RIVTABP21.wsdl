@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  ~ Copyright (C) 2019 Inera AB (http://www.inera.se)
+  ~
+  ~ This file is part of sklintyg (https://github.com/sklintyg).
+  ~
+  ~ sklintyg is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ sklintyg is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+<wsdl:definitions name='ListSickLeavesForPersonInteraction' xmlns:wsdl='http://schemas.xmlsoap.org/wsdl/' xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:tjsr='urn:riv:clinicalprocess:healthcond:rehabilitation:ListSickLeavesForPersonResponder:1' xmlns:tjsi='urn:riv:clinicalprocess:healthcond:rehabilitation:ListSickLeavesForPersonInitiator:1' xmlns:tns='urn:riv:clinicalprocess:healthcond:rehabilitation:ListSickLeavesForPerson:1:rivtabp21' targetNamespace='urn:riv:clinicalprocess:healthcond:rehabilitation:ListSickLeavesForPerson:1:rivtabp21' xmlns:itr='urn:riv:itintegration:registry:1'>
+  <xs:annotation>
+    <xs:documentation>
+			 Tjänsteinteraktionens namn: ListSickLeavesForPersonInteraction
+			 Beskrivning:
+			   Hantera ordinations- och förskrivningsrelaterat utfall av aktivitet
+			 Revisioner:
+			 Tjänstedomän: clinicalprocess:healthcond:rehabilitation
+			 Tjänsteinteraktionstyp: Fråga-Svar
+			 WS-profil: RIVTABP21
+			 Förvaltas av: Sveriges Kommuner och Landsting
+			 </xs:documentation>
+  </xs:annotation>
+  <wsdl:types>
+    <xs:schema targetNamespace='urn:riv:clinicalprocess:healthcond:rehabilitation:ListSickLeavesForPerson:1:rivtabp21'>
+      <xs:import schemaLocation='ListSickLeavesForPersonResponder_1.0.xsd' namespace='urn:riv:clinicalprocess:healthcond:rehabilitation:ListSickLeavesForPersonResponder:1' />
+      <xs:import schemaLocation='../../core_components/itintegration_registry_1.0.xsd' namespace='urn:riv:itintegration:registry:1' />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name='ListSickLeavesForPersonRequest'>
+    <wsdl:part name='LogicalAddress' element='itr:LogicalAddress'>
+      <wsdl:documentation>The organisation number of the receiving insurance institution</wsdl:documentation>
+    </wsdl:part>
+    <wsdl:part name='parameters' element='tjsr:ListSickLeavesForPerson' />
+  </wsdl:message>
+  <wsdl:message name='ListSickLeavesForPersonResponse'>
+    <wsdl:part name='parameters' element='tjsr:ListSickLeavesForPersonResponse' />
+  </wsdl:message>
+  <wsdl:portType name='ListSickLeavesForPersonResponderInterface'>
+    <wsdl:operation name='ListSickLeavesForPerson'>
+      <wsdl:input message='tns:ListSickLeavesForPersonRequest' />
+      <wsdl:output message='tns:ListSickLeavesForPersonResponse' />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name='ListSickLeavesForPersonResponderBinding' type='tns:ListSickLeavesForPersonResponderInterface'>
+    <soap:binding style='document' transport='http://schemas.xmlsoap.org/soap/http' />
+    <wsdl:operation name='ListSickLeavesForPerson'>
+      <soap:operation soapAction='urn:riv:clinicalprocess:healthcond:rehabilitation:ListSickLeavesForPersonResponder:1:ListSickLeavesForPerson' style='document' />
+      <wsdl:input>
+        <soap:header use='literal' message='tns:ListSickLeavesForPersonRequest' part='LogicalAddress' />
+        <soap:body use='literal' parts='parameters' />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use='literal' />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name='ListSickLeavesForPersonResponderService'>
+    <wsdl:port name='ListSickLeavesForPersonResponderPort' binding='tns:ListSickLeavesForPersonResponderBinding'>
+      <soap:address location='http://tempuri.org' />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
