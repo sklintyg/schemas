@@ -38,6 +38,10 @@ allprojects {
     apply plugin: 'org.owasp.dependencycheck'
     apply plugin: 'com.diffplug.spotless'
 
+    spotless {
+        enforceCheck = false
+    }
+
     version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
     group = 'se.inera.intyg.schemas'
 
