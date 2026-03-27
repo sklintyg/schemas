@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Inera AB (http://www.inera.se)
+ * Copyright (C) 2026 Inera AB (http://www.inera.se)
  *
  * This file is part of sklintyg (https://github.com/sklintyg).
  *
@@ -18,21 +18,19 @@
  */
 package se.inera.intyg.schemas.support.adapter.xml;
 
-import java.time.temporal.Temporal;
-
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-
+import java.time.temporal.Temporal;
 import se.inera.intyg.schemas.support.adapter.PartialDateAdapter;
 
 public class PartialDateXmlAdapter extends XmlAdapter<String, Temporal> {
 
-    @Override
-    public Temporal unmarshal(String dateString) throws Exception {
-        return PartialDateAdapter.parsePartialDate(dateString);
-    }
+  @Override
+  public Temporal unmarshal(String dateString) throws Exception {
+    return PartialDateAdapter.parsePartialDate(dateString);
+  }
 
-    @Override
-    public String marshal(Temporal temporal) throws Exception {
-        return PartialDateAdapter.printPartialDate(temporal);
-    }
+  @Override
+  public String marshal(Temporal temporal) throws Exception {
+    return PartialDateAdapter.printPartialDate(temporal);
+  }
 }

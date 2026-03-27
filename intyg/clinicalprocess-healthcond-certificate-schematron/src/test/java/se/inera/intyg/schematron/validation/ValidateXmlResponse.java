@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Inera AB (http://www.inera.se)
+ * Copyright (C) 2026 Inera AB (http://www.inera.se)
  *
  * This file is part of sklintyg (https://github.com/sklintyg).
  *
@@ -23,24 +23,25 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A validate draft response contains a binary VALID/INVALID status and a list of validation messages.
+ * A validate draft response contains a binary VALID/INVALID status and a list of validation
+ * messages.
  */
 public class ValidateXmlResponse {
 
-    private final ValidationStatus status;
+  private final ValidationStatus status;
 
-    private final List<String> validationErrors;
+  private final List<String> validationErrors;
 
-    public ValidateXmlResponse(ValidationStatus status, List<String> validationErrors) {
-        this.status = status;
-        this.validationErrors = new ArrayList<>(validationErrors);
-    }
+  public ValidateXmlResponse(ValidationStatus status, List<String> validationErrors) {
+    this.status = status;
+    this.validationErrors = new ArrayList<>(validationErrors);
+  }
 
-    public List<String> getValidationErrors() {
-        return Collections.unmodifiableList(validationErrors);
-    }
+  public List<String> getValidationErrors() {
+    return Collections.unmodifiableList(validationErrors);
+  }
 
-    public ValidationStatus getStatus() {
-        return status;
-    }
+  public ValidationStatus getStatus() {
+    return status;
+  }
 }

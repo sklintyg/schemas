@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Inera AB (http://www.inera.se)
+ * Copyright (C) 2026 Inera AB (http://www.inera.se)
  *
  * This file is part of sklintyg (https://github.com/sklintyg).
  *
@@ -18,20 +18,19 @@
  */
 package se.inera.intyg.schemas.support.adapter.xml;
 
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
 import java.time.LocalDate;
 import se.inera.intyg.schemas.support.adapter.LocalDateAdapter;
 
-import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-
 public class IsoDateXmlAdapter extends XmlAdapter<String, LocalDate> {
 
-    @Override
-    public LocalDate unmarshal(String isoDateString) throws Exception {
-        return LocalDateAdapter.parseIsoDate(isoDateString);
-    }
+  @Override
+  public LocalDate unmarshal(String isoDateString) throws Exception {
+    return LocalDateAdapter.parseIsoDate(isoDateString);
+  }
 
-    @Override
-    public String marshal(LocalDate dateValue) throws Exception {
-        return LocalDateAdapter.printDate(dateValue);
-    }
+  @Override
+  public String marshal(LocalDate dateValue) throws Exception {
+    return LocalDateAdapter.printDate(dateValue);
+  }
 }

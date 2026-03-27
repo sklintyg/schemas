@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Inera AB (http://www.inera.se)
+ * Copyright (C) 2026 Inera AB (http://www.inera.se)
  *
  * This file is part of sklintyg (https://github.com/sklintyg).
  *
@@ -18,21 +18,19 @@
  */
 package se.inera.intyg.schemas.support.adapter.xml;
 
-import java.time.LocalDate;
-
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-
+import java.time.LocalDate;
 import se.inera.intyg.schemas.support.adapter.LocalDateAdapter;
 
 public class LocalDateXmlAdapter extends XmlAdapter<String, LocalDate> {
 
-    @Override
-    public LocalDate unmarshal(String value) {
-        return LocalDateAdapter.parseDate(value);
-    }
+  @Override
+  public LocalDate unmarshal(String value) {
+    return LocalDateAdapter.parseDate(value);
+  }
 
-    @Override
-    public String marshal(LocalDate value) {
-        return LocalDateAdapter.printDate(value);
-    }
+  @Override
+  public String marshal(LocalDate value) {
+    return LocalDateAdapter.printDate(value);
+  }
 }
