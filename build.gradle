@@ -5,6 +5,7 @@ plugins {
     id "org.owasp.dependencycheck" version "12.1.9"
     id 'jacoco'
     id 'org.cyclonedx.bom' version '3.1.0'
+    id 'com.diffplug.spotless' version "8.3.0"
 }
 
 ext {
@@ -18,6 +19,7 @@ ext {
     jaxb2NamespacePrefixVersion = "2.0"
     jaxsWsVersion = "4.0.3"
     schematronVersion = "9.1.1"
+    googleJavaFormatVersion = "1.34.0"
 
     springbootVersion = "3.5.10"
 
@@ -34,6 +36,7 @@ allprojects {
     apply plugin: 'jacoco'
     apply plugin: 'org.sonarqube'
     apply plugin: 'org.owasp.dependencycheck'
+    apply plugin: 'com.diffplug.spotless'
 
     version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
     group = 'se.inera.intyg.schemas'
@@ -133,6 +136,19 @@ allprojects {
                         "**/integrationtest/**"
                 ])
             }))
+        }
+    }
+}
+
+configure(subprojects.findAll { ['schemas-contract', 'schemas-support', 'intyg-clinicalprocess-healthcond-certificate-schematron'].contains(it.name)}) {
+    spotless {
+        java {
+            target 'src/*/java/**/*.java'
+            licenseHeaderFile(rootProject.file('spotless.license.txt'), 'package ')
+            removeUnusedImports()
+            forbidWildcardImports()
+            googleJavaFormat(googleJavaFormatVersion)
+            formatAnnotations()
         }
     }
 }
