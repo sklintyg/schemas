@@ -19,6 +19,6 @@
 package se.inera.intyg.schematron.validation;
 
 public enum ValidationStatus {
-
-    VALID, INVALID
+  VALID,
+  INVALID
 }

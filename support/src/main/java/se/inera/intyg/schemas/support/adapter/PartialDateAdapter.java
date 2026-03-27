@@ -18,7 +18,9 @@
  */
 package se.inera.intyg.schemas.support.adapter;
 
-import java.time.*;
+import java.time.LocalDate;
+import java.time.Year;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoField;
 import java.time.temporal.Temporal;
@@ -28,40 +30,35 @@ import java.time.temporal.Temporal;
  */
 public final class PartialDateAdapter {
 
-    private static final int YEAR_LENGTH = 4;
-    private static final int YEAR_MONTH_LENGTH = 7;
+  private static final int YEAR_LENGTH = 4;
+  private static final int YEAR_MONTH_LENGTH = 7;
 
-    private PartialDateAdapter() {
+  private PartialDateAdapter() {}
+
+  /** Converts an intyg:common-model:1:partialDate to a Temporal. */
+  public static Temporal parsePartialDate(String dateString) {
+    if (dateString == null) {
+      return null;
     }
 
-    /**
-     * Converts an intyg:common-model:1:partialDate to a Temporal.
-     */
-    public static Temporal parsePartialDate(String dateString) {
-        if (dateString == null) {
-            return null;
-        }
-
-        switch (dateString.length()) {
-        case YEAR_LENGTH:
-            return Year.parse(dateString);
-        case YEAR_MONTH_LENGTH:
-            return YearMonth.parse(dateString);
-        default:
-            return LocalDate.parse(dateString);
-        }
+    switch (dateString.length()) {
+      case YEAR_LENGTH:
+        return Year.parse(dateString);
+      case YEAR_MONTH_LENGTH:
+        return YearMonth.parse(dateString);
+      default:
+        return LocalDate.parse(dateString);
     }
+  }
 
-    /**
-     * Converts a Temporal to an intyg:common-model:1:partialDate.
-     */
-    public static String printPartialDate(Temporal temporal) {
-        if (temporal == null) {
-            return null;
-        } else if (temporal.isSupported(ChronoField.DAY_OF_MONTH)) {
-            return LocalDate.from(temporal).format(DateTimeFormatter.ISO_DATE);
-        } else {
-            return temporal.toString();
-        }
+  /** Converts a Temporal to an intyg:common-model:1:partialDate. */
+  public static String printPartialDate(Temporal temporal) {
+    if (temporal == null) {
+      return null;
+    } else if (temporal.isSupported(ChronoField.DAY_OF_MONTH)) {
+      return LocalDate.from(temporal).format(DateTimeFormatter.ISO_DATE);
+    } else {
+      return temporal.toString();
     }
+  }
 }

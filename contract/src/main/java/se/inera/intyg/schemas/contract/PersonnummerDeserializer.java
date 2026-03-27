@@ -21,14 +21,13 @@ package se.inera.intyg.schemas.contract;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-
 import java.io.IOException;
 
 public class PersonnummerDeserializer extends JsonDeserializer<Personnummer> {
 
-    @Override
-    public Personnummer deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
-        return Personnummer.createPersonnummer(jsonParser.getValueAsString()).get();
-    }
-
+  @Override
+  public Personnummer deserialize(
+      JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+    return Personnummer.createPersonnummer(jsonParser.getValueAsString()).get();
+  }
 }

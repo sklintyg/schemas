@@ -20,8 +20,7 @@ package se.inera.intyg.schemas.contract;
 
 public class InvalidPersonNummerException extends Exception {
 
-    public InvalidPersonNummerException(String message) {
-        super(message);
-    }
-
+  public InvalidPersonNummerException(String message) {
+    super(message);
+  }
 }

@@ -29,32 +29,31 @@ import javax.xml.transform.stream.StreamSource;
 
 public final class XmlValidator {
 
-    private final SchematronResourceSCH schematronResource;
+  private final SchematronResourceSCH schematronResource;
 
-    public XmlValidator(String location) {
-        //AbstractSchematronXSLTBasedResource
-        schematronResource = SchematronResourceSCH.fromClassPath(location);
-        if (!schematronResource.isValidSchematron()) {
-            throw new IllegalArgumentException("Invalid Schematron!");
-        }
+  public XmlValidator(String location) {
+    // AbstractSchematronXSLTBasedResource
+    schematronResource = SchematronResourceSCH.fromClassPath(location);
+    if (!schematronResource.isValidSchematron()) {
+      throw new IllegalArgumentException("Invalid Schematron!");
     }
+  }
 
-
-    public ValidateXmlResponse validate(String inputXml) throws Exception {
-        SchematronOutputType valResult = validateSchematron(new StreamSource(new StringReader(inputXml)));
-        var allFailedAssertions = SVRLHelper.getAllFailedAssertions(valResult);
-        if (!allFailedAssertions.isEmpty()) {
-            List<String> errorMsgs = new ArrayList<>();
-            allFailedAssertions
-                .forEach(fra -> errorMsgs.add(String.format("TEST: %s, MSG: %s", fra.getTest(), fra.getText())));
-            return new ValidateXmlResponse(ValidationStatus.INVALID, errorMsgs);
-        } else {
-            return new ValidateXmlResponse(ValidationStatus.VALID, new ArrayList<>());
-        }
+  public ValidateXmlResponse validate(String inputXml) throws Exception {
+    SchematronOutputType valResult =
+        validateSchematron(new StreamSource(new StringReader(inputXml)));
+    var allFailedAssertions = SVRLHelper.getAllFailedAssertions(valResult);
+    if (!allFailedAssertions.isEmpty()) {
+      List<String> errorMsgs = new ArrayList<>();
+      allFailedAssertions.forEach(
+          fra -> errorMsgs.add(String.format("TEST: %s, MSG: %s", fra.getTest(), fra.getText())));
+      return new ValidateXmlResponse(ValidationStatus.INVALID, errorMsgs);
+    } else {
+      return new ValidateXmlResponse(ValidationStatus.VALID, new ArrayList<>());
     }
+  }
 
-    private SchematronOutputType validateSchematron(Source xmlContent) throws Exception {
-        return schematronResource.applySchematronValidationToSVRL(xmlContent);
-
-    }
+  private SchematronOutputType validateSchematron(Source xmlContent) throws Exception {
+    return schematronResource.applySchematronValidationToSVRL(xmlContent);
+  }
 }

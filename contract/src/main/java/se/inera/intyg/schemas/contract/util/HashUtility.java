@@ -25,18 +25,17 @@ import com.google.common.io.BaseEncoding;
 import java.nio.charset.StandardCharsets;
 
 public final class HashUtility {
-    public static final String EMPTY = "EMPTY";
+  public static final String EMPTY = "EMPTY";
 
-    private static final HashFunction hf = Hashing.sha256();
+  private static final HashFunction hf = Hashing.sha256();
 
-    private HashUtility() {
+  private HashUtility() {}
+
+  public static String hash(final String payload) {
+    if (Strings.isNullOrEmpty(payload)) {
+      return EMPTY;
     }
-
-    public static String hash(final String payload) {
-        if (Strings.isNullOrEmpty(payload)) {
-            return EMPTY;
-        }
-        final byte[] digest = hf.hashString(payload, StandardCharsets.UTF_8).asBytes();
-        return BaseEncoding.base16().lowerCase().encode(digest);
-    }
+    final byte[] digest = hf.hashString(payload, StandardCharsets.UTF_8).asBytes();
+    return BaseEncoding.base16().lowerCase().encode(digest);
+  }
 }

@@ -19,20 +19,18 @@
 package se.inera.intyg.schemas.support.adapter.xml;
 
 import jakarta.xml.bind.annotation.adapters.XmlAdapter;
-
 import java.time.LocalDateTime;
-
 import se.inera.intyg.schemas.support.adapter.LocalDateTimeWithMillisAdapter;
 
 public class LocalDateTimeWithMillisXmlAdapter extends XmlAdapter<String, LocalDateTime> {
 
-    @Override
-    public LocalDateTime unmarshal(String value) {
-        return LocalDateTimeWithMillisAdapter.parseDateTime(value);
-    }
+  @Override
+  public LocalDateTime unmarshal(String value) {
+    return LocalDateTimeWithMillisAdapter.parseDateTime(value);
+  }
 
-    @Override
-    public String marshal(LocalDateTime value) {
-        return LocalDateTimeWithMillisAdapter.printDateTime(value);
-    }
+  @Override
+  public String marshal(LocalDateTime value) {
+    return LocalDateTimeWithMillisAdapter.printDateTime(value);
+  }
 }
