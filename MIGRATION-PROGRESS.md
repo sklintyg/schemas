@@ -16,12 +16,12 @@
 
 ## Completed phases
 
-| Phase | Date | Commit | Verification |
-|-------|------|--------|--------------|
-| 0 — Baseline and documentation | 2026-06-24 | (pending commit) | `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
-| 1 — Gradle 9.6.0 | 2026-06-24 | (pending commit) | `.\gradlew --version` → 9.6.0; `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
-| 2 — Java 25 | 2026-06-24 | (pending commit) | `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
-| 3 — wsdl2java 4.1.0 | | | |
+| Phase | Date | Verification |
+|-------|------|--------------|
+| 0 — Baseline and documentation | 2026-06-24 | `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
+| 1 — Gradle 9.6.0 | 2026-06-24 | `.\gradlew --version` → 9.6.0; `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
+| 2 — Java 25 | 2026-06-24 | `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
+| 3 — wsdl2java 4.1.0 | 2026-06-24 | `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
 | 4 — Spring Boot 4.1.0 + Jackson 3 | | | |
 | 5 — Final dependencies | | | |
 

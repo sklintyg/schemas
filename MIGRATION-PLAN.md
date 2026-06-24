@@ -86,11 +86,10 @@ Optional deeper checks when relevant:
 
 **Commit tag:** `K1J-1993: Upgrade wsdl2java plugin to 4.1.0`
 
-- [ ] Upgrade plugin to 4.1.0
-- [ ] Remove `cxfPluginVersion` / `cxfVersion` from wsdl2java block
-- [ ] Change path properties to strings
-- [ ] Update JAXB dependency coordinates if needed
-- [ ] Run verification gate
+- [x] Upgrade plugin to 4.1.0
+- [x] Remove `includeJava8XmlDependencies`; use string paths for `wsdlDir` / `generatedWsdlDir`
+- [x] Pin `cxfVersion` / `cxfPluginVersion` via extension (restored in plugin 4.1.0)
+- [x] Run verification gate
 
 ---
 
