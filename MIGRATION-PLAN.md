@@ -99,10 +99,10 @@ Optional deeper checks when relevant:
 
 **Commit tag:** `K1J-1993: Upgrade Spring Boot BOM to 4.1.0 and migrate to Jackson 3`
 
-- [ ] Set `springbootVersion = "4.1.0"`
-- [ ] Update `contract/build.gradle` to `tools.jackson.core:jackson-databind`
-- [ ] Migrate `Personnummer.java`, `PersonnummerDeserializer.java`, `PersonnummerTest.java`
-- [ ] Run verification gate and `PersonnummerTest`
+- [x] Set `springbootVersion = "4.1.0"`
+- [x] Update `contract/build.gradle` to `tools.jackson.core:jackson-databind`
+- [x] Migrate `Personnummer.java`, `PersonnummerDeserializer.java`, `PersonnummerTest.java`
+- [x] Run verification gate and `PersonnummerTest`
 
 ---
 

@@ -21,7 +21,7 @@ ext {
     schematronVersion = "9.1.1"
     googleJavaFormatVersion = "1.34.0"
 
-    springbootVersion = "3.5.10"
+    springbootVersion = "4.1.0"
 
     // Errorprone has no mechanism (yet) for excluding generated code. We hence only use it for 'schemas-support'.
     // Should check this one out -> -XepDisableWarningsInGeneratedCode

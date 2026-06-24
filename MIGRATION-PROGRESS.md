@@ -22,7 +22,7 @@
 | 1 — Gradle 9.6.0 | 2026-06-24 | `.\gradlew --version` → 9.6.0; `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
 | 2 — Java 25 | 2026-06-24 | `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
 | 3 — wsdl2java 4.1.0 | 2026-06-24 | `./gradlew clean build spotlessCheck` — BUILD SUCCESSFUL |
-| 4 — Spring Boot 4.1.0 + Jackson 3 | | | |
+| 4 — Spring Boot 4.1.0 + Jackson 3 | 2026-06-24 | `./gradlew clean build spotlessCheck` + `PersonnummerTest` — BUILD SUCCESSFUL |
 | 5 — Final dependencies | | | |
 
 ---
@@ -50,3 +50,4 @@ _None yet._
 |----------|-----------|
 | intyg-BOM not upgraded | Not used in this project |
 | Jackson 3 (not Jackson 2 compat module) | Per Jira acceptance criteria |
+| `JsonDeserializer` → `ValueDeserializer` | Jackson 3 rename; `deserialize()` no longer throws `IOException` |
