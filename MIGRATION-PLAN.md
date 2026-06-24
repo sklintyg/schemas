@@ -112,10 +112,10 @@ Optional deeper checks when relevant:
 
 **Commit tag:** `K1J-1993: Align remaining dependencies and complete lifecycle migration`
 
-- [ ] Review and bump `ext` dependency versions
-- [ ] Review Gradle plugin versions
-- [ ] Run final verification checklist
-- [ ] Close out `MIGRATION-PROGRESS.md`
+- [x] Review and bump `ext` dependency versions
+- [x] Review Gradle plugin versions
+- [x] Run final verification checklist
+- [x] Close out `MIGRATION-PROGRESS.md`
 
 ---
 
