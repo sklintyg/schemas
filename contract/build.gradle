@@ -6,7 +6,7 @@ version = System.properties['buildVersion'] ?: '0-SNAPSHOT'
 
 dependencies {
     implementation "ch.qos.logback:logback-classic"
-    implementation "com.fasterxml.jackson.core:jackson-databind"
+    implementation "tools.jackson.core:jackson-databind"
     implementation "com.google.guava:guava:${guavaVersion}"
 }
 

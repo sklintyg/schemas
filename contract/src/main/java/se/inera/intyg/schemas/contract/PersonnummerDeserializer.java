@@ -18,16 +18,15 @@
  */
 package se.inera.intyg.schemas.contract;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
-import java.io.IOException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.ValueDeserializer;
 
-public class PersonnummerDeserializer extends JsonDeserializer<Personnummer> {
+public class PersonnummerDeserializer extends ValueDeserializer<Personnummer> {
 
   @Override
   public Personnummer deserialize(
-      JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
+      JsonParser jsonParser, DeserializationContext deserializationContext) {
     return Personnummer.createPersonnummer(jsonParser.getValueAsString()).get();
   }
 }
