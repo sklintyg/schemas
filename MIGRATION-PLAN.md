@@ -75,8 +75,8 @@ Optional deeper checks when relevant:
 
 **Commit tag:** `K1J-1993: Upgrade Java toolchain to 25`
 
-- [ ] Set `JavaLanguageVersion.of(25)` in `build.gradle`
-- [ ] Run verification gate
+- [x] Set `JavaLanguageVersion.of(25)` in `build.gradle`
+- [x] Run verification gate
 
 ---
 
