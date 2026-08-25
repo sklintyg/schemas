@@ -105,6 +105,15 @@ wsdl2java {
 
             commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
                              "-wsdlLocation",
+                             "classpath:interactions/GetBinaryCertificateInteraction/GetBinaryCertificateInteraction_1.0_RIVTABP21.wsdl",
+                             "-p",
+                             "urn:riv:clinicalprocess:healthcond:certificate:GetBinaryCertificate:1:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.getBinaryCertificate.v1",
+                             "-p",
+                             "urn:riv:clinicalprocess:healthcond:certificate:GetBinaryCertificateResponder:1=se.riv.clinicalprocess.healthcond.certificate.getBinaryCertificate.v1",
+                             "$projectDir/schemas/interactions/GetBinaryCertificateInteraction/GetBinaryCertificateInteraction_1.0_RIVTABP21.wsdl"],
+
+            commonOptions + ["-xjc=-extension,-npa,-Xnamespace-prefix", "-b", "$rootDir/support/src/main/resources/bindings/clinicalprocess-binding3.xjb",
+                             "-wsdlLocation",
                              "classpath:interactions/GetCertificateInteraction/GetCertificateInteraction_2.0_RIVTABP21.wsdl",
                              "-p",
                              "urn:riv:clinicalprocess:healthcond:certificate:GetCertificate:2:rivtabp21=se.riv.clinicalprocess.healthcond.certificate.getCertificate.v2",
